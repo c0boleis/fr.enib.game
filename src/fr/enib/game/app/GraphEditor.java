@@ -6,7 +6,6 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
@@ -32,13 +31,12 @@ import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxUtils;
 import fr.enib.game.editor.graphe.view.mxCellState;
 import fr.enib.game.editor.graphe.view.mxGraph;
-import fr.enib.game.model.Model;
 
 /**
  * @author Corentin Boleis
  *
  */
-public class GraphEditeur extends BasicGraphEditor
+public class GraphEditor extends BasicGraphEditor
 {
 	/**
 	 * 
@@ -60,19 +58,15 @@ public class GraphEditeur extends BasicGraphEditor
 
 	//GraphEditor.class.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connector.gif");
 
-	/**
-	 * 
-	 */
-	public GraphEditeur()
+	public GraphEditor()
 	{
 		this("mxGraph Editor", new CustomGraphComponent(new CustomGraph()));
 	}
 
 	/**
-	 * @param appTitle
-	 * @param component
+	 * 
 	 */
-	public GraphEditeur(String appTitle, mxGraphComponent component)
+	public GraphEditor(String appTitle, mxGraphComponent component)
 	{
 		super(appTitle, component);
 		final mxGraph graph = graphComponent.getGraph();
@@ -80,7 +74,7 @@ public class GraphEditeur extends BasicGraphEditor
 		// Creates the shapes palette
 		EditorPalette shapesPalette = insertPalette(mxResources.get("shapes"));
 
-		// change le template du lien pour créer des nouveaux liens if an edge
+		// Sets the edge template to be used for creating new edges if an edge
 		// is clicked in the shape palette
 		shapesPalette.addListener(mxEvent.SELECT, new mxIEventListener()
 		{
@@ -107,47 +101,49 @@ public class GraphEditeur extends BasicGraphEditor
 				.addTemplate(
 						"Icon",
 						new ImageIcon(
-								GraphEditeur.class
+								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/rounded.png")),
 						"icon;image=/fr/enib/game/editor/graphe/examples/swing/images/wrench.png",
-						70, 70, "");
-		shapesPalette.addTemplate(
+						70, 70, "Icon");
+		shapesPalette
+				.addTemplate(
 						"Ellipse",
 						new ImageIcon(
-								GraphEditeur.class
+								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/ellipse.png")),
-						"ellipse", 160, 160, Model.getIModelObjectCreateur().getInstanceNoeud());
+						"ellipse", 160, 160, "");
+
 		/*
-		 * format des liens
+		 * le differente forme de lien
 		 */
 		shapesPalette
 				.addEdgeTemplate(
 						"Straight",
 						new ImageIcon(
-								GraphEditeur.class
+								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/straight.png")),
-						"straight", 120, 120, Model.getIModelObjectCreateur().getInstanceLien());
+						"straight", 120, 120, "");
 		shapesPalette
 				.addEdgeTemplate(
 						"Horizontal Connector",
 						new ImageIcon(
-								GraphEditeur.class
+								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connect.png")),
-						null, 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
+						null, 100, 100, "");
 		shapesPalette
 				.addEdgeTemplate(
 						"Vertical Connector",
 						new ImageIcon(
-								GraphEditeur.class
+								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/vertical.png")),
-						"vertical", 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
+						"vertical", 100, 100, "");
 		shapesPalette
 				.addEdgeTemplate(
 						"Entity Relation",
 						new ImageIcon(
-								GraphEditeur.class
+								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/entity.png")),
-						"entity", 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
+						"entity", 100, 100, "");
 
 	}
 
@@ -178,7 +174,7 @@ public class GraphEditeur extends BasicGraphEditor
 
 			// Loads the defalt stylesheet from an external file
 			mxCodec codec = new mxCodec();
-			Document doc = mxUtils.loadDocument(GraphEditeur.class.getResource(
+			Document doc = mxUtils.loadDocument(GraphEditor.class.getResource(
 					"/fr/enib/game/editor/graphe/examples/swing/resources/default-style.xml")
 					.toString());
 			codec.decode(doc.getDocumentElement(), graph.getStylesheet());
@@ -243,7 +239,6 @@ public class GraphEditeur extends BasicGraphEditor
 
 		/**
 		 * Sets the edge template to be used to inserting edges.
-		 * @param template le template pour les liens.
 		 */
 		public void setEdgeTemplate(Object template)
 		{
@@ -340,15 +335,17 @@ public class GraphEditeur extends BasicGraphEditor
 		}
 
 		/**
-		 * utilisé pour créer des liens dans le graphe
+		 * Overrides the method to use the currently selected edge template for
+		 * new edges.
 		 * 
+		 * @param graph
 		 * @param parent
 		 * @param id
 		 * @param value
 		 * @param source
 		 * @param target
 		 * @param style
-		 * @return le lien créé
+		 * @return
 		 */
 		public Object createEdge(Object parent, String id, Object value,
 				Object source, Object target, String style)
@@ -384,7 +381,7 @@ public class GraphEditeur extends BasicGraphEditor
 		mxSwingConstants.SHADOW_COLOR = Color.LIGHT_GRAY;
 		mxConstants.W3C_SHADOWCOLOR = "#D3D3D3";
 
-		GraphEditeur editor = new GraphEditeur();
+		GraphEditor editor = new GraphEditor();
 		editor.createFrame(new EditorMenuBar(editor)).setVisible(true);
 	}
 }

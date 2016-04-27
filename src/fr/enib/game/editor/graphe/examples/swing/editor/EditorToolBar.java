@@ -57,8 +57,6 @@ public class EditorToolBar extends JToolBar
 				.createEmptyBorder(3, 3, 3, 3), getBorder()));
 		setFloatable(false);
 
-		add(editor.bind("New", new NewAction(),
-				"/fr/enib/game/editor/graphe/examples/swing/images/new.gif"));
 		add(editor.bind("Open", new OpenAction(),
 				"/fr/enib/game/editor/graphe/examples/swing/images/open.gif"));
 		add(editor.bind("Save", new SaveAction(false),
@@ -92,99 +90,10 @@ public class EditorToolBar extends JToolBar
 
 		addSeparator();
 
-		// Gets the list of available fonts from the local graphics environment
-		// and adds some frequently used fonts at the beginning of the list
-		GraphicsEnvironment env = GraphicsEnvironment
-				.getLocalGraphicsEnvironment();
-		List<String> fonts = new ArrayList<String>();
-		fonts.addAll(Arrays.asList(new String[] { "Helvetica", "Verdana",
-				"Times New Roman", "Garamond", "Courier New", "-" }));
-		fonts.addAll(Arrays.asList(env.getAvailableFontFamilyNames()));
-
-		final JComboBox fontCombo = new JComboBox(fonts.toArray());
-		fontCombo.setEditable(true);
-		fontCombo.setMinimumSize(new Dimension(120, 0));
-		fontCombo.setPreferredSize(new Dimension(120, 0));
-		fontCombo.setMaximumSize(new Dimension(120, 100));
-		add(fontCombo);
-
-		fontCombo.addActionListener(new ActionListener()
-		{
-			/**
-			 * 
-			 */
-			public void actionPerformed(ActionEvent e)
-			{
-				String font = fontCombo.getSelectedItem().toString();
-
-				if (font != null && !font.equals("-"))
-				{
-					mxGraph graph = editor.getGraphComponent().getGraph();
-					graph.setCellStyles(mxConstants.STYLE_FONTFAMILY, font);
-				}
-			}
-		});
-
-		final JComboBox sizeCombo = new JComboBox(new Object[] { "6pt", "8pt",
-				"9pt", "10pt", "12pt", "14pt", "18pt", "24pt", "30pt", "36pt",
-				"48pt", "60pt" });
-		sizeCombo.setEditable(true);
-		sizeCombo.setMinimumSize(new Dimension(65, 0));
-		sizeCombo.setPreferredSize(new Dimension(65, 0));
-		sizeCombo.setMaximumSize(new Dimension(65, 100));
-		add(sizeCombo);
-
-		sizeCombo.addActionListener(new ActionListener()
-		{
-			/**
-			 * 
-			 */
-			public void actionPerformed(ActionEvent e)
-			{
-				mxGraph graph = editor.getGraphComponent().getGraph();
-				graph.setCellStyles(mxConstants.STYLE_FONTSIZE, sizeCombo
-						.getSelectedItem().toString().replace("pt", ""));
-			}
-		});
-
-		addSeparator();
-
-		add(editor.bind("Bold", new FontStyleAction(true),
-				"/fr/enib/game/editor/graphe/examples/swing/images/bold.gif"));
-		add(editor.bind("Italic", new FontStyleAction(false),
-				"/fr/enib/game/editor/graphe/examples/swing/images/italic.gif"));
-
-		addSeparator();
-
-		add(editor.bind("Left", new KeyValueAction(mxConstants.STYLE_ALIGN,
-				mxConstants.ALIGN_LEFT),
-				"/fr/enib/game/editor/graphe/examples/swing/images/left.gif"));
-		add(editor.bind("Center", new KeyValueAction(mxConstants.STYLE_ALIGN,
-				mxConstants.ALIGN_CENTER),
-				"/fr/enib/game/editor/graphe/examples/swing/images/center.gif"));
-		add(editor.bind("Right", new KeyValueAction(mxConstants.STYLE_ALIGN,
-				mxConstants.ALIGN_RIGHT),
-				"/fr/enib/game/editor/graphe/examples/swing/images/right.gif"));
-
-		addSeparator();
-
-		add(editor.bind("Font", new ColorAction("Font",
-				mxConstants.STYLE_FONTCOLOR),
-				"/fr/enib/game/editor/graphe/examples/swing/images/fontcolor.gif"));
-		add(editor.bind("Stroke", new ColorAction("Stroke",
-				mxConstants.STYLE_STROKECOLOR),
-				"/fr/enib/game/editor/graphe/examples/swing/images/linecolor.gif"));
-		add(editor.bind("Fill", new ColorAction("Fill",
-				mxConstants.STYLE_FILLCOLOR),
-				"/fr/enib/game/editor/graphe/examples/swing/images/fillcolor.gif"));
-
-		addSeparator();
-
 		final mxGraphView view = editor.getGraphComponent().getGraph()
 				.getView();
-		final JComboBox zoomCombo = new JComboBox(new Object[] { "400%",
-				"200%", "150%", "100%", "75%", "50%", mxResources.get("page"),
-				mxResources.get("width"), mxResources.get("actualSize") });
+		final JComboBox<String> zoomCombo = new JComboBox<String>(new String[] { "400%",
+				"200%", "150%", "100%", "75%", "50%" });
 		zoomCombo.setEditable(true);
 		zoomCombo.setMinimumSize(new Dimension(75, 0));
 		zoomCombo.setPreferredSize(new Dimension(75, 0));
