@@ -127,6 +127,7 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 
 	/**
 	 * Constructs a new graphics canvas for the given graphics object.
+	 * @param g 
 	 */
 	public mxGraphics2DCanvas(Graphics2D g)
 	{
@@ -144,6 +145,8 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param name 
+	 * @param shape 
 	 * 
 	 */
 	public static void putShape(String name, mxIShape shape)
@@ -152,6 +155,8 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param style 
+	 * @return {@link mxIShape}
 	 * 
 	 */
 	public mxIShape getShape(Map<String, Object> style)
@@ -168,6 +173,8 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param name 
+	 * @param shape 
 	 * 
 	 */
 	public static void putTextShape(String name, mxITextShape shape)
@@ -176,6 +183,9 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param style 
+	 * @param html 
+	 * @return {@link mxITextShape}
 	 * 
 	 */
 	public mxITextShape getTextShape(Map<String, Object> style, boolean html)
@@ -195,6 +205,7 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @return {@link CellRendererPane}
 	 * 
 	 */
 	public CellRendererPane getRendererPane()
@@ -204,6 +215,7 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 
 	/**
 	 * Returns the graphics object for this canvas.
+	 * @return {@link Graphics2D}
 	 */
 	public Graphics2D getGraphics()
 	{
@@ -212,6 +224,7 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 
 	/**
 	 * Sets the graphics object for this canvas.
+	 * @param g 
 	 */
 	public void setGraphics(Graphics2D g)
 	{
@@ -279,6 +292,8 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param bounds 
+	 * @param imageUrl 
 	 * 
 	 */
 	public void drawImage(Rectangle bounds, String imageUrl)
@@ -287,6 +302,11 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param bounds 
+	 * @param imageUrl 
+	 * @param preserveAspect 
+	 * @param flipH 
+	 * @param flipV 
 	 * 
 	 */
 	public void drawImage(Rectangle bounds, String imageUrl,
@@ -378,6 +398,8 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param points 
+	 * @param rounded 
 	 * 
 	 */
 	public void paintPolyline(mxPoint[] points, boolean rounded)
@@ -452,6 +474,9 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param bounds 
+	 * @param background 
+	 * @param border 
 	 *
 	 */
 	public void paintRectangle(Rectangle bounds, Color background, Color border)
@@ -470,6 +495,7 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param shape 
 	 *
 	 */
 	public void fillShape(Shape shape)
@@ -478,6 +504,8 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param shape 
+	 * @param shadow 
 	 *
 	 */
 	public void fillShape(Shape shape, boolean shadow)
@@ -506,6 +534,8 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param style 
+	 * @return {@link Stroke}
 	 * 
 	 */
 	public Stroke createStroke(Map<String, Object> style)
@@ -535,6 +565,9 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param bounds 
+	 * @param style 
+	 * @return {@link Paint}
 	 * 
 	 */
 	public Paint createFillPaint(mxRectangle bounds, Map<String, Object> style)
@@ -585,6 +618,10 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param style 
+	 * @param opacity 
+	 * @param bounds 
+	 * @return {@link Graphics2D}
 	 * 
 	 */
 	public Graphics2D createTemporaryGraphics(Map<String, Object> style,

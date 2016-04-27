@@ -39,6 +39,7 @@ public class mxHtmlCanvas extends mxBasicCanvas
 	/**
 	 * Constructs a new HTML canvas for the specified bounds, scale and
 	 * background color.
+	 * @param document 
 	 */
 	public mxHtmlCanvas(Document document)
 	{
@@ -46,6 +47,7 @@ public class mxHtmlCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param node 
 	 * 
 	 */
 	public void appendHtmlElement(Element node)
@@ -63,6 +65,7 @@ public class mxHtmlCanvas extends mxBasicCanvas
 	}
 
 	/**
+	 * @param document 
 	 * 
 	 */
 	public void setDocument(Document document)
@@ -167,6 +170,7 @@ public class mxHtmlCanvas extends mxBasicCanvas
 	 * @param w Width of the shape.
 	 * @param h Height of the shape.
 	 * @param style Style of the the shape.
+	 * @return {@link Element}
 	 */
 	public Element drawShape(int x, int y, int w, int h,
 			Map<String, Object> style)
@@ -334,6 +338,7 @@ public class mxHtmlCanvas extends mxBasicCanvas
 	 * @param w Width of the text.
 	 * @param h Height of the text.
 	 * @param style Style to be used for painting the text.
+	 * @return {@link Element}
 	 */
 	public Element drawText(String text, int x, int y, int w, int h,
 			Map<String, Object> style)

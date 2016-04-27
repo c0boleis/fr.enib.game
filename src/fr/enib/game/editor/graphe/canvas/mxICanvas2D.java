@@ -191,6 +191,8 @@ public interface mxICanvas2D
 	 * @param h
 	 * @param direction Direction may be null. Use default value
 	 * 		{@link mxConstants#DIRECTION_SOUTH}.
+	 * @param alpha1 
+	 * @param alpha2 
 	 */
 	void setGradient(String color1, String color2, double x, double y,
 			double w, double h, String direction, double alpha1, double alpha2);
@@ -218,8 +220,8 @@ public interface mxICanvas2D
 
 	/**
 	 * Default value {@link mxConstants#NONE}.
-	 * 
-	 * @param value Hex representation of the color or {@link mxConstants#NONE}.
+	 * @param dx 
+	 * @param dy 
 	 */
 	void setShadowOffset(double dx, double dy);
 
