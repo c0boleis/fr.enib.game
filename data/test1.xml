@@ -1,0 +1,71 @@
+
+<Decor>
+
+  <Camera id="camera" />
+  
+  <!-- ====================== -->
+  <!-- Les objets de la scène -->
+  <!-- ====================== -->
+
+  <Sol  id="sol"     />
+  <Obj  id="obj-001" url="../data/obj/pingouin/p.obj" />
+  <Obj  id="obj-002" url="../data/obj/pingouin/p.obj" />
+  
+  <Mur id="mur00" texture="../data/textures/scaled3.jpg"  hauteur="5.0"  points="0.0 0.0 , 5.0 0.0, 5.0 5.0" />
+ 
+  <Lieu  id="lieu-001" />
+  <Lieu  id="pt-obs-001"/>
+  
+  <Tableau id="tab-001" recto="../data/bacon/personnages/artisan.png" hauteur="2.0" largeur="3.0"/> 
+  <Tableau id="tab-002" recto="../data/bacon/personnages/compilateur.png" hauteur="2.0" largeur="3.0"/>
+  <Tableau id="tab-003" recto="../data/bacon/personnages/donateur.png" hauteur="2.0" largeur="3.0"/> 
+  <Tableau id="tab-004" recto="../data/bacon/personnages/FB.png" hauteur="2.0" largeur="3.0"/>
+  
+  <!-- ================================== -->
+  <!-- Placement des objets dans la scène -->
+  <!-- ================================== -->
+  
+  <Placer id="obj-001" translation="0.0 0.0 2.0" cap="90.0"/>
+  <Placer id="obj-002" translation="2.0 0.0 0.0" cap="-90.0"/>
+  <Placer id="camera"  translation="20.0 6.0 1.6" cap="180.0" />
+  <Placer id="tab-001" translation="10.0 -10.0 2.0" cap="0.0" />
+  <Placer id="tab-002" translation="10.0 8.0 2.0" cap="0.0" />
+  <Placer id="tab-003" translation="10.0 12.0 2.0" cap="0.0" />
+  <Placer id="tab-004" translation="8.0 4.0 2.0 " cap="0.0" />
+  
+  <Placer id="pt-obs-001" translation="12.0 8.0 2.0" cap="0.0"/>
+  
+  <!-- ======================= -->
+  <!-- Les actions de la scène -->
+  <!-- ======================= -->
+  
+  <Texte id="text-000" texte="Origine" couleur="255 255 0 255" />
+  <Texte id="text-001" texte="Artisan" couleur="0 255 0 255" />
+  <Texte id="text-002" texte="Compilateur" couleur="255 0 0 255" />
+
+  <!-- ================== -->
+  <!-- Creation de cibles -->
+  <!-- ================== -->
+  
+  <Cible id="cible-001" maitre="tab-001" hauteur="2.0" largeur="2.0"/>
+  <Cible id="cible-002" maitre="tab-002" hauteur="2.0" largeur="2.0"/>
+  
+  <!-- ===================== -->
+  <!-- Création des triggers -->
+  <!-- ===================== -->
+  <!-- 
+  <TriggerCylindre id="trigger-01" maitre="tab-001" objet="camera" hauteur="5.0" rayon="2.0"  />
+  <TriggerCylindre id="trigger-02" maitre="tab-002" objet="camera" hauteur="5.0" rayon="2.0"  />
+  <TriggerCylindre id="trigger-03" maitre="lieu-001" objet="camera" hauteur="5.0" rayon="5.0" />
+  --> 
+  <TriggerCible id="trigger-04" maitre="tab-001"  largeur="1.0" profondeur="4.0" hauteur="2.0"
+		objet="camera" cible="cible-001"  />
+  
+
+  
+  <EnregistrerObservateur trigger="trigger-04" observateur="text-001" />
+
+
+  
+</Decor>
+

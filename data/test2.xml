@@ -1,0 +1,66 @@
+
+<Decor>
+
+  <Camera id="camera" />
+  
+  <!-- ====================== -->
+  <!-- Les objets de la scène -->
+  <!-- ====================== -->
+
+  <Sol  id="sol"     />
+ 
+  
+ 
+  <Lieu  id="lieu-001" />
+  <Lieu  id="pt-obs-001"/>
+  
+  <Tableau id="tab-001" recto="../data/bacon/personnages/artisan.png" hauteur="2.0" largeur="3.0"/> 
+  
+  <Obj id="tux" url="../data/obj/pingouin/p.obj" />
+ 
+  <!-- ================================== -->
+  <!-- Placement des objets dans la scène -->
+  <!-- ================================== -->
+
+  <Placer id="camera" translation="10.0 0.0 1.6" cap="180" />
+  <Placer id="tab-001" translation="-2.0 0.0 2.0" cap="0.0"/>
+  <Placer id="pt-obs-001" translation="0.0 0.0 1.0" cap="0.0"/>
+
+  
+  <!-- ======================= -->
+  <!-- Les actions de la scène -->
+  <!-- ======================= -->
+  
+ 
+  <Texte id="text-001" texte="Artisan" couleur="0 255 0 255" />
+  <Texte id="text-002" texte="ARTISAN" position="200 200" couleur="255 255 0 255" />
+ 
+  <!-- ================== -->
+  <!-- Creation de cibles -->
+  <!-- ================== -->
+  
+  <Cible id="cible-001" maitre="tab-001" hauteur="2.0" largeur="2.0"/>
+
+  <!-- ===================== -->
+  <!-- Création des triggers -->
+  <!-- ===================== -->
+  <!-- 
+  <TriggerCylindre id="trigger-01" maitre="tab-001" objet="camera" hauteur="5.0" rayon="2.0"  />
+  <TriggerCylindre id="trigger-02" maitre="tab-002" objet="camera" hauteur="5.0" rayon="2.0"  />
+  <TriggerCylindre id="trigger-03" maitre="lieu-001" objet="camera" hauteur="5.0" rayon="5.0" />
+  --> 
+  <TriggerCible id="trigger-001" maitre="pt-obs-001"  
+		largeur="3.0" profondeur="3.0" hauteur="4.0"
+		objet="camera" cible="cible-001"  />
+  
+  <TriggerCylindre id="trigger-002" maitre="tab-001" hauteur="5.0" rayon="2.0" objet="camera" />
+  
+
+  
+  <EnregistrerObservateur trigger="trigger-001" observateur="text-001" />
+  <EnregistrerObservateur trigger="trigger-002" observateur="text-002" />
+
+
+  
+</Decor>
+

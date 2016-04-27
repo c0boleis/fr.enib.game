@@ -1,0 +1,385 @@
+tableauMusee = new Tableau("aiguille-de-la-reine-dangleterre-locmaria.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("alfred-klots-rochefort-en-terre.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("alignement-de-maisons-ambon-64326.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("alignement-saint-nicolas-du-tertre.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-augan.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-bignan.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-cleguerec.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-crehen.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-coat-menez-gwenn-melgven.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-guinefolle-meslin.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-guinirvit-plouescat.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-kercordonner-moelan-sur-mer.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-kergoustance-moelan-sur-mer.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-kerguntuil-tregastel.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-la-brousse-plenee-jugon.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-la-corbinais-dinard.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-la-gree-basse-monteneuf.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-la-ville-bouquet-ploermel.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-lann-er-vein-camors.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-lepine-le-gouray.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-lile-grande-pleumeur-bodou.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-mane-roullarde-la-trinite-sur-mer.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-men-guionnet-gourin.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-menez-korriged-plouhinec.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-moulin-rene-pont-aven.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-ros-vras-landebaeron.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-treal-saint-just.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-trehan-saint-marcel.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-de-ty-ar-c-horriket-beuzec-cap-sizun.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-dolmen-a-couloir-larmor-plage.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-du-four-es-feins-miniac-morvan.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-du-lobo-caro.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-du-mougau-commana.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-du-prioldi-baud.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-du-ribl-lampaul-ploudalmezeau.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-gomene.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-gouezec.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-goulven.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-kerbors.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-kerien.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-kerlouan.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-la-foret-fouesnant.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-laniscat.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-lohuec.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-malguenac.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-motreff.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-pledran.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-ploerdut.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-ploubazlanec.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-pommerit-le-vicomte.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-poullan-sur-mer.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-priziac.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-quessoy.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-riec-sur-belon.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-saint-connan.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-saint-lunaire.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-saint-quay-perros.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-squiffiec.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-trebeurden.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-tregastel.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allee-couverte-tresse.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("allegorie-berne.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-baptistere-pleine-fougeres.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-cafe-nevez.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-chateau-baratoux-saint-brieuc.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-chateau-chateauneuf-d-ille-et-vilaine.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-couvent-des-ursulines-lesneven.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-couvent-des-ursulines-montfort-sur-meu.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-four-a-pain-cesson-sevigne.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-fournil-et-four-saint-domineuc.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-grand-seminaire-rennes.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-grenier-a-sel-tinteniac.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-de-la-vallee-lanmeur.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-des-passants-detail-lamballe.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-le-tronchet.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-militaire-guingamp.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-quimperle.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-royal-saint-louis-le-palais.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-saint-louis-chantepie.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-saint-nicolas-chateaugiron.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hopital-vezin-le-coquet.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hospice-meillac.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hospice-plouguerneau.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hotel-de-la-marine-camaret-sur-mer.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hotel-de-ville-saint-malo.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hotel-dieu-redon.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hotel-guerin-langon.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-hotel-le-fer-de-beauvais-portail-saint-malo.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-logis-double-du-xviie-siecle-langan.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-logis-militaire-livre-sur-changeon.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-manoir-antrain.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-manoir-cardroc.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-manoir-cintre.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-manoir-de-bon-espoir-hede.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("ancien-manoir-de-forge-acigne.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("chapelle-notre-dame-des-graces-noyal-muzillac.jpg");
+Model.get().addTableau(tableauMusee);
+tableauMusee.ajouterNoeud(patrimoine,1.0f);
+
+tableauMusee = new Tableau("chateau-de-guerguelegan-landrevarzec.jpg");

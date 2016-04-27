@@ -1,0 +1,561 @@
+<Groupe>
+ 
+    <Sol size="1000" texture="../data/textures/sol.png"/>
+    <SkyBox texture="../data/skyboxes/miramar_large.jpg"/>
+
+    <Transform name="musee" >	
+	<!--Salle Contexte-->
+
+		<Cloison hauteur="3.49" points="8.0 2.0 ,8.0 -2.0" texture="../data/bacon/panneaux/arch.png"/>
+	    <!--<Transform name="toit001" translation="12.0 -2.0 3.0" rotation="0.0 45.0 0.0">
+		 <Tableau recto="../data/textures/toit.jpg" verso="../data/textures/toit.jpg" hauteur="3.50" largeur="2.0" />
+	    </Transform>-->
+
+	    	<Cloison hauteur="3.50" points="8.0 2.0 ,12.0 6.0" texture="../data/textures/scaled5.jpg"/>
+
+	    	<Cloison hauteur="3.50" points="8.0 -2.0 ,12.0 -6.0" texture="../data/textures/scaled5.jpg"/>  
+
+	    	<Cloison hauteur="3.50" points="12.0 6.0 ,16.0 6.0" texture="../data/textures/scaled5.jpg"/>
+	    	<Cloison hauteur="3.50" points="12.0 -6.0 ,16.0 -6.0" texture="../data/textures/scaled5.jpg"/>    
+
+	    	<Cloison hauteur="3.50" points="16.0 6.0 ,20.0 2.0" texture="../data/textures/scaled5.jpg"/>
+	    	<Cloison hauteur="3.50" points="16.0 -6.0 ,20.0 -2.0" texture="../data/textures/scaled5.jpg"/>  
+
+	<!--Salle Bacon-->
+	   	<Cloison hauteur="3.50" points="20.0 2.0 ,22.0 6.0" texture="../data/textures/redstone.jpg"/>
+	    	<Cloison hauteur="3.50" points="20.0 -2.0 ,22.0 -6.0" texture="../data/textures/redstone.jpg"/>   
+
+	   	<Cloison hauteur="3.50" points="22.0 6.0 ,26.0 8.0" texture="../data/textures/redstone.jpg"/>
+	    	<Cloison hauteur="3.50" points="22.0 -6.0 ,26.0 -8.0" texture="../data/textures/redstone.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="26.0 8.0 ,30.0 8.0" texture="../data/textures/redstone.jpg"/>
+	    	<Cloison hauteur="3.50" points="26.0 -8.0 ,30.0 -8.0" texture="../data/textures/redstone.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="30.0 8.0 ,34.0 6.0" texture="../data/textures/redstone.jpg"/>
+	    	<Cloison hauteur="3.50" points="30.0 -8.0 ,34.0 -6.0" texture="../data/textures/redstone.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="34.0 6.0 ,36.0 2.0" texture="../data/textures/redstone.jpg"/>
+	    	<Cloison hauteur="3.50" points="34.0 -6.0 ,36.0 -2.0" texture="../data/textures/redstone.jpg"/> 
+
+	    	<Cloison hauteur="3.50" points="28.0 -2.0 ,28.0 2.0" texture="../data/textures/redstone.jpg"/> 
+	
+	<!--Salle Atlantide-->
+	   	<Cloison hauteur="3.50" points="36.0 2.0 ,36.0 8.0" texture="../data/textures/scaled5.jpg"/>
+	    	<Cloison hauteur="3.50" points="36.0 -2.0 ,36.0 -8.0" texture="../data/textures/scaled5.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="36.0 8.0 ,44.0 12.0" texture="../data/textures/scaled5.jpg"/>
+	    	<Cloison hauteur="3.50" points="36.0 -8.0 ,44.0 -12.0" texture="../data/textures/scaled5.jpg"/>
+
+	   	<Cloison hauteur="3.50" points="44.0 12.0 ,44.0 10.0" texture="../data/textures/scaled5.jpg"/>
+	    	<Cloison hauteur="3.50" points="44.0 -12.0 ,44.0 -10.0" texture="../data/textures/scaled5.jpg"/>
+
+	   	<Cloison hauteur="3.50" points="44.0 6.0 ,44.0 2.0" texture="../data/textures/scaled5.jpg"/>
+	    	<Cloison hauteur="3.50" points="44.0 -6.0 ,44.0 -2.0" texture="../data/textures/scaled5.jpg"/>  
+
+	<!--Galeries gauche/droite--> 
+	   	<Cloison hauteur="3.50" points="44.0 10.0 ,52.0 18.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="44.0 -10.0 ,52.0 -18.0" texture="../data/textures/scaled3.jpg"/>  
+
+	   	<Cloison hauteur="3.50" points="44.0 6.0 ,54.0 16.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="44.0 -6.0 ,54.0 -16.0" texture="../data/textures/scaled3.jpg"/> 
+
+	<!--Galeries centrale--> 
+	   	<Cloison hauteur="3.50" points="44.0 2.0 ,50.0 2.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="44.0 -2.0 ,50.0 -2.0" texture="../data/textures/scaled2.jpg"/>
+
+	<!--Salles Inferieure/Superieur-->  
+	   	<Cloison hauteur="3.50" points="52.0 18.0 ,51.0 19.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="52.0 -18.0 ,51.0 -19.0" texture="../data/textures/scaled3.jpg"/>
+
+	   	<Cloison hauteur="3.50" points="54.0 16.0 ,55.0 15.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="54.0 -16.0 ,55.0 -15.0" texture="../data/textures/scaled3.jpg"/>  
+
+	   	<Cloison hauteur="3.50" points="51.0 19.0 ,51.0 23.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="51.0 -19.0 ,51.0 -23.0" texture="../data/textures/scaled3.jpg"/>
+
+	   	<Cloison hauteur="3.50" points="51.0 23.0 ,55.0 27.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="51.0 -23.0 ,55.0 -27.0" texture="../data/textures/scaled3.jpg"/>  
+
+	   	<Cloison hauteur="3.50" points="55.0 27.0 ,59.0 27.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="55.0 -27.0 ,59.0 -27.0" texture="../data/textures/scaled3.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="59.0 27.0 ,63.0 23.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="59.0 -27.0 ,63.0 -23.0" texture="../data/textures/scaled3.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="63.0 23.0 ,63.0 19.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="63.0 -23.0 ,63.0 -19.0" texture="../data/textures/scaled3.jpg"/>
+
+	   	<Cloison hauteur="3.50" points="63.0 19.0 ,59.0 15.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="63.0 -19.0 ,59.0 -15.0" texture="../data/textures/scaled3.jpg"/>  
+
+	   	<Cloison hauteur="3.50" points="59.0 15.0 ,55.0 15.0" texture="../data/textures/clouds.png"/>
+	    	<Cloison hauteur="3.50" points="59.0 -15.0 ,55.0 -15.0" texture="../data/textures/scaled3.jpg"/> 
+
+	<!--Murs Salles Moyenne-->  
+	   	<Cloison hauteur="3.50" points="50.0 2.0 ,50.0 4.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="50.0 -2.0 ,50.0 -4.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="50.0 4.0 ,58.0 12.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="50.0 -4.0 ,58.0 -12.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="58.0 12.0 ,66.0 12.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="58.0 -12.0 ,66.0 -12.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="66.0 12.0 ,74.0 4.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="66.0 -12.0 ,74.0 -4.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="74.0 4.0 ,74.0 -4.0" texture="../data/textures/scaled2.jpg"/>
+
+	<!--Salles Moyenne-->  
+	   	<Cloison hauteur="3.50" points="52.0 6.0 ,56.0 6.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="52.0 -6.0 ,56.0 -6.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="59.0 6.0 ,62.0 6.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="59.0 -6.0 ,62.0 -6.0" texture="../data/textures/scaled2.jpg"/>
+
+	   	<Cloison hauteur="3.50" points="62.0 6.0 ,62.0 12.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="62.0 -6.0 ,62.0 -12.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="62.0 6.0 ,65.0 6.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="62.0 -6.0 ,65.0 -6.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="68.0 6.0 ,72.0 6.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="68.0 -6.0 ,72.0 -6.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="70.0 6.0 ,70.0 1.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="70.0 -6.0 ,70.0 -1.0" texture="../data/textures/scaled2.jpg"/> 
+
+	   	<Cloison hauteur="3.50" points="70.0 6.0 ,72.0 6.0" texture="../data/textures/scaled2.jpg"/>
+	    	<Cloison hauteur="3.50" points="70.0 -6.0 ,72.0 -6.0" texture="../data/textures/scaled2.jpg"/> 
+    </Transform>    
+
+    <!--Tableaux Salle Contexte-->
+    	<Transform name="con001" >
+   	  <Tableau recto="../data/bacon/con001.png" hauteur="2.4" largeur="1.98"/>
+    	</Transform>
+    	<Transform name="con001T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteCon001.png" hauteur="0.4" largeur="1.98"/>
+    	</Transform>
+   	 
+
+    	<Transform name="con002" >
+   	  <Tableau recto="../data/bacon/con002.png" hauteur="2.4" largeur="3.4"/>
+    	</Transform>
+   	 
+    	<Transform name="con002T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteCon002.png" hauteur="0.4" largeur="3.4"/>
+    	</Transform>
+
+    	<Transform name="con003">
+   	  <Tableau recto="../data/bacon/con003.png" hauteur="2.4" largeur="1.80"/>
+    	</Transform>
+   	 
+    	<Transform name="con003T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteCon003.png" hauteur="0.4" largeur="1.80"/>
+    	</Transform>
+
+
+    	<Transform name="con004">
+   	  <Tableau recto="../data/bacon/con004.png" hauteur="2.4" largeur="4"/>
+    	</Transform>
+
+    	<Transform name="con004T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteCon004.png" hauteur="0.4" largeur="4"/>
+    	</Transform>
+   	 
+
+    	<Transform name="con005">
+   	  <Tableau recto="../data/bacon/con005.png" hauteur="2.4" largeur="3.59"/>
+    	</Transform>
+   	 
+    	<Transform name="con005T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteCon005.png" hauteur="0.4" largeur="3.59"/>
+    	</Transform>
+
+	<!--Tableaux Bacon -->
+    	<Transform name="fb001">
+   	  <Tableau recto="../data/bacon/fb001.png" hauteur="2.4" largeur="1.93"/>
+    	</Transform>   	 
+    	<Transform name="fb001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb001.png" hauteur="0.4" largeur="1.93"/>
+    	</Transform>
+
+    	<Transform name="fb002">
+   	  <Tableau recto="../data/bacon/fb002.png" hauteur="2.4" largeur="1.92"/>
+    	</Transform>   
+	 
+     	<Transform name="fb002T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb001.png" hauteur="0.4" largeur="1.92"/>
+    	</Transform>
+
+    	<Transform name="fb003" >
+   	  <Tableau recto="../data/bacon/fb003.png" hauteur="2.4" largeur="2.8"/>
+    	</Transform>
+    	<Transform name="fb003T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb003.png" hauteur="0.4" largeur="2.8"/>
+    	</Transform>
+   	 
+
+    	<Transform name="fb004" >
+   	  <Tableau recto="../data/bacon/fb004.png" hauteur="2.4" largeur="2.69"/>
+    	</Transform>
+   	 
+    	<Transform name="fb004T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb004.png" hauteur="0.4" largeur="2.69"/>
+    	</Transform>
+
+    	<Transform name="fb005" >    
+   	  <Tableau recto="../data/bacon/fb005.png" hauteur="2.4" largeur="1.52"/>
+    	</Transform>
+    	<Transform name="fb005T" >    
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb005.png" hauteur="0.4" largeur="1.52"/>
+    	</Transform>
+
+    	<Transform name="fb006">
+   	  <Tableau recto="../data/bacon/fb006.png" hauteur="2.4" largeur="1.65"/>
+    	</Transform>
+    	<Transform name="fb006T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb006.png" hauteur="0.4" largeur="1.65"/>
+    	</Transform>
+
+    	<Transform name="fb007">
+   	  <Tableau recto="../data/bacon/fb007.png" hauteur="2.4" largeur="1.43"/>
+    	</Transform>
+    	<Transform name="fb007T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb007.png" hauteur="0.4" largeur="1.43"/>
+    	</Transform>
+
+    	<Transform name="fb009">
+   	  <Tableau recto="../data/bacon/fb009.png" hauteur="2.4" largeur="3.33"/>
+    	</Transform>
+    	<Transform name="fb009T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb009.png" hauteur="0.4" largeur="3.33"/>
+    	</Transform>
+
+    	<Transform name="fb010">
+   	  <Tableau recto="../data/bacon/fb010.png" hauteur="2.0" largeur="1.70"/>
+    	</Transform>
+    	<Transform name="fb010T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb010.png" hauteur="0.4" largeur="1.70"/>
+    	</Transform>
+
+    	<Transform name="fb011">
+   	  <Tableau recto="../data/bacon/fb011.png" hauteur="2.4" largeur="1.55"/>
+    	</Transform>
+     	<Transform name="fb011T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteFb011.png" hauteur="0.4" largeur="1.55"/>
+    	</Transform>
+
+   <!--Tableaux Atlantide -->
+    	<Transform name="at001">
+   	  <Tableau recto="../data/bacon/at001.png" hauteur="2.4" largeur="3.47"/>
+    	</Transform>
+
+    	<Transform name="at002">
+   	  <Tableau recto="../data/bacon/at002.png" hauteur="2.4" largeur="1.93"/>
+    	</Transform>
+
+    	<Transform name="at003" >
+   	  <Tableau recto="../data/bacon/at003.png" hauteur="2.4" largeur="3.45"/>
+    	</Transform>
+
+    	<Transform name="at004" >
+   	  <Tableau recto="../data/bacon/at004.png" hauteur="2.4" largeur="1.84"/>
+    	</Transform>
+
+    	<Transform name="at005" >    
+   	  <Tableau recto="../data/bacon/at005.png" hauteur="2" largeur="3.51"/>
+    	</Transform>
+
+    	<Transform name="at006">
+   	  <Tableau recto="../data/bacon/at006.png" hauteur="2.4" largeur="3.02"/>
+    	</Transform>
+
+    	<Transform name="at007">
+   	  <Tableau recto="../data/bacon/at007.png" hauteur="2.4" largeur="1.37"/>
+    	</Transform>
+
+    	<Transform name="at008">
+   	  <Tableau recto="../data/bacon/at008.png" hauteur="2.4" largeur="1.56"/>
+    	</Transform>
+   	 
+    	<Transform name="at001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt001.png" hauteur="0.4" largeur="3.47"/>
+    	</Transform>
+
+    	<Transform name="at002T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt002.png" hauteur="0.4" largeur="1.93"/>
+    	</Transform>
+
+    	<Transform name="at003T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt003.png" hauteur="0.4" largeur="3.45"/>
+    	</Transform>
+
+    	<Transform name="at004T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt004.png" hauteur="0.4" largeur="1.84"/>
+    	</Transform>
+
+    	<Transform name="at005T" >    
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt005.png" hauteur="0.4" largeur="3.51"/>
+    	</Transform>
+
+    	<Transform name="at006T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt006.png" hauteur="0.4" largeur="3.02"/>
+    	</Transform>
+
+    	<Transform name="at007T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt007.png" hauteur="0.4" largeur="1.37"/>
+    	</Transform>
+
+    	<Transform name="at008T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteAt008.png" hauteur="0.4" largeur="1.56"/>
+    	</Transform>
+
+   <!--Tableaux Inferieur -->
+    	<Transform name="ri001">
+   	  <Tableau recto="../data/bacon/ri001.png" hauteur="2.4" largeur="3.60"/>
+    	</Transform>
+
+    	<Transform name="ri002">
+   	  <Tableau recto="../data/bacon/ri002.png" hauteur="2.4" largeur="3.30"/>
+    	</Transform>
+
+    	<Transform name="ri003" >
+   	  <Tableau recto="../data/bacon/ri003.png" hauteur="2.4" largeur="2.91"/>
+    	</Transform>
+   	 
+     	<Transform name="ri001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteRi001.png" hauteur="0.4" largeur="3.60"/>
+    	</Transform>
+
+    	<Transform name="ri002T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteRi002.png" hauteur="0.4" largeur="3.30"/>
+    	</Transform>
+
+    	<Transform name="ri003T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteRi003.png" hauteur="0.4" largeur="2.91"/>
+    	</Transform>
+
+   <!--Tableaux Superieure -->
+    	<Transform name="rs001">
+   	  <Tableau recto="../data/bacon/rs001.png" hauteur="2.4" largeur="1.98"/>
+    	</Transform>
+
+    	<Transform name="rs002">
+   	  <Tableau recto="../data/bacon/rs002.png" hauteur="2.4" largeur="1.75"/>
+    	</Transform>
+
+    	<Transform name="rs003" >
+   	  <Tableau recto="../data/bacon/rs003.png" hauteur="2.4" largeur="2.13"/>
+    	</Transform>
+
+    	<Transform name="rs004" >
+   	  <Tableau recto="../data/bacon/rs004.png" hauteur="2.4" largeur="1.41"/>
+    	</Transform>
+
+    	<Transform name="rs005" >    
+   	  <Tableau recto="../data/bacon/rs005.png" hauteur="2.4" largeur="1.95"/>
+    	</Transform>
+   	 
+        	<Transform name="rs001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteRs001.png" hauteur="0.4" largeur="1.98"/>
+    	</Transform>
+
+    	<Transform name="rs002T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteRs002.png" hauteur="0.4" largeur="1.75"/>
+    	</Transform>
+
+    	<Transform name="rs003T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteRs003.png" hauteur="0.4" largeur="2.13"/>
+    	</Transform>
+
+    	<Transform name="rs004T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteRs004.png" hauteur="0.4" largeur="1.41"/>
+    	</Transform>
+
+    	<Transform name="rs005T" >    
+   	  <Tableau recto="../data/bacon/photo_titre/texteRs005.png" hauteur="0.4" largeur="1.95"/>
+    	</Transform>
+   	 
+
+   <!--Tableaux Moyenne -->
+   <!--Tableaux maison optique -->
+    	<Transform name="mo001">
+   	  <Tableau recto="../data/bacon/mo001.png" hauteur="2.4" largeur="2.40"/>
+    	</Transform>
+    	<Transform name="mo002">
+   	  <Tableau recto="../data/bacon/mo002.jpg" hauteur="3.13" largeur="2.40"/>
+    	</Transform>
+   	 
+     	<Transform name="mo001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMo001.png" hauteur="0.4" largeur="2.40"/>
+    	</Transform>
+    	<Transform name="mo002T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMo002.png" hauteur="0.4" largeur="2.40"/>
+    	</Transform>
+
+
+   <!--Tableaux erreurs des sens-->
+    	<Transform name="me001">
+   	  <Tableau recto="../data/bacon/me001.png" hauteur="2.4" largeur="3.86"/>
+    	</Transform>
+
+    	<Transform name="me002">
+   	  <Tableau recto="../data/bacon/me002.png" hauteur="2.4" largeur="3.36"/>
+    	</Transform>
+
+    	<Transform name="me003" >
+   	  <Tableau recto="../data/bacon/me003.png" hauteur="2.0" largeur="2.01"/>
+    	</Transform>
+   	 
+    	<Transform name="me001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMe001.png" hauteur="0.4" largeur="3.86"/>
+    	</Transform>
+
+    	<Transform name="me002T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMe002.png" hauteur="0.4" largeur="3.36"/>
+    	</Transform>
+
+    	<Transform name="me003T" >
+   	  <Tableau recto="../data/bacon/photo_titre/texteMe003.png" hauteur="0.4" largeur="2.01"/>
+    	</Transform>
+
+   <!--Tableaux maison mecanique-->
+    	<Transform name="mm001">
+   	  <Tableau recto="../data/bacon/mm001.png" hauteur="2.4" largeur="2.93"/>
+    	</Transform>
+   	 
+     	<Transform name="mm001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMm001.png" hauteur="0.4" largeur="2.93"/>
+    	</Transform>
+
+   <!--Tableaux maison sons-->
+    	<Transform name="ms001">
+   	  <Tableau recto="../data/bacon/ms001.png" hauteur="2.4" largeur="1.93"/>
+    	</Transform>
+
+    	<Transform name="ms002">
+   	  <Tableau recto="../data/bacon/ms002.png" hauteur="2.4" largeur="2.35"/>
+    	</Transform>
+   	 
+     	<Transform name="ms001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMs001.png" hauteur="0.4" largeur="1.93"/>
+    	</Transform>
+
+    	<Transform name="ms002T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMs002.png" hauteur="0.4" largeur="2.35"/>
+    	</Transform>
+
+   <!--Tableaux maison math-->
+    	<Transform name="mmath001">
+   	  <Tableau recto="../data/bacon/mmath001.png" hauteur="2.4" largeur="1.88"/>
+    	</Transform>
+   	 
+     	<Transform name="mmath001T">
+   	  <Tableau recto="../data/bacon/photo_titre/texteMmath001.png" hauteur="0.4" largeur="1.88"/>
+    	</Transform>
+
+   <!--Personnages-->
+	    <Transform name="FB">
+		 <Tableau recto="../data/bacon/personnages/FB.png" verso="../data/bacon/personnages/FB.png" hauteur="2.0" largeur="3.20"/>
+	    </Transform>
+
+	    <Transform name="artisan">
+		 <Tableau recto="../data/bacon/personnages/artisan.png" verso="../data/bacon/personnages/artisan.png" hauteur="1.0" largeur="0.68"/>
+	    </Transform>
+
+	    <Transform name="compilateur">
+		 <Tableau recto="../data/bacon/personnages/compilateur.png" verso="../data/bacon/personnages/compilateur.png" hauteur="2.0" largeur="1.57"/>
+	    </Transform>
+
+	    <Transform name="donateur">
+		 <Tableau recto="../data/bacon/personnages/donateur.png" verso="../data/bacon/personnages/donateur.png" hauteur="2.0" largeur="1.48"/>
+	    </Transform>
+
+	    <Transform name="flambeaux">
+		 <Tableau recto="../data/bacon/personnages/flambeaux.png" verso="../data/bacon/personnages/flambeaux.png" hauteur="2.0" largeur="1.77"/>
+	    </Transform>
+
+	    <Transform name="greffeur">
+		 <Tableau recto="../data/bacon/personnages/greffeur.png" verso="../data/bacon/personnages/greffeur.png" hauteur="2.0" largeur="3.20"/>
+	    </Transform>
+
+	    <Transform name="marchanddelumiere">
+		 <Tableau recto="../data/bacon/personnages/marchanddeLumiere.png" verso="../data/bacon/personnages/marchanddeLumiere.png" hauteur="2.0" largeur="1.69"/>
+	    </Transform>
+
+	    <Transform name="mineur">
+		 <Tableau recto="../data/bacon/personnages/mineur.png" verso="../data/bacon/personnages/mineur.png" hauteur="2.0" largeur="3.20"/>
+	    </Transform>
+
+	    <Transform name="pilleur">
+		 <Tableau recto="../data/bacon/personnages/pilleur.png" verso="../data/bacon/personnages/pilleur.png" hauteur="2.0" largeur="1.35"/>
+	    </Transform>
+
+   <!--Panneaux-->
+
+	    <Transform name="maisonMath">
+		 <Tableau recto="../data/bacon/panneaux/maisonMath.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="maisonMeca">
+		 <Tableau recto="../data/bacon/panneaux/maisonMeca.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="maisonOpt">
+		 <Tableau recto="../data/bacon/panneaux/maisonOpt.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="maisonSens">
+		 <Tableau recto="../data/bacon/panneaux/maisonSens.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="maisonSon">
+		 <Tableau recto="../data/bacon/panneaux/maisonSon.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="nouvelleAtlan002">
+		 <Tableau recto="../data/bacon/panneaux/nouvelleAtlan.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+	    <Transform name="nouvelleAtlan003">
+		 <Tableau recto="../data/bacon/panneaux/nouvelleAtlan.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+	    <Transform name="nouvelleAtlan004">
+		 <Tableau recto="../data/bacon/panneaux/nouvelleAtlan.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="regionInf001">
+		 <Tableau recto="../data/bacon/panneaux/regionInf.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="regionMoy001">
+		 <Tableau recto="../data/bacon/panneaux/regionMoy.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+	    <Transform name="regionSup001" >
+		 <Tableau recto="../data/bacon/panneaux/regionSup.png" verso="../data/bacon/transparent.png" hauteur="0.50" largeur="0.70"/>
+	    </Transform>
+
+ 	<!--OBJ-->
+	    <Transform name="Arbre1">
+	    	<Transform name="Arbre11" rotation="90 0 0">
+			 <Obj url="../data/obj/arbre/arbre.obj"/>
+	    	</Transform>
+	    </Transform>
+
+	    <Transform name="Arbre2">
+	    	<Transform name="Arbre12" rotation="90 0 0">
+			 <Obj url="../data/obj/arbre/arbre.obj"/>
+	    	</Transform>
+	    </Transform>
+
+	    <Transform name="Arbre3">
+	    	<Transform name="Arbre13" rotation="90 0 0">
+			 <Obj url="../data/obj/arbre/arbre.obj"/>
+	    	</Transform>
+	    </Transform>
+
+
+
+
+</Groupe>
