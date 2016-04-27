@@ -274,6 +274,7 @@ public class mxCodec
 		{
 			String name = mxCodecRegistry.getName(obj);
 			mxObjectCodec enc = mxCodecRegistry.getCodec(name);
+
 			if (enc != null)
 			{
 				node = enc.encode(this, obj);

@@ -13,7 +13,7 @@ import java.util.HashMap;
 /**
  * Parses a GD .txt file and imports it in the given graph.<br/>
  * This class depends from the classes contained in
- * com.mxgraph.io.gd.
+ * fr.enib.game.editor.graphe.io.gd.
  */
 public class mxGdCodec
 {

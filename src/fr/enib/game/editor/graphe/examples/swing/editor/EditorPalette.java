@@ -1,3 +1,6 @@
+/**
+ * Copyright (c) 2007-2012, JGraph Ltd
+ */
 package fr.enib.game.editor.graphe.examples.swing.editor;
 
 import java.awt.Color;
@@ -34,23 +37,27 @@ import fr.enib.game.editor.graphe.util.mxPoint;
 import fr.enib.game.editor.graphe.util.mxRectangle;
 import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
 
-/**
- * @author Corentin Boleis
- *
- */
 public class EditorPalette extends JPanel
 {
 
-	private static int index = 0;
-
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 7771113885935187066L;
 
+	/**
+	 * 
+	 */
 	protected JLabel selectedEntry = null;
 
+	/**
+	 * 
+	 */
 	protected mxEventSource eventSource = new mxEventSource(this);
-	
-	private MouseListener clearSelectionListener;
 
+	/**
+	 * 
+	 */
 	protected Color gradientColor = new Color(117, 195, 173);
 
 	/**
@@ -63,7 +70,51 @@ public class EditorPalette extends JPanel
 		setLayout(new FlowLayout(FlowLayout.LEADING, 5, 5));
 
 		// Clears the current selection when the background is clicked
-		addMouseListener(getClearSelectionListener());
+		addMouseListener(new MouseListener()
+		{
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+			 */
+			public void mousePressed(MouseEvent e)
+			{
+				clearSelection();
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+			 */
+			public void mouseClicked(MouseEvent e)
+			{
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+			 */
+			public void mouseEntered(MouseEvent e)
+			{
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+			 */
+			public void mouseExited(MouseEvent e)
+			{
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+			 */
+			public void mouseReleased(MouseEvent e)
+			{
+			}
+
+		});
 
 		// Shows a nice icon for drag and drop but doesn't import anything
 		setTransferHandler(new TransferHandler()
@@ -76,7 +127,6 @@ public class EditorPalette extends JPanel
 	}
 
 	/**
-	 * @param c 
 	 * 
 	 */
 	public void setGradientColor(Color c)
@@ -85,7 +135,6 @@ public class EditorPalette extends JPanel
 	}
 
 	/**
-	 * @return {@link Color}
 	 * 
 	 */
 	public Color getGradientColor()
@@ -128,8 +177,6 @@ public class EditorPalette extends JPanel
 	}
 
 	/**
-	 * @param entry 
-	 * @param t 
 	 * 
 	 */
 	public void setSelectionEntry(JLabel entry, mxGraphTransferable t)
@@ -155,7 +202,6 @@ public class EditorPalette extends JPanel
 
 	/**
 	 * 
-	 * @param width
 	 */
 	public void setPreferredWidth(int width)
 	{
@@ -241,21 +287,62 @@ public class EditorPalette extends JPanel
 		entry.setToolTipText(name);
 		entry.setText(name);
 
-		entry.addMouseListener(this.createMouseSelectionListener(entry, t));
-
-		// créé le lisitner pour envoyer un objet de la pallette dans la graphe
-		DragGestureListener dragGestureListener = new DragGestureListener()
+		entry.addMouseListener(new MouseListener()
 		{
+
 			/*
 			 * (non-Javadoc)
-			 * @see java.awt.dnd.DragGestureListener#dragGestureRecognized(java.awt.dnd.DragGestureEvent)
+			 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 			 */
-			@Override
+			public void mousePressed(MouseEvent e)
+			{
+				setSelectionEntry(entry, t);
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+			 */
+			public void mouseClicked(MouseEvent e)
+			{
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+			 */
+			public void mouseEntered(MouseEvent e)
+			{
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+			 */
+			public void mouseExited(MouseEvent e)
+			{
+			}
+
+			/*
+			 * (non-Javadoc)
+			 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+			 */
+			public void mouseReleased(MouseEvent e)
+			{
+			}
+
+		});
+
+		// Install the handler for dragging nodes into a graph
+		DragGestureListener dragGestureListener = new DragGestureListener()
+		{
+			/**
+			 * 
+			 */
 			public void dragGestureRecognized(DragGestureEvent e)
 			{
-				e
-				.startDrag(null, mxSwingConstants.EMPTY_IMAGE, new Point(),
-						t, null);
+				e.startDrag(null, mxSwingConstants.EMPTY_IMAGE, new Point(),
+								t, null);
 			}
 
 		};
@@ -270,7 +357,7 @@ public class EditorPalette extends JPanel
 	/**
 	 * @param eventName
 	 * @param listener
-	 * @see com.mxgraph.util.mxEventSource#addListener(java.lang.String, com.mxgraph.util.mxEventSource.mxIEventListener)
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#addListener(java.lang.String, fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener)
 	 */
 	public void addListener(String eventName, mxIEventListener listener)
 	{
@@ -279,7 +366,7 @@ public class EditorPalette extends JPanel
 
 	/**
 	 * @return whether or not event are enabled for this palette
-	 * @see com.mxgraph.util.mxEventSource#isEventsEnabled()
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#isEventsEnabled()
 	 */
 	public boolean isEventsEnabled()
 	{
@@ -288,7 +375,7 @@ public class EditorPalette extends JPanel
 
 	/**
 	 * @param listener
-	 * @see com.mxgraph.util.mxEventSource#removeListener(com.mxgraph.util.mxEventSource.mxIEventListener)
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#removeListener(fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener)
 	 */
 	public void removeListener(mxIEventListener listener)
 	{
@@ -298,7 +385,7 @@ public class EditorPalette extends JPanel
 	/**
 	 * @param eventName
 	 * @param listener
-	 * @see com.mxgraph.util.mxEventSource#removeListener(java.lang.String, com.mxgraph.util.mxEventSource.mxIEventListener)
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#removeListener(java.lang.String, fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener)
 	 */
 	public void removeListener(mxIEventListener listener, String eventName)
 	{
@@ -307,109 +394,11 @@ public class EditorPalette extends JPanel
 
 	/**
 	 * @param eventsEnabled
-	 * @see com.mxgraph.util.mxEventSource#setEventsEnabled(boolean)
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#setEventsEnabled(boolean)
 	 */
 	public void setEventsEnabled(boolean eventsEnabled)
 	{
 		eventSource.setEventsEnabled(eventsEnabled);
-	}
-
-	/**
-	 * @return the mouseSelectionListener
-	 */
-	private MouseListener createMouseSelectionListener(final JLabel entry,final mxGraphTransferable transferable) {
-			return  new MouseListener()
-			{
-
-				/*
-				 * (non-Javadoc)
-				 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
-				 */
-				@Override
-				public void mousePressed(MouseEvent e)
-				{
-					setSelectionEntry(entry, transferable);
-				}
-
-				/*
-				 * (non-Javadoc)
-				 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
-				 */
-				@Override
-				public void mouseClicked(MouseEvent e)
-				{
-				}
-
-				/*
-				 * (non-Javadoc)
-				 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
-				 */
-				@Override
-				public void mouseEntered(MouseEvent e)
-				{
-				}
-
-				/*
-				 * (non-Javadoc)
-				 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
-				 */
-				@Override
-				public void mouseExited(MouseEvent e)
-				{
-				}
-
-				/*
-				 * (non-Javadoc)
-				 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
-				 */
-				@Override
-				public void mouseReleased(MouseEvent e)
-				{
-				}
-			};
-	}
-
-	/**
-	 * @return the clearSelectionListener
-	 */
-	private MouseListener getClearSelectionListener() {
-		if(clearSelectionListener == null){
-			clearSelectionListener = new MouseListener() {
-				
-				@Override
-				public void mouseReleased(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent arg0) {
-					clearSelection();
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				/*
-				 * 
-				 */
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-					
-				}
-			};
-		}
-		return clearSelectionListener;
 	}
 
 }

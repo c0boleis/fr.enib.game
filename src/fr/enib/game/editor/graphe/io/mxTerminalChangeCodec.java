@@ -36,7 +36,7 @@ public class mxTerminalChangeCodec extends mxObjectCodec
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.io.mxObjectCodec#afterDecode(com.mxgraph.io.mxCodec, org.w3c.dom.Node, java.lang.Object)
+	 * @see fr.enib.game.editor.graphe.io.mxObjectCodec#afterDecode(fr.enib.game.editor.graphe.io.mxCodec, org.w3c.dom.Node, java.lang.Object)
 	 */
 	@Override
 	public Object afterDecode(mxCodec dec, Node node, Object obj)

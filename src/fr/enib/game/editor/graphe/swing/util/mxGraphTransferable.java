@@ -46,7 +46,7 @@ public class mxGraphTransferable implements Transferable, UIResource,
 	 * try
 	 * {
 	 *   mxGraphTransferable.dataFlavor = new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType
-	 *     + "; class=com.mxgraph.swing.util.mxGraphTransferable");
+	 *     + "; class=fr.enib.game.editor.graphe.swing.util.mxGraphTransferable");
 	 * }
 	 * catch (ClassNotFoundException cnfe)
 	 * {
@@ -57,8 +57,8 @@ public class mxGraphTransferable implements Transferable, UIResource,
 	 * If you get a class not found exception, try the following instead:
 	 * <code>
 	 * mxGraphTransferable.dataFlavor = new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType
-	 *   + "; class=com.mxgraph.swing.util.mxGraphTransferable", null,
-	 *   new com.mxgraph.swing.util.mxGraphTransferable(null, null).getClass().getClassLoader());
+	 *   + "; class=fr.enib.game.editor.graphe.swing.util.mxGraphTransferable", null,
+	 *   new fr.enib.game.editor.graphe.swing.util.mxGraphTransferable(null, null).getClass().getClassLoader());
 	 * </code>
 	 */
 	public static DataFlavor dataFlavor;
@@ -99,8 +99,6 @@ public class mxGraphTransferable implements Transferable, UIResource,
 	protected ImageIcon image;
 
 	/**
-	 * @param cells 
-	 * @param bounds 
 	 * 
 	 */
 	public mxGraphTransferable(Object[] cells, mxRectangle bounds)
@@ -109,9 +107,6 @@ public class mxGraphTransferable implements Transferable, UIResource,
 	}
 
 	/**
-	 * @param cells 
-	 * @param bounds 
-	 * @param image 
 	 * 
 	 */
 	public mxGraphTransferable(Object[] cells, mxRectangle bounds,
@@ -132,7 +127,6 @@ public class mxGraphTransferable implements Transferable, UIResource,
 
 	/**
 	 * Returns the unscaled, untranslated bounding box of the cells.
-	 * @return {@link mxRectangle}
 	 */
 	public mxRectangle getBounds()
 	{
@@ -140,19 +134,16 @@ public class mxGraphTransferable implements Transferable, UIResource,
 	}
 
 	/**
-	 * @return {@link ImageIcon}
 	 * 
 	 */
 	public ImageIcon getImage()
 	{
 		return image;
 	}
-	
-	/*
-	 * (non-Javadoc)
-	 * @see java.awt.datatransfer.Transferable#getTransferDataFlavors()
+
+	/**
+	 * 
 	 */
-	@Override
 	public DataFlavor[] getTransferDataFlavors()
 	{
 		DataFlavor[] richerFlavors = getRicherFlavors();
@@ -249,11 +240,6 @@ public class mxGraphTransferable implements Transferable, UIResource,
 	 * @exception UnsupportedFlavorException
 	 *                if the requested data flavor is not supported.
 	 */
-	/*
-	 * (non-Javadoc)
-	 * @see java.awt.datatransfer.Transferable#getTransferData(java.awt.datatransfer.DataFlavor)
-	 */
-	@Override
 	public Object getTransferData(DataFlavor flavor)
 			throws UnsupportedFlavorException, IOException
 	{
@@ -432,7 +418,6 @@ public class mxGraphTransferable implements Transferable, UIResource,
 	}
 
 	/**
-	 * @return {@link Boolean}
 	 * 
 	 */
 	public boolean isImageSupported()
@@ -542,7 +527,7 @@ public class mxGraphTransferable implements Transferable, UIResource,
 		try
 		{
 			dataFlavor = new DataFlavor(DataFlavor.javaSerializedObjectMimeType
-					+ "; class=com.mxgraph.swing.util.mxGraphTransferable");
+					+ "; class=fr.enib.game.editor.graphe.swing.util.mxGraphTransferable");
 		}
 		catch (ClassNotFoundException cnfe)
 		{

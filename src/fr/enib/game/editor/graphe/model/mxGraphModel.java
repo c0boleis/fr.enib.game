@@ -247,7 +247,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getRoot()
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getRoot()
 	 */
 	public Object getRoot()
 	{
@@ -255,7 +255,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#setRoot(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#setRoot(Object)
 	 */
 	public Object setRoot(Object root)
 	{
@@ -298,7 +298,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#cloneCells(Object[], boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#cloneCells(Object[], boolean)
 	 */
 	public Object[] cloneCells(Object[] cells, boolean includeChildren)
 	{
@@ -397,7 +397,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#isAncestor(Object, Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isAncestor(Object, Object)
 	 */
 	public boolean isAncestor(Object parent, Object child)
 	{
@@ -410,7 +410,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#contains(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#contains(Object)
 	 */
 	public boolean contains(Object cell)
 	{
@@ -418,7 +418,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getParent(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getParent(Object)
 	 */
 	public Object getParent(Object child)
 	{
@@ -427,7 +427,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#add(Object, Object, int)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#add(Object, Object, int)
 	 */
 	public Object add(Object parent, Object child, int index)
 	{
@@ -522,7 +522,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#remove(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#remove(Object)
 	 */
 	public Object remove(Object cell)
 	{
@@ -601,7 +601,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getChildCount(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getChildCount(Object)
 	 */
 	public int getChildCount(Object cell)
 	{
@@ -609,7 +609,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getChildAt(Object, int)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getChildAt(Object, int)
 	 */
 	public Object getChildAt(Object parent, int index)
 	{
@@ -618,7 +618,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getTerminal(Object, boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getTerminal(Object, boolean)
 	 */
 	public Object getTerminal(Object edge, boolean isSource)
 	{
@@ -627,7 +627,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#setTerminal(Object, Object, boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#setTerminal(Object, Object, boolean)
 	 */
 	public Object setTerminal(Object edge, Object terminal, boolean isSource)
 	{
@@ -855,7 +855,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getEdgeCount(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getEdgeCount(Object)
 	 */
 	public int getEdgeCount(Object cell)
 	{
@@ -863,7 +863,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getEdgeAt(Object, int)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getEdgeAt(Object, int)
 	 */
 	public Object getEdgeAt(Object parent, int index)
 	{
@@ -872,7 +872,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#isVertex(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isVertex(Object)
 	 */
 	public boolean isVertex(Object cell)
 	{
@@ -880,7 +880,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#isEdge(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isEdge(Object)
 	 */
 	public boolean isEdge(Object cell)
 	{
@@ -888,7 +888,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#isConnectable(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isConnectable(Object)
 	 */
 	public boolean isConnectable(Object cell)
 	{
@@ -897,7 +897,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getValue(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getValue(Object)
 	 */
 	public Object getValue(Object cell)
 	{
@@ -905,7 +905,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#setValue(Object, Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#setValue(Object, Object)
 	 */
 	public Object setValue(Object cell, Object value)
 	{
@@ -928,7 +928,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getGeometry(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getGeometry(Object)
 	 */
 	public mxGeometry getGeometry(Object cell)
 	{
@@ -937,7 +937,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#setGeometry(Object, mxGeometry)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#setGeometry(Object, mxGeometry)
 	 */
 	public mxGeometry setGeometry(Object cell, mxGeometry geometry)
 	{
@@ -962,7 +962,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getStyle(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#getStyle(Object)
 	 */
 	public String getStyle(Object cell)
 	{
@@ -970,7 +970,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#setStyle(Object, String)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#setStyle(Object, String)
 	 */
 	public String setStyle(Object cell, String style)
 	{
@@ -995,7 +995,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#isCollapsed(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isCollapsed(Object)
 	 */
 	public boolean isCollapsed(Object cell)
 	{
@@ -1004,7 +1004,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#setCollapsed(Object, boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#setCollapsed(Object, boolean)
 	 */
 	public boolean setCollapsed(Object cell, boolean collapsed)
 	{
@@ -1031,7 +1031,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#isVisible(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isVisible(Object)
 	 */
 	public boolean isVisible(Object cell)
 	{
@@ -1039,7 +1039,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#setVisible(Object, boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#setVisible(Object, boolean)
 	 */
 	public boolean setVisible(Object cell, boolean visible)
 	{
@@ -1078,7 +1078,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#beginUpdate()
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#beginUpdate()
 	 */
 	public void beginUpdate()
 	{
@@ -1087,7 +1087,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#endUpdate()
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#endUpdate()
 	 */
 	public void endUpdate()
 	{

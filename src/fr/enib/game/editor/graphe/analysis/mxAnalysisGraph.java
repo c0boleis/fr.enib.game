@@ -1,3 +1,6 @@
+/**
+ * Copyright (c) 2012, JGraph Ltd
+ */
 package fr.enib.game.editor.graphe.analysis;
 
 import java.util.ArrayList;
@@ -122,19 +125,13 @@ public class mxAnalysisGraph
 	 * 
 	 * @param edge
 	 * @param isSource
-	 * @return {@link Object}
+	 * @return
 	 */
 	public Object getTerminal(Object edge, boolean isSource)
 	{
 		return graph.getModel().getTerminal(edge, isSource);
 	};
 
-	/**
-	 * @param parent
-	 * @param vertices
-	 * @param edges
-	 * @return Object[]
-	 */
 	public Object[] getChildCells(Object parent, boolean vertices, boolean edges)
 	{
 		return graph.getChildCells(parent, vertices, edges);
@@ -181,41 +178,26 @@ public class mxAnalysisGraph
 		}
 	};
 
-	/**
-	 * @return Map<String, Object>
-	 */
 	public Map<String, Object> getProperties()
 	{
 		return properties;
 	};
 
-	/**
-	 * @param properties
-	 */
 	public void setProperties(Map<String, Object> properties)
 	{
 		this.properties = properties;
 	};
 
-	/**
-	 * @return {@link mxGraph}
-	 */
 	public mxGraph getGraph()
 	{
 		return graph;
 	};
 
-	/**
-	 * @param graph
-	 */
 	public void setGraph(mxGraph graph)
 	{
 		this.graph = graph;
 	}
 
-	/**
-	 * @return {@link mxGraphGenerator}
-	 */
 	public mxGraphGenerator getGenerator()
 	{
 		if (generator != null)
@@ -228,9 +210,6 @@ public class mxAnalysisGraph
 		}
 	}
 
-	/**
-	 * @param generator
-	 */
 	public void setGenerator(mxGraphGenerator generator)
 	{
 		this.generator = generator;

@@ -1,12 +1,8 @@
 package fr.enib.game.editor.graphe.examples.swing.editor;
 
 import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -14,31 +10,26 @@ import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.TransferHandler;
 
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ColorAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.FontStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.KeyValueAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.NewAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PrintAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SaveAction;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
-import fr.enib.game.editor.graphe.util.mxConstants;
 import fr.enib.game.editor.graphe.util.mxEvent;
 import fr.enib.game.editor.graphe.util.mxEventObject;
 import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
-import fr.enib.game.editor.graphe.view.mxGraph;
 import fr.enib.game.editor.graphe.view.mxGraphView;
 
-public class EditorToolBar extends JToolBar
+public class SchemaEditorToolBar extends JToolBar
 {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8015443128436394471L;
+	private static final long serialVersionUID = -3979320704834605323L;
 
 	/**
 	 * 
@@ -50,13 +41,15 @@ public class EditorToolBar extends JToolBar
 	/**
 	 * 
 	 */
-	public EditorToolBar(final BasicGraphEditor editor, int orientation)
+	public SchemaEditorToolBar(final BasicGraphEditor editor, int orientation)
 	{
 		super(orientation);
 		setBorder(BorderFactory.createCompoundBorder(BorderFactory
 				.createEmptyBorder(3, 3, 3, 3), getBorder()));
 		setFloatable(false);
 
+		add(editor.bind("New", new NewAction(),
+				"/fr/enib/game/editor/graphe/examples/swing/images/new.gif"));
 		add(editor.bind("Open", new OpenAction(),
 				"/fr/enib/game/editor/graphe/examples/swing/images/open.gif"));
 		add(editor.bind("Save", new SaveAction(false),
@@ -92,8 +85,9 @@ public class EditorToolBar extends JToolBar
 
 		final mxGraphView view = editor.getGraphComponent().getGraph()
 				.getView();
-		final JComboBox<String> zoomCombo = new JComboBox<String>(new String[] { "400%",
-				"200%", "150%", "100%", "75%", "50%" });
+		final JComboBox zoomCombo = new JComboBox(new Object[] { "400%",
+				"200%", "150%", "100%", "75%", "50%", mxResources.get("page"),
+				mxResources.get("width"), mxResources.get("actualSize") });
 		zoomCombo.setEditable(true);
 		zoomCombo.setMinimumSize(new Dimension(75, 0));
 		zoomCombo.setPreferredSize(new Dimension(75, 0));

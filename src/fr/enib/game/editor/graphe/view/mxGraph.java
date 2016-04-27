@@ -184,7 +184,7 @@ public class mxGraph extends mxEventSource
 	{
 		try
 		{
-			mxResources.add("com.mxgraph.resources.graph");
+			mxResources.add("fr.enib.game.editor.graphe.resources.graph");
 		}
 		catch (Exception e)
 		{
@@ -567,7 +567,7 @@ public class mxGraph extends mxEventSource
 
 	/**
 	 * Constructs a new graph with an empty
-	 * {@link com.mxgraph.model.mxGraphModel}.
+	 * {@link fr.enib.game.editor.graphe.model.mxGraphModel}.
 	 */
 	public mxGraph()
 	{
@@ -576,7 +576,7 @@ public class mxGraph extends mxEventSource
 
 	/**
 	 * Constructs a new graph for the specified model. If no model is
-	 * specified, then a new, empty {@link com.mxgraph.model.mxGraphModel} is
+	 * specified, then a new, empty {@link fr.enib.game.editor.graphe.model.mxGraphModel} is
 	 * used.
 	 * 
 	 * @param model Model that contains the graph data
@@ -588,7 +588,7 @@ public class mxGraph extends mxEventSource
 
 	/**
 	 * Constructs a new graph for the specified model. If no model is
-	 * specified, then a new, empty {@link com.mxgraph.model.mxGraphModel} is
+	 * specified, then a new, empty {@link fr.enib.game.editor.graphe.model.mxGraphModel} is
 	 * used.
 	 * 
 	 * @param stylesheet The stylesheet to use for the graph.
@@ -600,7 +600,7 @@ public class mxGraph extends mxEventSource
 
 	/**
 	 * Constructs a new graph for the specified model. If no model is
-	 * specified, then a new, empty {@link com.mxgraph.model.mxGraphModel} is
+	 * specified, then a new, empty {@link fr.enib.game.editor.graphe.model.mxGraphModel} is
 	 * used.
 	 * 
 	 * @param model Model that contains the graph data

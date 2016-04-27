@@ -49,7 +49,7 @@ public class mxPerimeter
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxPerimeter.mxPerimeterFunction#apply
+		 * @see fr.enib.game.editor.graphe.view.mxPerimeter.mxPerimeterFunction#apply
 		 */
 		public mxPoint apply(mxRectangle bounds, mxCellState vertex,
 				mxPoint next, boolean orthogonal)
@@ -135,7 +135,7 @@ public class mxPerimeter
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxPerimeter.mxPerimeterFunction#apply
+		 * @see fr.enib.game.editor.graphe.view.mxPerimeter.mxPerimeterFunction#apply
 		 */
 		public mxPoint apply(mxRectangle bounds, mxCellState vertex,
 				mxPoint next, boolean orthogonal)
@@ -248,7 +248,7 @@ public class mxPerimeter
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxPerimeter.mxPerimeterFunction#apply
+		 * @see fr.enib.game.editor.graphe.view.mxPerimeter.mxPerimeterFunction#apply
 		 */
 		public mxPoint apply(mxRectangle bounds, mxCellState vertex,
 				mxPoint next, boolean orthogonal)
@@ -338,7 +338,7 @@ public class mxPerimeter
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxPerimeter.mxPerimeterFunction#apply(com.mxgraph.utils.mxRectangle, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, boolean, com.mxgraph.utils.mxPoint)
+		 * @see fr.enib.game.editor.graphe.view.mxPerimeter.mxPerimeterFunction#apply(fr.enib.game.editor.graphe.utils.mxRectangle, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, boolean, fr.enib.game.editor.graphe.utils.mxPoint)
 		 */
 		public mxPoint apply(mxRectangle bounds, mxCellState vertex,
 				mxPoint next, boolean orthogonal)

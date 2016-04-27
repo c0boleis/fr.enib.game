@@ -15,7 +15,7 @@ import fr.enib.game.editor.graphe.canvas.mxICanvas2D;
 		try
 		{
 			String filename = Test.class.getResource(
-					"/com/mxgraph/online/exported.xml").getPath();
+					"/fr/enib/game/editor/graphe/online/exported.xml").getPath();
 			String xml = mxUtils.readFile(filename);
 			System.out.println("xml=" + xml);
 

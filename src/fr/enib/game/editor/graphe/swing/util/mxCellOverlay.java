@@ -97,7 +97,7 @@ public class mxCellOverlay extends JComponent implements mxICellOverlay
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.swing.util.mxIOverlay#getBounds(com.mxgraph.view.mxCellState)
+	 * @see fr.enib.game.editor.graphe.swing.util.mxIOverlay#getBounds(fr.enib.game.editor.graphe.view.mxCellState)
 	 */
 	public mxRectangle getBounds(mxCellState state)
 	{

@@ -187,7 +187,7 @@ public class mxGraphViewImageReader extends mxGraphViewReader
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.mxgraph.reader.mxGraphViewReader#createCanvas(java.util.Hashtable)
+	 * fr.enib.game.editor.graphe.reader.mxGraphViewReader#createCanvas(java.util.Hashtable)
 	 */
 	public mxICanvas createCanvas(Map<String, Object> attrs)
 	{

@@ -486,7 +486,7 @@ public class mxSvgCanvas extends mxBasicCanvas
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.canvas.mxICanvas#drawCell()
+	 * @see fr.enib.game.editor.graphe.canvas.mxICanvas#drawCell()
 	 */
 	public Object drawCell(mxCellState state)
 	{
@@ -562,7 +562,7 @@ public class mxSvgCanvas extends mxBasicCanvas
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.canvas.mxICanvas#drawLabel()
+	 * @see fr.enib.game.editor.graphe.canvas.mxICanvas#drawLabel()
 	 */
 	public Object drawLabel(String label, mxCellState state, boolean html)
 	{

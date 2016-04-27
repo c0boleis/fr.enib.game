@@ -1,4 +1,6 @@
-package fr.enib.game.editor.graphe.examples.swing;
+package fr.enib.game.editor.graphe.examples.swing.editor;
+
+
 /**
  * @author Corentin Boleis
  *
@@ -8,83 +10,83 @@ public enum AnalyzeType
 	/**
 	 * 
 	 */
-	IS_CONNECTED,
+	IS_CONNECTED, 
 	/**
 	 * 
 	 */
-	IS_SIMPLE,
+	IS_SIMPLE, 
 	/**
 	 * 
 	 */
-	IS_CYCLIC_DIRECTED,
+	IS_CYCLIC_DIRECTED, 
 	/**
 	 * 
 	 */
-	IS_CYCLIC_UNDIRECTED,
+	IS_CYCLIC_UNDIRECTED, 
 	/**
 	 * 
 	 */
-	COMPLEMENTARY,
+	COMPLEMENTARY, 
 	/**
 	 * 
 	 */
-	REGULARITY,
+	REGULARITY, 
 	/**
 	 * 
 	 */
-	COMPONENTS,
+	COMPONENTS, 
 	/**
 	 * 
 	 */
-	MAKE_CONNECTED,
+	MAKE_CONNECTED, 
 	/**
 	 * 
 	 */
-	MAKE_SIMPLE,
+	MAKE_SIMPLE, 
 	/**
 	 * 
 	 */
-	IS_TREE,
+	IS_TREE, 
 	/**
 	 * 
 	 */
-	ONE_SPANNING_TREE,
+	ONE_SPANNING_TREE,  
 	/**
 	 * 
 	 */
-	IS_DIRECTED,
+	IS_DIRECTED, 
 	/**
 	 * 
 	 */
-	GET_CUT_VERTEXES,
+	GET_CUT_VERTEXES, 
 	/**
 	 * 
 	 */
-	GET_CUT_EDGES,
+	GET_CUT_EDGES,  
 	/**
 	 * 
 	 */
-	GET_SOURCES,
+	GET_SOURCES, 
 	/**
 	 * 
 	 */
-	GET_SINKS,
+	GET_SINKS,  
 	/**
 	 * 
 	 */
-	PLANARITY,
+	PLANARITY, 
 	/**
 	 * 
 	 */
-	IS_BICONNECTED,
+	IS_BICONNECTED, 
 	/**
 	 * 
 	 */
-	GET_BICONNECTED,
+	GET_BICONNECTED, 
 	/**
 	 * 
 	 */
-	SPANNING_TREE,
+	SPANNING_TREE, 
 	/**
 	 * 
 	 */

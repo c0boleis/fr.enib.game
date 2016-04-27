@@ -168,7 +168,6 @@ public class mxGraphicsCanvas2D implements mxICanvas2D
 
 	/**
 	 * Constructs a new graphics export canvas.
-	 * @param g 
 	 */
 	public mxGraphicsCanvas2D(Graphics2D g)
 	{
@@ -188,7 +187,6 @@ public class mxGraphicsCanvas2D implements mxICanvas2D
 
 	/**
 	 * Sets the graphics instance.
-	 * @param value 
 	 */
 	public void setGraphics(Graphics2D value)
 	{
@@ -196,7 +194,7 @@ public class mxGraphicsCanvas2D implements mxICanvas2D
 	}
 
 	/**
-	 * @return the graphics instance.
+	 * Returns the graphics instance.
 	 */
 	public Graphics2D getGraphics()
 	{
@@ -204,7 +202,7 @@ public class mxGraphicsCanvas2D implements mxICanvas2D
 	}
 
 	/**
-	 * @return true if text should be rendered.
+	 * Returns true if text should be rendered.
 	 */
 	public boolean isTextEnabled()
 	{
@@ -213,7 +211,6 @@ public class mxGraphicsCanvas2D implements mxICanvas2D
 
 	/**
 	 * Disables or enables text rendering.
-	 * @param value 
 	 */
 	public void setTextEnabled(boolean value)
 	{
@@ -1035,18 +1032,6 @@ public class mxGraphicsCanvas2D implements mxICanvas2D
 
 	/**
 	 * Draws the given text.
-	 * @param x 
-	 * @param y 
-	 * @param w 
-	 * @param h 
-	 * @param str 
-	 * @param align 
-	 * @param valign 
-	 * @param wrap 
-	 * @param format 
-	 * @param overflow 
-	 * @param clip 
-	 * @param rotation 
 	 */
 	public void plainText(double x, double y, double w, double h, String str, String align, String valign, boolean wrap, String format,
 			String overflow, boolean clip, double rotation)

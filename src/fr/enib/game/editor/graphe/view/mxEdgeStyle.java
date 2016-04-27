@@ -56,7 +56,7 @@ public class mxEdgeStyle
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxEdgeStyle.mxEdgeStyleFunction#apply(com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, java.util.List, java.util.List)
+		 * @see fr.enib.game.editor.graphe.view.mxEdgeStyle.mxEdgeStyleFunction#apply(fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, java.util.List, java.util.List)
 		 */
 		public void apply(mxCellState state, mxCellState source,
 				mxCellState target, List<mxPoint> points, List<mxPoint> result)
@@ -181,7 +181,7 @@ public class mxEdgeStyle
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxEdgeStyle.mxEdgeStyleFunction#apply(com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, java.util.List, java.util.List)
+		 * @see fr.enib.game.editor.graphe.view.mxEdgeStyle.mxEdgeStyleFunction#apply(fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, java.util.List, java.util.List)
 		 */
 		public void apply(mxCellState state, mxCellState source,
 				mxCellState target, List<mxPoint> points, List<mxPoint> result)
@@ -280,7 +280,7 @@ public class mxEdgeStyle
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxEdgeStyle.mxEdgeStyleFunction#apply(com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, java.util.List, java.util.List)
+		 * @see fr.enib.game.editor.graphe.view.mxEdgeStyle.mxEdgeStyleFunction#apply(fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, java.util.List, java.util.List)
 		 */
 		public void apply(mxCellState state, mxCellState source,
 				mxCellState target, List<mxPoint> points, List<mxPoint> result)
@@ -352,7 +352,7 @@ public class mxEdgeStyle
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxEdgeStyle.mxEdgeStyleFunction#apply(com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, java.util.List, java.util.List)
+		 * @see fr.enib.game.editor.graphe.view.mxEdgeStyle.mxEdgeStyleFunction#apply(fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, java.util.List, java.util.List)
 		 */
 		public void apply(mxCellState state, mxCellState source,
 				mxCellState target, List<mxPoint> points, List<mxPoint> result)
@@ -448,7 +448,7 @@ public class mxEdgeStyle
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxEdgeStyle.mxEdgeStyleFunction#apply(com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, java.util.List, java.util.List)
+		 * @see fr.enib.game.editor.graphe.view.mxEdgeStyle.mxEdgeStyleFunction#apply(fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, java.util.List, java.util.List)
 		 */
 		public void apply(mxCellState state, mxCellState source,
 				mxCellState target, List<mxPoint> points, List<mxPoint> result)
@@ -545,7 +545,7 @@ public class mxEdgeStyle
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxEdgeStyle.mxEdgeStyleFunction#apply(com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, java.util.List, java.util.List)
+		 * @see fr.enib.game.editor.graphe.view.mxEdgeStyle.mxEdgeStyleFunction#apply(fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, java.util.List, java.util.List)
 		 */
 		public void apply(mxCellState state, mxCellState source, mxCellState target, List<mxPoint> hints, List<mxPoint> result)
 		{
@@ -785,7 +785,7 @@ public class mxEdgeStyle
 	{
 
 		/* (non-Javadoc)
-		 * @see com.mxgraph.view.mxEdgeStyle.mxEdgeStyleFunction#apply(com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, com.mxgraph.view.mxCellState, java.util.List, java.util.List)
+		 * @see fr.enib.game.editor.graphe.view.mxEdgeStyle.mxEdgeStyleFunction#apply(fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, fr.enib.game.editor.graphe.view.mxCellState, java.util.List, java.util.List)
 		 */
 		public void apply(mxCellState state, mxCellState source,
 				mxCellState target, List<mxPoint> points, List<mxPoint> result)
