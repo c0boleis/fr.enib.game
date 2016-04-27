@@ -37,5 +37,11 @@ public interface IModel {
 	 */
 	public boolean ajouterUnLien(ILien lien);
 	
+	/**
+	 * 
+	 * @return true si sauvegarde reussi
+	 */
+	public boolean sauvegarderModele();
+	
 
 }
