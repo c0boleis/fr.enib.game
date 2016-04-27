@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2012, JGraph Ltd
- */
 package fr.enib.game.editor.graphe.analysis;
 
 import java.util.ArrayList;
@@ -29,6 +26,10 @@ public class mxGraphGenerator
 
 	private mxCostFunction costFunction = null;
 
+	/**
+	 * @param generatorFunction
+	 * @param costFunction
+	 */
 	public mxGraphGenerator(mxGeneratorFunction generatorFunction, mxCostFunction costFunction)
 	{
 		if (generatorFunction != null)
@@ -48,8 +49,7 @@ public class mxGraphGenerator
 
 	/**
 	 * @param aGraph 
-	 * @param numVertexes 
-	 * @return a null graph
+	 * @param numVertices 
 	 */
 	public void getNullGraph(mxAnalysisGraph aGraph, int numVertices)
 	{
@@ -69,7 +69,6 @@ public class mxGraphGenerator
 	/**
 	 * @param aGraph
 	 * @param numVertices number of vertices
-	 * @return A complete graph that has <b>numVertices</b> number of vertices
 	 */
 	public void getCompleteGraph(mxAnalysisGraph aGraph, int numVertices)
 	{
@@ -107,7 +106,6 @@ public class mxGraphGenerator
 	 * @param aGraph
 	 * @param numRows - number of rows in the grid graph
 	 * @param numColumns - number of columns in the grid graph
-	 * @return Returns a <b>numColumns</b> x <b>numRows</b> grid graph
 	 */
 	public void getGridGraph(mxAnalysisGraph aGraph, int numColumns, int numRows)
 	{
@@ -188,7 +186,6 @@ public class mxGraphGenerator
 	 * @param aGraph
 	 * @param numVerticesGroup1 number of vertices in group 1
 	 * @param numVerticesGroup2 number of vertices in group 2
-	 * @return a bipartite graph with group 1 containing <b>numVerticesGroup1</b> vertices and group 2 containing <b>numVerticesGroup2</b>
 	 */
 	public void getBipartiteGraph(mxAnalysisGraph aGraph, int numVerticesGroup1, int numVerticesGroup2)
 	{
@@ -286,7 +283,6 @@ public class mxGraphGenerator
 	 * @param aGraph
 	 * @param numVerticesGroup1 number of vertices in group 1
 	 * @param numVerticesGroup2 number of vertices in group 2
-	 * @return a bipartite graph with group 1 containing <b>numVerticesGroup1</b> vertices and group 2 containing <b>numVerticesGroup2</b>
 	 */
 	public void getCompleteBipartiteGraph(mxAnalysisGraph aGraph, int numVerticesGroup1, int numVerticesGroup2)
 	{
@@ -320,7 +316,6 @@ public class mxGraphGenerator
 	 * @param aGraph
 	 * @param xDim
 	 * @param yDim
-	 * @return a knight graph of size <b>xDim</b> x <b>yDim</b>
 	 * Note that the minimum size is 3x3
 	 */
 	public void getKnightGraph(mxAnalysisGraph aGraph, int xDim, int yDim)
@@ -523,6 +518,7 @@ public class mxGraphGenerator
 	};
 
 	/**
+	 * @param aGraph 
 	 * @param xDim
 	 * @param yDim
 	 * @param weights
@@ -1183,7 +1179,7 @@ public class mxGraphGenerator
 	/**
 	 * Creates a new edge value based on graph properties in mxAnalysisGraph. Used mostly when creating new edges during graph generation.
 	 * @param aGraph
-	 * @return
+	 * @return {@link Double}
 	 */
 	public Double getNewEdgeValue(mxAnalysisGraph aGraph)
 	{
@@ -1217,6 +1213,9 @@ public class mxGraphGenerator
 		}
 	};
 
+	/**
+	 * @return {@link mxGeneratorFunction}
+	 */ 
 	public mxGeneratorFunction getGeneratorFunction()
 	{
 		return this.generatorFunction;
@@ -1244,7 +1243,7 @@ public class mxGraphGenerator
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * @param forceConnected if true, an unconnected graph is made connected
 	 * @param forceSimple if true, a non-simple graph is made simple
 	 * Calculates one spanning tree of graph, which doesn't have to be but can be minimal
@@ -1534,11 +1533,17 @@ public class mxGraphGenerator
 		return (float) Math.sqrt(x * x + y * y);
 	}
 
+	/**
+	 * @return {@link mxCostFunction}
+	 */
 	public mxCostFunction getCostFunction()
 	{
 		return costFunction;
 	}
 
+	/**
+	 * @param costFunction {@link mxCostFunction}
+	 */
 	public void setCostFunction(mxCostFunction costFunction)
 	{
 		this.costFunction = costFunction;

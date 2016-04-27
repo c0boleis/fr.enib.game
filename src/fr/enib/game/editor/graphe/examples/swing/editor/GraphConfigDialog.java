@@ -24,12 +24,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import fr.enib.game.editor.graphe.analysis.GraphType;
 import fr.enib.game.editor.graphe.analysis.StructuralException;
 import fr.enib.game.editor.graphe.analysis.mxAnalysisGraph;
 import fr.enib.game.editor.graphe.analysis.mxGraphGenerator;
 import fr.enib.game.editor.graphe.analysis.mxTraversal;
 import fr.enib.game.editor.graphe.analysis.mxGraphProperties;
-import fr.enib.game.editor.graphe.analysis.mxGraphProperties.GraphType;
 import fr.enib.game.editor.graphe.analysis.mxGraphStructure;
 import fr.enib.game.editor.graphe.layout.mxCircleLayout;
 import fr.enib.game.editor.graphe.layout.mxCompactTreeLayout;

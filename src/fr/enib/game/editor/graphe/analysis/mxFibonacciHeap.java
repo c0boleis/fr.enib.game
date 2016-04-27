@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2007, Gaudenz Alder
- */
 package fr.enib.game.editor.graphe.analysis;
 
 import java.util.Hashtable;
@@ -29,6 +26,9 @@ public class mxFibonacciHeap
 
 	/**
 	 * Returns the node that represents element.
+	 * @param element 
+	 * @param create 
+	 * @return  Node
 	 */
 	public Node getNode(Object element, boolean create)
 	{
@@ -44,7 +44,7 @@ public class mxFibonacciHeap
 	}
 
 	/**
-	 * Returns true if the queue is empty.
+	 * @return true if the queue is empty.
 	 */
 	public boolean isEmpty()
 	{
@@ -560,6 +560,7 @@ public class mxFibonacciHeap
 		/**
 		 * Default constructor. Initializes the right and left pointers, making
 		 * this a circular doubly-linked list.
+		 * @param userObject 
 		 * 
 		 * @param key The initial key for node.
 		 */

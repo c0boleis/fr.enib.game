@@ -18,6 +18,9 @@ import fr.enib.game.editor.graphe.view.mxGraph;
 import fr.enib.game.editor.graphe.view.mxGraph.mxICellVisitor;
 import fr.enib.game.editor.graphe.view.mxGraphView;
 
+/**
+ *
+ */
 public class mxGraphStructure
 {
 	/**
@@ -276,7 +279,7 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * @param sourceVertex
 	 * @param targetVertex
 	 * @return Returns true if the two vertices are connected directly by an edge. If directed, the result is true if they are connected by an edge that points from source to target, if false direction isn't takein into account, just connectivity.
@@ -289,7 +292,7 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * Make a graph simple (remove parallel edges and self loops)
 	 */
 	public static void makeSimple(mxAnalysisGraph aGraph)
@@ -532,7 +535,7 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * @return Returns true if the graph has at least one cycle, taking edge direction into account
 	 */
 	public static boolean isCyclicDirected(mxAnalysisGraph aGraph)
@@ -575,7 +578,7 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * @param parent
 	 * @param properties
 	 * @return A helper function for <b>isDirectedCyclic</b> and it isn't for general use. It returns a node that hasn't incoming or outgoing edges. It could be considered a "leaf" in a directed graph, but this definition isn't formal.

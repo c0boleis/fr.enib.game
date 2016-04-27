@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2007, Gaudenz Alder
- */
 package fr.enib.game.editor.graphe.analysis;
 
 import java.util.Hashtable;
@@ -39,7 +36,8 @@ public class mxUnionFind
 	}
 
 	/**
-	 * Returns the node that represents element.
+	 * @param element 
+	 * @return the node that represents element.
 	 */
 	public Node getNode(Object element)
 	{
@@ -47,8 +45,11 @@ public class mxUnionFind
 	}
 
 	/**
-	 * Returns the set that contains <code>node</code>. This implementation
+	 * @param node 
+	 * @return  the set that contains <code>node</code>. This implementation
 	 * provides path compression by halving.
+	 * 
+	 * 
 	 */
 	public Node find(Node node)
 	{
@@ -65,6 +66,8 @@ public class mxUnionFind
 	/**
 	 * Unifies the sets <code>a</code> and <code>b</code> in constant time
 	 * using a union by rank on the tree size.
+	 * @param a 
+	 * @param b 
 	 */
 	public void union(Node a, Node b)
 	{

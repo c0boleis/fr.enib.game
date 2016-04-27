@@ -14,10 +14,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.TransferHandler;
 import javax.swing.UIManager;
 
+import fr.enib.game.editor.graphe.analysis.GraphType;
 import fr.enib.game.editor.graphe.analysis.StructuralException;
 import fr.enib.game.editor.graphe.analysis.mxAnalysisGraph;
 import fr.enib.game.editor.graphe.analysis.mxGraphProperties;
-import fr.enib.game.editor.graphe.analysis.mxGraphProperties.GraphType;
 import fr.enib.game.editor.graphe.analysis.mxGraphStructure;
 import fr.enib.game.editor.graphe.analysis.mxTraversal;
 import fr.enib.game.editor.graphe.costfunction.mxCostFunction;
