@@ -1,0 +1,74 @@
+package fr.enib.game.editor.graphe.examples.swing.editor;
+
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+
+import fr.enib.game.editor.graphe.examples.swing.actions.OpenAction;
+import fr.enib.game.editor.graphe.examples.swing.actions.SaveAction;
+import fr.enib.game.editor.graphe.swing.mxGraphComponent;
+import fr.enib.game.editor.graphe.swing.handler.mxKeyboardHandler;
+import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
+
+/**
+ * cette class déffinie les racourcie clavier
+ * @author Administrator
+ * 
+ */
+public class EditorKeyboardHandler extends mxKeyboardHandler
+{
+
+	/**
+	 * 
+	 * @param graphComponent
+	 */
+	public EditorKeyboardHandler(mxGraphComponent graphComponent)
+	{
+		super(graphComponent);
+	}
+
+	/**
+	 * Return JTree's input map.
+	 */
+	protected InputMap getInputMap(int condition)
+	{
+		InputMap map = super.getInputMap(condition);
+
+		if (condition == JComponent.WHEN_FOCUSED && map != null)
+		{
+			map.put(KeyStroke.getKeyStroke("control S"), "save");
+			map.put(KeyStroke.getKeyStroke("control shift S"), "saveAs");
+			map.put(KeyStroke.getKeyStroke("control N"), "new");
+			map.put(KeyStroke.getKeyStroke("control O"), "open");
+
+			map.put(KeyStroke.getKeyStroke("control Z"), "undo");
+			map.put(KeyStroke.getKeyStroke("control Y"), "redo");
+			map
+					.put(KeyStroke.getKeyStroke("control shift V"),
+							"selectVertices");
+			map.put(KeyStroke.getKeyStroke("control shift E"), "selectEdges");
+		}
+
+		return map;
+	}
+
+	/**
+	 * Return the mapping between JTree's input map and JGraph's actions.
+	 */
+	protected ActionMap createActionMap()
+	{
+		ActionMap map = super.createActionMap();
+
+		map.put("save", new  SaveAction(false));
+		map.put("saveAs", new SaveAction(true));
+		map.put("open", new OpenAction());
+		map.put("undo", new EditorActions.HistoryAction(true));
+		map.put("redo", new EditorActions.HistoryAction(false));
+		map.put("selectVertices", mxGraphActions.getSelectVerticesAction());
+		map.put("selectEdges", mxGraphActions.getSelectEdgesAction());
+
+		return map;
+	}
+
+}
