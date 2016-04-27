@@ -7,6 +7,11 @@ package fr.enib.game.model.interfaces;
 public interface INoeud extends IModelObject,IVisitableObject{
 	
 	/**
+	 * le nom par default des noeuds
+	 */
+	public static final String NOM_PAR_DEFAULT = "Noeud";
+	
+	/**
 	 * @return la liste de tous les liens
 	 * qui sorte du noeud
 	 */

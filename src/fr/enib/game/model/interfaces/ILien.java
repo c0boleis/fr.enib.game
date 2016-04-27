@@ -8,6 +8,11 @@ package fr.enib.game.model.interfaces;
 public interface ILien extends IModelObject{
 	
 	/**
+	 * le nom par default des Lien
+	 */
+	public static final String NOM_PAR_DEFAULT = "Lien";
+	
+	/**
 	 * 
 	 * @return le noeud de départ du lien.
 	 */

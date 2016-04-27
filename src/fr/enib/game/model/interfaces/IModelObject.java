@@ -6,7 +6,7 @@ package fr.enib.game.model.interfaces;
  * @author Corentin Boleis
  *
  */
-public interface IModelObject {
+public interface IModelObject extends Cloneable{
 	
 	/**
 	 * il ne doit pas exist" deux objet
