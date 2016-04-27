@@ -33,7 +33,7 @@ public class Lien implements ILien {
 	 * @see fr.enib.game.model.interfaces.IModelObject#getPoid()
 	 */
 	@Override
-	public float getPoid() {
+	public float getDegre() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -42,7 +42,7 @@ public class Lien implements ILien {
 	 * @see fr.enib.game.model.interfaces.IModelObject#setPoid(float)
 	 */
 	@Override
-	public void setPoid(float newPoid) {
+	public void setDegre(float newDegre) {
 		// TODO Auto-generated method stub
 
 	}
@@ -81,6 +81,15 @@ public class Lien implements ILien {
 	@Override
 	public Lien clone(){
 		return new Lien();
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModelObject#modifierId(java.lang.String)
+	 */
+	@Override
+	public boolean modifierId(String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

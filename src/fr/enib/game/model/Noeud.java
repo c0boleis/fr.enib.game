@@ -30,7 +30,7 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.IModelObject#getPoid()
 	 */
 	@Override
-	public float getPoid() {
+	public float getDegre() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -39,7 +39,7 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.IModelObject#setPoid(float)
 	 */
 	@Override
-	public void setPoid(float newPoid) {
+	public void setDegre(float newDegre) {
 		// TODO Auto-generated method stub
 
 	}
@@ -114,6 +114,15 @@ public class Noeud implements INoeud {
 	@Override
 	public Noeud clone(){
 		return new Noeud();
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModelObject#modifierId(java.lang.String)
+	 */
+	@Override
+	public boolean modifierId(String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

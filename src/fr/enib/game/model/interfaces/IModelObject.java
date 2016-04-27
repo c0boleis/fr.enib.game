@@ -1,12 +1,14 @@
 package fr.enib.game.model.interfaces;
 
+import java.io.Serializable;
+
 /**
  * Tout objet d'un graphe implement
  * cette class
  * @author Corentin Boleis
  *
  */
-public interface IModelObject extends Cloneable{
+public interface IModelObject extends Cloneable, Serializable{
 	
 	/**
 	 * il ne doit pas exist" deux objet
@@ -16,14 +18,22 @@ public interface IModelObject extends Cloneable{
 	public String getId();
 	
 	/**
-	 * @return le poid de l'objet qui est utilisé
+	 * @return le Degre d'interet de l'objet qui est utilisé
 	 * pour les parcours de graphe.
 	 */
-	public float getPoid();
+	public float getDegre();
 	
 	/**
-	 * @param newPoid
+	 * @param newDegre
 	 */
-	public void setPoid(float newPoid);
+	public void setDegre(float newPoid);
+	
+	/**
+	 * Modifier l'id d'un noeud ou d'un lien
+	 * @param id
+	 * @return true si l'objet a bien change de nom
+	 */
+	public boolean modifierId(String id);
+
 
 }
