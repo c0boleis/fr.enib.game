@@ -9,5 +9,11 @@ package fr.enib.game.model.interfaces;
  */
 public interface IObjectInteret {
 
-	public boolean 
+	/**
+	 * 
+	 * @param lien
+	 * @param degre
+	 * @return true si le degre est bien modifie
+	 */
+	public boolean modifierDegreInteret(ILien lien, float degre);
 }
