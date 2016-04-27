@@ -51,7 +51,7 @@ public abstract class mxGraphLayout implements mxIGraphLayout
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.layout.mxIGraphLayout#move(java.lang.Object, double, double)
+	 * @see fr.enib.game.editor.graphe.layout.mxIGraphLayout#move(java.lang.Object, double, double)
 	 */
 	public void moveCell(Object cell, double x, double y)
 	{

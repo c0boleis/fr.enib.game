@@ -104,7 +104,7 @@ public class mxStackLayout extends mxGraphLayout
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.layout.mxGraphLayout#move(java.lang.Object, double, double)
+	 * @see fr.enib.game.editor.graphe.layout.mxGraphLayout#move(java.lang.Object, double, double)
 	 */
 	public void moveCell(Object cell, double x, double y)
 	{
@@ -167,7 +167,7 @@ public class mxStackLayout extends mxGraphLayout
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.layout.mxIGraphLayout#execute(java.lang.Object)
+	 * @see fr.enib.game.editor.graphe.layout.mxIGraphLayout#execute(java.lang.Object)
 	 */
 	public void execute(Object parent)
 	{

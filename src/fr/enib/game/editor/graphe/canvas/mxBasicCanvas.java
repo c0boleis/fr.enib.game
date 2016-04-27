@@ -8,9 +8,6 @@ import java.util.Map;
 import fr.enib.game.editor.graphe.util.mxConstants;
 import fr.enib.game.editor.graphe.util.mxUtils;
 
-/**
- *
- */
 public abstract class mxBasicCanvas implements mxICanvas
 {
 
@@ -84,7 +81,6 @@ public abstract class mxBasicCanvas implements mxICanvas
 	}
 
 	/**
-	 * @param drawLabels 
 	 * 
 	 */
 	public void setDrawLabels(boolean drawLabels)
@@ -93,7 +89,6 @@ public abstract class mxBasicCanvas implements mxICanvas
 	}
 
 	/**
-	 * @return {@link String}
 	 * 
 	 */
 	public String getImageBasePath()
@@ -102,7 +97,6 @@ public abstract class mxBasicCanvas implements mxICanvas
 	}
 
 	/**
-	 * @param imageBasePath 
 	 * 
 	 */
 	public void setImageBasePath(String imageBasePath)
@@ -111,7 +105,6 @@ public abstract class mxBasicCanvas implements mxICanvas
 	}
 
 	/**
-	 * @return drawLabels
 	 * 
 	 */
 	public boolean isDrawLabels()
@@ -120,8 +113,7 @@ public abstract class mxBasicCanvas implements mxICanvas
 	}
 
 	/**
-	 * @param image 
-	 * @return an image instance for the given URL. If the URL has
+	 * Returns an image instance for the given URL. If the URL has
 	 * been loaded before than an instance of the same instance is
 	 * returned as in the previous call.
 	 */
@@ -153,8 +145,6 @@ public abstract class mxBasicCanvas implements mxICanvas
 	/**
 	 * Gets the image path from the given style. If the path is relative (does
 	 * not start with a slash) then it is appended to the imageBasePath.
-	 * @param style 
-	 * @return {@link String}
 	 */
 	public String getImageForStyle(Map<String, Object> style)
 	{

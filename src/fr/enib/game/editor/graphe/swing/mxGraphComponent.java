@@ -3949,7 +3949,7 @@ public class mxGraphComponent extends JScrollPane implements Printable
 
 	/**
 	 * @return Returns true if event dispatching is enabled in the event source.
-	 * @see com.mxgraph.util.mxEventSource#isEventsEnabled()
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#isEventsEnabled()
 	 */
 	public boolean isEventsEnabled()
 	{
@@ -3958,7 +3958,7 @@ public class mxGraphComponent extends JScrollPane implements Printable
 
 	/**
 	 * @param eventsEnabled
-	 * @see com.mxgraph.util.mxEventSource#setEventsEnabled(boolean)
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#setEventsEnabled(boolean)
 	 */
 	public void setEventsEnabled(boolean eventsEnabled)
 	{
@@ -3968,8 +3968,8 @@ public class mxGraphComponent extends JScrollPane implements Printable
 	/**
 	 * @param eventName
 	 * @param listener
-	 * @see com.mxgraph.util.mxEventSource#addListener(java.lang.String,
-	 *      com.mxgraph.util.mxEventSource.mxIEventListener)
+	 * @see fr.enib.game.editor.graphe.util.mxEventSource#addListener(java.lang.String,
+	 *      fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener)
 	 */
 	public void addListener(String eventName, mxIEventListener listener)
 	{

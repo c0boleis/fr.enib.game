@@ -115,7 +115,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getId()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getId()
 	 */
 	public String getId()
 	{
@@ -123,7 +123,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setId(String)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setId(String)
 	 */
 	public void setId(String id)
 	{
@@ -131,7 +131,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getValue()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getValue()
 	 */
 	public Object getValue()
 	{
@@ -139,7 +139,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setValue(Object)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setValue(Object)
 	 */
 	public void setValue(Object value)
 	{
@@ -147,7 +147,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getGeometry()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getGeometry()
 	 */
 	public mxGeometry getGeometry()
 	{
@@ -155,7 +155,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setGeometry(com.mxgraph.model.mxGeometry)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setGeometry(fr.enib.game.editor.graphe.model.mxGeometry)
 	 */
 	public void setGeometry(mxGeometry geometry)
 	{
@@ -163,7 +163,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getStyle()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getStyle()
 	 */
 	public String getStyle()
 	{
@@ -171,7 +171,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setStyle(String)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setStyle(String)
 	 */
 	public void setStyle(String style)
 	{
@@ -179,7 +179,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#isVertex()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#isVertex()
 	 */
 	public boolean isVertex()
 	{
@@ -187,7 +187,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setVertex(boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setVertex(boolean)
 	 */
 	public void setVertex(boolean vertex)
 	{
@@ -195,7 +195,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#isEdge()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#isEdge()
 	 */
 	public boolean isEdge()
 	{
@@ -203,7 +203,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setEdge(boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setEdge(boolean)
 	 */
 	public void setEdge(boolean edge)
 	{
@@ -211,7 +211,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#isConnectable()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#isConnectable()
 	 */
 	public boolean isConnectable()
 	{
@@ -219,7 +219,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setConnectable(boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setConnectable(boolean)
 	 */
 	public void setConnectable(boolean connectable)
 	{
@@ -227,7 +227,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#isVisible()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#isVisible()
 	 */
 	public boolean isVisible()
 	{
@@ -235,7 +235,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setVisible(boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setVisible(boolean)
 	 */
 	public void setVisible(boolean visible)
 	{
@@ -243,7 +243,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#isCollapsed()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#isCollapsed()
 	 */
 	public boolean isCollapsed()
 	{
@@ -251,7 +251,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setCollapsed(boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setCollapsed(boolean)
 	 */
 	public void setCollapsed(boolean collapsed)
 	{
@@ -259,7 +259,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getParent()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getParent()
 	 */
 	public mxICell getParent()
 	{
@@ -267,7 +267,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setParent(com.mxgraph.model.mxICell)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setParent(fr.enib.game.editor.graphe.model.mxICell)
 	 */
 	public void setParent(mxICell parent)
 	{
@@ -311,7 +311,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getTerminal(boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getTerminal(boolean)
 	 */
 	public mxICell getTerminal(boolean source)
 	{
@@ -319,7 +319,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#setTerminal(com.mxgraph.model.mxICell, boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#setTerminal(fr.enib.game.editor.graphe.model.mxICell, boolean)
 	 */
 	public mxICell setTerminal(mxICell terminal, boolean isSource)
 	{
@@ -336,7 +336,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getChildCount()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getChildCount()
 	 */
 	public int getChildCount()
 	{
@@ -344,7 +344,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getIndex(com.mxgraph.model.mxICell)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getIndex(fr.enib.game.editor.graphe.model.mxICell)
 	 */
 	public int getIndex(mxICell child)
 	{
@@ -352,7 +352,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getChildAt(int)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getChildAt(int)
 	 */
 	public mxICell getChildAt(int index)
 	{
@@ -360,7 +360,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#insert(com.mxgraph.model.mxICell)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#insert(fr.enib.game.editor.graphe.model.mxICell)
 	 */
 	public mxICell insert(mxICell child)
 	{
@@ -375,7 +375,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#insert(com.mxgraph.model.mxICell, int)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#insert(fr.enib.game.editor.graphe.model.mxICell, int)
 	 */
 	public mxICell insert(mxICell child, int index)
 	{
@@ -399,7 +399,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#remove(int)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#remove(int)
 	 */
 	public mxICell remove(int index)
 	{
@@ -415,7 +415,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#remove(com.mxgraph.model.mxICell)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#remove(fr.enib.game.editor.graphe.model.mxICell)
 	 */
 	public mxICell remove(mxICell child)
 	{
@@ -429,7 +429,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#removeFromParent()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#removeFromParent()
 	 */
 	public void removeFromParent()
 	{
@@ -440,7 +440,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getEdgeCount()
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getEdgeCount()
 	 */
 	public int getEdgeCount()
 	{
@@ -448,7 +448,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getEdgeIndex(com.mxgraph.model.mxICell)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getEdgeIndex(fr.enib.game.editor.graphe.model.mxICell)
 	 */
 	public int getEdgeIndex(mxICell edge)
 	{
@@ -456,7 +456,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getEdgeAt(int)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#getEdgeAt(int)
 	 */
 	public mxICell getEdgeAt(int index)
 	{
@@ -464,7 +464,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#insertEdge(com.mxgraph.model.mxICell, boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#insertEdge(fr.enib.game.editor.graphe.model.mxICell, boolean)
 	 */
 	public mxICell insertEdge(mxICell edge, boolean isOutgoing)
 	{
@@ -489,7 +489,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#removeEdge(com.mxgraph.model.mxICell, boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#removeEdge(fr.enib.game.editor.graphe.model.mxICell, boolean)
 	 */
 	public mxICell removeEdge(mxICell edge, boolean isOutgoing)
 	{
@@ -507,7 +507,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#removeFromTerminal(boolean)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#removeFromTerminal(boolean)
 	 */
 	public void removeFromTerminal(boolean isSource)
 	{
@@ -575,11 +575,9 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#clone()
+	/**
+	 * Returns a clone of the cell.
 	 */
-	@Override
 	public Object clone() throws CloneNotSupportedException
 	{
 		mxCell clone = (mxCell) super.clone();
@@ -615,9 +613,8 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	{
 		Object value = getValue();
 
-		if(value instanceof IEnibIterable){
-			return ((IEnibIterable)value).getNext();
-		}else if (value instanceof Node){
+		if (value instanceof Node)
+		{
 			value = ((Node) value).cloneNode(true);
 		}
 

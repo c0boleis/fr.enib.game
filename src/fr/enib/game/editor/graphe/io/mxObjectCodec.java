@@ -296,7 +296,7 @@ public class mxObjectCodec
 	 * is not encoded.</li>
 	 * <li>If the value is an object, then the codec is used to create a child
 	 * node with the variable name encoded into the "as" attribute.</li>
-	 * <li>Else, if {@link com.mxgraph.io.mxCodec#isEncodeDefaults()} is true or
+	 * <li>Else, if {@link fr.enib.game.editor.graphe.io.mxCodec#isEncodeDefaults()} is true or
 	 * the value differs from the template value, then ...
 	 * <ul>
 	 * <li>... if obj is not an array, then the value is mapped to an
@@ -362,8 +362,6 @@ public class mxObjectCodec
 			{
 				Field f = fields[i];
 
-				
-				
 				if ((f.getModifiers() & Modifier.TRANSIENT) != Modifier.TRANSIENT)
 				{
 					String fieldname = f.getName();

@@ -15,8 +15,6 @@ public interface mxICanvas
 {
 	/**
 	 * Sets the translation for the following drawing requests.
-	 * @param x 
-	 * @param y 
 	 */
 	void setTranslate(int x, int y);
 
@@ -29,13 +27,11 @@ public interface mxICanvas
 
 	/**
 	 * Sets the scale for the following drawing requests.
-	 * @param scale 
 	 */
 	void setScale(double scale);
 
 	/**
 	 * Returns the scale.
-	 * @return {@link Double}
 	 */
 	double getScale();
 

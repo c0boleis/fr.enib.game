@@ -1,12 +1,8 @@
 package fr.enib.game.editor.graphe.examples.swing.editor;
 
 import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -14,31 +10,26 @@ import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.TransferHandler;
 
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ColorAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.FontStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.KeyValueAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.NewAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PrintAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SaveAction;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
-import fr.enib.game.editor.graphe.util.mxConstants;
 import fr.enib.game.editor.graphe.util.mxEvent;
 import fr.enib.game.editor.graphe.util.mxEventObject;
 import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
-import fr.enib.game.editor.graphe.view.mxGraph;
 import fr.enib.game.editor.graphe.view.mxGraphView;
 
-public class EditorToolBar extends JToolBar
+public class SchemaEditorToolBar extends JToolBar
 {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8015443128436394471L;
+	private static final long serialVersionUID = -3979320704834605323L;
 
 	/**
 	 * 
@@ -50,7 +41,7 @@ public class EditorToolBar extends JToolBar
 	/**
 	 * 
 	 */
-	public EditorToolBar(final BasicGraphEditor editor, int orientation)
+	public SchemaEditorToolBar(final BasicGraphEditor editor, int orientation)
 	{
 		super(orientation);
 		setBorder(BorderFactory.createCompoundBorder(BorderFactory
@@ -89,94 +80,6 @@ public class EditorToolBar extends JToolBar
 				"/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
 		add(editor.bind("Redo", new HistoryAction(false),
 				"/fr/enib/game/editor/graphe/examples/swing/images/redo.gif"));
-
-		addSeparator();
-
-		// Gets the list of available fonts from the local graphics environment
-		// and adds some frequently used fonts at the beginning of the list
-		GraphicsEnvironment env = GraphicsEnvironment
-				.getLocalGraphicsEnvironment();
-		List<String> fonts = new ArrayList<String>();
-		fonts.addAll(Arrays.asList(new String[] { "Helvetica", "Verdana",
-				"Times New Roman", "Garamond", "Courier New", "-" }));
-		fonts.addAll(Arrays.asList(env.getAvailableFontFamilyNames()));
-
-		final JComboBox fontCombo = new JComboBox(fonts.toArray());
-		fontCombo.setEditable(true);
-		fontCombo.setMinimumSize(new Dimension(120, 0));
-		fontCombo.setPreferredSize(new Dimension(120, 0));
-		fontCombo.setMaximumSize(new Dimension(120, 100));
-		add(fontCombo);
-
-		fontCombo.addActionListener(new ActionListener()
-		{
-			/**
-			 * 
-			 */
-			public void actionPerformed(ActionEvent e)
-			{
-				String font = fontCombo.getSelectedItem().toString();
-
-				if (font != null && !font.equals("-"))
-				{
-					mxGraph graph = editor.getGraphComponent().getGraph();
-					graph.setCellStyles(mxConstants.STYLE_FONTFAMILY, font);
-				}
-			}
-		});
-
-		final JComboBox sizeCombo = new JComboBox(new Object[] { "6pt", "8pt",
-				"9pt", "10pt", "12pt", "14pt", "18pt", "24pt", "30pt", "36pt",
-				"48pt", "60pt" });
-		sizeCombo.setEditable(true);
-		sizeCombo.setMinimumSize(new Dimension(65, 0));
-		sizeCombo.setPreferredSize(new Dimension(65, 0));
-		sizeCombo.setMaximumSize(new Dimension(65, 100));
-		add(sizeCombo);
-
-		sizeCombo.addActionListener(new ActionListener()
-		{
-			/**
-			 * 
-			 */
-			public void actionPerformed(ActionEvent e)
-			{
-				mxGraph graph = editor.getGraphComponent().getGraph();
-				graph.setCellStyles(mxConstants.STYLE_FONTSIZE, sizeCombo
-						.getSelectedItem().toString().replace("pt", ""));
-			}
-		});
-
-		addSeparator();
-
-		add(editor.bind("Bold", new FontStyleAction(true),
-				"/fr/enib/game/editor/graphe/examples/swing/images/bold.gif"));
-		add(editor.bind("Italic", new FontStyleAction(false),
-				"/fr/enib/game/editor/graphe/examples/swing/images/italic.gif"));
-
-		addSeparator();
-
-		add(editor.bind("Left", new KeyValueAction(mxConstants.STYLE_ALIGN,
-				mxConstants.ALIGN_LEFT),
-				"/fr/enib/game/editor/graphe/examples/swing/images/left.gif"));
-		add(editor.bind("Center", new KeyValueAction(mxConstants.STYLE_ALIGN,
-				mxConstants.ALIGN_CENTER),
-				"/fr/enib/game/editor/graphe/examples/swing/images/center.gif"));
-		add(editor.bind("Right", new KeyValueAction(mxConstants.STYLE_ALIGN,
-				mxConstants.ALIGN_RIGHT),
-				"/fr/enib/game/editor/graphe/examples/swing/images/right.gif"));
-
-		addSeparator();
-
-		add(editor.bind("Font", new ColorAction("Font",
-				mxConstants.STYLE_FONTCOLOR),
-				"/fr/enib/game/editor/graphe/examples/swing/images/fontcolor.gif"));
-		add(editor.bind("Stroke", new ColorAction("Stroke",
-				mxConstants.STYLE_STROKECOLOR),
-				"/fr/enib/game/editor/graphe/examples/swing/images/linecolor.gif"));
-		add(editor.bind("Fill", new ColorAction("Fill",
-				mxConstants.STYLE_FILLCOLOR),
-				"/fr/enib/game/editor/graphe/examples/swing/images/fillcolor.gif"));
 
 		addSeparator();
 

@@ -71,7 +71,7 @@ public class BasicGraphEditor extends JPanel
 	{
 		try
 		{
-			mxResources.add("com/mxgraph/examples/swing/resources/editor");
+			mxResources.add("fr/enib/game/editor/graphe/examples/swing/resources/editor");
 		}
 		catch (Exception e)
 		{

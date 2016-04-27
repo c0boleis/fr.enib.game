@@ -404,7 +404,7 @@ public class mxCellEditor implements mxICellEditor
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.swing.view.mxICellEditor#startEditing(java.lang.Object, java.util.EventObject)
+	 * @see fr.enib.game.editor.graphe.swing.view.mxICellEditor#startEditing(java.lang.Object, java.util.EventObject)
 	 */
 	public void startEditing(Object cell, EventObject evt)
 	{
@@ -487,7 +487,7 @@ public class mxCellEditor implements mxICellEditor
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.swing.view.mxICellEditor#stopEditing(boolean)
+	 * @see fr.enib.game.editor.graphe.swing.view.mxICellEditor#stopEditing(boolean)
 	 */
 	public void stopEditing(boolean cancel)
 	{
@@ -555,7 +555,7 @@ public class mxCellEditor implements mxICellEditor
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.swing.view.mxICellEditor#getEditingCell()
+	 * @see fr.enib.game.editor.graphe.swing.view.mxICellEditor#getEditingCell()
 	 */
 	public Object getEditingCell()
 	{

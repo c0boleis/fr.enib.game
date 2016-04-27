@@ -41,26 +41,17 @@ public class mxCodecRegistry
 	// Registers the known codecs and package names
 	static
 	{
-		addPackage("com.mxgraph");
-		addPackage("com.mxgraph.util");
-		addPackage("com.mxgraph.model");
-		addPackage("com.mxgraph.view");
+		addPackage("fr.enib.game.editor.graphe");
+		addPackage("fr.enib.game.editor.graphe.util");
+		addPackage("fr.enib.game.editor.graphe.model");
+		addPackage("fr.enib.game.editor.graphe.view");
 		addPackage("java.lang");
 		addPackage("java.util");
-		
-		/*
-		 * package model graphe
-		 */
-		addPackage("com.mxgraph.model.graph.codec");
 
 		register(new mxObjectCodec(new ArrayList<Object>()));
 		register(new mxModelCodec());
 		register(new mxCellCodec());
 		register(new mxStylesheetCodec());
-		/*
-		 * codec model gaph
-		 */
-//		register(new CodecLien());
 
 		register(new mxRootChangeCodec());
 		register(new mxChildChangeCodec());
@@ -98,7 +89,7 @@ public class mxCodecRegistry
 	/**
 	 * Adds an alias for mapping a classname to a codecname.
 	 */
-	private static void addAlias(String classname, String codecname)
+	public static void addAlias(String classname, String codecname)
 	{
 		aliases.put(classname, codecname);
 	}
@@ -225,7 +216,7 @@ public class mxCodecRegistry
 	 * with the given instance..
 	 *
 	 * The I/O system uses unqualified classnames, eg. for a
-	 * <code>com.mxgraph.model.mxCell</code> this returns
+	 * <code>fr.enib.game.editor.graphe.model.mxCell</code> this returns
 	 * <code>mxCell</code>.
 	 * 
 	 * @param instance Instance whose node name should be returned.

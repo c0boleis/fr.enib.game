@@ -162,7 +162,7 @@ public class mxCircleLayout extends mxGraphLayout
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.mxgraph.layout.mxIGraphLayout#execute(java.lang.Object)
+	 * @see fr.enib.game.editor.graphe.layout.mxIGraphLayout#execute(java.lang.Object)
 	 */
 	public void execute(Object parent)
 	{

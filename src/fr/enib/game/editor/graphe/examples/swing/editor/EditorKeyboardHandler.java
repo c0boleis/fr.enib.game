@@ -1,3 +1,6 @@
+/**
+ * Copyright (c) 2008, Gaudenz Alder
+ */
 package fr.enib.game.editor.graphe.examples.swing.editor;
 
 import javax.swing.ActionMap;
@@ -5,14 +8,11 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
-import fr.enib.game.editor.graphe.examples.swing.actions.OpenAction;
-import fr.enib.game.editor.graphe.examples.swing.actions.SaveAction;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.handler.mxKeyboardHandler;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
 
 /**
- * cette class déffinie les racourcie clavier
  * @author Administrator
  * 
  */
@@ -60,9 +60,10 @@ public class EditorKeyboardHandler extends mxKeyboardHandler
 	{
 		ActionMap map = super.createActionMap();
 
-		map.put("save", new  SaveAction(false));
-		map.put("saveAs", new SaveAction(true));
-		map.put("open", new OpenAction());
+		map.put("save", new EditorActions.SaveAction(false));
+		map.put("saveAs", new EditorActions.SaveAction(true));
+		map.put("new", new EditorActions.NewAction());
+		map.put("open", new EditorActions.OpenAction());
 		map.put("undo", new EditorActions.HistoryAction(true));
 		map.put("redo", new EditorActions.HistoryAction(false));
 		map.put("selectVertices", mxGraphActions.getSelectVerticesAction());
