@@ -187,13 +187,13 @@ public class mxGraphComponent extends JScrollPane implements Printable
 	{
 		DEFAULT_EXPANDED_ICON = new ImageIcon(
 				mxGraphComponent.class
-						.getResource("/com/mxgraph/swing/images/expanded.gif"));
+						.getResource("/fr/enib/game/editor/graphe/swing/images/expanded.gif"));
 		DEFAULT_COLLAPSED_ICON = new ImageIcon(
 				mxGraphComponent.class
-						.getResource("/com/mxgraph/swing/images/collapsed.gif"));
+						.getResource("/fr/enib/game/editor/graphe/swing/images/collapsed.gif"));
 		DEFAULT_WARNING_ICON = new ImageIcon(
 				mxGraphComponent.class
-						.getResource("/com/mxgraph/swing/images/warning.gif"));
+						.getResource("/fr/enib/game/editor/graphe/swing/images/warning.gif"));
 	}
 
 	/**

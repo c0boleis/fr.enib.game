@@ -77,17 +77,17 @@ public class EditorMenuBar extends JMenuBar
 		// Creates the file menu
 		menu = add(new JMenu(mxResources.get("file")));
 
-		menu.add(editor.bind(mxResources.get("openFile"), new OpenAction(), "/com/mxgraph/examples/swing/images/open.gif"));
+		menu.add(editor.bind(mxResources.get("openFile"), new OpenAction(), "/fr/enib/game/editor/graphe/examples/swing/images/open.gif"));
 
 		menu.addSeparator();
 
-		menu.add(editor.bind(mxResources.get("save"), new SaveAction(false), "/com/mxgraph/examples/swing/images/save.gif"));
-		menu.add(editor.bind(mxResources.get("saveAs"), new SaveAction(true), "/com/mxgraph/examples/swing/images/saveas.gif"));
+		menu.add(editor.bind(mxResources.get("save"), new SaveAction(false), "/fr/enib/game/editor/graphe/examples/swing/images/save.gif"));
+		menu.add(editor.bind(mxResources.get("saveAs"), new SaveAction(true), "/fr/enib/game/editor/graphe/examples/swing/images/saveas.gif"));
 
 		menu.addSeparator();
 
-		menu.add(editor.bind(mxResources.get("pageSetup"), new PageSetupAction(), "/com/mxgraph/examples/swing/images/pagesetup.gif"));
-		menu.add(editor.bind(mxResources.get("print"), new PrintAction(), "/com/mxgraph/examples/swing/images/print.gif"));
+		menu.add(editor.bind(mxResources.get("pageSetup"), new PageSetupAction(), "/fr/enib/game/editor/graphe/examples/swing/images/pagesetup.gif"));
+		menu.add(editor.bind(mxResources.get("print"), new PrintAction(), "/fr/enib/game/editor/graphe/examples/swing/images/print.gif"));
 
 		menu.addSeparator();
 
@@ -96,18 +96,18 @@ public class EditorMenuBar extends JMenuBar
 		// Creates the edit menu
 		menu = add(new JMenu(mxResources.get("edit")));
 
-		menu.add(editor.bind(mxResources.get("undo"), new HistoryAction(true), "/com/mxgraph/examples/swing/images/undo.gif"));
-		menu.add(editor.bind(mxResources.get("redo"), new HistoryAction(false), "/com/mxgraph/examples/swing/images/redo.gif"));
+		menu.add(editor.bind(mxResources.get("undo"), new HistoryAction(true), "/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
+		menu.add(editor.bind(mxResources.get("redo"), new HistoryAction(false), "/fr/enib/game/editor/graphe/examples/swing/images/redo.gif"));
 
 		menu.addSeparator();
 
-		menu.add(editor.bind(mxResources.get("cut"), TransferHandler.getCutAction(), "/com/mxgraph/examples/swing/images/cut.gif"));
-		menu.add(editor.bind(mxResources.get("copy"), TransferHandler.getCopyAction(), "/com/mxgraph/examples/swing/images/copy.gif"));
-		menu.add(editor.bind(mxResources.get("paste"), TransferHandler.getPasteAction(), "/com/mxgraph/examples/swing/images/paste.gif"));
+		menu.add(editor.bind(mxResources.get("cut"), TransferHandler.getCutAction(), "/fr/enib/game/editor/graphe/examples/swing/images/cut.gif"));
+		menu.add(editor.bind(mxResources.get("copy"), TransferHandler.getCopyAction(), "/fr/enib/game/editor/graphe/examples/swing/images/copy.gif"));
+		menu.add(editor.bind(mxResources.get("paste"), TransferHandler.getPasteAction(), "/fr/enib/game/editor/graphe/examples/swing/images/paste.gif"));
 
 		menu.addSeparator();
 
-		menu.add(editor.bind(mxResources.get("delete"), mxGraphActions.getDeleteAction(), "/com/mxgraph/examples/swing/images/delete.gif"));
+		menu.add(editor.bind(mxResources.get("delete"), mxGraphActions.getDeleteAction(), "/fr/enib/game/editor/graphe/examples/swing/images/delete.gif"));
 
 		menu.addSeparator();
 
@@ -437,29 +437,29 @@ public class EditorMenuBar extends JMenuBar
 	public static void populateShapeMenu(JMenu menu, BasicGraphEditor editor)
 	{
 
-		menu.add(editor.bind(mxResources.get("toBack"), mxGraphActions.getToBackAction(), "/com/mxgraph/examples/swing/images/toback.gif"));
+		menu.add(editor.bind(mxResources.get("toBack"), mxGraphActions.getToBackAction(), "/fr/enib/game/editor/graphe/examples/swing/images/toback.gif"));
 		menu.add(editor.bind(mxResources.get("toFront"), mxGraphActions.getToFrontAction(),
-				"/com/mxgraph/examples/swing/images/tofront.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/tofront.gif"));
 
 		menu.addSeparator();
 
 		JMenu submenu = (JMenu) menu.add(new JMenu(mxResources.get("align")));
 
 		submenu.add(editor.bind(mxResources.get("left"), new AlignCellsAction(mxConstants.ALIGN_LEFT),
-				"/com/mxgraph/examples/swing/images/alignleft.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/alignleft.gif"));
 		submenu.add(editor.bind(mxResources.get("center"), new AlignCellsAction(mxConstants.ALIGN_CENTER),
-				"/com/mxgraph/examples/swing/images/aligncenter.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/aligncenter.gif"));
 		submenu.add(editor.bind(mxResources.get("right"), new AlignCellsAction(mxConstants.ALIGN_RIGHT),
-				"/com/mxgraph/examples/swing/images/alignright.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/alignright.gif"));
 
 		submenu.addSeparator();
 
 		submenu.add(editor.bind(mxResources.get("top"), new AlignCellsAction(mxConstants.ALIGN_TOP),
-				"/com/mxgraph/examples/swing/images/aligntop.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/aligntop.gif"));
 		submenu.add(editor.bind(mxResources.get("middle"), new AlignCellsAction(mxConstants.ALIGN_MIDDLE),
-				"/com/mxgraph/examples/swing/images/alignmiddle.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/alignmiddle.gif"));
 		submenu.add(editor.bind(mxResources.get("bottom"), new AlignCellsAction(mxConstants.ALIGN_BOTTOM),
-				"/com/mxgraph/examples/swing/images/alignbottom.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/alignbottom.gif"));
 
 		menu.addSeparator();
 

@@ -1,4 +1,4 @@
-package fr.enib.game.editor.graphe.examples.swing;
+package fr.enib.game.app;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -37,7 +37,7 @@ import fr.enib.game.editor.graphe.view.mxGraph;
  * @author Corentin Boleis
  *
  */
-public class GraphEditor extends BasicGraphEditor
+public class GraphEditeur extends BasicGraphEditor
 {
 	/**
 	 * 
@@ -57,12 +57,12 @@ public class GraphEditor extends BasicGraphEditor
 	 */
 	public static URL url = null;
 
-	//GraphEditor.class.getResource("/com/mxgraph/examples/swing/images/connector.gif");
+	//GraphEditor.class.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connector.gif");
 
 	/**
 	 * 
 	 */
-	public GraphEditor()
+	public GraphEditeur()
 	{
 		this("mxGraph Editor", new CustomGraphComponent(new CustomGraph()));
 	}
@@ -71,7 +71,7 @@ public class GraphEditor extends BasicGraphEditor
 	 * @param appTitle
 	 * @param component
 	 */
-	public GraphEditor(String appTitle, mxGraphComponent component)
+	public GraphEditeur(String appTitle, mxGraphComponent component)
 	{
 		super(appTitle, component);
 		final mxGraph graph = graphComponent.getGraph();
@@ -106,15 +106,15 @@ public class GraphEditor extends BasicGraphEditor
 				.addTemplate(
 						"Icon",
 						new ImageIcon(
-								GraphEditor.class
-										.getResource("/com/mxgraph/examples/swing/images/rounded.png")),
-						"icon;image=/com/mxgraph/examples/swing/images/wrench.png",
+								GraphEditeur.class
+										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/rounded.png")),
+						"icon;image=/fr/enib/game/editor/graphe/examples/swing/images/wrench.png",
 						70, 70, "Tableau");
 		shapesPalette.addTemplate(
 						"Ellipse",
 						new ImageIcon(
-								GraphEditor.class
-										.getResource("/com/mxgraph/examples/swing/images/ellipse.png")),
+								GraphEditeur.class
+										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/ellipse.png")),
 						"ellipse", 160, 160, "Noeud");
 		/*
 		 * format des liens
@@ -123,29 +123,29 @@ public class GraphEditor extends BasicGraphEditor
 				.addEdgeTemplate(
 						"Straight",
 						new ImageIcon(
-								GraphEditor.class
-										.getResource("/com/mxgraph/examples/swing/images/straight.png")),
+								GraphEditeur.class
+										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/straight.png")),
 						"straight", 120, 120, "");
 		shapesPalette
 				.addEdgeTemplate(
 						"Horizontal Connector",
 						new ImageIcon(
-								GraphEditor.class
-										.getResource("/com/mxgraph/examples/swing/images/connect.png")),
+								GraphEditeur.class
+										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connect.png")),
 						null, 100, 100, "");
 		shapesPalette
 				.addEdgeTemplate(
 						"Vertical Connector",
 						new ImageIcon(
-								GraphEditor.class
-										.getResource("/com/mxgraph/examples/swing/images/vertical.png")),
+								GraphEditeur.class
+										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/vertical.png")),
 						"vertical", 100, 100, "");
 		shapesPalette
 				.addEdgeTemplate(
 						"Entity Relation",
 						new ImageIcon(
-								GraphEditor.class
-										.getResource("/com/mxgraph/examples/swing/images/entity.png")),
+								GraphEditeur.class
+										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/entity.png")),
 						"entity", 100, 100, "");
 
 	}
@@ -177,8 +177,8 @@ public class GraphEditor extends BasicGraphEditor
 
 			// Loads the defalt stylesheet from an external file
 			mxCodec codec = new mxCodec();
-			Document doc = mxUtils.loadDocument(GraphEditor.class.getResource(
-					"/com/mxgraph/examples/swing/resources/default-style.xml")
+			Document doc = mxUtils.loadDocument(GraphEditeur.class.getResource(
+					"/fr/enib/game/editor/graphe/examples/swing/resources/default-style.xml")
 					.toString());
 			codec.decode(doc.getDocumentElement(), graph.getStylesheet());
 
@@ -383,7 +383,7 @@ public class GraphEditor extends BasicGraphEditor
 		mxSwingConstants.SHADOW_COLOR = Color.LIGHT_GRAY;
 		mxConstants.W3C_SHADOWCOLOR = "#D3D3D3";
 
-		GraphEditor editor = new GraphEditor();
+		GraphEditeur editor = new GraphEditeur();
 		editor.createFrame(new EditorMenuBar(editor)).setVisible(true);
 	}
 }

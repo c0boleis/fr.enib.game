@@ -50,35 +50,35 @@ public class EditorToolBar extends JToolBar
 		setFloatable(false);
 		
 		add(editor.bind("Open", new OpenAction(),
-				"/com/mxgraph/examples/swing/images/open.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/open.gif"));
 		add(editor.bind("Save", new SaveAction(false),
-				"/com/mxgraph/examples/swing/images/save.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/save.gif"));
 
 		addSeparator();
 
 		add(editor.bind("Print", new PrintAction(),
-				"/com/mxgraph/examples/swing/images/print.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/print.gif"));
 
 		addSeparator();
 
 		add(editor.bind("Cut", TransferHandler.getCutAction(),
-				"/com/mxgraph/examples/swing/images/cut.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/cut.gif"));
 		add(editor.bind("Copy", TransferHandler.getCopyAction(),
-				"/com/mxgraph/examples/swing/images/copy.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/copy.gif"));
 		add(editor.bind("Paste", TransferHandler.getPasteAction(),
-				"/com/mxgraph/examples/swing/images/paste.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/paste.gif"));
 
 		addSeparator();
 
 		add(editor.bind("Delete", mxGraphActions.getDeleteAction(),
-				"/com/mxgraph/examples/swing/images/delete.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/delete.gif"));
 
 		addSeparator();
 
 		add(editor.bind("Undo", new HistoryAction(true),
-				"/com/mxgraph/examples/swing/images/undo.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
 		add(editor.bind("Redo", new HistoryAction(false),
-				"/com/mxgraph/examples/swing/images/redo.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/redo.gif"));
 
 		addSeparator();
 

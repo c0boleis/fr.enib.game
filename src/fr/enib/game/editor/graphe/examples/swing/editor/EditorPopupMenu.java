@@ -22,30 +22,30 @@ public class EditorPopupMenu extends JPopupMenu
 				.isSelectionEmpty();
 
 		add(editor.bind(mxResources.get("undo"), new HistoryAction(true),
-				"/com/mxgraph/examples/swing/images/undo.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
 
 		addSeparator();
 
 		add(
 				editor.bind(mxResources.get("cut"), TransferHandler
 						.getCutAction(),
-						"/com/mxgraph/examples/swing/images/cut.gif"))
+						"/fr/enib/game/editor/graphe/examples/swing/images/cut.gif"))
 				.setEnabled(selected);
 		add(
 				editor.bind(mxResources.get("copy"), TransferHandler
 						.getCopyAction(),
-						"/com/mxgraph/examples/swing/images/copy.gif"))
+						"/fr/enib/game/editor/graphe/examples/swing/images/copy.gif"))
 				.setEnabled(selected);
 		add(editor.bind(mxResources.get("paste"), TransferHandler
 				.getPasteAction(),
-				"/com/mxgraph/examples/swing/images/paste.gif"));
+				"/fr/enib/game/editor/graphe/examples/swing/images/paste.gif"));
 
 		addSeparator();
 
 		add(
 				editor.bind(mxResources.get("delete"), mxGraphActions
 						.getDeleteAction(),
-						"/com/mxgraph/examples/swing/images/delete.gif"))
+						"/fr/enib/game/editor/graphe/examples/swing/images/delete.gif"))
 				.setEnabled(selected);
 
 		addSeparator();

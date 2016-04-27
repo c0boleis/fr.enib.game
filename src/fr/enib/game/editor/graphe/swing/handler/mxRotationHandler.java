@@ -44,7 +44,7 @@ public class mxRotationHandler extends mxMouseAdapter
 	{
 		ROTATE_ICON = new ImageIcon(
 				mxRotationHandler.class
-						.getResource("/com/mxgraph/swing/images/rotate.gif"));
+						.getResource("/fr/enib/game/editor/graphe/swing/images/rotate.gif"));
 	}
 
 	/**
