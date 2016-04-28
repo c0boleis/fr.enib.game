@@ -15,6 +15,11 @@ public interface IObjectPondere {
 	 * @param poids
 	 * @return true si le poids a ete modifie
 	 */
-
-	public boolean modifierPoids(ILien lien, float poids);
+	public boolean setPoids(float poids);
+	
+	/**
+	 * 
+	 * @return le poids de l'objet
+	 */
+	public float getPoids();
 }

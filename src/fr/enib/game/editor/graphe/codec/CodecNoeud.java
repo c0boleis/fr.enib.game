@@ -64,23 +64,9 @@ public class CodecNoeud extends mxObjectCodec {
 	public Object afterDecode(mxCodec dec, Node node, Object obj)
 	{
 		if(obj instanceof Noeud){
-			Element elm = (Element) getNodeByName(node, "id");
-			String id = elm.getTextContent();
-			((Noeud) obj).modifierId(id);
+			NoeudImportExport.get().importObject(obj, node);
 		}
 		return obj;
-	}
-	
-	public Node getNodeByName(Node node,String name){
-		NodeList list = node.getChildNodes();
-		int size = list.getLength();
-		for(int index = 0;index<size;index++){
-			Node elm = list.item(index);
-			if(elm.getNodeName().equals(name)){
-				return elm;
-			}
-		}
-		return null;
 	}
 
 }

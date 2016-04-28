@@ -160,4 +160,31 @@ public class Tableau implements ITableau {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#setDescription(java.lang.String)
+	 */
+	@Override
+	public boolean setDescription(String description) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#setUrlImage(java.lang.String)
+	 */
+	@Override
+	public boolean setUrlImage(String url) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#setNomTableau(java.lang.String)
+	 */
+	@Override
+	public boolean setNomTableau(String nom) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

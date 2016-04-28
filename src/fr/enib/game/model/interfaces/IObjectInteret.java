@@ -11,9 +11,13 @@ public interface IObjectInteret {
 
 	/**
 	 * 
-	 * @param lien
 	 * @param degre
 	 * @return true si le degre est bien modifie
 	 */
-	public boolean modifierDegreInteret(ILien lien, float degre);
+	public boolean modifierDegreInteret(float degre);
+	
+	/**
+	 * @return le degré d'interet de l'objet
+	 */
+	public float getDegreInteret();
 }
