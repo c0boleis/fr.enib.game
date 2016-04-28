@@ -426,8 +426,8 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		{
 			children.remove(child);
 			child.setParent(null);
-			if(value instanceof IRemovable){
-				((IRemovable) value).remove();
+			if(child.getValue() instanceof IRemovable){
+				((IRemovable) child.getValue()).remove();
 			}
 		}
 
