@@ -88,5 +88,20 @@ public class Tableau extends Noeud implements ITableau{
 		return true;
 	}
 
-	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public Tableau clone(){
+		Tableau newTableau = new Tableau();
+		newTableau.setId(Model.get().getNextId(this.getId()));
+		newTableau.description = description;
+		newTableau.url = url;
+		newTableau.nom = nom;
+		if(Model.get().ajouterModelObject(newTableau)){
+			return newTableau;
+		}
+		return null;
+	}
 }

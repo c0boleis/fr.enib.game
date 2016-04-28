@@ -21,7 +21,7 @@ public class Model implements IModel{
 	
 	private List<IModelObject> modelObjects = new ArrayList<IModelObject>();
 	
-	private static final IModel INSTANCE = new Model();
+	private static final Model INSTANCE = new Model();
 
 	private Model() {
 		// rien à faire pour ce constructeur
@@ -31,7 +31,7 @@ public class Model implements IModel{
 	 * 
 	 * @return l'unique instance du {@link Model}.
 	 */
-	public static final IModel get(){
+	public static final Model get(){
 		return INSTANCE;
 	}
 	
@@ -89,7 +89,7 @@ public class Model implements IModel{
 	public synchronized boolean ajouterModelObject(IModelObject noeud) {
 		if(containsModeObject(noeud.getId()))return false;
 		this.modelObjects.add(noeud);
-		return false;
+		return true;
 	}
 
 	/* (non-Javadoc)
@@ -98,6 +98,45 @@ public class Model implements IModel{
 	@Override
 	public IModelObject[] getModelObjects() {
 		return this.modelObjects.toArray(new IModelObject[0]);
+	}
+	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	protected String getNextId(String name){
+		if(!containsModeObject(name)){
+			return name;
+		}
+		int index =1;
+		String nextId = name+"_"+index;
+		while(true){
+			if(!containsModeObject(nextId)){
+				return nextId;
+			}
+			index++;
+			nextId = name+"_"+index;
+			if(index>=Integer.MAX_VALUE-2){
+				return null;
+			}
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#suprmierModelObject(fr.enib.game.model.interfaces.IModelObject)
+	 */
+	@Override
+	public synchronized boolean suprmierModelObject(IModelObject object) {
+		IModelObject[] tmp = getModelObjects();
+		int index = 0;
+		for(IModelObject modelObject : tmp){
+			if(modelObject.getId().equals(object.getId())){
+				break;
+			}
+			index++;
+		}
+		return this.modelObjects.remove(index)!=null;
 	}
 
 }

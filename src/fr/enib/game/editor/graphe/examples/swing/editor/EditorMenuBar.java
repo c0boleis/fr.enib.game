@@ -22,7 +22,7 @@ import fr.enib.game.editor.graphe.analysis.mxGraphStructure;
 import fr.enib.game.editor.graphe.analysis.mxTraversal;
 import fr.enib.game.editor.graphe.costfunction.mxCostFunction;
 import fr.enib.game.editor.graphe.examples.swing.action.AlignCellsAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.AutosizeAction;
+import fr.enib.game.editor.graphe.examples.swing.action.AutosizeAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundImageAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ColorAction;

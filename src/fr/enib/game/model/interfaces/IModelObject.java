@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Corentin Boleis
  *
  */
-public interface IModelObject extends Cloneable, Serializable{
+public interface IModelObject extends IClonableObject,IRemovable, Serializable{
 	
 	/**
 	 * il ne doit pas exist" deux objet

@@ -32,6 +32,12 @@ public interface IModel {
 	public boolean ajouterModelObject(IModelObject objet);
 	
 	/**
+	 * @param object
+	 * @return true si l'objet a été suprimé
+	 */
+	public boolean suprmierModelObject(IModelObject object);
+	
+	/**
 	 * 
 	 * @return tout les object contenue dans
 	 * le model.

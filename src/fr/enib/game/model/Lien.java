@@ -77,10 +77,10 @@ public class Lien implements ILien {
 	
 	/*
 	 * (non-Javadoc)
-	 * @see java.lang.Object#clone()
+	 * @see fr.enib.game.model.interfaces.IClonableObject#cloneObject()
 	 */
 	@Override
-	public Lien clone(){
+	public Lien cloneObject(){
 		return new Lien();
 	}
 
@@ -111,6 +111,17 @@ public class Lien implements ILien {
 	@Override
 	public float getPoids() {
 		return this.poids;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IRemovable#remove()
+	 */
+	@Override
+	public boolean remove() {
+		if(Model.get().suprmierModelObject(this)){
+			//TODO unlink;
+		}
+		return false;
 	}
 
 }
