@@ -119,7 +119,19 @@ public class Lien implements ILien {
 	@Override
 	public boolean remove() {
 		if(Model.get().suprmierModelObject(this)){
-			//TODO unlink;
+			//on casse le lien avec le noeud d'arrivée
+			if(this.getNoeudArrivee()!=null){
+				if(!this.getNoeudArrivee().suprimerLienEntrant(this)){
+					return false;
+				}
+			}
+			//on casse le lien avec le noeud de départ
+			if(this.getNoeudArrivee()!=null){
+				if(!this.getNoeudArrivee().suprimerLienEntrant(this)){
+					return false;
+				}
+			}
+			return true;
 		}
 		return false;
 	}

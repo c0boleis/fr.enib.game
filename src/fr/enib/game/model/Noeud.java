@@ -166,7 +166,20 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean ajouterLienEntrant(ILien lien) {
-		// TODO Auto-generated method stub
+		if(containsLienEntrant(lien.getId()))return false;
+		if(lien.getNoeudArrivee()==null)return false;
+		if(!lien.getNoeudArrivee().getId().equals(getId()))return false;
+		this.liensEntrants.add(lien);
+		return true;
+	}
+	
+	private boolean containsLienEntrant(String idLien){
+		ILien[] tmp = getLiensEntrant();
+		for(ILien lienTmp : tmp){
+			if(lienTmp.getId().equals(idLien)){
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -175,8 +188,15 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean suprimerLienEntrant(ILien lien) {
-		// TODO Auto-generated method stub
-		return false;
+		int index = 0;
+		ILien[] tmp = getLiensEntrant();
+		for(ILien lienTmp : tmp){
+			if(lienTmp.getId().equals(lien.getId())){
+				break;
+			}
+			index++;
+		}
+		return this.liensEntrants.remove(index)!=null;
 	}
 
 	/* (non-Javadoc)
@@ -184,7 +204,20 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean ajouterLienSortant(ILien lien) {
-		// TODO Auto-generated method stub
+		if(containsLienSortant(lien.getId()))return false;
+		if(lien.getNoeudDepart()==null)return false;
+		if(!lien.getNoeudDepart().getId().equals(getId()))return false;
+		this.liensEntrants.add(lien);
+		return true;
+	}
+	
+	private boolean containsLienSortant(String idLien){
+		ILien[] tmp = getLiensSortant();
+		for(ILien lienTmp : tmp){
+			if(lienTmp.getId().equals(idLien)){
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -193,8 +226,15 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean suprimerLienSortant(ILien lien) {
-		// TODO Auto-generated method stub
-		return false;
+		int index = 0;
+		ILien[] tmp = getLiensSortant();
+		for(ILien lienTmp : tmp){
+			if(lienTmp.getId().equals(lien.getId())){
+				break;
+			}
+			index++;
+		}
+		return this.liensSrotants.remove(index)!=null;
 	}
 
 }
