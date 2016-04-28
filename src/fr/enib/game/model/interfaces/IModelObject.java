@@ -26,7 +26,7 @@ public interface IModelObject extends Cloneable, Serializable{
 	/**
 	 * @param newDegre
 	 */
-	public void setDegre(float newPoid);
+	public void setDegre(float newDegre);
 	
 	/**
 	 * Modifier l'id d'un noeud ou d'un lien

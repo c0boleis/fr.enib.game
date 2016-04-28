@@ -12,9 +12,17 @@ import fr.enib.game.model.interfaces.INoeud;
  */
 public class Noeud implements INoeud {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 734404660422963476L;
+	
 	private String id;
 	
-	protected Noeud() {
+	/**
+	 * 
+	 */
+	public Noeud() {
 		this.id = NOM_PAR_DEFAULT;
 	}
 
@@ -121,8 +129,9 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean modifierId(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		if(Model.get().containsModeObject(id))return false;
+		this.id = id;
+		return true;
 	}
 
 }

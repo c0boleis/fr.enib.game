@@ -12,6 +12,11 @@ import fr.enib.game.model.interfaces.ITableau;
  */
 public class Tableau implements ITableau {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7748082203188285353L;
+	
 	private String id;
 
 	/**

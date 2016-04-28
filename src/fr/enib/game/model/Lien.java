@@ -12,6 +12,11 @@ import fr.enib.game.model.interfaces.INoeud;
  */
 public class Lien implements ILien {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6374209663292757875L;
+	
 	private String id;
 
 	/**
