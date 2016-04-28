@@ -6,8 +6,10 @@ package fr.enib.game.editor.graphe.codec;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import fr.enib.game.model.Noeud;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModelObject;
+import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.IObjectInteret;
 import fr.enib.game.model.interfaces.IObjectPondere;
 import fr.enib.game.model.interfaces.IVisitableObject;
@@ -59,17 +61,28 @@ public class LienImportExprot extends ICodecModelObject {
 			}
 		}
 		if(obj instanceof IObjectPondere){
-			if(!InteretImportExport.get().exportObject(obj, node)){
+			if(!PondereObjectImportExport.get().exportObject(obj, node)){
 				return false;
 			}
 		}
 		ILien visitableObject = (ILien)obj;
 		Element elm = node.getOwnerDocument().createElement(ID_NOEUD_ARRIVEE);
-		elm.setTextContent(visitableObject.getNoeudArrivee().getId());
+		INoeud noeud = visitableObject.getNoeudArrivee();
+		String idNoeud = "N/A";
+		if(noeud !=null){
+			idNoeud = noeud.getId();
+		}
+		
+		elm.setTextContent(idNoeud);
 		if(node.appendChild(elm)==null)return false;
 		
+		noeud = visitableObject.getNoeudDepart();
+		idNoeud = "N/A";
+		if(noeud !=null){
+			idNoeud = noeud.getId();
+		}
 		elm = node.getOwnerDocument().createElement(ID_NOEUD_DEPART);
-		elm.setTextContent(visitableObject.getNoeudArrivee().getId());
+		elm.setTextContent(idNoeud);
 		return node.appendChild(elm)!=null;
 	}
 
@@ -95,7 +108,7 @@ public class LienImportExprot extends ICodecModelObject {
 			}
 		}
 		if(obj instanceof IObjectPondere){
-			if(!InteretImportExport.get().importObject(obj, node)){
+			if(!PondereObjectImportExport.get().importObject(obj, node)){
 				return false;
 			}
 		}

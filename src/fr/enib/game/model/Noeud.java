@@ -35,24 +35,6 @@ public class Noeud implements INoeud {
 	}
 
 	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#getPoid()
-	 */
-	@Override
-	public float getDegre() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#setPoid(float)
-	 */
-	@Override
-	public void setDegre(float newDegre) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.IVisitableObject#visiter()
 	 */
 	@Override
@@ -128,7 +110,7 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.IModelObject#modifierId(java.lang.String)
 	 */
 	@Override
-	public boolean modifierId(String id) {
+	public boolean setId(String id) {
 		if(Model.get().containsModeObject(id))return false;
 		this.id = id;
 		return true;

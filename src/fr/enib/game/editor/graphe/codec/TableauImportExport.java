@@ -7,6 +7,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import fr.enib.game.model.interfaces.IModelObject;
+import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
 import fr.enib.game.model.interfaces.IVisitableObject;
 
@@ -53,16 +54,8 @@ public class TableauImportExport extends ICodecModelObject {
 	 */
 	@Override
 	public boolean exportObject(Object obj, Node node) {
-		if(obj instanceof IModelObject){
-			if(!ModelObjectImportExport.get().exportObject(obj, node)){
-				return false;
-			}
-		}
-		else{
-			return false;
-		}
-		if(obj instanceof IVisitableObject){
-			if(!VisitableObjectImportExport.get().exportObject(obj, node)){
+		if(obj instanceof INoeud){
+			if(!NoeudImportExport.get().exportObject(obj, node)){
 				return false;
 			}
 		}
@@ -86,16 +79,8 @@ public class TableauImportExport extends ICodecModelObject {
 	 */
 	@Override
 	public boolean importObject(Object obj, Node node) {
-		if(obj instanceof IModelObject){
-			if(!ModelObjectImportExport.get().importObject(obj, node)){
-				return false;
-			}
-		}
-		else{
-			return false;
-		}
-		if(obj instanceof IVisitableObject){
-			if(!VisitableObjectImportExport.get().importObject(obj, node)){
+		if(obj instanceof INoeud){
+			if(!NoeudImportExport.get().importObject(obj, node)){
 				return false;
 			}
 		}

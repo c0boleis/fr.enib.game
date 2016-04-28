@@ -53,10 +53,7 @@ public class CodecNoeud extends mxObjectCodec {
 	public Node afterEncode(mxCodec enc, Object obj, Node node)
 	{
 		if(obj instanceof INoeud){
-			INoeud noeud = (INoeud)obj;
-			Element elm = node.getOwnerDocument().createElement("id");
-			elm.setTextContent(noeud.getId());
-			node.appendChild(elm);
+			NoeudImportExport.get().exportObject(obj, node);
 		}
 		return node;
 	}

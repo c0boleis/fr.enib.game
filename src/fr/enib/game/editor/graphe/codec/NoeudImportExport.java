@@ -59,7 +59,7 @@ public class NoeudImportExport extends ICodecModelObject {
 			}
 		}
 		if(obj instanceof IObjectPondere){
-			if(!InteretImportExport.get().exportObject(obj, node)){
+			if(!PondereObjectImportExport.get().exportObject(obj, node)){
 				return false;
 			}
 		}
@@ -88,7 +88,7 @@ public class NoeudImportExport extends ICodecModelObject {
 			}
 		}
 		if(obj instanceof IObjectPondere){
-			if(!InteretImportExport.get().importObject(obj, node)){
+			if(!PondereObjectImportExport.get().importObject(obj, node)){
 				return false;
 			}
 		}

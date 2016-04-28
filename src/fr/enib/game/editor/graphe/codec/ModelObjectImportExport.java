@@ -33,7 +33,7 @@ public class ModelObjectImportExport extends ICodecModelObject {
 	 */
 	@Override
 	public boolean exportObject(Object obj, Node node) {
-		INoeud noeud = (INoeud)obj;
+		IModelObject noeud = (IModelObject)obj;
 		Element elm = node.getOwnerDocument().createElement("id");
 		elm.setTextContent(noeud.getId());
 		return node.appendChild(elm)!=null;
@@ -46,7 +46,7 @@ public class ModelObjectImportExport extends ICodecModelObject {
 	public boolean importObject(Object obj, Node node) {
 		Element elm = (Element) getNodeByName(node, "id");
 		String id = elm.getTextContent();
-		return ((IModelObject) obj).modifierId(id);
+		return ((IModelObject) obj).setId(id);
 	}
 
 }

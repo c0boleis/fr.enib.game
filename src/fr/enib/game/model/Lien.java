@@ -18,11 +18,27 @@ public class Lien implements ILien {
 	private static final long serialVersionUID = 6374209663292757875L;
 	
 	private String id;
+	
+	private Noeud noeudArrivee;
+	
+	private Noeud noeudDepart;
+	
+	private float poids;
+	
+	/**
+	 * @param noeudA
+	 * @param noeudD
+	 */
+	public Lien(Noeud noeudA,Noeud noeudD){
+		
+		this.noeudArrivee = noeudA;
+		this.noeudDepart = noeudD;
+	}
 
 	/**
 	 * 
 	 */
-	protected Lien() {
+	public Lien() {
 		this.id = NOM_PAR_DEFAULT;
 	}
 
@@ -35,30 +51,11 @@ public class Lien implements ILien {
 	}
 
 	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#getPoid()
-	 */
-	@Override
-	public float getDegre() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#setPoid(float)
-	 */
-	@Override
-	public void setDegre(float newDegre) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.ILien#getNoeudDepart()
 	 */
 	@Override
 	public INoeud getNoeudDepart() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.noeudDepart;
 	}
 
 	/* (non-Javadoc)
@@ -66,8 +63,7 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public INoeud getNoeudArrivee() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.noeudArrivee;
 	}
 	
 	/*
@@ -92,9 +88,29 @@ public class Lien implements ILien {
 	 * @see fr.enib.game.model.interfaces.IModelObject#modifierId(java.lang.String)
 	 */
 	@Override
-	public boolean modifierId(String id) {
-		// TODO Auto-generated method stub
+	public boolean setId(String id) {
+		if(id==null)return false;
+		if(Model.get().containsModeObject(id))return false;
+		this.id = id;
 		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IObjectPondere#setPoids(float)
+	 */
+	@Override
+	public boolean setPoids(float poids) {
+		if(poids<0)return false;
+		this.poids = poids;
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IObjectPondere#getPoids()
+	 */
+	@Override
+	public float getPoids() {
+		return this.poids;
 	}
 
 }
