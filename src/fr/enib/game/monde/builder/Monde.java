@@ -1,8 +1,6 @@
 package fr.enib.game.monde.builder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
@@ -30,7 +28,7 @@ public class Monde {
 	 * Singleton de la class qui permet d'y accéder partout dans le code
 	 * avec la fonction {@link #get()}
 	 */
-	private static Monde INSTANCE = new Monde();
+	private static Monde INSTANCE = null;
 
 
 	/**
@@ -44,6 +42,9 @@ public class Monde {
 	 * @return l'instance UNIQUE de cette classe
 	 */
 	public static Monde get(){
+		if(INSTANCE == null){
+			INSTANCE = new Monde();
+		}
 		return INSTANCE;
 	}
 
@@ -80,10 +81,13 @@ public class Monde {
 
 		Avatar.get().placer(gl) ;
 
-		//salleCourante.dessiner(gl) ; 
-//		for(Salle salleVoisine : salleCourante.voisines.values()){
-//			salleVoisine.dessiner(gl);
-//		}
+		/*salleCourante.dessiner(gl) ; 
+		if(salleCourante.voisines != null){
+			for(Salle salleVoisine : salleCourante.voisines.values()){
+				salleVoisine.dessiner(gl);
+			}
+		}*/
+		
 
 		for(Salle s : salles.values()){
 				s.dessiner(gl);
@@ -96,12 +100,12 @@ public class Monde {
 		
 		//on créer un copie de la liste des salles voisines
 		//pour éviter : java.util.ConcurrentModificationException
-		List<Salle> listeTmp = new ArrayList<Salle>();
+		/*List<Salle> listeTmp = new ArrayList<Salle>();
 		listeTmp.addAll(salleCourante.voisines.values());
 		
 		for(Salle s : listeTmp){
 			s.actualiser(0.0f,0.0f) ;
-		}
+		}*/
 	}
 
 	/**
@@ -132,13 +136,8 @@ public class Monde {
 		//LOGGER.info("salle courante :" + salleCourante.getId());
 	}
 
-	/*@Override
-	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
+	/*@Override
 	public void update(String aspect, Object valeur, Observe de) {
 		LOGGER.info("update monde:\t"+aspect);
 		if(aspect.equals(Capteur.ENTREE)){
@@ -152,6 +151,5 @@ public class Monde {
 				}
 			}
 		}
-		
 	}*/
 }

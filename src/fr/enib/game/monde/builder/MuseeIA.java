@@ -23,7 +23,7 @@ public class MuseeIA {
 	private int indexColonneInf = 0;
 	private int indexColonneSup = 0;
 	
-	private static MuseeIA INSTANCE = new MuseeIA(); 
+	private static MuseeIA INSTANCE = null; 
 	
 	
 	/**
@@ -50,6 +50,9 @@ public class MuseeIA {
 	 * @return l'unique instance du musee
 	 */
 	public static MuseeIA get(){
+		if(INSTANCE == null){
+			INSTANCE = new MuseeIA();
+		}
 		return INSTANCE;
 	}
 	
@@ -66,8 +69,8 @@ public class MuseeIA {
 		this.position.z = z;
 
 		Salle salleInit = getSalle(0, 0);
-		salleInit.setNoeudGraphe(noeud);
-		salleInit.placer(position.x, position.y, position.z);
+		//salleInit.setNoeudGraphe(noeud);
+		//salleInit.placer(position.x, position.y, position.z);
 
 		generer(salleInit);
 		majPorteSalles();
