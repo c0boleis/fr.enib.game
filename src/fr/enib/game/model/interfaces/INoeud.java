@@ -18,10 +18,34 @@ public interface INoeud extends IModelObject,IVisitableObject{
 	public ILien[] getLiensEntrant();
 	
 	/**
+	 * @param lien
+	 * @return true si le lien a été ajouté
+	 */
+	public boolean ajouterLienEntrant(ILien lien);
+	
+	/**
+	 * @param lien
+	 * @return true si le lien a été suprimé
+	 */
+	public boolean suprimerLienEntrant(ILien lien);
+	
+	/**
 	 * @return la liste de tous les liens qui sortent
 	 * du noeud
 	 */
 	public ILien[] getLiensSortant();
+	
+	/**
+	 * @param lien
+	 * @return true si le lien a été ajouté
+	 */
+	public boolean ajouterLienSortant(ILien lien);
+	
+	/**
+	 * @param lien
+	 * @return true si le lien a été suprimé
+	 */
+	public boolean suprimerLienSortant(ILien lien);
 	
 	/**
 	 * @return true si le le noeud n'a pas d'enfant

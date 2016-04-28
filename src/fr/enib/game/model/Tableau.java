@@ -3,84 +3,35 @@
  */
 package fr.enib.game.model;
 
-import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.ITableau;
 
 /**
  * @author Corentin Boleis
  *
  */
-public class Tableau implements ITableau {
+public class Tableau extends Noeud implements ITableau{
 	
-	private String id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7748082203188285353L;
+	
+	/**
+	 * le nom par default des tableaux
+	 */
+	public static final String NOM_PAR_DEFAULT = "Tableau";
+	
+	private String description = null;
+	
+	private String url = null;
+	
+	private String nom = null;
 
 	/**
 	 * 
 	 */
-	protected Tableau() {
-		this.id = NOM_PAR_DEFAULT;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.INoeud#getLiensEntrant()
-	 */
-	@Override
-	public ILien[] getLiensEntrant() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.INoeud#getLiensSortant()
-	 */
-	@Override
-	public ILien[] getLiensSortant() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.INoeud#estFeuille()
-	 */
-	@Override
-	public boolean estFeuille() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#getId()
-	 */
-	@Override
-	public String getId() {
-		return this.id;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IVisitableObject#visiter()
-	 */
-	@Override
-	public void visiter() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IVisitableObject#resetVisiter()
-	 */
-	@Override
-	public void resetVisiter() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IVisitableObject#estVisiter()
-	 */
-	@Override
-	public boolean estVisiter() {
-		// TODO Auto-generated method stub
-		return false;
+	public Tableau() {
+		this.setId(NOM_PAR_DEFAULT);
 	}
 
 	/* (non-Javadoc)
@@ -88,8 +39,17 @@ public class Tableau implements ITableau {
 	 */
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.description;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#setDescription(java.lang.String)
+	 */
+	@Override
+	public boolean setDescription(String description) {
+		if(description==null)return false;
+		this.description = description;
+		return true;
 	}
 
 	/* (non-Javadoc)
@@ -97,8 +57,17 @@ public class Tableau implements ITableau {
 	 */
 	@Override
 	public String getUrlImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.url;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#setUrlImage(java.lang.String)
+	 */
+	@Override
+	public boolean setUrlImage(String url) {
+		if(url==null)return false;
+		this.url = url;
+		return true;
 	}
 
 	/* (non-Javadoc)
@@ -106,53 +75,33 @@ public class Tableau implements ITableau {
 	 */
 	@Override
 	public String getNomTableau() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nom;
 	}
-	
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#setNomTableau(java.lang.String)
 	 */
 	@Override
-	public String toString(){
-		return getId();
+	public boolean setNomTableau(String nom) {
+		if(nom==null)return false;
+		this.nom = nom;
+		return true;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
 	public Tableau clone(){
-		return new Tableau();
+		Tableau newTableau = new Tableau();
+		newTableau.setId(Model.get().getNextId(this.getId()));
+		newTableau.description = description;
+		newTableau.url = url;
+		newTableau.nom = nom;
+		if(Model.get().ajouterModelObject(newTableau)){
+			return newTableau;
+		}
+		return null;
 	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#getDegre()
-	 */
-	@Override
-	public float getDegre() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#setDegre(float)
-	 */
-	@Override
-	public void setDegre(float newPoid) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#modifierId(java.lang.String)
-	 */
-	@Override
-	public boolean modifierId(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

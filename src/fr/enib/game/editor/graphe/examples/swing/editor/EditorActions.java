@@ -2003,74 +2003,9 @@ public class EditorActions
 		}
 	}
 
-	/**
-	 *
-	 */
-	@SuppressWarnings("serial")
-	public static class AlignCellsAction extends AbstractAction
-	{
-		/**
-		 * 
-		 */
-		protected String align;
 
-		/**
-		 * 
-		 * @param key
-		 */
-		public AlignCellsAction(String align)
-		{
-			this.align = align;
-		}
 
-		/**
-		 * 
-		 */
-		public void actionPerformed(ActionEvent e)
-		{
-			mxGraph graph = mxGraphActions.getGraph(e);
-
-			if (graph != null && !graph.isSelectionEmpty())
-			{
-				graph.alignCells(align);
-			}
-		}
-	}
-
-	/**
-	 *
-	 */
-	@SuppressWarnings("serial")
-	public static class AutosizeAction extends AbstractAction
-	{
-		/**
-		 * 
-		 */
-		public void actionPerformed(ActionEvent e)
-		{
-			mxGraph graph = mxGraphActions.getGraph(e);
-
-			if (graph != null && !graph.isSelectionEmpty())
-			{
-				Object[] cells = graph.getSelectionCells();
-				mxIGraphModel model = graph.getModel();
-
-				model.beginUpdate();
-				try
-				{
-					for (int i = 0; i < cells.length; i++)
-					{
-						graph.updateCellSize(cells[i]);
-					}
-				}
-				finally
-				{
-					model.endUpdate();
-				}
-			}
-		}
-	}
-
+	
 	/**
 	 *
 	 */

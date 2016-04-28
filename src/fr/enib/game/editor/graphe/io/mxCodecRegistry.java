@@ -9,6 +9,9 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+import fr.enib.game.editor.graphe.codec.CodecLien;
+import fr.enib.game.editor.graphe.codec.CodecNoeud;
+import fr.enib.game.editor.graphe.codec.CodecTableau;
 import fr.enib.game.editor.graphe.model.mxGraphModel.mxCollapseChange;
 import fr.enib.game.editor.graphe.model.mxGraphModel.mxGeometryChange;
 import fr.enib.game.editor.graphe.model.mxGraphModel.mxStyleChange;
@@ -52,7 +55,15 @@ public class mxCodecRegistry
 		register(new mxModelCodec());
 		register(new mxCellCodec());
 		register(new mxStylesheetCodec());
-
+		
+		/*
+		 * codec pour les differente forme du model
+		 * de données
+		 */
+		register(new CodecNoeud());
+		register(new CodecLien());
+		register(new CodecTableau());
+		
 		register(new mxRootChangeCodec());
 		register(new mxChildChangeCodec());
 		register(new mxTerminalChangeCodec());

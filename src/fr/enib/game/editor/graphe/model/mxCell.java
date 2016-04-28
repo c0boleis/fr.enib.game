@@ -10,6 +10,9 @@ import java.util.List;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import fr.enib.game.model.interfaces.IClonableObject;
+import fr.enib.game.model.interfaces.IRemovable;
+
 /**
  * Cells are the elements of the graph model. They represent the state
  * of the groups, vertices and edges in a graph.
@@ -423,6 +426,9 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		{
 			children.remove(child);
 			child.setParent(null);
+			if(child.getValue() instanceof IRemovable){
+				((IRemovable) child.getValue()).remove();
+			}
 		}
 
 		return child;
@@ -616,6 +622,9 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		if (value instanceof Node)
 		{
 			value = ((Node) value).cloneNode(true);
+		}
+		else if( value instanceof IClonableObject){
+			return ((IClonableObject)value).cloneObject();
 		}
 
 		return value;

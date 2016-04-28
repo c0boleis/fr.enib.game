@@ -1,7 +1,6 @@
 package fr.enib.game.model;
 
 import fr.enib.game.model.interfaces.ILien;
-import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.IModelObjectCreateur;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;

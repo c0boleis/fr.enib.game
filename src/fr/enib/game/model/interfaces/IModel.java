@@ -1,7 +1,5 @@
-/**
- * 
- */
 package fr.enib.game.model.interfaces;
+
 
 /**
  * @author Corentin Boleis
@@ -24,24 +22,33 @@ public interface IModel {
 	public boolean containsModeObject(String id);
 	
 	/**
-	 * Ajouter un noeud dans le modele 
-	 * @param noeud
-	 * @return true a bien ete ajoute
+	 * Ajouter un objet au model
+	 * @see ILien
+	 * @see INoeud
+	 * @see ITableau
+	 * @param objet
+	 * @return true a bien ete ajouté
 	 */
-	public boolean ajouterUnNoeud(INoeud noeud);
+	public boolean ajouterModelObject(IModelObject objet);
 	
 	/**
-	 * Ajouter un lien au modele 
-	 * @param lien à ajouter
-	 * @return true si il a bien ete ajoute 
+	 * @param object
+	 * @return true si l'objet a été suprimé
 	 */
-	public boolean ajouterUnLien(ILien lien);
+	public boolean suprmierModelObject(IModelObject object);
+	
+	/**
+	 * 
+	 * @return tout les object contenue dans
+	 * le model.
+	 */
+	public IModelObject[] getModelObjects();
 	
 	/**
 	 * 
 	 * @return true si sauvegarde reussi
 	 */
-	public boolean sauvegarderModele();
+	public boolean sauvegarderModel();
 	
 
 }

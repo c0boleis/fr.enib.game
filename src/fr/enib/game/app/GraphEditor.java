@@ -6,6 +6,7 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.util.Iterator;
 import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
@@ -31,6 +32,7 @@ import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxUtils;
 import fr.enib.game.editor.graphe.view.mxCellState;
 import fr.enib.game.editor.graphe.view.mxGraph;
+import fr.enib.game.model.Model;
 
 /**
  * @author Corentin Boleis
@@ -99,19 +101,19 @@ public class GraphEditor extends BasicGraphEditor
 		// Adds some template cells for dropping into the graph
 		shapesPalette
 				.addTemplate(
-						"Icon",
+						"Tableau",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/rounded.png")),
 						"icon;image=/fr/enib/game/editor/graphe/examples/swing/images/wrench.png",
-						70, 70, "Icon");
+						70, 70, Model.getIModelObjectCreateur().getInstanceTableau());
 		shapesPalette
 				.addTemplate(
-						"Ellipse",
+						"Noeud",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/ellipse.png")),
-						"ellipse", 160, 160, "");
+						"ellipse", 160, 160, Model.getIModelObjectCreateur().getInstanceNoeud());
 
 		/*
 		 * le differente forme de lien
@@ -122,28 +124,28 @@ public class GraphEditor extends BasicGraphEditor
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/straight.png")),
-						"straight", 120, 120, "");
+						"straight", 120, 120, Model.getIModelObjectCreateur().getInstanceLien());
 		shapesPalette
 				.addEdgeTemplate(
 						"Horizontal Connector",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connect.png")),
-						null, 100, 100, "");
+						null, 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
 		shapesPalette
 				.addEdgeTemplate(
 						"Vertical Connector",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/vertical.png")),
-						"vertical", 100, 100, "");
+						"vertical", 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
 		shapesPalette
 				.addEdgeTemplate(
 						"Entity Relation",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/entity.png")),
-						"entity", 100, 100, "");
+						"entity", 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
 
 	}
 

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Corentin Boleis
  *
  */
-public interface IModelObject extends Cloneable, Serializable{
+public interface IModelObject extends IClonableObject,IRemovable, Serializable{
 	
 	/**
 	 * il ne doit pas exist" deux objet
@@ -18,22 +18,11 @@ public interface IModelObject extends Cloneable, Serializable{
 	public String getId();
 	
 	/**
-	 * @return le Degre d'interet de l'objet qui est utilisé
-	 * pour les parcours de graphe.
-	 */
-	public float getDegre();
-	
-	/**
-	 * @param newDegre
-	 */
-	public void setDegre(float newPoid);
-	
-	/**
 	 * Modifier l'id d'un noeud ou d'un lien
 	 * @param id
 	 * @return true si l'objet a bien change de nom
 	 */
-	public boolean modifierId(String id);
+	public boolean setId(String id);
 
 
 }

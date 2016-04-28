@@ -4,6 +4,10 @@
 package fr.enib.game.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.IModelObjectCreateur;
 
@@ -11,28 +15,28 @@ import fr.enib.game.model.interfaces.IModelObjectCreateur;
  * @author Corentin Boleis
  *
  */
-public class Model implements IModelObject{
+public class Model implements IModel{
 	
 	private static IModelObjectCreateur modelObjectCreateur;
+	
+	private List<IModelObject> modelObjects = new ArrayList<IModelObject>();
+	
+	private static final Model INSTANCE = new Model();
 
-	/**
-	 * 
-	 */
-	public Model() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#getId()
-	 */
-	@Override
-	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
+	private Model() {
+		// rien à faire pour ce constructeur
 	}
 	
 	/**
-	 * @return
+	 * 
+	 * @return l'unique instance du {@link Model}.
+	 */
+	public static final Model get(){
+		return INSTANCE;
+	}
+	
+	/**
+	 * @return {@link IModelObjectCreateur}
 	 */
 	public static IModelObjectCreateur getIModelObjectCreateur(){
 		if(modelObjectCreateur==null){
@@ -41,33 +45,98 @@ public class Model implements IModelObject{
 		return modelObjectCreateur;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#getDegre()
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#getModelObject(java.lang.String)
 	 */
 	@Override
-	public float getDegre() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#setDegre(float)
-	 */
-	@Override
-	public void setDegre(float newPoid) {
-		// TODO Auto-generated method stub
-		
+	public IModelObject getModelObject(String id) {
+		IModelObject[] tmp = getModelObjects();
+		for(IModelObject object : tmp){
+			if(object.getId().equals(id)){
+				return object;
+			}
+		}
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModelObject#modifierId(java.lang.String)
+	 * @see fr.enib.game.model.interfaces.IModel#containsModeObject(java.lang.String)
 	 */
 	@Override
-	public boolean modifierId(String id) {
+	public boolean containsModeObject(String id) {
+		IModelObject[] tmp = getModelObjects();
+		for(IModelObject object : tmp){
+			if(object.getId().equals(id)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#sauvegarderModele()
+	 */
+	@Override
+	public boolean sauvegarderModel() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#ajouterModelObject(fr.enib.game.model.interfaces.IModelObject)
+	 */
+	@Override
+	public synchronized boolean ajouterModelObject(IModelObject noeud) {
+		if(containsModeObject(noeud.getId()))return false;
+		this.modelObjects.add(noeud);
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#getModelObjects()
+	 */
+	@Override
+	public IModelObject[] getModelObjects() {
+		return this.modelObjects.toArray(new IModelObject[0]);
+	}
+	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	protected String getNextId(String name){
+		if(!containsModeObject(name)){
+			return name;
+		}
+		int index =1;
+		String nextId = name+"_"+index;
+		while(true){
+			if(!containsModeObject(nextId)){
+				return nextId;
+			}
+			index++;
+			nextId = name+"_"+index;
+			if(index>=Integer.MAX_VALUE-2){
+				return null;
+			}
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#suprmierModelObject(fr.enib.game.model.interfaces.IModelObject)
+	 */
+	@Override
+	public synchronized boolean suprmierModelObject(IModelObject object) {
+		IModelObject[] tmp = getModelObjects();
+		int index = 0;
+		for(IModelObject modelObject : tmp){
+			if(modelObject.getId().equals(object.getId())){
+				break;
+			}
+			index++;
+		}
+		return this.modelObjects.remove(index)!=null;
 	}
 
 }

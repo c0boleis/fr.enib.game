@@ -5,7 +5,7 @@ package fr.enib.game.model.interfaces;
  * dans un sens precis
  * @author Corentin Boleis
  */
-public interface ILien extends IModelObject{
+public interface ILien extends IModelObject,IObjectPondere{
 	
 	/**
 	 * le nom par default des Lien
