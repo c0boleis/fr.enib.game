@@ -28,7 +28,7 @@ public class CodecNoeud extends mxObjectCodec {
 	 * 
 	 */
 	public CodecNoeud(){
-		this(Model.getIModelObjectCreateur().getInstanceNoeud(),null,new String[]{},null);
+		this(new Noeud(),null,new String[]{},null);
 	}
 
 	/**

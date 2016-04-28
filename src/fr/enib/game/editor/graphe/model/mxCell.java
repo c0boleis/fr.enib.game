@@ -584,11 +584,11 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	/**
 	 * Returns a clone of the cell.
 	 */
-	public Object clone() throws CloneNotSupportedException
+	public Object clone(boolean transfert) throws CloneNotSupportedException
 	{
 		mxCell clone = (mxCell) super.clone();
 
-		clone.setValue(cloneValue());
+		clone.setValue(cloneValue(transfert));
 		clone.setStyle(getStyle());
 		clone.setCollapsed(isCollapsed());
 		clone.setConnectable(isConnectable());
@@ -615,7 +615,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	 * Returns a clone of the user object. This implementation clones any XML
 	 * nodes or otherwise returns the same user object instance.
 	 */
-	protected Object cloneValue()
+	protected Object cloneValue(boolean transfert)
 	{
 		Object value = getValue();
 
@@ -624,6 +624,11 @@ public class mxCell implements mxICell, Cloneable, Serializable
 			value = ((Node) value).cloneNode(true);
 		}
 		else if( value instanceof IClonableObject){
+			/*
+			 * si le clone a utiliser pour un transfert on ne clone
+			 * pas la "value"
+			 */
+			if(transfert)return value;
 			return ((IClonableObject)value).cloneObject();
 		}
 

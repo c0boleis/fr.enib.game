@@ -92,7 +92,14 @@ public class BasicGraphEditor extends JPanel
 	/**
 	 * 
 	 */
-	protected JTabbedPane libraryPane;
+	protected JPanel libraryPane;
+	
+	/**
+	 * 
+	 */
+	protected JTabbedPane toolPane;
+	
+	private EditorModel editorModel;
 
 	/**
 	 * 
@@ -192,9 +199,16 @@ public class BasicGraphEditor extends JPanel
 
 		// Creates the graph outline component
 		graphOutline = new mxGraphOutline(graphComponent);
+		
+		toolPane = new JTabbedPane();
+		
+		editorModel = new EditorModel();
+		
+		toolPane.add("Model", editorModel);
 
 		// Creates the library pane that contains the tabs with the palettes
-		libraryPane = new JTabbedPane();
+		libraryPane = new JPanel();
+		libraryPane.setLayout(new BorderLayout());
 
 		// Creates the inner split pane that contains the library with the
 		// palettes and the graph outline on the left side of the window
@@ -204,10 +218,12 @@ public class BasicGraphEditor extends JPanel
 		inner.setResizeWeight(1);
 		inner.setDividerSize(6);
 		inner.setBorder(null);
+		
+		toolPane.add("Library", inner);
 
 		// Creates the outer split pane that contains the inner split pane and
 		// the graph component on the right side of the window
-		JSplitPane outer = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, inner,
+		JSplitPane outer = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, toolPane,
 				graphComponent);
 		outer.setOneTouchExpandable(true);
 		outer.setDividerLocation(200);
@@ -300,9 +316,11 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
-	 * 
+	 * @param title 
+	 * @return {@link EditorPalette}
+	 *  
 	 */
-	public EditorPalette insertPalette(String title)
+	public EditorPalette setPalette()
 	{
 		final EditorPalette palette = new EditorPalette();
 		final JScrollPane scrollPane = new JScrollPane(palette);
@@ -310,7 +328,7 @@ public class BasicGraphEditor extends JPanel
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		libraryPane.add(title, scrollPane);
+		libraryPane.add(scrollPane,BorderLayout.CENTER);
 
 		// Updates the widths of the palettes if the container size changes
 		libraryPane.addComponentListener(new ComponentAdapter()
@@ -607,7 +625,7 @@ public class BasicGraphEditor extends JPanel
 	/**
 	 * 
 	 */
-	public JTabbedPane getLibraryPane()
+	public JPanel getLibraryPane()
 	{
 		return libraryPane;
 	}

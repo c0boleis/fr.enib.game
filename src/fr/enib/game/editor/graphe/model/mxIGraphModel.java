@@ -84,9 +84,10 @@ public interface mxIGraphModel
 	 * @param cells Array of cells to be cloned.
 	 * @param includeChildren Boolean indicating if the cells should be cloned
 	 * with all descendants.
+	 * @param transfert if the cells is clone for a move cells
 	 * @return Returns a cloned array of cells.
 	 */
-	Object[] cloneCells(Object[] cells, boolean includeChildren);
+	Object[] cloneCells(Object[] cells, boolean includeChildren,boolean transfert);
 
 	/**
 	 * Returns true if the given parent is an ancestor of the given child.

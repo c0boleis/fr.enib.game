@@ -2225,10 +2225,10 @@ public class mxGraph extends mxEventSource
 	 * g2.addCells(g1.cloneCells(g1.cloneCells(g1.getChildCells(g1.getDefaultParent()));
 	 * </code>
 	 */
-	public Object[] cloneCells(Object[] cells)
+	public Object[] cloneCells(Object[] cells,boolean transfert)
 	{
 
-		return cloneCells(cells, true);
+		return cloneCells(cells, true,transfert);
 	}
 
 	/**
@@ -2240,9 +2240,11 @@ public class mxGraph extends mxEventSource
 	 * clone the cells where isCellCloneable returns true.
 	 * 
 	 * @param cells Array of mxCells to be cloned.
+	 * @param allowInvalidEdges 
+	 * @param transfert 
 	 * @return Returns the clones of the given cells.
 	 */
-	public Object[] cloneCells(Object[] cells, boolean allowInvalidEdges)
+	public Object[] cloneCells(Object[] cells, boolean allowInvalidEdges,boolean transfert)
 	{
 		Object[] clones = null;
 
@@ -2255,7 +2257,7 @@ public class mxGraph extends mxEventSource
 			{
 				double scale = view.getScale();
 				mxPoint trans = view.getTranslate();
-				clones = model.cloneCells(cells, true);
+				clones = model.cloneCells(cells, true,transfert);
 
 				for (int i = 0; i < cells.length; i++)
 				{
@@ -2949,7 +2951,8 @@ public class mxGraph extends mxEventSource
 	{
 		if (newEdge == null)
 		{
-			newEdge = cloneCells(new Object[] { edge })[0];
+			//TODO check if transferable Corentin
+			newEdge = cloneCells(new Object[] { edge },false)[0];
 		}
 
 		Object parent = model.getParent(edge);

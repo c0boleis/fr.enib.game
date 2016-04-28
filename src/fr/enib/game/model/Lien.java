@@ -81,7 +81,16 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public Lien cloneObject(){
-		return new Lien();
+		Lien newLien = new Lien();
+		/*
+		 * comme il ne peut pas exité deux objet avec la même
+		 * id on demande a Model de générer un nouvelle id
+		 */
+		newLien.id = Model.get().getNextId(id);
+		if(Model.get().ajouterModelObject(newLien)){
+			return newLien;
+		}
+		return null;
 	}
 
 	/* (non-Javadoc)
@@ -89,7 +98,9 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public boolean setId(String id) {
+		//l'id ne peut pas etre null
 		if(id==null)return false;
+		//l'id ne dois pas déja existé dans le Model
 		if(Model.get().containsModeObject(id))return false;
 		this.id = id;
 		return false;
@@ -118,8 +129,12 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public boolean remove() {
+		//on surprimer ce noeud dans le Model
 		if(Model.get().suprmierModelObject(this)){
-			//on casse le lien avec le noeud d'arrivée
+			/*
+			 * on casse le lien 
+			 * avec le noeud d'arrivée
+			 */
 			if(this.getNoeudArrivee()!=null){
 				if(!this.getNoeudArrivee().suprimerLienEntrant(this)){
 					return false;

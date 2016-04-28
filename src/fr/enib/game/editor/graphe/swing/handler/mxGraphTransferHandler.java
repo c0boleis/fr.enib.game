@@ -235,8 +235,9 @@ public class mxGraphTransferHandler extends TransferHandler
 			mxGraphComponent graphComponent, Object[] cells,
 			mxRectangle bounds, ImageIcon icon)
 	{
+		//TODO check for transfert Corentin
 		return new mxGraphTransferable(graphComponent.getGraph().cloneCells(
-				cells), bounds, icon);
+				cells,true), bounds, icon);
 	}
 
 	/**

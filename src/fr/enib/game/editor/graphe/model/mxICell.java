@@ -265,9 +265,11 @@ public interface mxICell
 
 	/**
 	 * Returns a clone of this cell.
+	 * @param transfert 
 	 * 
 	 * @return Returns a clone of this cell.
+	 * @throws CloneNotSupportedException 
 	 */
-	Object clone() throws CloneNotSupportedException;
+	Object clone(boolean transfert) throws CloneNotSupportedException;
 
 }

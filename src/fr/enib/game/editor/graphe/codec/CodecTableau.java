@@ -10,8 +10,7 @@ import org.w3c.dom.Node;
 import fr.enib.game.editor.graphe.io.mxCodec;
 import fr.enib.game.editor.graphe.io.mxCodecRegistry;
 import fr.enib.game.editor.graphe.io.mxObjectCodec;
-import fr.enib.game.model.Model;
-import fr.enib.game.model.interfaces.ILien;
+import fr.enib.game.model.Tableau;
 import fr.enib.game.model.interfaces.ITableau;
 
 /**
@@ -24,7 +23,7 @@ public class CodecTableau extends mxObjectCodec {
 	 * 
 	 */
 	public CodecTableau(){
-		this(Model.getIModelObjectCreateur().getInstanceTableau(),null,new String[]{},null);
+		this(new Tableau(),null,new String[]{},null);
 	}
 
 	/**

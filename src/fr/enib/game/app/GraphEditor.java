@@ -32,7 +32,10 @@ import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxUtils;
 import fr.enib.game.editor.graphe.view.mxCellState;
 import fr.enib.game.editor.graphe.view.mxGraph;
+import fr.enib.game.model.Lien;
 import fr.enib.game.model.Model;
+import fr.enib.game.model.Noeud;
+import fr.enib.game.model.Tableau;
 
 /**
  * @author Corentin Boleis
@@ -74,7 +77,7 @@ public class GraphEditor extends BasicGraphEditor
 		final mxGraph graph = graphComponent.getGraph();
 
 		// Creates the shapes palette
-		EditorPalette shapesPalette = insertPalette(mxResources.get("shapes"));
+		EditorPalette shapesPalette = setPalette();
 
 		// Sets the edge template to be used for creating new edges if an edge
 		// is clicked in the shape palette
@@ -106,14 +109,14 @@ public class GraphEditor extends BasicGraphEditor
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/rounded.png")),
 						"icon;image=/fr/enib/game/editor/graphe/examples/swing/images/wrench.png",
-						70, 70, Model.getIModelObjectCreateur().getInstanceTableau());
+						70, 70, new Tableau());
 		shapesPalette
 				.addTemplate(
 						"Noeud",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/ellipse.png")),
-						"ellipse", 160, 160, Model.getIModelObjectCreateur().getInstanceNoeud());
+						"ellipse", 50, 50, new Noeud());
 
 		/*
 		 * le differente forme de lien
@@ -124,28 +127,28 @@ public class GraphEditor extends BasicGraphEditor
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/straight.png")),
-						"straight", 120, 120, Model.getIModelObjectCreateur().getInstanceLien());
+						"straight", 120, 120, new Lien());
 		shapesPalette
 				.addEdgeTemplate(
 						"Horizontal Connector",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connect.png")),
-						null, 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
+						null, 100, 100, new Lien());
 		shapesPalette
 				.addEdgeTemplate(
 						"Vertical Connector",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/vertical.png")),
-						"vertical", 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
+						"vertical", 100, 100, new Lien());
 		shapesPalette
 				.addEdgeTemplate(
 						"Entity Relation",
 						new ImageIcon(
 								GraphEditor.class
 										.getResource("/fr/enib/game/editor/graphe/examples/swing/images/entity.png")),
-						"entity", 100, 100, Model.getIModelObjectCreateur().getInstanceLien());
+						"entity", 100, 100, new Lien());
 
 	}
 
@@ -354,7 +357,8 @@ public class GraphEditor extends BasicGraphEditor
 		{
 			if (edgeTemplate != null)
 			{
-				mxCell edge = (mxCell) cloneCells(new Object[] { edgeTemplate })[0];
+				//TODO check if transferable
+				mxCell edge = (mxCell) cloneCells(new Object[] { edgeTemplate },false)[0];
 				edge.setId(id);
 
 				return edge;

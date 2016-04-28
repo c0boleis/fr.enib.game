@@ -300,7 +300,8 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	/* (non-Javadoc)
 	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#cloneCells(Object[], boolean)
 	 */
-	public Object[] cloneCells(Object[] cells, boolean includeChildren)
+	@Override
+	public Object[] cloneCells(Object[] cells, boolean includeChildren,boolean transfert)
 	{
 		Map<Object, Object> mapping = new Hashtable<Object, Object>();
 		Object[] clones = new Object[cells.length];
@@ -309,7 +310,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 		{
 			try
 			{
-				clones[i] = cloneCell(cells[i], mapping, includeChildren);
+				clones[i] = cloneCell(cells[i], mapping, includeChildren,transfert);
 			}
 			catch (CloneNotSupportedException e)
 			{
@@ -329,11 +330,11 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	 * Inner helper method for cloning cells recursively.
 	 */
 	protected Object cloneCell(Object cell, Map<Object, Object> mapping,
-			boolean includeChildren) throws CloneNotSupportedException
+			boolean includeChildren,boolean transfert) throws CloneNotSupportedException
 	{
 		if (cell instanceof mxICell)
 		{
-			mxICell mxc = (mxICell) ((mxICell) cell).clone();
+			mxICell mxc = (mxICell) ((mxICell) cell).clone(transfert);
 			mapping.put(cell, mxc);
 
 			if (includeChildren)
@@ -342,7 +343,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 
 				for (int i = 0; i < childCount; i++)
 				{
-					Object clone = cloneCell(getChildAt(cell, i), mapping, true);
+					Object clone = cloneCell(getChildAt(cell, i), mapping, true,transfert);
 					mxc.insert((mxICell) clone);
 				}
 			}
@@ -1197,7 +1198,8 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 				// Clones and adds the child if no cell exists for the id
 				if (target == null)
 				{
-					mxCell clone = (mxCell) cell.clone();
+					//TODO check if transfert Corentin
+					mxCell clone = (mxCell) cell.clone(false);
 					clone.setId(id);
 
 					// Do *NOT* use model.add as this will move the edge away

@@ -496,7 +496,8 @@ public class mxConnectionHandler extends mxMouseAdapter
 	public Object createTargetVertex(MouseEvent e, Object source)
 	{
 		mxGraph graph = graphComponent.getGraph();
-		Object clone = graph.cloneCells(new Object[] { source })[0];
+		//TODO check if transferable
+		Object clone = graph.cloneCells(new Object[] { source },false)[0];
 		mxIGraphModel model = graph.getModel();
 		mxGeometry geo = model.getGeometry(clone);
 

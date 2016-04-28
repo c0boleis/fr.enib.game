@@ -18,6 +18,10 @@ import fr.enib.game.editor.graphe.view.mxGraph;
 import fr.enib.game.editor.graphe.view.mxGraph.mxICellVisitor;
 import fr.enib.game.editor.graphe.view.mxGraphView;
 
+/**
+ * @author Corentin Boleis
+ *
+ */
 public class mxGraphStructure
 {
 	/**
@@ -112,7 +116,8 @@ public class mxGraphStructure
 	{
 		mxGraph graph = aGraph.getGraph();
 		mxIGraphModel model = graph.getModel();
-		Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true);
+		//TODO check if transferable
+		Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true,false);
 		mxGraphModel modelCopy = new mxGraphModel();
 		mxGraph graphCopy = new mxGraph(modelCopy);
 		Object parentCopy = graphCopy.getDefaultParent();
@@ -276,7 +281,7 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * @param sourceVertex
 	 * @param targetVertex
 	 * @return Returns true if the two vertices are connected directly by an edge. If directed, the result is true if they are connected by an edge that points from source to target, if false direction isn't takein into account, just connectivity.
@@ -289,7 +294,7 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * Make a graph simple (remove parallel edges and self loops)
 	 */
 	public static void makeSimple(mxAnalysisGraph aGraph)
@@ -532,14 +537,15 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
-	 * @return Returns true if the graph has at least one cycle, taking edge direction into account
+	 * @param aGraph
+	 * @return true if the graph has at least one cycle, taking edge direction into account
 	 */
 	public static boolean isCyclicDirected(mxAnalysisGraph aGraph)
 	{
 		mxGraph graph = aGraph.getGraph();
 		mxIGraphModel model = graph.getModel();
-		Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true);
+		//TODO check fi transferable
+		Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true,false);
 		mxGraphModel modelCopy = new mxGraphModel();
 		mxGraph graphCopy = new mxGraph(modelCopy);
 		Object parentCopy = graphCopy.getDefaultParent();
@@ -575,7 +581,7 @@ public class mxGraphStructure
 	};
 
 	/**
-	 * @param graph
+	 * @param aGraph
 	 * @param parent
 	 * @param properties
 	 * @return A helper function for <b>isDirectedCyclic</b> and it isn't for general use. It returns a node that hasn't incoming or outgoing edges. It could be considered a "leaf" in a directed graph, but this definition isn't formal.
@@ -835,7 +841,8 @@ public class mxGraphStructure
 
 		if (aGraph.getEdges(vertex, null, true, true, false, true).length >= 2)
 		{
-			Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true);
+			//TODO check if transferable COrentin
+			Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true,false);
 			mxGraphModel modelCopy = new mxGraphModel();
 			mxGraph graphCopy = new mxGraph(modelCopy);
 			graphCopy.addCells(cells);
@@ -898,7 +905,8 @@ public class mxGraphStructure
 
 		if (aGraph.getTerminal(edge, false) != null || aGraph.getTerminal(edge, true) != null)
 		{
-			Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true);
+			//TODO check if transferable
+			Object[] cells = model.cloneCells(aGraph.getChildCells(graph.getDefaultParent(), true, true), true,false);
 			mxGraphModel modelCopy = new mxGraphModel();
 			mxGraph graphCopy = new mxGraph(modelCopy);
 			graphCopy.addCells(cells);

@@ -1,8 +1,10 @@
 package fr.enib.game.model.interfaces;
 
 /**
- * un lien lie deux dex noeud du graphe
- * dans un sens precis
+ * un lien lie deux des noeud du graphe
+ * dans un sens precis. Un lien ne peux
+ * pas existé si il n'a pas de noeud 
+ * d'arrivée et de  noeuds de départ.
  * @author Corentin Boleis
  */
 public interface ILien extends IModelObject,IObjectPondere{

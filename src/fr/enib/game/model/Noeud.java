@@ -72,6 +72,11 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public ILien[] getLiensEntrant() {
+		/*
+		 * le faite de renvoyer un tableau et non pas la liste
+		 * permet que personne ne puiss utilisé la liste pour 
+		 * ajouter de nouveaux liens.
+		 */
 		return this.liensEntrants.toArray(new ILien[0]);
 	}
 
@@ -80,6 +85,11 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public ILien[] getLiensSortant() {
+		/*
+		 * le faite de renvoyer un tableau et non pas la liste
+		 * permet que personne ne puiss utilisé la liste pour 
+		 * ajouter de nouveaux liens.
+		 */
 		return this.liensSrotants.toArray(new ILien[0]);
 	}
 
@@ -88,7 +98,8 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean estFeuille() {
-		return getLiensEntrant().length<=0;
+		//si le noeud n'a pas de lien sortant alors c'est une feuille
+		return getLiensSortant().length<=0;
 	}
 	
 	/*
@@ -119,6 +130,7 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean setId(String id) {
+		if(id==null)return false;
 		if(Model.get().containsModeObject(id))return false;
 		this.id = id;
 		return true;
@@ -130,6 +142,12 @@ public class Noeud implements INoeud {
 	@Override
 	public boolean remove() {
 		Model.get().suprmierModelObject(this);
+		/*
+		 * on suprimer le liens lié a ce noeud
+		 * car un lien a besoin de sont noeud 
+		 * de départ et d'arrivé pour exister
+		 */
+	
 		if(!suprimerLienEntrants()){
 			return false;
 		}
@@ -166,8 +184,19 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean ajouterLienEntrant(ILien lien) {
+		//si le liens a déjà lié a noeud on n'a l'ajoute pas
 		if(containsLienEntrant(lien.getId()))return false;
+		/*
+		 * si le noeud d'arrivée est null
+		 * lien n'est pas corect donc on ne l'ajouter
+		 * pas
+		 */
 		if(lien.getNoeudArrivee()==null)return false;
+		/*
+		 * si le noeud d'arrivée n'est pas ce noeud le
+		 * lien n'est pas corect donc on ne l'ajouter
+		 * pas
+		 */
 		if(!lien.getNoeudArrivee().getId().equals(getId()))return false;
 		this.liensEntrants.add(lien);
 		return true;
@@ -204,8 +233,19 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean ajouterLienSortant(ILien lien) {
+		//si le liens a déjà lié a noeud on n'a l'ajoute pas
 		if(containsLienSortant(lien.getId()))return false;
+		/*
+		 * si le noeud d'arrivée est null
+		 * lien n'est pas corect donc on ne l'ajouter
+		 * pas
+		 */
 		if(lien.getNoeudDepart()==null)return false;
+		/*
+		 * si le noeud de depart n'est pas ce noeud le
+		 * lien n'est pas corect donc on ne l'ajouter
+		 * pas
+		 */
 		if(!lien.getNoeudDepart().getId().equals(getId()))return false;
 		this.liensEntrants.add(lien);
 		return true;

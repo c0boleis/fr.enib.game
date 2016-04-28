@@ -52,7 +52,7 @@ public class InteretImportExport extends ICodecModelObject {
 		IObjectInteret objectInteret = (IObjectInteret)obj;
 		Element elm = (Element) getNodeByName(node, INTERET);
 		float interet= Float.parseFloat(elm.getTextContent());
-		return objectInteret.modifierDegreInteret(interet);
+		return objectInteret.setDegreInteret(interet);
 	}
 
 }

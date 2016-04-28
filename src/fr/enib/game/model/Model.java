@@ -9,16 +9,13 @@ import java.util.List;
 
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
-import fr.enib.game.model.interfaces.IModelObjectCreateur;
 
 /**
  * @author Corentin Boleis
  *
  */
 public class Model implements IModel{
-	
-	private static IModelObjectCreateur modelObjectCreateur;
-	
+		
 	private List<IModelObject> modelObjects = new ArrayList<IModelObject>();
 	
 	private static final Model INSTANCE = new Model();
@@ -33,16 +30,6 @@ public class Model implements IModel{
 	 */
 	public static final Model get(){
 		return INSTANCE;
-	}
-	
-	/**
-	 * @return {@link IModelObjectCreateur}
-	 */
-	public static IModelObjectCreateur getIModelObjectCreateur(){
-		if(modelObjectCreateur==null){
-			modelObjectCreateur = new ModelObjectCreator();
-		}
-		return modelObjectCreateur;
 	}
 
 	/* (non-Javadoc)
@@ -136,6 +123,7 @@ public class Model implements IModel{
 			}
 			index++;
 		}
+		if(index>=tmp.length)return false;
 		return this.modelObjects.remove(index)!=null;
 	}
 

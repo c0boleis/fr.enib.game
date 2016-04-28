@@ -10,6 +10,7 @@ import org.w3c.dom.Node;
 import fr.enib.game.editor.graphe.io.mxCodec;
 import fr.enib.game.editor.graphe.io.mxCodecRegistry;
 import fr.enib.game.editor.graphe.io.mxObjectCodec;
+import fr.enib.game.model.Lien;
 import fr.enib.game.model.Model;
 import fr.enib.game.model.interfaces.ILien;
 
@@ -24,7 +25,7 @@ public class CodecLien extends mxObjectCodec {
 	 * 
 	 */
 	public CodecLien(){
-		this(Model.getIModelObjectCreateur().getInstanceLien(),null,new String[]{},null);
+		this(new Lien(),null,new String[]{},null);
 	}
 
 	/**

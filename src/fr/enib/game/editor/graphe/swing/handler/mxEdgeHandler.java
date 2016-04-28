@@ -770,7 +770,8 @@ public class mxEdgeHandler extends mxCellHandler
 		{
 			if (isClone)
 			{
-				Object clone = graph.cloneCells(new Object[] { edge })[0];
+				//TODO check if transferable Corentin
+				Object clone = graph.cloneCells(new Object[] { edge },false)[0];
 
 				Object parent = model.getParent(edge);
 				graph.addCells(new Object[] { clone }, parent);
