@@ -2003,39 +2003,7 @@ public class EditorActions
 		}
 	}
 
-	/**
-	 *
-	 */
-	@SuppressWarnings("serial")
-	public static class AlignCellsAction extends AbstractAction
-	{
-		/**
-		 * 
-		 */
-		protected String align;
 
-		/**
-		 * 
-		 * @param key
-		 */
-		public AlignCellsAction(String align)
-		{
-			this.align = align;
-		}
-
-		/**
-		 * 
-		 */
-		public void actionPerformed(ActionEvent e)
-		{
-			mxGraph graph = mxGraphActions.getGraph(e);
-
-			if (graph != null && !graph.isSelectionEmpty())
-			{
-				graph.alignCells(align);
-			}
-		}
-	}
 
 	/**
 	 *

@@ -15,13 +15,13 @@ import javax.swing.TransferHandler;
 import javax.swing.UIManager;
 
 import fr.enib.game.editor.graphe.analysis.StructuralException;
-import fr.enib.game.editor.graphe.analysis.mxGraphProperties.GraphType;
 import fr.enib.game.editor.graphe.analysis.mxAnalysisGraph;
 import fr.enib.game.editor.graphe.analysis.mxGraphProperties;
+import fr.enib.game.editor.graphe.analysis.mxGraphProperties.GraphType;
 import fr.enib.game.editor.graphe.analysis.mxGraphStructure;
 import fr.enib.game.editor.graphe.analysis.mxTraversal;
 import fr.enib.game.editor.graphe.costfunction.mxCostFunction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.AlignCellsAction;
+import fr.enib.game.editor.graphe.examples.swing.action.AlignCellsAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.AutosizeAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundImageAction;
@@ -30,9 +30,7 @@ import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ExitAction
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridColorAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ImportAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.KeyValueAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.NewAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PageBackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PageSetupAction;
@@ -41,22 +39,14 @@ import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PromptProp
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PromptValueAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SaveAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ScaleAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SelectShortestPathAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SelectSpanningTreeAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SetLabelPositionAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SetStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.StyleAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.StylesheetAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleConnectModeAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleCreateTargetItem;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleDirtyAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleGridItem;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleOutlineItem;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.TogglePropertyItem;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleRulersItem;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.WarningAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ZoomPolicyAction;
 import fr.enib.game.editor.graphe.model.mxIGraphModel;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
@@ -74,6 +64,9 @@ public class EditorMenuBar extends JMenuBar
 	 */
 	private static final long serialVersionUID = 4060203894740766714L;
 
+	/**
+	 * @param editor
+	 */
 	public EditorMenuBar(final BasicGraphEditor editor)
 	{
 		final mxGraphComponent graphComponent = editor.getGraphComponent();
