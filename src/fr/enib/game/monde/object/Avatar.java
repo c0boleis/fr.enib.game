@@ -20,7 +20,7 @@ public class Avatar extends Objet {
 	 */
 	private Avatar(String id){
 		super(id) ; 
-		repere.getPostiton().fixer(-3.0f,0.0f,HAUTEUR) ; 
+		repere.getPostiton().fixer(-2.5f,0.0f,HAUTEUR) ; 
 	}
 	
 	/**

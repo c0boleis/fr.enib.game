@@ -7,11 +7,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.jogamp.opengl.GL2;
 
-import fr.enib.game.model.Noeud;
 import fr.enib.game.monde.builder.Monde;
 import fr.enib.game.monde.capteur.Capteur;
 import fr.enib.game.monde.capteur.CapteurCubique;
@@ -26,9 +23,9 @@ import fr.enib.game.monde.core.Vec3;
  */
 public class Salle extends Situable implements Observateur{
 
-	private static Logger LOGGER = Logger.getLogger(Salle.class);
+	//private static Logger LOGGER = Logger.getLogger(Salle.class);
 
-	private Noeud noeudGraphe;
+	//private Noeud noeudGraphe;
 
 	private boolean visiter = false;
 
@@ -98,7 +95,7 @@ public class Salle extends Situable implements Observateur{
 		this(id) ;
 
 		this.textureMur = "data"+File.separator+"textures"+File.separator+"029frene.jpg";
-		this.textureSol = "data"+File.separator+"textures"+File.separator+"moquette.jpg";
+		this.textureSol = "data"+File.separator+"textures"+File.separator+"marbre.jpg";
 		this.texturePlafond = "data"+File.separator+"textures"+File.separator+"dante.jpg";
 
 		this.nbrPorte = 0;
@@ -644,18 +641,18 @@ public class Salle extends Situable implements Observateur{
 	 * Renvoie le noeud du graphe affecte a la salle
 	 * @return le noeud du graphe affecte
 	 */
-	public Noeud getNoeudGraphe() {
+	/*public Noeud getNoeudGraphe() {
 		return noeudGraphe;
-	}
+	}*/
 
 	/**
 	 * Change le noeud du graphe affecte a la salle
 	 * @param noeud le noeud du graphe a affecter
 	 */
-	public void setNoeudGraphe(Noeud noeud) {
+	/*public void setNoeudGraphe(Noeud noeud) {
 		this.noeudGraphe = noeud;
 		//LOGGER.info("salle("+this.getId()+") noeud:\t"+noeud.getId());
-	}
+	}*/
 
 	/**
 	 * Verifie si la salle est "visite" (creer)
@@ -676,14 +673,14 @@ public class Salle extends Situable implements Observateur{
 	/**
 	 * Supprime tous les tableaux presents dans la salle
 	 */
-	private void suprimerTousTableaux(){
+	/*private void suprimerTousTableaux(){
 		List<Objet> liste = new ArrayList<Objet>();
 		for(Objet objet : liste){
 			if(objet instanceof Tableau){
 				objets.remove(objet.getId());
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * Met a jour les "actions" faites par rapport a cette salle
@@ -695,10 +692,10 @@ public class Salle extends Situable implements Observateur{
 			//MuseeIA.get().initSalle(this);
 			Monde.get().setSalleCourante(this);
 //			genererNoeudSallesVoisineVoisine();
-			LOGGER.info(noeudGraphe==null?"Entré dans la salle:\t"+
+			/*LOGGER.info(noeudGraphe==null?"Entré dans la salle:\t"+
 					this.getId()+"\tle noeud est null":
 						":Entré dans la salle:\t"+
-						this.getId()+"\tle noeud est:\t"+noeudGraphe.getId());
+						this.getId()+"\tle noeud est:\t"+noeudGraphe.getId());*/
 		}
 	}
 
@@ -710,11 +707,11 @@ public class Salle extends Situable implements Observateur{
 		//pour éviter : java.util.ConcurrentModificationException
 		List<Salle> listeTmp = new ArrayList<Salle>();
 		listeTmp.addAll(this.voisines.values());
-		for(Salle salleVoisine : listeTmp){
+		/*for(Salle salleVoisine : listeTmp){
 			if(salleVoisine.getNoeudGraphe()!=null){
 				genererNoeudSallesVoisine(this);
 			}
-		}
+		}*/
 	}
 
 	/**
@@ -760,18 +757,18 @@ public class Salle extends Situable implements Observateur{
 	 * Supprime les salles voisine de la salle
 	 * @param liste la liste des salles voisines a enlever
 	 */
-	private void supprimerSallesVoisines(List<Salle> liste){
+	/*private void supprimerSallesVoisines(List<Salle> liste){
 		for(Salle salle : liste){
 			voisines.remove(salle.getId());
 		}
-	}
+	}*/
 
 	
 
 	/**
 	 * reinitialise les portes de la salle
 	 */
-	private void reInitSalleVoisine(){
+	/*private void reInitSalleVoisine(){
 		suprimerTousLesTrou();
 		//on créer un copie de la liste des salles voisines
 		//pour éviter : java.util.ConcurrentModificationException
@@ -781,18 +778,18 @@ public class Salle extends Situable implements Observateur{
 		for(Salle salleVoisine : listeTmp){
 			ajouterPorte(salleVoisine);
 		}
-	}
+	}*/
 
 	/**
 	 * Supprimer tous les portes (trous) presentes dans la salle
 	 */
-	private void suprimerTousLesTrou(){
+	/*private void suprimerTousLesTrou(){
 		for(Objet objet : this.objets.values()){
 			if(objet instanceof Mur){
 				((Mur) objet).suprimerLesTrous();
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * Classe representant une position avec une largeur (utilise pour le placement des tableaux 

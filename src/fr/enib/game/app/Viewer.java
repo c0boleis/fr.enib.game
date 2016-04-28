@@ -1,5 +1,6 @@
 package fr.enib.game.app;
 
+import java.awt.Cursor;
 import java.awt.Frame ;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -38,40 +39,41 @@ public class Viewer implements GLEventListener {
 	public final static int FRAME_WIDTH = 1024;
 	public final static int FRAME_HEIGHT = 768;
 	
-	@SuppressWarnings("deprecation")
 	public static void main(String [] args){
 		//configuration des fichiers de log
 		Viewer viewer = new Viewer();
+		
 		// Creation de la surface d affichage
 		GLProfile glp = GLProfile.getDefault();
 		GLCapabilities caps = new GLCapabilities(glp);
 		GLCanvas canvas = new GLCanvas(caps);
 		
 		// Creation de la fenetre
-		Frame frame = new Frame("Projet Museum");
+		Frame frame = new Frame("Enib project : Game");
 		frame.setSize(FRAME_WIDTH,FRAME_HEIGHT);
 		frame.add(canvas);
 		frame.setVisible(true);
-		frame.setCursor(Frame.CROSSHAIR_CURSOR);
+		
+		Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
+		frame.setCursor(cursor);
 
 		// by default, an AWT Frame doesn't do anything when you click
 		// the close button; this bit of code will terminate the program when
 		// the window is asked to close
 		frame.addWindowListener(new WindowAdapter() {
-			
 			@Override
 			public void windowClosing(WindowEvent e) {
 				Ihm.quiter();
 			}	
 		});
 
-		//canvas.addGLEventListener(new Viewer()) ;  // ???
 		canvas.addGLEventListener(viewer) ; 
 		
-		canvas.addMouseListener(viewer.ihm) ; 
-		canvas.addMouseMotionListener(viewer.ihm) ; 
-		canvas.addKeyListener(viewer.ihm) ; 
-
+		canvas.addMouseListener(viewer.ihm); 
+		canvas.addMouseMotionListener(viewer.ihm); 
+		canvas.addKeyListener(viewer.ihm); 
+		canvas.requestFocus();
+		
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 	}
@@ -85,7 +87,7 @@ public class Viewer implements GLEventListener {
 	private void initLog(){
 		try {
 			Properties logProperties = new Properties();
-			InputStream read = getClass().getClassLoader().getResourceAsStream("ihm/log4j.properties");
+			InputStream read = getClass().getClassLoader().getResourceAsStream("fr/enib/game/app/log4j.properties");
 			logProperties.load(read);
 			PropertyConfigurator.configure(logProperties);
 			((RollingFileAppender )Logger.getRootLogger().getAppender("R")).rollOver();
@@ -97,7 +99,6 @@ public class Viewer implements GLEventListener {
 
 	@Override
 	public void display(GLAutoDrawable drawable) {
-
 		float t = (float)(System.currentTimeMillis()) ;
 		Monde.get().display(drawable);
 		Monde.get().actualiser(t) ; 
