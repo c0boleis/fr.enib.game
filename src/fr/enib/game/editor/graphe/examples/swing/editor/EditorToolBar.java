@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.TransferHandler;
 
+import fr.enib.game.editor.graphe.examples.swing.action.StartSimulationAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ColorAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.FontStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
@@ -87,6 +88,11 @@ public class EditorToolBar extends JToolBar
 				"/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
 		add(editor.bind("Redo", new HistoryAction(false),
 				"/fr/enib/game/editor/graphe/examples/swing/images/redo.gif"));
+
+		addSeparator();
+		
+		add(editor.bind("Run", new StartSimulationAction(),
+				"/fr/enib/game/editor/graphe/examples/swing/images/start.png"));
 
 		addSeparator();
 

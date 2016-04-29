@@ -35,11 +35,22 @@ public class Viewer implements GLEventListener {
 	private static Logger LOGGER = Logger.getLogger(Viewer.class);
 	private  Builder fabrique ;
 	private  Ihm ihm ;
+	
+	private static boolean stopOnCloseWindows = true;
+	private static Frame frame;
 
 	public final static int FRAME_WIDTH = 1024;
 	public final static int FRAME_HEIGHT = 768;
 	
 	public static void main(String [] args){
+		//on recupere les information de args
+		
+		if(args.length>0){
+			String stopOnCloseWindowsString = args[0];
+			try{
+				stopOnCloseWindows = Boolean.parseBoolean(stopOnCloseWindowsString);
+			}catch(Exception e){}
+		}
 		//configuration des fichiers de log
 		Viewer viewer = new Viewer();
 		
@@ -49,7 +60,7 @@ public class Viewer implements GLEventListener {
 		GLCanvas canvas = new GLCanvas(caps);
 		
 		// Creation de la fenetre
-		Frame frame = new Frame("Enib project : Game");
+		frame = new Frame("Enib project : Game");
 		frame.setSize(FRAME_WIDTH,FRAME_HEIGHT);
 		frame.add(canvas);
 		frame.setVisible(true);
@@ -63,7 +74,8 @@ public class Viewer implements GLEventListener {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				Ihm.quiter();
+				if(stopOnCloseWindows)Ihm.quiter();
+				stopSimulation();
 			}	
 		});
 
@@ -76,6 +88,14 @@ public class Viewer implements GLEventListener {
 		
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
+	}
+	
+	/**
+	 * arrete tous l'environement 3D
+	 */
+	private static void stopSimulation(){
+		frame.dispose();
+		//TODO ronan arréter proprement open gl
 	}
 	
 	public Viewer(){
