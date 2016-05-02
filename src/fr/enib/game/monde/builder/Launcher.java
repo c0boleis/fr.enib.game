@@ -89,7 +89,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 			}	
 		});
 		
-		
+
 		try {
             robot = new Robot();
         } catch (final AWTException e) {

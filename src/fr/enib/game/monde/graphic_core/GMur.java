@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.jogamp.opengl.GL2;
 
-public class Cloison extends Forme {
+public class GMur extends Forme {
 	private float hauteur;
 	private float largeur;
 	private float epaisseur;
@@ -20,7 +20,7 @@ public class Cloison extends Forme {
 	 * @param largeur la largeur de la cloison
 	 * @param epaisseur la largeur de la cloison
 	 */
-	public Cloison(float hauteur, float largeur, float epaisseur){
+	public GMur(float hauteur, float largeur, float epaisseur){
 		this(hauteur, largeur, epaisseur, null);
 	}
 
@@ -30,7 +30,7 @@ public class Cloison extends Forme {
 	 * @param larg la largeur de la cloison
 	 * @param trousMur l'ensemble des trous sur la cloison
 	 */
-	public Cloison(float hauteur, float largeur, float epaisseur, List<TrouMur> trousMur){
+	public GMur(float hauteur, float largeur, float epaisseur, List<TrouMur> trousMur){
 		super() ; 
 		this.hauteur = hauteur; 
 		this.largeur = largeur;

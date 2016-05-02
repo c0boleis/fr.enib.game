@@ -41,27 +41,6 @@ public class Salle extends Situable implements Observer{
 	/**
 	 * Construteur
 	 * @param id l'id de la salle
-	 */
-	protected Salle(String id){
-		super(id);
-		Monde.get().ajouterSalle(this);
-
-		this.objets     = new HashMap<String,Objet>() ;
-		//this.capteurs   = new HashMap<String,Capteur>() ;
-		this.voisines   = new HashMap<String,Salle>() ;
-
-		// pour l'instant une salle ne peut pas avoir de maitre.
-		this.setMaitre(null);
-
-		// présence avatar dans la salle
-		/*capteurPresenceAvatar = new CapteurCubique("capt"+getId(),Avatar.get(), this);
-		capteurPresenceAvatar.add(this);
-		ajouter( capteurPresenceAvatar);*/
-	}
-
-	/**
-	 * Construteur
-	 * @param id l'id de la salle
 	 * @param largeur la largeur de la salle
 	 * @param profondeur la pronfondeur de la salle
 	 * @param hauteur la hauteur de la salle
@@ -104,25 +83,25 @@ public class Salle extends Situable implements Observer{
 
 		ajouter( new Sol(TypeObjet.SOL.toString() + getId() , RessourceProvider.pathTextureSol, largeur, profondeur));
 		ajouter( new Plafond(TypeObjet.PLAFOND.toString() + getId(), RessourceProvider.pathTexturePlafond, largeur, profondeur));  
-		ajouter( new Mur(TypeObjet.MUR_GAUCHE.toString() + getId(), RessourceProvider.pathTextureSol, hauteur, profondeur, epaisseurMur)); 
-		ajouter( new Mur(TypeObjet.MUR_ARRIERE.toString() + getId(), RessourceProvider.pathTextureSol, hauteur, largeur, epaisseurMur)); 
-		ajouter( new Mur(TypeObjet.MUR_DROIT.toString() + getId() , RessourceProvider.pathTextureSol, hauteur, profondeur, epaisseurMur));
-		ajouter( new Mur(TypeObjet.MUR_AVANT.toString() + getId(), RessourceProvider.pathTextureSol, hauteur, largeur, epaisseurMur)); 
+		ajouter( new Mur(TypeObjet.MUR_GAUCHE.toString() + getId(), RessourceProvider.pathTextureMur, hauteur, profondeur, epaisseurMur)); 
+		ajouter( new Mur(TypeObjet.MUR_ARRIERE.toString() + getId(), RessourceProvider.pathTextureMur, hauteur, largeur, epaisseurMur)); 
+		ajouter( new Mur(TypeObjet.MUR_DROIT.toString() + getId() , RessourceProvider.pathTextureMur, hauteur, profondeur, epaisseurMur));
+		ajouter( new Mur(TypeObjet.MUR_AVANT.toString() + getId(), RessourceProvider.pathTextureMur, hauteur, largeur, epaisseurMur)); 
 
 		//on place les éléments de la salle par raport à son repère.
 		getPlafond().placer(0.0f,0.0f,this.hauteur); 
 		getSol().placer(0.0f,0.0f,0.0f);
 
 		getMurGauche().orienter((float) +Math.PI/2.0f); 
-		getMurGauche().placer(0.0f,this.largeur/2.0f,0.0f); 
+		getMurGauche().placer(this.profondeur/2.0f,this.largeur/2.0f,0.0f); 
 
 		getMurDroite().orienter((float) -Math.PI/2.0f); 
-		getMurDroite().placer(0.0f,-this.largeur/2.0f,0.0f);
+		getMurDroite().placer(-this.profondeur/2.0f,-this.largeur/2.0f,0.0f);
 
 		getMurArriere().orienter((float) (Math.PI)); 
-		getMurArriere().placer(-this.profondeur/2.0f,0.0f,0.0f);
+		getMurArriere().placer(-this.profondeur/2.0f, this.largeur/2.0f,0.0f);
 
-		getMurAvant().placer(this.profondeur/2.0f,0.0f,0.0f); 
+		getMurAvant().placer(this.profondeur/2.0f, -this.largeur/2.0f, 0.0f); 
 	}
 
 	/**

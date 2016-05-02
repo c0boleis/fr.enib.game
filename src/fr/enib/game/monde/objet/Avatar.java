@@ -10,7 +10,7 @@ public class Avatar extends Objet {
 	
 	private static Avatar INSTANCE = new Avatar("avatar");
 
-	public static final float HAUTEUR = 2.0f;
+	public static final float HAUTEUR = 1.8f;
 
 	/**
 	 * Constructeur prive pour applique le singleton
@@ -18,7 +18,7 @@ public class Avatar extends Objet {
 	 */
 	private Avatar(String id){
 		super(id) ; 
-		repere.getPostiton().fixer(-2.5f,0.0f,HAUTEUR) ; 
+		repere.getPostiton().fixer(0.0f,0.0f,HAUTEUR) ; 
 	}
 	
 	/**

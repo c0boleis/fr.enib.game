@@ -3,7 +3,7 @@ package fr.enib.game.monde.objet;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.enib.game.monde.graphic_core.Cloison;
+import fr.enib.game.monde.graphic_core.GMur;
 import fr.enib.game.monde.graphic_core.Forme;
 import fr.enib.game.monde.graphic_core.Shape;
 import fr.enib.game.monde.graphic_core.TrouMur;
@@ -11,7 +11,6 @@ import fr.enib.game.monde.graphic_core.TrouMur;
 public class Mur extends Objet {
 	
 	private List<TrouMur> trous;
-
 	
 	/**
 	 * Constructeur
@@ -23,7 +22,7 @@ public class Mur extends Objet {
 	public Mur(String id, String pathTexture, float hauteur, float largeur, float epaisseur){
 		super(id, pathTexture) ; 
 		this.trous = new ArrayList<TrouMur>();
-		Forme geo = new Cloison(hauteur, largeur, epaisseur, trous); 
+		Forme geo = new GMur(hauteur, largeur, epaisseur, trous); 
 		this.forme = new Shape(geo, mat); 
 	}
 	
@@ -31,8 +30,8 @@ public class Mur extends Objet {
 	 * Renvoie la objet Cloison sur package visu.cloison permettant de dessiner une cloison
 	 * @return la cloison dessiner une cloison
 	 */
-	public Cloison getCloison(){
-		return (Cloison) ((Shape) forme).getForme();
+	public GMur getCloison(){
+		return (GMur) ((Shape) forme).getForme();
 	}
 
 	/**
