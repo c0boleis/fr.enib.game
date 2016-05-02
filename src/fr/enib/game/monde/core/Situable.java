@@ -2,13 +2,15 @@ package fr.enib.game.monde.core;
 
 import java.util.HashMap;
 
-public class Situable implements Observe  {
+import fr.enib.game.monde.geo.Repere;
+import fr.enib.game.monde.geo.Vec3;
 
+public class Situable implements Observable{
 	private String id ;
 
 	public Repere repere = new Repere() ;
 
-	public HashMap<String,Observateur> observateurs = new HashMap<String,Observateur>() ;
+	public HashMap<String,Observer> observateurs = new HashMap<String,Observer>() ;
 
 	private HashMap<String,Situable> esclaves = new HashMap<String,Situable>() ;
 
@@ -25,19 +27,19 @@ public class Situable implements Observe  {
 	// ================================================================================
 
 	@Override
-	public void add(Observateur obs){
+	public void add(Observer obs){
 		observateurs.put(obs.getId(), obs) ; 
 	}
 
 	@Override
-	public void suprimer(String nom){
+	public void delete(String name){
 		//TODO A COMPLETER 
 	}
 
 	@Override
-	public void changed(String aspect, Object valeur){
-		for(Observateur obs : observateurs.values()){
-			obs.update(aspect, valeur, this) ;
+	public void update(String aspect, Object value){
+		for(Observer obs : observateurs.values()){
+			obs.update(aspect, value, this) ;
 		} 
 	}
 
@@ -45,22 +47,22 @@ public class Situable implements Observe  {
 
 	public void placer(Vec3 v){
 		repere.placer(v);
-		changed(CtxPose.POSE,null) ; 
+		update(CtxPose.POSE,null) ; 
 	}
 
 	public void placer(float x, float y, float z){
 		repere.placer(x,y,z);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void orienter(float angleRadian){
 		repere.orienter(angleRadian);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void deplacer(float x, float y, float z){
 		repere.deplacer(x,y,z);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	/**
@@ -74,32 +76,32 @@ public class Situable implements Observe  {
 	 */
 	public void deplacerAxe(float x, float y, float z,float kx,float ky,float kz){
 		repere.deplacerAxe(x,y,z, kx, ky, kz);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void tournerGauche(float angleRadian){
 		repere.tournerGauche(angleRadian);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void tournerHaut(float angleRadian){
 		repere.tournerHaut(angleRadian);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void avancer(float l){
 		repere.avancer(l);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void avancerAxe(float l,float kx,float ky,float kz){
 		repere.avancerAxe(l, kx, ky, kz);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void monter(float h){
 		repere.monter(h);
-		changed(CtxPose.POSE,null);
+		update(CtxPose.POSE,null);
 	}
 
 	public void surGauche(float g){

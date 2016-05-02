@@ -2,18 +2,18 @@ package fr.enib.game.monde.builder;
 
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
+
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 
-import fr.enib.game.monde.capteur.Capteur;
-import fr.enib.game.monde.object.Avatar;
-import fr.enib.game.monde.object.Objet;
-import fr.enib.game.monde.object.Salle;
+import fr.enib.game.monde.musee.Salle;
+import fr.enib.game.monde.objet.Avatar;
+import fr.enib.game.monde.objet.Objet;
 
 public class Monde {
-
-	//private static Logger LOGGER = Logger.getLogger(Monde.class);
+	private static Logger LOGGER = Logger.getLogger(Monde.class);
 
 	public float t0 = (float)(System.currentTimeMillis())/1000.f ;
 
@@ -21,7 +21,7 @@ public class Monde {
 	private Salle  salleCourante ; 
 
 	private static HashMap<String,Objet> objets     = new HashMap<String,Objet>() ;
-	private static HashMap<String,Capteur> capteurs = new HashMap<String,Capteur>() ;
+	//private static HashMap<String,Capteur> capteurs = new HashMap<String,Capteur>() ;
 	private static HashMap<String,Salle> salles     = new HashMap<String,Salle>() ; 
 
 	/**
@@ -61,11 +61,12 @@ public class Monde {
 		laSalle.ajouter(objet) ; 
 	}
 
-	public void ajouterCapteur(Capteur capteur){
+	/*public void ajouterCapteur(Capteur capteur){
 		capteurs.put(capteur.getId(),capteur) ; 
-	}
+	}*/
 
-	public static void ajouterSalle(Salle salle){
+	public void ajouterSalle(Salle salle){
+		if(salleCourante == null) salleCourante = salle;
 		salles.put(salle.getId(),salle) ; 
 	}
 
@@ -81,21 +82,20 @@ public class Monde {
 
 		Avatar.get().placer(gl) ;
 
-		/*salleCourante.dessiner(gl) ; 
-		if(salleCourante.voisines != null){
+		salleCourante.dessiner(gl) ; 
+		/*if(salleCourante.voisines != null){
 			for(Salle salleVoisine : salleCourante.voisines.values()){
 				salleVoisine.dessiner(gl);
 			}
 		}*/
 		
 
-		for(Salle s : salles.values()){
+		/*for(Salle s : salles.values()){
 				s.dessiner(gl);
-		}
+		}*/
 	}
 
 	public void actualiser(float t){
-		
 		salleCourante.actualiser(0.0f,0.0f) ;
 		
 		//on créer un copie de la liste des salles voisines
@@ -112,12 +112,12 @@ public class Monde {
 	 * Renvoie une copie de la liste des salles presente dans le monde
 	 * @return une copie de {@link #salles}
 	 */
-	public static HashMap<String,Salle> getSalles() {
+	/*public static HashMap<String,Salle> getSalles() {
 		// on fait une copie du HashMap pour éviter l'ajout de salle via getSalles()
 		HashMap<String,Salle> map = new HashMap<String,Salle>();
 		map.putAll(salles);
 		return map;
-	}
+	}*/
 
 	/**
 	 * Renvoie la salle courante du monde
@@ -133,7 +133,7 @@ public class Monde {
 	 */
 	public void setSalleCourante(Salle salle){
 		salleCourante = salle;
-		//LOGGER.info("salle courante :" + salleCourante.getId());
+		LOGGER.info("salle courante :" + salleCourante.getId());
 	}
 
 

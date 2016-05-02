@@ -1,6 +1,8 @@
 package fr.enib.game.monde.core;
 
-public class CtxPose implements Observateur {
+import fr.enib.game.monde.geo.Vec3;
+
+public class CtxPose implements Observer {
 	
 	//private static Logger LOGGER = Logger.getLogger(CtxPose.class);
 
@@ -43,7 +45,7 @@ public class CtxPose implements Observateur {
 	}
 
 	@Override
-	public void update(String aspect, Object valeur, Observe de){
+	public void update(String aspect, Object valeur, Observable de){
 		//LOGGER.info("PRE-CONTRAINTE")  ; 
 		if(de == maitre && aspect.equals(POSE)){
 			//LOGGER.info("CONTRAINTE APPLIQUUE");
