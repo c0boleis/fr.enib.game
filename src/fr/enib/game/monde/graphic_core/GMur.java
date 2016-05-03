@@ -47,14 +47,15 @@ public class GMur extends Forme {
 		
 		// Si pas de trou dans la cloison, alors on dessine un rectangle (largeur * hauteur)
 		if(trousMur == null || trousMur.isEmpty()){
-			dessinerPortion(gl, 0.0f, 0.0f, largeur, hauteur);
+			//dessinerPortion(gl, 0.0f, 0.0f, largeur, hauteur);
+			dessinerPortionMur(gl, 0.0f, 0.0f, largeur, hauteur);
 		}
 		else{ // Si la cloison comporte des trous
-			float posPortion = -1.0f, largeurPortion = -1.0f;
+			/*float posPortion = -1.0f, largeurPortion = -1.0f;
 			float posTrou = -1.0f;
 			float posExtremite = this.largeur/2.0f;
 			float posOld = -1.0f;
-			float largeurTrou = -1.0f;
+			float largeurTrou = -1.0f;*/
 
 			// Mettre la liste des trous dans l'ordre decroissant des position des trous
 			//Collections.sort(cloison.getTrous(), Collections.reverseOrder()); 
@@ -133,11 +134,12 @@ public class GMur extends Forme {
 		//				|			|
 		//(x0,y0)	    *-----------*
 
-		gl.glEnable(GL2.GL_TEXTURE_2D) ; 
+		gl.glEnable(GL2.GL_TEXTURE_2D); 
 		gl.glTexEnvi( GL2.GL_TEXTURE_ENV, GL2.GL_TEXTURE_ENV_MODE, GL2.GL_DECAL);
 
-		gl.glPushMatrix() ;	
-		gl.glBegin(GL2.GL_QUADS) ; 
+		gl.glPushMatrix();	
+		gl.glBegin(GL2.GL_QUADS); 
+		
 		// Haut Gauche
 		gl.glTexCoord2f(0, 1); gl.glVertex3f(0, x0, y1); 
 
@@ -149,12 +151,89 @@ public class GMur extends Forme {
 
 		// Bas Gauche
 		gl.glTexCoord2f(0, 0); gl.glVertex3f(0, x0, y0); 
+		
+		gl.glEnd() ; 
+		gl.glPopMatrix() ;
+	}
+	
+	public void dessinerPortionMur(GL2 gl, float x0, float y0, float x1, float y1){
+		// 				*-----------* (x1,y1)
+		//				|			|
+		//				|			|
+		//				|			|
+		//				|			|
+		//(x0,y0)	    *-----------*
+
+		gl.glEnable(GL2.GL_TEXTURE_2D); 
+		gl.glTexEnvi( GL2.GL_TEXTURE_ENV, GL2.GL_TEXTURE_ENV_MODE, GL2.GL_DECAL);
+
+		gl.glPushMatrix();	
+		gl.glBegin(GL2.GL_QUADS); 
+		
+		
+		//Face visible
+		
+		// Haut Gauche
+		gl.glTexCoord2f(0, 1); gl.glVertex3f(0, x0, y1); 
+
+		// Haut Droite
+		gl.glTexCoord2f(1, 1); gl.glVertex3f(0, x1, y1); 
+
+		// Bas Droite
+		gl.glTexCoord2f(1, 0); gl.glVertex3f(0, x1, y0); 
+
+		// Bas Gauche
+		gl.glTexCoord2f(0, 0); gl.glVertex3f(0, x0, y0); 
+
+		
+
+		//Face oposée
+		// Haut Gauche
+		gl.glTexCoord2f(0, 1); gl.glVertex3f(epaisseur, x1, y1); 
+		
+		// Haut Droite
+		gl.glTexCoord2f(1, 1); gl.glVertex3f(epaisseur, x0, y1); 
+
+		// Bas Droite
+		gl.glTexCoord2f(1, 0); gl.glVertex3f(epaisseur, x0, y0); 
+
+		// Bas Gauche
+		gl.glTexCoord2f(0, 0); gl.glVertex3f(epaisseur, x1, y0); 
+		
+		
+		//Cote gauche
+		// Haut Gauche
+		gl.glTexCoord2f(0, 1); gl.glVertex3f(epaisseur, x0, y1); 
+		
+		// Haut Droite
+		gl.glTexCoord2f(1, 1); gl.glVertex3f(0, x0, y1); 
+
+		// Bas Droite
+		gl.glTexCoord2f(1, 0); gl.glVertex3f(0, x0, y0); 
+
+		// Bas Gauche
+		gl.glTexCoord2f(0, 0); gl.glVertex3f(epaisseur, x0, y0); 
+		
+		
+		//Cote droit
+		// Haut Gauche
+		gl.glTexCoord2f(0, 1); gl.glVertex3f(0, x1, y1); 
+		
+		// Haut Droite
+		gl.glTexCoord2f(1, 1); gl.glVertex3f(epaisseur, x1, y1); 
+
+		// Bas Droite
+		gl.glTexCoord2f(1, 0); gl.glVertex3f(epaisseur, x1, y0); 
+
+		// Bas Gauche
+		gl.glTexCoord2f(0, 0); gl.glVertex3f(0, x1, y0); 
+				
 		gl.glEnd() ; 
 		gl.glPopMatrix() ;
 	}
 
 	/**
-	 * Renvoie la largeur de la cloison
+	 * Renvoie la largeur de la cloison	
 	 * @return la largeur de la cloison
 	 */
 	public float getLargeur(){

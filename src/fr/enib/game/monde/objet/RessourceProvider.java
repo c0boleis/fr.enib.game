@@ -10,4 +10,5 @@ public class RessourceProvider {
 	
 	public static final String pathTextureMur = "data"+File.separator+"textures"+File.separator+"tMur2.jpg";
 
+	public static final String pathTableaux = "data"+File.separator+"Image_graphe"+File.separator + "/";
 }

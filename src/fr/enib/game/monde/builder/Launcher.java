@@ -43,12 +43,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	final private int width = 1000;
 	final private int height = 800;
 
-	private int oldX ; 
-	private int oldY ; 
-	private int dx ;
-	private int dy ;
+	private int dx, dy;
     private int centerX, centerY;
-	
+	private int oldX, oldY;
+    
 	private GLCanvas canvas;
 	private Builder builder;
     private Robot robot;
@@ -88,7 +86,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				quitter();
 			}	
 		});
-		
 
 		try {
             robot = new Robot();
@@ -96,6 +93,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
             e.printStackTrace();
         }
 
+		oldX = 0;
+		oldY = 0;
+		
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 	}
@@ -222,10 +222,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	}
 	
 	public void mouseLock(){
-		/*if(lockMouse){
+		if(lockMouse){
 			if (robot != null)
 	            robot.mouseMove(centerX, centerY);
-		}*/
+		}
 	}
 	
 	public static void quitter(){
@@ -249,7 +249,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		dXY(e);
+		dXY(e.getX(), e.getY());
 		moveLookAvatar();
 	}
 	
@@ -270,17 +270,27 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 			Avatar.get().tournerHaut(-(float)(Math.PI/180.0)) ;
 		}
 	}
+	
+	public boolean isCentre(int x, int y){
+		return x == centerX && y == centerY;
+	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		/*if(lockMouse){
-			mouseLock();
+			int x = e.getX();
+			int y = e.getY();
+			if(!isCentre(x, y)){
+				dXY(x, y);
+				moveLookAvatar();
+				mouseLock();
+			}
 		}*/
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//if(!lockMouse) lockMouse = true;
+		if(!lockMouse) lockMouse = true;
 	}
 
 	@Override
@@ -299,14 +309,12 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	public void mouseReleased(MouseEvent e) {
 	}
 	
-	public void dXY(MouseEvent e){
-		int x ; 
-		int y ; 
-		x = e.getX() ;
-		y = e.getY() ; 
-		dx = x - oldX ;
+	public void dXY(int x, int y){
+		dx =  x - oldX ;
 		dy = y - oldY ; 
-		oldX = x ; 
-		oldY = y ; 
+		
+		oldX = x;
+		oldY = y;
+		System.out.println(dx + " -- " + dy);
 	}
 }
