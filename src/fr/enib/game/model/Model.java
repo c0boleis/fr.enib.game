@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import fr.enib.game.model.interfaces.IModel;
@@ -19,6 +20,7 @@ import fr.enib.game.model.listeners.IModelListener;
  * @author Corentin Boleis
  *
  */
+@XStreamAlias("Model")
 public class Model implements IModel{
 		
 	private List<IModelObject> modelObjects = new ArrayList<IModelObject>();
@@ -92,7 +94,7 @@ public class Model implements IModel{
 	/**
 	 * @param noeud
 	 * 
-	 * This function add in the listener the object added in the model
+	 * Cette fonction ajoute, dans le ou les listeners, les objets créés dans le model
 	 */
 	private void fireAddModelObject(IModelObject noeud) {
 		IListener[] listenerTab = this.listListener.toArray(new IListener[0]);
