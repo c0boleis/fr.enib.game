@@ -277,4 +277,22 @@ public class Noeud implements INoeud {
 		return this.liensSrotants.remove(index)!=null;
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IObjectInteret#setDegreInteret(float)
+	 */
+	@Override
+	public boolean setDegreInteret(float degre) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IObjectInteret#getDegreInteret()
+	 */
+	@Override
+	public float getDegreInteret() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

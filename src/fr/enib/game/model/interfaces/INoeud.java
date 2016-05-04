@@ -4,7 +4,7 @@ package fr.enib.game.model.interfaces;
  * @author Corentin Boleis
  *
  */
-public interface INoeud extends IModelObject,IVisitableObject{
+public interface INoeud extends IModelObject,IVisitableObject,IObjectInteret{
 	
 	/**
 	 * le nom par default des noeuds
