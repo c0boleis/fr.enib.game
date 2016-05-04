@@ -26,8 +26,9 @@ public class Lien implements ILien {
 	private float poids;
 	
 	/**
-	 * @param noeudA
-	 * @param noeudD
+	 * 
+	 * @param noeudD Noeud de depart
+	 * @param noeudA Noeud d'arrivee
 	 */
 	public Lien(INoeud noeudD,INoeud noeudA){
 		if(noeudD == null || noeudA == null){
@@ -35,7 +36,7 @@ public class Lien implements ILien {
 		}
 		this.noeudArrivee = noeudA;
 		this.noeudDepart = noeudD;
-		this.id = noeudDepart.getId()+"_to_"+noeudArrivee.getId();
+		this.id = noeudDepart.getId()+"_vers_"+noeudArrivee.getId();
 	}
 
 	/**
