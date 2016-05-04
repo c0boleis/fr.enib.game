@@ -11,9 +11,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.TransferHandler;
 import javax.swing.UIManager;
 
+import fr.enib.game.editor.graphe.examples.swing.action.ExitAction;
+import fr.enib.game.editor.graphe.examples.swing.action.StylesheetAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundImageAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ExitAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridColorAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
@@ -27,7 +28,6 @@ import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SaveAction
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ScaleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SelectShortestPathAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SelectSpanningTreeAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.StylesheetAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleDirtyAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleGridItem;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleOutlineItem;

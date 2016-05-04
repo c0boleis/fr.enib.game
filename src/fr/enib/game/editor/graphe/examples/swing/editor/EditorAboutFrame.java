@@ -25,6 +25,9 @@ import javax.swing.KeyStroke;
 import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.view.mxGraph;
 
+/**
+ *
+ */
 public class EditorAboutFrame extends JDialog
 {
 
@@ -34,6 +37,7 @@ public class EditorAboutFrame extends JDialog
 	private static final long serialVersionUID = -3378029138434324390L;
 
 	/**
+	 * @param owner 
 	 * 
 	 */
 	public EditorAboutFrame(Frame owner)

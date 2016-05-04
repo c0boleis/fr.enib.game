@@ -19,9 +19,9 @@ public class Lien implements ILien {
 	
 	private String id;
 	
-	private Noeud noeudArrivee;
+	private INoeud noeudArrivee;
 	
-	private Noeud noeudDepart;
+	private INoeud noeudDepart;
 	
 	private float poids;
 	
@@ -29,10 +29,13 @@ public class Lien implements ILien {
 	 * @param noeudA
 	 * @param noeudD
 	 */
-	public Lien(Noeud noeudA,Noeud noeudD){
-		
+	public Lien(INoeud noeudD,INoeud noeudA){
+		if(noeudD == null || noeudA == null){
+			throw new NullPointerException("les noeuds d'un lien ne peuvent pas etre null");
+		}
 		this.noeudArrivee = noeudA;
 		this.noeudDepart = noeudD;
+		this.id = noeudDepart.getId()+"_to_"+noeudArrivee.getId();
 	}
 
 	/**
