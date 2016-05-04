@@ -7,6 +7,9 @@ package fr.enib.game.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
 
@@ -66,7 +69,11 @@ public class Model implements IModel{
 	@Override
 	public boolean sauvegarderModel() {
 		// TODO Auto-generated method stub
-		return false;
+		if(modelObjects.isEmpty()){
+			return false;
+		}
+		XStream xstream = new XStream(new DomDriver());
+		return true;
 	}
 
 	/* (non-Javadoc)

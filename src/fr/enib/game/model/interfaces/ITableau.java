@@ -44,4 +44,9 @@ public interface ITableau extends INoeud{
 	 */
 	public boolean setNomTableau(String nom);
 	
+	/**
+	 * @return les dimensions du tableau
+	 */
+	public String dimensionTableau();
+	
 }

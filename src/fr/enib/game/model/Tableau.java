@@ -104,4 +104,13 @@ public class Tableau extends Noeud implements ITableau{
 		}
 		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#dimensionTableau()
+	 */
+	@Override
+	public String dimensionTableau() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
