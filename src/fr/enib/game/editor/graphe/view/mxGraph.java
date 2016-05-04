@@ -52,6 +52,7 @@ import fr.enib.game.editor.graphe.util.mxStyleUtils;
 import fr.enib.game.editor.graphe.util.mxUndoableEdit;
 import fr.enib.game.editor.graphe.util.mxUndoableEdit.mxUndoableChange;
 import fr.enib.game.editor.graphe.util.mxUtils;
+import fr.enib.game.model.enums.LienConection;
 
 /**
  * Implements a graph object that allows to create diagrams from a graph model
@@ -4916,9 +4917,9 @@ public class mxGraph extends mxEventSource
 	 * @param cell Cell whose connectable state should be returned.
 	 * @return Returns the connectable state of the cell.
 	 */
-	public boolean isCellConnectable(Object cell)
+	public boolean isCellConnectable(Object cell,LienConection conection)
 	{
-		return model.isConnectable(cell);
+		return model.isConnectable(cell,conection);
 	}
 
 	/**
@@ -6477,11 +6478,11 @@ public class mxGraph extends mxEventSource
 	 * @param cell Object that represents a possible source or null.
 	 * @return Returns true if the given cell is a valid source terminal.
 	 */
-	public boolean isValidSource(Object cell)
+	public boolean isValidSource(Object cell,LienConection conection)
 	{
 		return (cell == null && allowDanglingEdges)
 				|| (cell != null
-						&& (!model.isEdge(cell) || isConnectableEdges()) && isCellConnectable(cell));
+						&& (!model.isEdge(cell) || isConnectableEdges()) && isCellConnectable(cell,conection));
 	}
 
 	/**
@@ -6493,7 +6494,7 @@ public class mxGraph extends mxEventSource
 	 */
 	public boolean isValidTarget(Object cell)
 	{
-		return isValidSource(cell);
+		return isValidSource(cell,LienConection.entrant);
 	}
 
 	/**
@@ -6510,7 +6511,7 @@ public class mxGraph extends mxEventSource
 	 */
 	public boolean isValidConnection(Object source, Object target)
 	{
-		return isValidSource(source) && isValidTarget(target)
+		return isValidSource(source,LienConection.sortant) && isValidTarget(target)
 				&& (isAllowLoops() || source != target);
 	}
 
@@ -6739,9 +6740,9 @@ public class mxGraph extends mxEventSource
 		{
 			Object src = model.getTerminal(target, true);
 			Object trg = model.getTerminal(target, false);
-
+			// TODO check is conectable
 			return (model.isEdge(target)
-					&& isCellConnectable(cells[0])
+					&& isCellConnectable(cells[0],LienConection.entrant_sortant)
 					&& getEdgeValidationError(target,
 							model.getTerminal(target, true), cells[0]) == null
 					&& !model.isAncestor(cells[0], src) && !model.isAncestor(

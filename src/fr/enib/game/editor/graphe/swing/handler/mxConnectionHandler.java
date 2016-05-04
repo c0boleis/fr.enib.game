@@ -30,6 +30,7 @@ import fr.enib.game.editor.graphe.util.mxRectangle;
 import fr.enib.game.editor.graphe.view.mxCellState;
 import fr.enib.game.editor.graphe.view.mxGraph;
 import fr.enib.game.editor.graphe.view.mxGraphView;
+import fr.enib.game.model.enums.LienConection;
 
 /**
  * Connection handler creates new connections between cells. This control is used to display the connector
@@ -516,7 +517,7 @@ public class mxConnectionHandler extends mxMouseAdapter
 	 */
 	public boolean isValidSource(Object cell)
 	{
-		return graphComponent.getGraph().isValidSource(cell);
+		return graphComponent.getGraph().isValidSource(cell,LienConection.sortant);
 	}
 
 	/**
@@ -659,7 +660,7 @@ public class mxConnectionHandler extends mxMouseAdapter
 				if (connectPreview.isActive())
 				{
 					connectPreview.update(e, marker.getValidState(), e.getX(),
-							e.getY());
+							e.getY(),false);
 					setBounds(null);
 					e.consume();
 				}
@@ -742,7 +743,7 @@ public class mxConnectionHandler extends mxMouseAdapter
 							mxCellState targetState = graph.getView().getState(
 									vertex, true);
 							connectPreview.update(e, targetState, e.getX(),
-									e.getY());
+									e.getY(),false);
 						}
 	
 						Object cell = connectPreview.stop(

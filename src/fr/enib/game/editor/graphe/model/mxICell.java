@@ -3,9 +3,12 @@
  */
 package fr.enib.game.editor.graphe.model;
 
+import fr.enib.game.model.enums.LienConection;
+
 /**
  * Defines the requirements for a cell that can be used in an mxGraphModel.
  */
+@SuppressWarnings("javadoc")
 public interface mxICell
 {
 
@@ -77,10 +80,11 @@ public interface mxICell
 
 	/**
 	 * Returns true if the cell is connectable.
+	 * @param conection 
 	 * 
 	 * @return Returns the connectable state.
 	 */
-	boolean isConnectable();
+	boolean isConnectable(LienConection conection);
 
 	/**
 	 * Returns true if the cell is visibile.
@@ -253,7 +257,7 @@ public interface mxICell
 	 * @param isOutgoing Boolean that specifies if the edge is outgoing.
 	 * @return Returns the edge that was removed.
 	 */
-	mxICell removeEdge(mxICell edge, boolean isOutgoing);
+	mxICell removeEdge(mxICell edge, boolean isOutgoing,boolean removeILIen);
 
 	/**
 	 * Removes the edge from its source or target terminal.

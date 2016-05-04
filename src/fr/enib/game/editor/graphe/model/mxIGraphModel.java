@@ -5,6 +5,7 @@ package fr.enib.game.editor.graphe.model;
 
 import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
 import fr.enib.game.editor.graphe.util.mxUndoableEdit.mxUndoableChange;
+import fr.enib.game.model.enums.LienConection;
 
 /**
  * Defines the requirements for a graph model to be used with mxGraph.
@@ -212,9 +213,10 @@ public interface mxIGraphModel
 	 * Returns true if the given cell is connectable.
 	 * 
 	 * @param cell Cell whose connectable state should be returned.
+	 * @param conection 
 	 * @return Returns the connectable state of the given cell.
 	 */
-	boolean isConnectable(Object cell);
+	boolean isConnectable(Object cell,LienConection conection);
 
 	/**
 	 * Returns the user object of the given cell.

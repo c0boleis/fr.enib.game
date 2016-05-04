@@ -21,6 +21,7 @@ import fr.enib.game.editor.graphe.util.mxEventObject;
 import fr.enib.game.editor.graphe.util.mxEventSource;
 import fr.enib.game.editor.graphe.util.mxPoint;
 import fr.enib.game.editor.graphe.util.mxUndoableEdit;
+import fr.enib.game.model.enums.LienConection;
 
 /**
  * Extends mxEventSource to implement a graph model. The graph model acts as
@@ -658,7 +659,8 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 		}
 		else if (previous != null)
 		{
-			previous.removeEdge((mxICell) edge, isSource);
+			//TODO check remove edge
+			previous.removeEdge((mxICell) edge, isSource,true);
 		}
 
 		return previous;
@@ -888,12 +890,14 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 		return (cell instanceof mxICell) ? ((mxICell) cell).isEdge() : false;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isConnectable(Object)
+	/*
+	 * (non-Javadoc)
+	 * @see fr.enib.game.editor.graphe.model.mxIGraphModel#isConnectable(java.lang.Object, fr.enib.game.model.enums.LienConection)
 	 */
-	public boolean isConnectable(Object cell)
+	@Override
+	public boolean isConnectable(Object cell,LienConection conection)
 	{
-		return (cell instanceof mxICell) ? ((mxICell) cell).isConnectable()
+		return (cell instanceof mxICell) ? ((mxICell) cell).isConnectable(conection)
 				: true;
 	}
 
