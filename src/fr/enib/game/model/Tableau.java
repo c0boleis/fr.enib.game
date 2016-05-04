@@ -11,6 +11,9 @@ import fr.enib.game.model.interfaces.ITableau;
  */
 public class Tableau extends Noeud implements ITableau{
 	
+	private float largeurTableau;
+	private float longueurTableau;
+	
 	/**
 	 * 
 	 */
@@ -106,22 +109,32 @@ public class Tableau extends Noeud implements ITableau{
 	}
 
 	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.ITableau#getLargeurTableau()
-	 */
-	@Override
-	public float getLargeurTableau() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.ITableau#getHauteurTableau()
 	 */
 	@Override
 	public float getHauteurTableau() {
-		// TODO Auto-generated method stub
-		return 0;
+		return longueurTableau;
+	}
+	
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ITableau#getLargeurTableau()
+	 */
+	@Override
+	public float getLargeurTableau() {
+		return largeurTableau;
 	}
 
-	
+	/**
+	 * @param longueurTableau the longueurTableau to set
+	 */
+	public void setLongueurTableau(float longueurTableau) {
+		this.longueurTableau = longueurTableau;
+	}
+
+	/**
+	 * @param largeurTableau the largeurTableau to set
+	 */
+	public void setLargeurTableau(float largeurTableau) {
+		this.largeurTableau = largeurTableau;
+	}	
 }
