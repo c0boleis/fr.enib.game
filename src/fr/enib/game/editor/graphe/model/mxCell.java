@@ -500,8 +500,16 @@ public class mxCell implements mxICell, Cloneable, Serializable
 						if((obj1 instanceof INoeud) && (obj2 instanceof INoeud)){
 							INoeud noeud1 = (INoeud)obj1;
 							INoeud noeud2 = (INoeud)obj2;
-							ILien  lien = new Lien(noeud1,noeud2);
-							((mxCell) edge).value = lien;
+							try{
+								ILien  lien = new Lien(noeud1,noeud2);
+								((mxCell) edge).value = lien;
+							}catch(IllegalArgumentException e){
+								this.removeEdge(edge, isOutgoing);
+								cell.removeEdge(edge, !isOutgoing);
+								edge.removeFromParent();
+								e.printStackTrace();
+							}
+							
 						}
 						
 					}
