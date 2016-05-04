@@ -18,7 +18,6 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URLDecoder;
@@ -31,7 +30,6 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JColorChooser;
-import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -46,7 +44,6 @@ import org.w3c.dom.Document;
 
 import fr.enib.game.editor.graphe.analysis.mxDistanceCostFunction;
 import fr.enib.game.editor.graphe.analysis.mxGraphAnalysis;
-import fr.enib.game.editor.graphe.canvas.mxGraphics2DCanvas;
 import fr.enib.game.editor.graphe.canvas.mxICanvas;
 import fr.enib.game.editor.graphe.canvas.mxSvgCanvas;
 import fr.enib.game.editor.graphe.io.mxCodec;
@@ -54,7 +51,6 @@ import fr.enib.game.editor.graphe.io.mxGdCodec;
 import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.editor.graphe.model.mxGraphModel;
 import fr.enib.game.editor.graphe.model.mxIGraphModel;
-import fr.enib.game.editor.graphe.shape.mxStencilShape;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.mxGraphOutline;
 import fr.enib.game.editor.graphe.swing.handler.mxConnectionHandler;
@@ -107,6 +103,8 @@ public class EditorActions
 	public static class ToggleRulersItem extends JCheckBoxMenuItem
 	{
 		/**
+		 * @param editor 
+		 * @param name 
 		 * 
 		 */
 		public ToggleRulersItem(final BasicGraphEditor editor, String name)
@@ -150,6 +148,8 @@ public class EditorActions
 	public static class ToggleGridItem extends JCheckBoxMenuItem
 	{
 		/**
+		 * @param editor 
+		 * @param name 
 		 * 
 		 */
 		public ToggleGridItem(final BasicGraphEditor editor, String name)
@@ -185,6 +185,8 @@ public class EditorActions
 	public static class ToggleOutlineItem extends JCheckBoxMenuItem
 	{
 		/**
+		 * @param editor 
+		 * @param name 
 		 * 
 		 */
 		public ToggleOutlineItem(final BasicGraphEditor editor, String name)
@@ -238,69 +240,6 @@ public class EditorActions
 	 *
 	 */
 	@SuppressWarnings("serial")
-	public static class ExitAction extends AbstractAction
-	{
-		/**
-		 * 
-		 */
-		public void actionPerformed(ActionEvent e)
-		{
-			BasicGraphEditor editor = getEditor(e);
-
-			if (editor != null)
-			{
-				editor.exit();
-			}
-		}
-	}
-
-	/**
-	 *
-	 */
-	@SuppressWarnings("serial")
-	public static class StylesheetAction extends AbstractAction
-	{
-		/**
-		 * 
-		 */
-		protected String stylesheet;
-
-		/**
-		 * 
-		 */
-		public StylesheetAction(String stylesheet)
-		{
-			this.stylesheet = stylesheet;
-		}
-
-		/**
-		 * 
-		 */
-		public void actionPerformed(ActionEvent e)
-		{
-			if (e.getSource() instanceof mxGraphComponent)
-			{
-				mxGraphComponent graphComponent = (mxGraphComponent) e
-						.getSource();
-				mxGraph graph = graphComponent.getGraph();
-				mxCodec codec = new mxCodec();
-				Document doc = mxUtils.loadDocument(EditorActions.class
-						.getResource(stylesheet).toString());
-
-				if (doc != null)
-				{
-					codec.decode(doc.getDocumentElement(),
-							graph.getStylesheet());
-					graph.refresh();
-				}
-			}
-		}
-	}
-
-	/**
-	 *
-	 */
-	@SuppressWarnings("serial")
 	public static class ZoomPolicyAction extends AbstractAction
 	{
 		/**
@@ -309,6 +248,7 @@ public class EditorActions
 		protected int zoomPolicy;
 
 		/**
+		 * @param zoomPolicy 
 		 * 
 		 */
 		public ZoomPolicyAction(int zoomPolicy)
@@ -405,6 +345,7 @@ public class EditorActions
 		protected double scale;
 
 		/**
+		 * @param scale 
 		 * 
 		 */
 		public ScaleAction(double scale)

@@ -10,7 +10,10 @@ import java.util.List;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import fr.enib.game.model.Lien;
 import fr.enib.game.model.interfaces.IClonableObject;
+import fr.enib.game.model.interfaces.ILien;
+import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.IRemovable;
 
 /**
@@ -368,12 +371,12 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	public mxICell insert(mxICell child)
 	{
 		int index = getChildCount();
-		
+
 		if (child.getParent() == this)
 		{
 			index--;
 		}
-		
+
 		return insert(child, index);
 	}
 
@@ -472,6 +475,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	/* (non-Javadoc)
 	 * @see fr.enib.game.editor.graphe.model.mxICell#insertEdge(fr.enib.game.editor.graphe.model.mxICell, boolean)
 	 */
+	@SuppressWarnings("unused")
 	public mxICell insertEdge(mxICell edge, boolean isOutgoing)
 	{
 		if (edge != null)
@@ -488,6 +492,21 @@ public class mxCell implements mxICell, Cloneable, Serializable
 				}
 
 				edges.add(edge);
+				if(!isOutgoing){
+					if(edge instanceof mxCell){
+						mxCell cell = (mxCell)edge;
+						Object obj1 = cell.source.getValue();
+						Object obj2 = this.getValue();
+						if((obj1 instanceof INoeud) && (obj2 instanceof INoeud)){
+							INoeud noeud1 = (INoeud)obj1;
+							INoeud noeud2 = (INoeud)obj2;
+							ILien  lien = new Lien(noeud1,noeud2);
+							((mxCell) edge).value = lien;
+						}
+						
+					}
+
+				}
 			}
 		}
 
@@ -505,8 +524,11 @@ public class mxCell implements mxICell, Cloneable, Serializable
 			{
 				edges.remove(edge);
 			}
-			
+
 			edge.setTerminal(null, isOutgoing);
+			if(edge.getValue() instanceof IRemovable){
+				((IRemovable) edge.getValue()).remove();
+			}
 		}
 
 		return edge;
