@@ -20,7 +20,7 @@ public class AlignCellsAction extends AbstractAction
 
 	/**
 	 * 
-	 * @param key
+	 * @param align 
 	 */
 	public AlignCellsAction(String align)
 	{

@@ -56,6 +56,10 @@ import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
 import fr.enib.game.editor.graphe.util.mxUndoableEdit.mxUndoableChange;
 import fr.enib.game.editor.graphe.view.mxGraph;
 
+/**
+ * 
+ *
+ */
 public class BasicGraphEditor extends JPanel
 {
 
@@ -160,6 +164,8 @@ public class BasicGraphEditor extends JPanel
 	};
 
 	/**
+	 * @param appTitle 
+	 * @param component 
 	 * 
 	 */
 	public BasicGraphEditor(String appTitle, mxGraphComponent component)
@@ -557,6 +563,7 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
+	 * @param file 
 	 * 
 	 */
 	public void setCurrentFile(File file)
@@ -573,6 +580,7 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
+	 * @return  {@link File}
 	 * 
 	 */
 	public File getCurrentFile()
@@ -607,6 +615,7 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
+	 * @return {@link mxGraphComponent}
 	 * 
 	 */
 	public mxGraphComponent getGraphComponent()
@@ -615,6 +624,7 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
+	 * @return {@link mxGraphOutline}
 	 * 
 	 */
 	public mxGraphOutline getGraphOutline()
@@ -623,6 +633,7 @@ public class BasicGraphEditor extends JPanel
 	}
 	
 	/**
+	 * @return {@link JPanel}
 	 * 
 	 */
 	public JPanel getLibraryPane()
@@ -631,6 +642,7 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
+	 * @return {@link mxUndoManager}
 	 * 
 	 */
 	public mxUndoManager getUndoManager()
@@ -653,6 +665,7 @@ public class BasicGraphEditor extends JPanel
 	 * 
 	 * @param name
 	 * @param action
+	 * @param iconUrl 
 	 * @return a new Action bound to the specified string name and icon
 	 */
 	@SuppressWarnings("serial")
@@ -739,6 +752,7 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
+	 * @param clazz 
 	 * 
 	 */
 	public void setLookAndFeel(String clazz)
@@ -763,6 +777,8 @@ public class BasicGraphEditor extends JPanel
 	}
 
 	/**
+	 * @param menuBar 
+	 * @return {@link JFrame}
 	 * 
 	 */
 	public JFrame createFrame(JMenuBar menuBar)
@@ -784,6 +800,7 @@ public class BasicGraphEditor extends JPanel
 	 * 
 	 * @param key Key to be used for getting the label from mxResources and also
 	 * to create the layout instance for the commercial graph editor example.
+	 * @param animate 
 	 * @return an action that executes the specified layout
 	 */
 	@SuppressWarnings("serial")

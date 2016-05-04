@@ -6,11 +6,8 @@ package fr.enib.game.editor.graphe.examples.swing.action;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.JOptionPane;
 
 import fr.enib.game.app.Viewer;
-import fr.enib.game.editor.graphe.view.mxGraph;
-import fr.enib.game.model.interfaces.IModelObject;
 
 /**
  * @author Corentin Boleis
