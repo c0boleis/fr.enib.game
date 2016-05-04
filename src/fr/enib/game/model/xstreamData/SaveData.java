@@ -10,6 +10,4 @@ package fr.enib.game.model.xstreamData;
  *
  */
 public class SaveData {
-	
-	
 }

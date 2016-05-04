@@ -13,6 +13,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.listeners.IListener;
+import fr.enib.game.model.listeners.IModelListener;
 
 /**
  * @author Corentin Boleis
@@ -21,6 +22,7 @@ import fr.enib.game.model.listeners.IListener;
 public class Model implements IModel{
 		
 	private List<IModelObject> modelObjects = new ArrayList<IModelObject>();
+	private List<IListener> listListener = new ArrayList<IListener>();
 	
 	private static final Model INSTANCE = new Model();
 
@@ -73,7 +75,6 @@ public class Model implements IModel{
 		if(modelObjects.isEmpty()){
 			return false;
 		}
-		XStream xstream = new XStream(new DomDriver());
 		return true;
 	}
 
@@ -84,7 +85,22 @@ public class Model implements IModel{
 	public synchronized boolean ajouterModelObject(IModelObject noeud) {
 		if(containsModeObject(noeud.getId()))return false;
 		this.modelObjects.add(noeud);
+		fireAddModelObject(noeud);
 		return true;
+	}
+
+	/**
+	 * @param noeud
+	 * 
+	 * This function add in the listener the object added in the model
+	 */
+	private void fireAddModelObject(IModelObject noeud) {
+		IListener[] listenerTab = this.listListener.toArray(new IListener[0]);
+		for(IListener listener : listenerTab){
+			if(listener instanceof IModelListener){
+				((IModelListener) listener).iModelObjectAdded(noeud);
+			}
+		}
 	}
 
 	/* (non-Javadoc)
@@ -139,26 +155,30 @@ public class Model implements IModel{
 	 * @see fr.enib.game.model.listeners.IEcouteurListener#addListener(fr.enib.game.model.listeners.IListener)
 	 */
 	@Override
-	public void addListener(IListener listener) {
-		// TODO Auto-generated method stub
-		
+	public synchronized void addListener(IListener listener) {
+		listListener.add(listener);
 	}
 
 	/* (non-Javadoc)
 	 * @see fr.enib.game.model.listeners.IEcouteurListener#removeAllListener()
 	 */
 	@Override
-	public void removeAllListener() {
-		// TODO Auto-generated method stub
+	public synchronized void removeAllListener() {
 		
+		if(!listListener.isEmpty() && listListener != null){
+			listListener.clear();
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see fr.enib.game.model.listeners.IEcouteurListener#removeListener(fr.enib.game.model.listeners.IListener)
+	 * This function allow
 	 */
 	@Override
-	public void removeListener(IListener listener) {
-		// TODO Auto-generated method stub
+	public synchronized void removeListener(IListener listener) {
+		if(listener != null && listListener.contains(listener)){
+			listListener.remove(listener);
+		}
 		
 	}
 
