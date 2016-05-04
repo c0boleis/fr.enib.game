@@ -28,15 +28,22 @@ public class Noeud implements INoeud {
 	
 	private List<ILien> liensSrotants = new ArrayList<ILien>();
 	
-	public static final int LIMIT_LIEN_ENTRANT_NOEUD = 1;
+	private int limitLienEntrant = 1;
 	
-	public static final int LIMIT_LIEN_SORTANT = -1;
+	private int limitLienSortant = -1;
 	
 	/**
 	 * 
 	 */
 	public Noeud() {
 		this.id = NOM_PAR_DEFAULT;
+	}
+	
+	/**
+	 * @param id
+	 */
+	public Noeud(String id){
+		this.id = id;;
 	}
 
 	/* (non-Javadoc)
@@ -202,6 +209,12 @@ public class Noeud implements INoeud {
 		 * pas
 		 */
 		if(!lien.getNoeudArrivee().getId().equals(getId()))return false;
+		/*
+		 * si il y a déjà assez de lien, on n'ajoute pas le lien
+		 */
+		if(this.liensEntrants.size()>=limitLienEntrant && limitLienEntrant>=0){
+			return false;
+		}
 		this.liensEntrants.add(lien);
 		return true;
 	}
@@ -251,6 +264,12 @@ public class Noeud implements INoeud {
 		 * pas
 		 */
 		if(!lien.getNoeudDepart().getId().equals(getId()))return false;
+		/*
+		 * si il y a déjà assez de lien, on n'ajoute pas le lien
+		 */
+		if(this.liensEntrants.size()>=limitLienSortant && limitLienSortant >=0){
+			return false;
+		}
 		this.liensEntrants.add(lien);
 		return true;
 	}
