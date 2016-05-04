@@ -39,12 +39,12 @@ public class Lien implements ILien {
 		this.id = noeudDepart.getId()+"_vers_"+noeudArrivee.getId();
 
 		if(!this.noeudDepart.ajouterLienSortant(this)){
-			throw new IllegalAccessError("le liens "+this.id+" n'a pas pu etre ajouter"
+			throw new IllegalArgumentException("le liens "+this.id+" n'a pas pu etre ajouter"
 					+ " au noeud de départ "+this.noeudArrivee.getId());
 		}
 		
 		if(!this.noeudArrivee.ajouterLienEntrant(this)){
-			throw new IllegalAccessError("le liens "+this.id+" n'a pas pu etre ajouter"
+			throw new IllegalArgumentException("le liens "+this.id+" n'a pas pu etre ajouter"
 					+ " au noeud d'arrivée "+this.noeudArrivee.getId());
 		}
 	}

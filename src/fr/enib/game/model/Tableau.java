@@ -35,6 +35,8 @@ public class Tableau extends Noeud implements ITableau{
 	 */
 	public Tableau() {
 		this.setId(NOM_PAR_DEFAULT);
+		this.limitLienEntrant = -1;
+		this.limitLienSortant = 0;
 	}
 
 	/* (non-Javadoc)
