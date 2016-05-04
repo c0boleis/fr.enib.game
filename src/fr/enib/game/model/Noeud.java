@@ -28,6 +28,10 @@ public class Noeud implements INoeud {
 	
 	private List<ILien> liensSrotants = new ArrayList<ILien>();
 	
+	public static final int LIMIT_LIEN_ENTRANT_NOEUD = 1;
+	
+	public static final int LIMIT_LIEN_SORTANT = -1;
+	
 	/**
 	 * 
 	 */
