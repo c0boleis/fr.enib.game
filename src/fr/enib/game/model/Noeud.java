@@ -25,6 +25,8 @@ public class Noeud implements INoeud {
 	
 	private boolean visiter = false;
 	
+	private float DegreInteret;
+	
 	private List<ILien> liensEntrants = new ArrayList<ILien>();
 	
 	private List<ILien> liensSortants = new ArrayList<ILien>();
@@ -32,6 +34,7 @@ public class Noeud implements INoeud {
 	protected int limitLienEntrant = 1;
 	
 	protected int limitLienSortant = -1;
+	
 	
 	/**
 	 * 
@@ -312,7 +315,10 @@ public class Noeud implements INoeud {
 	@Override
 	public boolean setDegreInteret(float degre) {
 		// TODO Auto-generated method stub
+		DegreInteret = degre;
 		return false;
+		
+		
 	}
 
 	/* (non-Javadoc)
@@ -321,7 +327,7 @@ public class Noeud implements INoeud {
 	@Override
 	public float getDegreInteret() {
 		// TODO Auto-generated method stub
-		return 0;
+		return DegreInteret;
 	}
 
 	/* (non-Javadoc)
