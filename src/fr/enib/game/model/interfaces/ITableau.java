@@ -47,6 +47,10 @@ public interface ITableau extends INoeud{
 	/**
 	 * @return les dimensions du tableau
 	 */
-	public String dimensionTableau();
+	public float getLargeurTableau();
 	
+	/**
+	 * @return les dimensions du tableau
+	 */
+	public float getHauteurTableau();
 }

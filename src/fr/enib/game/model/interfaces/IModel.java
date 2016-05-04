@@ -1,11 +1,13 @@
 package fr.enib.game.model.interfaces;
 
+import fr.enib.game.model.listeners.IEcouteurListener;
+
 
 /**
  * @author Corentin Boleis
  *
  */
-public interface IModel {
+public interface IModel extends IEcouteurListener {
 	
 	/**
 	 * @param id

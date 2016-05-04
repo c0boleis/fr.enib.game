@@ -12,6 +12,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
+import fr.enib.game.model.listeners.IListener;
 
 /**
  * @author Corentin Boleis
@@ -132,6 +133,33 @@ public class Model implements IModel{
 		}
 		if(index>=tmp.length)return false;
 		return this.modelObjects.remove(index)!=null;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.listeners.IEcouteurListener#addListener(fr.enib.game.model.listeners.IListener)
+	 */
+	@Override
+	public void addListener(IListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.listeners.IEcouteurListener#removeAllListener()
+	 */
+	@Override
+	public void removeAllListener() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.listeners.IEcouteurListener#removeListener(fr.enib.game.model.listeners.IListener)
+	 */
+	@Override
+	public void removeListener(IListener listener) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

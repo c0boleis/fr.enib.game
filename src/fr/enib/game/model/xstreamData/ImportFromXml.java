@@ -5,11 +5,10 @@ package fr.enib.game.model.xstreamData;
 
 /**
  * @author BENOMATOR
- * 
- * This class allow the semantic graph to save its data.
+ *
+ * This class allow to import data from an xml file.
  *
  */
-public class SaveData {
-	
+public class ImportFromXml {
 	
 }
