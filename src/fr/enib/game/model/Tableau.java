@@ -93,7 +93,7 @@ public class Tableau extends Noeud implements ITableau{
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public Tableau clone(){
+	public Tableau cloneObject(){
 		Tableau newTableau = new Tableau();
 		newTableau.setId(Model.get().getNextId(this.getId()));
 		newTableau.description = description;

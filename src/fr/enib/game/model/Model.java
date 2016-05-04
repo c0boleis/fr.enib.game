@@ -102,6 +102,20 @@ public class Model implements IModel{
 			}
 		}
 	}
+	
+	/**
+	 * @param noeud
+	 * 
+	 * utilisé quand un {@link IModelObject} a été suprimé
+	 */
+	private void fireRemoveModelObject(IModelObject noeud) {
+		IListener[] listenerTab = this.listListener.toArray(new IListener[0]);
+		for(IListener listener : listenerTab){
+			if(listener instanceof IModelListener){
+				((IModelListener) listener).iModelObjectRemoved(noeud);
+			}
+		}
+	}
 
 	/* (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.IModel#getModelObjects()
@@ -148,7 +162,12 @@ public class Model implements IModel{
 			index++;
 		}
 		if(index>=tmp.length)return false;
-		return this.modelObjects.remove(index)!=null;
+		IModelObject modelObjectRemoved = this.modelObjects.remove(index);
+		if(modelObjectRemoved!=null){
+			fireRemoveModelObject(modelObjectRemoved);
+			return true;
+		}
+		return false;
 	}
 
 	/* (non-Javadoc)

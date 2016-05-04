@@ -16,5 +16,11 @@ public interface IModelListener extends IListener{
 	 * @param object qui a été ajouté
 	 */
 	public void iModelObjectAdded(IModelObject object);
+	
+	
+	/**
+	 * @param object
+	 */
+	public void iModelObjectRemoved(IModelObject object);
 
 }
