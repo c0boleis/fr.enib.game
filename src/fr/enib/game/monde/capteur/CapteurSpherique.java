@@ -6,9 +6,7 @@ public class CapteurSpherique extends Capteur {
 	
 	//private static Logger LOGGER = Logger.getLogger(CapteurSpherique.class);
 
-	private Objet cible ;
 	private float horizon ;
-	private boolean interieur ; 
 
 	/**
 	 * Constructeur
@@ -17,8 +15,7 @@ public class CapteurSpherique extends Capteur {
 	 * @param horizon 
 	 */
 	public CapteurSpherique(String id, Objet cible, float horizon){
-		super(id) ; 
-		this.cible = cible ;
+		super(id, cible) ; 
 		this.horizon = horizon ;
 		interieur = repere.getPostiton().distance(cible.repere.getPostiton()) < this.horizon ; 
 	}

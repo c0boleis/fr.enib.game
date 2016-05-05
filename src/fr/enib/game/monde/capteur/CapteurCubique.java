@@ -7,15 +7,11 @@ public class CapteurCubique extends Capteur {
 
 	//private static Logger LOGGER = Logger.getLogger(CapteurCubique.class);
 
-	private Objet cible ;
-
 	private float distanceX;
 
 	private float distanceY;
 
 	//private float distanceZ;
-
-	private boolean interieur = false; 
 
 	/**
 	 * Constructeur
@@ -26,12 +22,11 @@ public class CapteurCubique extends Capteur {
 	 * @param dz la position en z
 	 */
 	public CapteurCubique(String id, Objet c, float dx,float dy,float dz){
-		super(id) ;
+		super(id, c) ;
 		//LOGGER.debug("capteur cubique créer:\t"+id);
 		distanceX = dx;
 		distanceY = dy;
 		//distanceZ = dz;
-		this.cible = c ;
 		tester(0.1f);
 	}
 
@@ -116,11 +111,5 @@ public class CapteurCubique extends Capteur {
 		return false;
 	}
 
-	/**
-	 * Verifie si la cible est a l'interieur ou exterieur de la zone du capteur
-	 * @return true si la cible est a l'interieur, sinon false
-	 */
-	public boolean interieur(){
-		return interieur;
-	}
+	
 }
