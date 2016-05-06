@@ -3,6 +3,8 @@
  */
 package fr.enib.game.model;
 
+import fr.enib.game.model.enums.AjoutLienInfos;
+import fr.enib.game.model.exceptions.LimitLienException;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
 
@@ -37,16 +39,24 @@ public class Lien implements ILien {
 		this.noeudArrivee = noeudA;
 		this.noeudDepart = noeudD;
 		this.id = noeudDepart.getId()+"_vers_"+noeudArrivee.getId();
-
-		if(!this.noeudDepart.ajouterLienSortant(this)){
-			throw new IllegalArgumentException("le liens "+this.id+" n'a pas pu etre ajouter"
-					+ " au noeud de départ "+this.noeudArrivee.getId());
-		}
 		
-		if(!this.noeudArrivee.ajouterLienEntrant(this)){
-			throw new IllegalArgumentException("le liens "+this.id+" n'a pas pu etre ajouter"
-					+ " au noeud d'arrivée "+this.noeudArrivee.getId());
+		AjoutLienInfos outLien = this.noeudDepart.ajouterLienSortant(this);
+		if(outLien != AjoutLienInfos.ok){
+			if(outLien == AjoutLienInfos.limit){
+				throw new LimitLienException("limite de liens sortant dans le noeud de départ : "+this.noeudDepart.getId());
+			}
+			throw new IllegalArgumentException("le liens sortant "+this.id+" n'a pas pu etre ajouter"
+					+ " au noeud de départ "+this.noeudArrivee.getId()+" --> "+outLien.toString());
 		}
+		outLien = this.noeudArrivee.ajouterLienEntrant(this);
+		if(outLien != AjoutLienInfos.ok){
+			if(outLien == AjoutLienInfos.limit){
+				throw new LimitLienException("limite de liens entrant dans le noeud de arrivée : "+this.noeudArrivee.getId());
+			}
+			throw new IllegalArgumentException("le liens entrant"+this.id+" n'a pas pu etre ajouter"
+					+ " au noeud d'arrivée "+this.noeudArrivee.getId()+" --> "+outLien.toString());
+		}
+		System.out.println("Lien créer");
 	}
 
 	/**
@@ -96,15 +106,15 @@ public class Lien implements ILien {
 	@Override
 	public Lien cloneObject(){
 		Lien newLien = new Lien();
-		/*
-		 * comme il ne peut pas exité deux objet avec la même
-		 * id on demande a Model de générer un nouvelle id
-		 */
-		newLien.id = Model.get().getNextId(id);
-		if(Model.get().ajouterModelObject(newLien)){
-			return newLien;
-		}
-		return null;
+//		/*
+//		 * comme il ne peut pas exité deux objet avec la même
+//		 * id on demande a Model de générer un nouvelle id
+//		 */
+//		newLien.id = Model.get().getNextId(id);
+//		if(Model.get().ajouterModelObject(newLien)){
+//			return newLien;
+//		}
+		return newLien;
 	}
 
 	/* (non-Javadoc)

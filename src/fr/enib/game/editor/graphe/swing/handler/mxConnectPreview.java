@@ -133,9 +133,14 @@ public class mxConnectPreview extends mxEventSource
 	}
 
 	/**
+	 * @param e 
+	 * @param targetState 
+	 * @param x 
+	 * @param y 
+	 * @param removeILien 
 	 * 
 	 */
-	public void update(MouseEvent e, mxCellState targetState, double x, double y)
+	public void update(MouseEvent e, mxCellState targetState, double x, double y,boolean removeILien)
 	{
 		mxGraph graph = graphComponent.getGraph();
 		mxICell cell = (mxICell) previewState.getCell();
@@ -145,7 +150,7 @@ public class mxConnectPreview extends mxEventSource
 
 		if (cell.getTerminal(false) != null)
 		{
-			cell.getTerminal(false).removeEdge(cell, false);
+			cell.getTerminal(false).removeEdge(cell, false,removeILien);
 		}
 
 		if (targetState != null)
@@ -317,12 +322,12 @@ public class mxConnectPreview extends mxEventSource
 
 				if (src != null)
 				{
-					((mxICell) src).removeEdge(cell, true);
+					((mxICell) src).removeEdge(cell, true,true);
 				}
 
 				if (trg != null)
 				{
-					((mxICell) trg).removeEdge(cell, false);
+					((mxICell) trg).removeEdge(cell, false,true);
 				}
 
 				if (commit)

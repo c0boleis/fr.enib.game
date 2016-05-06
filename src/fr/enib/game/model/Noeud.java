@@ -6,6 +6,7 @@ package fr.enib.game.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.enib.game.model.enums.AjoutLienInfos;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
 
@@ -24,13 +25,16 @@ public class Noeud implements INoeud {
 	
 	private boolean visiter = false;
 	
+	private float DegreInteret;
+	
 	private List<ILien> liensEntrants = new ArrayList<ILien>();
 	
-	private List<ILien> liensSrotants = new ArrayList<ILien>();
+	private List<ILien> liensSortants = new ArrayList<ILien>();
 	
 	protected int limitLienEntrant = 1;
 	
 	protected int limitLienSortant = -1;
+	
 	
 	/**
 	 * 
@@ -104,7 +108,7 @@ public class Noeud implements INoeud {
 		 * permet que personne ne puiss utilisé la liste pour 
 		 * ajouter de nouveaux liens.
 		 */
-		return this.liensSrotants.toArray(new ILien[0]);
+		return this.liensSortants.toArray(new ILien[0]);
 	}
 
 	/* (non-Javadoc)
@@ -189,7 +193,7 @@ public class Noeud implements INoeud {
 				return false;
 			}
 		}
-		this.liensSrotants.clear();
+		this.liensSortants.clear();
 		return true;
 	}
 
@@ -197,29 +201,29 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.INoeud#ajouterLienEntrant(fr.enib.game.model.interfaces.ILien)
 	 */
 	@Override
-	public boolean ajouterLienEntrant(ILien lien) {
+	public AjoutLienInfos ajouterLienEntrant(ILien lien) {
 		//si le liens a déjà lié a noeud on n'a l'ajoute pas
-		if(containsLienEntrant(lien.getId()))return false;
+		if(containsLienEntrant(lien.getId()))return AjoutLienInfos.contains;
 		/*
 		 * si le noeud d'arrivée est null
 		 * lien n'est pas corect donc on ne l'ajouter
 		 * pas
 		 */
-		if(lien.getNoeudArrivee()==null)return false;
+		if(lien.getNoeudArrivee()==null)return AjoutLienInfos.noeudnull;
 		/*
 		 * si le noeud d'arrivée n'est pas ce noeud le
 		 * lien n'est pas corect donc on ne l'ajouter
 		 * pas
 		 */
-		if(!lien.getNoeudArrivee().getId().equals(getId()))return false;
+		if(!lien.getNoeudArrivee().getId().equals(getId()))return AjoutLienInfos.noeudFaux;
 		/*
 		 * si il y a déjà assez de lien, on n'ajoute pas le lien
 		 */
 		if(this.liensEntrants.size()>=limitLienEntrant && limitLienEntrant>=0){
-			return false;
+			return AjoutLienInfos.limit;
 		}
 		this.liensEntrants.add(lien);
-		return true;
+		return AjoutLienInfos.ok;
 	}
 	
 	private boolean containsLienEntrant(String idLien){
@@ -245,6 +249,7 @@ public class Noeud implements INoeud {
 			}
 			index++;
 		}
+		if(index>=this.liensEntrants.size())return false;
 		return this.liensEntrants.remove(index)!=null;
 	}
 
@@ -252,29 +257,29 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.INoeud#ajouterLienSortant(fr.enib.game.model.interfaces.ILien)
 	 */
 	@Override
-	public boolean ajouterLienSortant(ILien lien) {
+	public AjoutLienInfos ajouterLienSortant(ILien lien) {
 		//si le liens a déjà lié a noeud on n'a l'ajoute pas
-		if(containsLienSortant(lien.getId()))return false;
+		if(containsLienSortant(lien.getId()))return AjoutLienInfos.contains;
 		/*
 		 * si le noeud d'arrivée est null
 		 * lien n'est pas corect donc on ne l'ajouter
 		 * pas
 		 */
-		if(lien.getNoeudDepart()==null)return false;
+		if(lien.getNoeudDepart()==null)return  AjoutLienInfos.noeudnull;
 		/*
 		 * si le noeud de depart n'est pas ce noeud le
 		 * lien n'est pas corect donc on ne l'ajouter
 		 * pas
 		 */
-		if(!lien.getNoeudDepart().getId().equals(getId()))return false;
+		if(!lien.getNoeudDepart().getId().equals(getId()))return  AjoutLienInfos.noeudFaux;
 		/*
 		 * si il y a déjà assez de lien, on n'ajoute pas le lien
 		 */
-		if(this.liensSrotants.size()>=limitLienSortant && limitLienSortant >=0){
-			return false;
+		if(this.liensSortants.size()>=limitLienSortant && limitLienSortant >=0){
+			return AjoutLienInfos.limit;
 		}
-		this.liensSrotants.add(lien);
-		return true;
+		this.liensSortants.add(lien);
+		return AjoutLienInfos.ok;
 	}
 	
 	private boolean containsLienSortant(String idLien){
@@ -300,7 +305,8 @@ public class Noeud implements INoeud {
 			}
 			index++;
 		}
-		return this.liensSrotants.remove(index)!=null;
+		if(index>=this.liensSortants.size())return false;
+		return this.liensSortants.remove(index)!=null;
 	}
 
 	/* (non-Javadoc)
@@ -309,7 +315,10 @@ public class Noeud implements INoeud {
 	@Override
 	public boolean setDegreInteret(float degre) {
 		// TODO Auto-generated method stub
+		DegreInteret = degre;
 		return false;
+		
+		
 	}
 
 	/* (non-Javadoc)
@@ -318,7 +327,23 @@ public class Noeud implements INoeud {
 	@Override
 	public float getDegreInteret() {
 		// TODO Auto-generated method stub
-		return 0;
+		return DegreInteret;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.INoeud#lienEntrantSontConectables()
+	 */
+	@Override
+	public boolean lienEntrantSontConectables() {
+		return this.liensEntrants.size()<this.limitLienEntrant || this.limitLienEntrant<0;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.INoeud#lienSortantSontConectables()
+	 */
+	@Override
+	public boolean lienSortantSontConectables() {
+		return this.liensSortants.size()<this.limitLienSortant|| this.limitLienSortant<0;
 	}
 
 }

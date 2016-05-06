@@ -11,6 +11,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import fr.enib.game.model.Lien;
+import fr.enib.game.model.Model;
+import fr.enib.game.model.enums.LienConection;
+import fr.enib.game.model.exceptions.LimitLienException;
 import fr.enib.game.model.interfaces.IClonableObject;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
@@ -216,16 +219,30 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		this.edge = edge;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.enib.game.editor.graphe.model.mxICell#isConnectable()
+	/*
+	 * (non-Javadoc)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#isConnectable(fr.enib.game.model.enums.LienConection)
 	 */
-	public boolean isConnectable()
+	@Override
+	public boolean isConnectable(LienConection conection)
 	{
+		if(value instanceof INoeud){
+			INoeud noeud = (INoeud) value;
+			switch (conection) {
+			case entrant:
+				return noeud.lienEntrantSontConectables();
+			case sortant:
+				return noeud.lienSortantSontConectables();
+			default:
+				return connectable;
+			}
+		}
 		return connectable;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.enib.game.editor.graphe.model.mxICell#setConnectable(boolean)
+	/**
+	 * 
+	 * @param connectable
 	 */
 	public void setConnectable(boolean connectable)
 	{
@@ -475,7 +492,6 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	/* (non-Javadoc)
 	 * @see fr.enib.game.editor.graphe.model.mxICell#insertEdge(fr.enib.game.editor.graphe.model.mxICell, boolean)
 	 */
-	@SuppressWarnings("unused")
 	public mxICell insertEdge(mxICell edge, boolean isOutgoing)
 	{
 		if (edge != null)
@@ -492,28 +508,30 @@ public class mxCell implements mxICell, Cloneable, Serializable
 				}
 
 				edges.add(edge);
-				if(!isOutgoing){
-					if(edge instanceof mxCell){
-						mxCell cell = (mxCell)edge;
-						Object obj1 = cell.source.getValue();
-						Object obj2 = this.getValue();
-						if((obj1 instanceof INoeud) && (obj2 instanceof INoeud)){
-							INoeud noeud1 = (INoeud)obj1;
-							INoeud noeud2 = (INoeud)obj2;
-							try{
-								ILien  lien = new Lien(noeud1,noeud2);
-								((mxCell) edge).value = lien;
-							}catch(IllegalArgumentException e){
-								this.removeEdge(edge, isOutgoing);
-								cell.removeEdge(edge, !isOutgoing);
-								edge.removeFromParent();
-								e.printStackTrace();
-							}
-							
-						}
-						
-					}
-
+				if(isOutgoing)return edge;
+				if(!(edge instanceof mxCell))return edge;
+				mxCell cell = (mxCell)edge;
+				if(cell.source==null)return edge;
+				Object obj1 = cell.source.getValue();
+				Object obj2 = this.getValue();
+				if(!(obj1 instanceof INoeud))return edge;
+				if(!(obj2 instanceof INoeud))return edge;
+				INoeud noeud1 = (INoeud)obj1;
+				INoeud noeud2 = (INoeud)obj2;
+				try{
+					ILien  lien = new Lien(noeud1,noeud2);
+					((mxCell) edge).value = lien;
+					Model.get().ajouterModelObject(lien);
+				}catch(IllegalArgumentException e){
+					//								this.removeEdge(edge, isOutgoing);
+					//								cell.removeEdge(edge, !isOutgoing);
+					//								edge.removeFromParent();
+					//								e.printStackTrace();
+				}catch(LimitLienException e){
+					this.removeEdge(edge, isOutgoing,true);
+					cell.removeEdge(edge, !isOutgoing,true);
+					edge.removeFromParent();
+					e.printStackTrace();
 				}
 			}
 		}
@@ -521,10 +539,12 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		return edge;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.enib.game.editor.graphe.model.mxICell#removeEdge(fr.enib.game.editor.graphe.model.mxICell, boolean)
+	/* 
+	 * (non-Javadoc)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#removeEdge(fr.enib.game.editor.graphe.model.mxICell, boolean, boolean)
 	 */
-	public mxICell removeEdge(mxICell edge, boolean isOutgoing)
+	@Override
+	public mxICell removeEdge(mxICell edge, boolean isOutgoing,boolean removeEdge)
 	{
 		if (edge != null)
 		{
@@ -535,7 +555,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 
 			edge.setTerminal(null, isOutgoing);
 			if(edge.getValue() instanceof IRemovable){
-				((IRemovable) edge.getValue()).remove();
+				if(removeEdge)((IRemovable) edge.getValue()).remove();
 			}
 		}
 
@@ -551,7 +571,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 
 		if (terminal != null)
 		{
-			terminal.removeEdge(this, isSource);
+			terminal.removeEdge(this, isSource,true);
 		}
 	}
 
@@ -621,7 +641,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		clone.setValue(cloneValue(transfert));
 		clone.setStyle(getStyle());
 		clone.setCollapsed(isCollapsed());
-		clone.setConnectable(isConnectable());
+		clone.setConnectable(isConnectable(LienConection.entrant_sortant));
 		clone.setEdge(isEdge());
 		clone.setVertex(isVertex());
 		clone.setVisible(isVisible());

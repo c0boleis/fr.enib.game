@@ -1,5 +1,7 @@
 package fr.enib.game.model.interfaces;
 
+import fr.enib.game.model.enums.AjoutLienInfos;
+
 /**
  * @author Corentin Boleis
  *
@@ -19,9 +21,14 @@ public interface INoeud extends IModelObject,IVisitableObject,IObjectInteret{
 	
 	/**
 	 * @param lien
-	 * @return true si le lien a été ajouté
+	 * @return {@link AjoutLienInfos#ok} si le lien a été ajouté
 	 */
-	public boolean ajouterLienEntrant(ILien lien);
+	public AjoutLienInfos ajouterLienEntrant(ILien lien);
+	
+	/**
+	 * @return true si on peut ajouter un lien Sortant
+	 */
+	public boolean lienEntrantSontConectables();
 	
 	/**
 	 * @param lien
@@ -37,13 +44,18 @@ public interface INoeud extends IModelObject,IVisitableObject,IObjectInteret{
 	
 	/**
 	 * @param lien
-	 * @return true si le lien a été ajouté
+	 * @return {@link AjoutLienInfos#ok} si le lien a été ajouté
 	 */
-	public boolean ajouterLienSortant(ILien lien);
+	public AjoutLienInfos ajouterLienSortant(ILien lien);
+	
+	/**
+	 * @return true si on peut ajouter un lien Sortant
+	 */
+	public boolean lienSortantSontConectables();
 	
 	/**
 	 * @param lien
-	 * @return true si le lien a été suprimé
+	 * @return {@link AjoutLienInfos#ok} si le lien a été suprimé
 	 */
 	public boolean suprimerLienSortant(ILien lien);
 	
