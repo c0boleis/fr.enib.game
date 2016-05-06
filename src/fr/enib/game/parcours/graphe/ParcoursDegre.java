@@ -10,31 +10,41 @@ import fr.enib.game.model.interfaces.INoeud;
  * @author magali Hautcoeur
  *
  */
-public class ParcoursDegre {
+public class ParcoursDegre extends Parcours {
 	
-	float degreGagnant = 0;
-	INoeud nouveauNoeudCourant = new Noeud();
-	INoeud noeudCourant = new Noeud();
-	
-	public ParcoursDegre(INoeud NCourant){
-		noeudCourant =NCourant;
+	/**
+	 * @param NCourant
+	 */
+	public ParcoursDegre(INoeud NCourant) {
+		super(NCourant);
+		// TODO Auto-generated constructor stub
 	}
-	
-	public INoeud parcoursNoeudEnfant(){
+
+	float degreGagnant = 0;
+		
+	public INoeud parcoursObjetSuivant(){
+		System.out.println("-------------- Le noeud courant est : "+ this.noeudCourant.getId() + " --------------");
 		//la boucle parcours tous les liens sortant du noeud
-		for(int i =0; i< noeudCourant.getLiensSortant().length; i++)
+		if(this.noeudCourant.getLiensSortant().length == 0)
 		{
-		   //Si le poids du lien est supérieur au poidsGagnant
-			System.out.println(noeudCourant.getLiensSortant()[i].getNoeudArrivee().getDegreInteret());
-		   if(noeudCourant.getLiensSortant()[i].getNoeudArrivee().getDegreInteret()> degreGagnant)
-			{
-				//On change la valeur du poidsGagnant et on affecte le noeud d'arrivee au nouveauNoeudCourant
-			    degreGagnant = noeudCourant.getLiensSortant()[i].getNoeudArrivee().getDegreInteret();
-				nouveauNoeudCourant = noeudCourant.getLiensSortant()[i].getNoeudArrivee();
-			}
+			System.out.println("Le noeud courant est une feuille");
+			return this.noeudCourant;
 		}
-		System.out.println("Le Degre est :" + degreGagnant + " donc le noeud est : " + nouveauNoeudCourant);
-		return nouveauNoeudCourant;
+		else
+		{
+			for(int i =0; i< this.noeudCourant.getLiensSortant().length; i++)
+			{
+			   //Si le poids du lien est supérieur au poidsGagnant
+			   if(this.noeudCourant.getLiensSortant()[i].getNoeudArrivee().getDegreInteret()> this.degreGagnant)
+				{
+					//On change la valeur du poidsGagnant et on affecte le noeud d'arrivee au nouveauNoeudCourant
+				    this.degreGagnant = this.noeudCourant.getLiensSortant()[i].getNoeudArrivee().getDegreInteret();
+					this.nouveauNoeudCourant = this.noeudCourant.getLiensSortant()[i].getNoeudArrivee();
+				}
+			}
+			System.out.println("Le Degre est :" + this.degreGagnant + " donc le noeud est : " + this.nouveauNoeudCourant);
+			return this.nouveauNoeudCourant;
+		}
 		
 	}
 
