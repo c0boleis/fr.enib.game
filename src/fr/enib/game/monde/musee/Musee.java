@@ -66,6 +66,7 @@ public class Musee {
 		Salle s = new Salle(prefixIdSalle + nom, this.largeurSalle, this.profondeurSalle, this.hauteurSalle);
 		if(salleCourante == null){
 			this.salleCourante = s;
+			this.salleCourante.capteurPresenceAvatar.setInterieur(true);
 			monde.setSalleCourante(this.salleCourante);
 		}		
 		salles.put(s.getId(), s);

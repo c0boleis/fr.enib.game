@@ -117,7 +117,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	public void display(GLAutoDrawable drawable) {
 		float t = (float)(System.currentTimeMillis()) ;
 		Monde.get().display(drawable);
-		Monde.get().actualiser(t) ; 
+		Monde.get().actualiser(t); 
 	}
 
 	@Override

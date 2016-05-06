@@ -19,6 +19,7 @@ import fr.enib.game.monde.core.Observer;
 import fr.enib.game.monde.core.Situable;
 import fr.enib.game.monde.geo.Vec3;
 import fr.enib.game.monde.graphic_core.TrouMur;
+import fr.enib.game.monde.objet.Avatar;
 import fr.enib.game.monde.objet.Mur;
 import fr.enib.game.monde.objet.Objet;
 import fr.enib.game.monde.objet.Plafond;
@@ -55,6 +56,11 @@ public class Salle extends Situable implements Observer{
 		// pour l'instant une salle ne peut pas avoir de maitre.
 		this.setMaitre(null);
 		this.objets     = new HashMap<String,Objet>() ;
+		this.capteurs   = new HashMap<String,Capteur>() ;
+		
+		capteurPresenceAvatar = new CapteurCubique("capt"+getId(), Avatar.get(), this);
+		capteurPresenceAvatar.add(this);
+		ajouter( capteurPresenceAvatar);
 	}
 	
 	/**
@@ -82,7 +88,7 @@ public class Salle extends Situable implements Observer{
 		Monde.get().ajouterSalle(this);
 
 		this.objets     = new HashMap<String,Objet>() ;
-		//this.capteurs   = new HashMap<String,Capteur>() ;
+		this.capteurs   = new HashMap<String,Capteur>() ;
 		this.voisines   = new HashMap<String,Salle>() ;
 
 		this.nbrPorte = 0;
@@ -98,7 +104,10 @@ public class Salle extends Situable implements Observer{
 		this.setMaitre(null);
 		
 		//on met a jour les information du capteur
-		//capteurPresenceAvatar.setSalle(this);
+		capteurPresenceAvatar = new CapteurCubique("capt"+getId(),Avatar.get(), this);
+		capteurPresenceAvatar.add(this);
+		ajouter(capteurPresenceAvatar);
+		capteurPresenceAvatar.setSalle(this);
 
 		ajouter( new Sol(TypeObjet.SOL.toString() + getId() , RessourceProvider.pathTextureSol, largeur, profondeur));
 		ajouter( new Plafond(TypeObjet.PLAFOND.toString() + getId(), RessourceProvider.pathTexturePlafond, largeur, profondeur));  
@@ -195,7 +204,7 @@ public class Salle extends Situable implements Observer{
 	 * Ajout d'une porte a la salle en fonction de la salle voisine 
 	 * @param salleVoisine la salle voisine ou l'on veut ajouter la porte
 	 */
-	public void ajouterPorte(Salle salleVoisine){
+	public void ajouterPorte(Salle salleVoisine){ // TODO faire les salles en diagonales
 		//String id_porte = "trou0"+ nbrPorte + "_" + this.getId();
 		float dM = -1.0f;
 		float pTrouSalle;
@@ -212,10 +221,10 @@ public class Salle extends Situable implements Observer{
 				pTrouSalle = this.largeur / 2.0f;
 			}
 			else if(dy < 0){ // La salle voisine est a droite de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f; 
 			}
 			else{ // La salle voisine est a gauche de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f; 
 			}
 			
 			getMurAvant().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
@@ -237,10 +246,10 @@ public class Salle extends Situable implements Observer{
 				pTrouSalle = this.largeur / 2.0f;
 			}
 			else if(dy < 0){ // La salle voisine est a droite de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f; 
 			}
 			else{ // La salle voisine est a gauche de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f; 
 			}
 			
 			getMurArriere().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
@@ -262,10 +271,10 @@ public class Salle extends Situable implements Observer{
 				pTrouSalle = this.profondeur / 2.0f;
 			}
 			else if(dx < 0){ // La salle voisine est en arriere de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f; 
 			}
 			else{ // La salle voisine esten arriere de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f; 
 			}
 			
 			getMurGauche().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
@@ -289,10 +298,10 @@ public class Salle extends Situable implements Observer{
 				pTrouSalle = this.profondeur / 2.0f;
 			}
 			else if(dx < 0){ // La salle voisine est en arriere de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f; 
 			}
 			else{ // La salle voisine esten arriere de la salle
-				pTrouSalle = 0.0f; // TODO
+				pTrouSalle = 0.0f;
 			}
 			
 			getMurDroite().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
@@ -488,10 +497,10 @@ public class Salle extends Situable implements Observer{
 	 * @param dt ???
 	 */
 	public void actualiser(float t, float dt){
-		/*for(Capteur capteur : capteurs.values()){
+		for(Capteur capteur : capteurs.values()){
 			//LOGGER.debug("teste capteur("+capteur.getId()+") salle:\t" + this.getId());
-			capteur.tester(t) ; 
-		}*/
+			capteur.tester(t); 
+		}
 	}
 
 	/**
@@ -617,7 +626,15 @@ public class Salle extends Situable implements Observer{
 	 */
 	@Override
 	public void update(String aspect, Object valeur, Observable de) {
-		
+		//LOGGER.debug("update salle("+this.getId()+"):\t"+aspect);
+				/*if(aspect.equals(Capteur.ENTREE)){
+					//MuseeIA.get().initSalle(this);
+					Monde.get().setSalleCourante(this);
+					LOGGER.info(noeudGraphe==null?"Entré dans la salle:\t"+
+							this.getId()+"\tle noeud est null":
+								":Entré dans la salle:\t"+
+								this.getId()+"\tle noeud est:\t"+noeudGraphe.getId());
+				}*/
 	}
 	
 

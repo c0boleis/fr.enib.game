@@ -1,10 +1,12 @@
 package fr.enib.game.monde.capteur;
 
+import org.apache.log4j.Logger;
+
 import fr.enib.game.monde.objet.Objet;
 
 public class CapteurSpherique extends Capteur {
 	
-	//private static Logger LOGGER = Logger.getLogger(CapteurSpherique.class);
+	private static Logger LOGGER = Logger.getLogger(CapteurSpherique.class);
 
 	private float horizon ;
 
@@ -27,12 +29,12 @@ public class CapteurSpherique extends Capteur {
 		float d = repere.getPostiton().distance(cible.repere.getPostiton()) ; 
  
 		if (interieur && d > horizon){
-			//LOGGER.info("SORTIE") ; 
+			LOGGER.info("SORTIE") ; 
 			interieur = false ; 
 			update("sortie",null) ; 
 		} else
 		if (! interieur && d < horizon){
-			//LOGGER.info("ENTREE") ; 
+			LOGGER.info("ENTREE") ; 
 			interieur = true ; 
 			update("entree",null) ; 
 		}

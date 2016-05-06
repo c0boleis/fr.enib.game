@@ -1,11 +1,13 @@
 package fr.enib.game.monde.capteur;
 
+import org.apache.log4j.Logger;
+
 import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.monde.objet.Objet;
 
 public class CapteurCubique extends Capteur {
 
-	//private static Logger LOGGER = Logger.getLogger(CapteurCubique.class);
+	private static Logger LOGGER = Logger.getLogger(CapteurCubique.class);
 
 	private float distanceX;
 
@@ -27,7 +29,8 @@ public class CapteurCubique extends Capteur {
 		distanceX = dx;
 		distanceY = dy;
 		//distanceZ = dz;
-		tester(0.1f);
+		interieur = false;
+		//tester(0.1f);
 	}
 
 	/**
@@ -74,7 +77,7 @@ public class CapteurCubique extends Capteur {
 			return;
 		}
 		if(!interieur){
-			//LOGGER.info(ENTREE+":\t"+getId()) ;
+			LOGGER.info(ENTREE+":\t"+getId()) ;
 			interieur = true ; 
 			update(ENTREE,null) ;
 		}

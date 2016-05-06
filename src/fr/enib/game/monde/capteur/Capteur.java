@@ -52,4 +52,10 @@ public abstract class Capteur extends Situable  {
 	public boolean interieur(){
 		return interieur;
 	}
+
+	public void setInterieur(boolean interieur) {
+		this.interieur = interieur;
+	}
+	
+	
 }
