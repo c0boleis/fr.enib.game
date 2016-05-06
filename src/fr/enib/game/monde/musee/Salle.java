@@ -49,6 +49,9 @@ public class Salle extends Situable implements Observer{
 	 */
 	protected Salle(String id){
 		super(id);
+		this.largeur = 5.0f;
+		this.profondeur = 5.0f;
+		this.hauteur = 3.0f;
 		// pour l'instant une salle ne peut pas avoir de maitre.
 		this.setMaitre(null);
 		this.objets     = new HashMap<String,Objet>() ;
@@ -453,19 +456,19 @@ public class Salle extends Situable implements Observer{
 	 */
 	public void ajouterTableau(Tableau t) {
 		if(ajouterTableau(t, TypeObjet.MUR_AVANT)) {
-			LOGGER.debug("Tableau " + t.getId() + " sur mur avant ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur avant ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_DROIT)){
-			LOGGER.debug("Tableau " + t.getId() + " sur mur droite ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur droite ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_GAUCHE)){
-			LOGGER.debug("Tableau " + t.getId() + " sur mur gauche ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur gauche ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_ARRIERE)){
-			LOGGER.debug("Tableau " + t.getId() + " sur mur arriere ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur arriere ajouté !");
 		}
 		else{
-			LOGGER.info("Tableau " + t.getId() + " n'a pas été ajouté !");
+			LOGGER.debug("Tableau " + t.getId() + " n'a pas été ajouté !");
 		}
 	}
 

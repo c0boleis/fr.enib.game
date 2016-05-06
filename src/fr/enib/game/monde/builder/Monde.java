@@ -82,22 +82,28 @@ public class Monde {
 
 		Avatar.get().placer(gl) ;
 
-		salleCourante.dessiner(gl) ; 
-		if(salleCourante.voisines != null){
-			for(Salle salleVoisine : salleCourante.voisines.values()){
-				salleVoisine.dessiner(gl);
+		if(salleCourante != null){
+			salleCourante.dessiner(gl);
+			if(salleCourante.voisines != null){
+				for(Salle salleVoisine : salleCourante.voisines.values()){
+					salleVoisine.dessiner(gl);
+				}
 			}
 		}
+		
 	}
 
 	public void actualiser(float t){
-		salleCourante.actualiser(0.0f,0.0f) ;
-		
-		if(salleCourante.voisines != null){
-			for(Salle salleVoisine : salleCourante.voisines.values()){
-				salleVoisine.actualiser(0.0f, 0.0f);
+		if(salleCourante != null){
+			salleCourante.actualiser(0.0f,0.0f) ;
+			if(salleCourante.voisines != null){
+				for(Salle salleVoisine : salleCourante.voisines.values()){
+					salleVoisine.actualiser(0.0f, 0.0f);
+				}
 			}
 		}
+		
+		
 		//on créer un copie de la liste des salles voisines
 		//pour éviter : java.util.ConcurrentModificationException
 		/*List<Salle> listeTmp = new ArrayList<Salle>();

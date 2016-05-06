@@ -1,6 +1,8 @@
 package fr.enib.game.monde.objet;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RessourceProvider {
 
@@ -13,4 +15,17 @@ public class RessourceProvider {
 	public static final String pathTextureCouloir = "data"+File.separator+"textures"+File.separator+"tCouloir.jpg";
 
 	public static final String pathTableaux = "data"+File.separator+"Image_graphe"+File.separator + "/";
+	
+	public static List<String> getNomTableaux(){
+		File folder = new File(pathTableaux);
+		File[] listOfFiles = folder.listFiles();
+
+		List<String> names = new ArrayList<>();
+	    for (int i = 0; i < listOfFiles.length; i++) {
+	      if (listOfFiles[i].isFile() && listOfFiles[i].getName().contains(".jpg")) {
+	        names.add(listOfFiles[i].getPath());
+	      }
+	    }
+	    return names;
+	}
 }
