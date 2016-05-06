@@ -14,7 +14,7 @@ public class Couloir extends Salle{
 		this.largeur = largeur;
 		this.profondeur = profondeur;
 		this.hauteur = hauteur;
-		this.epaisseurMur = 0.1f;
+		this.epaisseurMur = 0.05f;
 
 		ajouter( new Sol(TypeObjet.SOL.toString() + getId() , RessourceProvider.pathTextureCouloir, largeur, profondeur));
 		ajouter( new Plafond(TypeObjet.PLAFOND.toString() + getId(), RessourceProvider.pathTextureCouloir, largeur, profondeur));  
@@ -25,10 +25,10 @@ public class Couloir extends Salle{
 		getSol().placer(0.0f,0.0f,0.0f);
 
 		getMurGauche().orienter((float) +Math.PI/2.0f); 
-		getMurGauche().placer(0.0f,getLargeur()/2.0f,0.0f); 
+		getMurGauche().placer(profondeur/2.0f,getLargeur()/2.0f,0.0f); 
 
 		getMurDroite().orienter((float) -Math.PI/2.0f); 
-		getMurDroite().placer(0.0f,-getLargeur()/2.0f,0.0f); 
+		getMurDroite().placer(-profondeur/2.0f,-getLargeur()/2.0f,0.0f); 
 	}
 
 	

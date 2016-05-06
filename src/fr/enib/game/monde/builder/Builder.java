@@ -32,19 +32,22 @@ public class Builder {
 		
 		Monde m = Monde.get();
 		
-		Salle h = new Salle("hall", 5.0f, 7.5f, 3.0f);
+		Salle h = new Salle("hall", 5.0f, 5.0f, 3.0f);
 		Salle s1 = new Salle("salle_01", 5.0f, 5.0f, 3.0f);
-		s1.placer(1.0f, 5.5f, 0.0f);
+		s1.placer(6.0f, 0.0f, 0.0f); // Mur avant milieu
+		//s1.placer(0.0f, 6.0f, 0.0f); // Mur gauche milieu
+		//s1.placer(0.0f, -6.0f, 0.0f); // Mur droite milieu
+		//s1.placer(-6.0f, 0.0f, 0.0f); // Mur arriere milieu
 		
 		h.ajouterSalleVoisine(s1);
 		
-		/*for(int i = 0; i < 10; i++){
+		for(int i = 0; i < 12; i++){
 			h.ajouterTableau(new Tableau("tab_" + String.format("%02d", i), ressources[i]));
 		}
 		
-		for(int i = 10; i < 16; i++){
+		for(int i = 12; i < 16; i++){
 			s1.ajouterTableau(new Tableau("tab_" + String.format("%02d", i), ressources[i]));
-		}*/
+		}
 		
 		
 		

@@ -133,9 +133,6 @@ public class Monde {
 	 */
 	public void setSalleCourante(Salle salle){
 		salleCourante = salle;
-		LOGGER.info("salle courante :" + salleCourante.getId());
+		LOGGER.info("salle courante : " + salleCourante.getId());
 	}
-
-
-
 }
