@@ -10,15 +10,17 @@ import fr.enib.game.model.interfaces.INoeud;
  * @author magali Hautcoeur
  *
  */
-public class ParcoursPoids {
+public class ParcoursPoids extends Parcours {
 	
-	float poidsGagnant = 0;
-	INoeud nouveauNoeudCourant = new Noeud();
-	INoeud noeudCourant = new Noeud();
-	
-	public ParcoursPoids(INoeud NCourant){
-	     noeudCourant = NCourant;
+	/**
+	 * @param NCourant
+	 */
+	public ParcoursPoids(INoeud NCourant) {
+		super(NCourant);
+		// TODO Auto-generated constructor stub
 	}
+
+	float poidsGagnant = 0;
 	
 	
 	/**
@@ -27,22 +29,30 @@ public class ParcoursPoids {
 	 * pour trouver le lien qui a le poids le plus fort ainsi que le noeud ou le lien arrive.
 	 * 
 	 */
-	public INoeud parcoursLiensSortant()
+	public INoeud parcoursObjetSuivant()
 	{
-			
+		System.out.println("-------------- Le noeud courant est : "+ this.noeudCourant.getId() + " --------------");
 		//la boucle parcours tous les liens sortant du noeud
-		for(int i =0; i< noeudCourant.getLiensSortant().length; i++)
+		if(this.noeudCourant.getLiensSortant().length == 0)
 		{
-			//Si le poids du lien est supérieur au poidsGagnant
-			if(noeudCourant.getLiensSortant()[i].getPoids()> poidsGagnant)
-			{
-				//On change la valeur du poidsGagnant et on affecte le noeud d'arrivee au nouveauNoeudCourant
-				poidsGagnant = noeudCourant.getLiensSortant()[i].getPoids();
-				nouveauNoeudCourant = noeudCourant.getLiensSortant()[i].getNoeudArrivee();
-			}
+			System.out.println("Le noeud courant est une feuille");
+			return this.noeudCourant;
 		}
-		System.out.println("Le poids est :" + poidsGagnant + " donc le noeud est : " + nouveauNoeudCourant);
-		return nouveauNoeudCourant;
+		else
+		{
+			for(int i =0; i< this.noeudCourant.getLiensSortant().length; i++)
+			{	
+				//Si le poids du lien est supérieur au poidsGagnant
+				if(this.noeudCourant.getLiensSortant()[i].getPoids()> this.poidsGagnant)
+				{
+					//On change la valeur du poidsGagnant et on affecte le noeud d'arrivee au nouveauNoeudCourant
+					this.poidsGagnant = this.noeudCourant.getLiensSortant()[i].getPoids();
+					this.nouveauNoeudCourant = this.noeudCourant.getLiensSortant()[i].getNoeudArrivee();
+				}
+			}
+			System.out.println("Le poids est :" + this.poidsGagnant + " donc le noeud est : " + this.nouveauNoeudCourant);
+			return this.nouveauNoeudCourant;
+		}
 		
 	}
 

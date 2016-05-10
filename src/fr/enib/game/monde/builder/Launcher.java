@@ -53,12 +53,12 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	
 	private boolean lockMouse;
 	
-	public Launcher() {
+	public Launcher(boolean loadfromFile) {
 		super(TITLE);
 
 		initLog();
 		lockMouse = true;
-		builder = new Builder();
+		builder = new Builder(loadfromFile);
 		
 		GLProfile glp = GLProfile.getDefault();
 		GLCapabilities caps = new GLCapabilities(glp);
@@ -117,7 +117,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	public void display(GLAutoDrawable drawable) {
 		float t = (float)(System.currentTimeMillis()) ;
 		Monde.get().display(drawable);
-		Monde.get().actualiser(t) ; 
+		Monde.get().actualiser(t); 
 	}
 
 	@Override
@@ -315,6 +315,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		
 		oldX = x;
 		oldY = y;
-		System.out.println(dx + " -- " + dy);
+		//System.out.println(dx + " -- " + dy);
 	}
 }

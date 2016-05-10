@@ -10,7 +10,7 @@ public class Avatar extends Objet {
 	
 	private static Avatar INSTANCE = new Avatar("avatar");
 
-	public static final float HAUTEUR = 1.8f;
+	public static final float HAUTEUR = 1.6f;
 
 	/**
 	 * Constructeur prive pour applique le singleton

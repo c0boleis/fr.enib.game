@@ -1,6 +1,5 @@
 package fr.enib.game.monde.graphic_core;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -35,8 +34,7 @@ public class GMur extends Forme {
 		this.hauteur = hauteur; 
 		this.largeur = largeur;
 		this.epaisseur = epaisseur;
-		this.trousMur = new ArrayList<>();
-		this.trousMur.addAll(trousMur);
+		this.trousMur = trousMur;
 	}
 
 	/**
@@ -47,74 +45,55 @@ public class GMur extends Forme {
 		
 		// Si pas de trou dans la cloison, alors on dessine un rectangle (largeur * hauteur)
 		if(trousMur == null || trousMur.isEmpty()){
-			//dessinerPortion(gl, 0.0f, 0.0f, largeur, hauteur);
 			dessinerPortionMur(gl, 0.0f, 0.0f, largeur, hauteur);
 		}
 		else{ // Si la cloison comporte des trous
-			/*float posPortion = -1.0f, largeurPortion = -1.0f;
-			float posTrou = -1.0f;
-			float posExtremite = this.largeur/2.0f;
-			float posOld = -1.0f;
-			float largeurTrou = -1.0f;*/
-
-			// Mettre la liste des trous dans l'ordre decroissant des position des trous
-			//Collections.sort(cloison.getTrous(), Collections.reverseOrder()); 
-
+			
+			// Mettre la liste des trous dans l'ordre croissant des position des trous
 			Collections.sort(trousMur, new Comparator<TrouMur>() {
 				public int compare(TrouMur p1, TrouMur p2){
-					float res = p1.getPosition() - p2.getPosition();
+					float res = p2.getPosition() - p1.getPosition();
 					
 					if(res > 0) return -1;
 					else if(res < 0) return 1;
 					return 0;
 				}
 			});
-			
-			/*posOld = posExtremite;
-			// Pour chaque trous
-			for(TrouPorte t : mur.getTrous()){
-				posTrou = t.getPostionPourCloison(); // On inverse le repere des Y
-				largeurTrou = t.getLargeur();
 
-				if(posTrou > 0){
-					posPortion = (posOld + (posTrou + largeurTrou/2.0f)) / 2.0f; // Milieu = (X1 + X2) / 2.0
-					largeurPortion = posOld - (posTrou + largeurTrou/2.0f);
-				}
-				else if(posTrou < 0){
-					if(posOld >= 0){
-						posPortion = ((posTrou + largeurTrou/2.0f) + posOld) / 2.0f; // Milieu = (X1 + X2) / 2.0
-						largeurPortion = Math.abs((posTrou + largeurTrou/2.0f) - posOld);
+			switch(trousMur.size()){
+				case 1:
+					{
+					TrouMur t = trousMur.get(0);
+					
+					//A droite de la porte
+					dessinerPortionMur(gl, 0.0f, 0.0f, t.getPosition() - t.getLargeur()/2.0f, hauteur);
+					//Au dessus de la porte
+					dessinerPortionMur(gl,t.getPosition() - t.getLargeur()/2.0f, t.getHauteur(), t.getPosition() + t.getLargeur()/2.0f,hauteur);
+					//A gauche de la porte
+					dessinerPortionMur(gl, t.getPosition() + t.getLargeur()/2.0f, 0.0f, largeur, hauteur);
 					}
-					else{
-						posPortion = ((posTrou + largeurTrou/2.0f) - posOld) / 2.0f; // Milieu = (X1 + X2) / 2.0
-						largeurPortion = Math.abs((posTrou + largeurTrou/2.0f) + posOld);
+					break;
+				case 2:
+					{
+					TrouMur t1 = trousMur.get(0);
+					TrouMur t2 = trousMur.get(1);
+					
+					//A droite de la porte 1
+					dessinerPortionMur(gl, 0.0f, 0.0f, t1.getPosition() - t1.getLargeur()/2.0f, hauteur);
+					//Au dessus de la porte 1
+					dessinerPortionMur(gl,t1.getPosition() - t1.getLargeur()/2.0f, t1.getHauteur(), t1.getPosition() + t1.getLargeur()/2.0f,hauteur);
+					//Entre les 2 portes
+					dessinerPortionMur(gl, t1.getPosition() + t1.getLargeur()/2.0f, 0.0f, t2.getPosition() - t2.getLargeur()/2.0f, hauteur);
+					//Au dessus de la porte 1
+					dessinerPortionMur(gl, t2.getPosition() - t2.getLargeur()/2.0f, t2.getHauteur(), t2.getPosition() + t2.getLargeur()/2.0f, hauteur);
+					//A gauche de la porte 2
+					dessinerPortionMur(gl, t2.getPosition() + t2.getLargeur()/2.0f, 0.0f, largeur, hauteur);
 					}
-				}
-				else if(posTrou == 0){
-					posPortion = (posOld + largeurTrou/2.0f) / 2.0f; // Milieu = (X1 + X2) / 2.0
-					largeurPortion = posOld - largeurTrou/2.0f;
-				}
-
-				// On dessine la portion a gauche du trou
-				dessinerPortion(gl, posPortion, largeurPortion, 0.0f,t.getNomPorte());
-
-				// On dessine la portion au dessus du trou
-				dessinerPortion(gl, posTrou, largeurTrou, t.getHauteur(),null);
-
-				posOld = posTrou - largeurTrou/2.0f;
+					
+					break;
+				case 3 :
+					break;
 			}
-
-			if(posOld >= 0){
-				posPortion = (-posExtremite + posOld) / 2.0f; // Milieu = (X1 + X2) / 2.0
-				largeurPortion = Math.abs(-posExtremite - posOld);
-			}
-			else{
-				posPortion = (-posExtremite + posOld) / 2.0f; // Milieu = (X1 + X2) / 2.0
-				largeurPortion = Math.abs(-posExtremite - posOld);
-			}
-
-			//on dessine la portion a droite du dernier trou
-			dessinerPortion(gl, posPortion, largeurPortion, 0.0f,null);*/
 		}
 	}
 
