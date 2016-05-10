@@ -242,6 +242,7 @@ public class Noeud implements INoeud {
 	@Override
 	public boolean suprimerLienEntrant(ILien lien) {
 		int index = 0;
+		System.out.println("## essai ## lien entrant suprimer");
 		ILien[] tmp = getLiensEntrant();
 		for(ILien lienTmp : tmp){
 			if(lienTmp.getId().equals(lien.getId())){
@@ -250,6 +251,7 @@ public class Noeud implements INoeud {
 			index++;
 		}
 		if(index>=this.liensEntrants.size())return false;
+		System.out.println("lien entrant suprimer");
 		return this.liensEntrants.remove(index)!=null;
 	}
 
@@ -298,6 +300,7 @@ public class Noeud implements INoeud {
 	@Override
 	public boolean suprimerLienSortant(ILien lien) {
 		int index = 0;
+		System.out.println("## essai ## lien sortant suprimer");
 		ILien[] tmp = getLiensSortant();
 		for(ILien lienTmp : tmp){
 			if(lienTmp.getId().equals(lien.getId())){
@@ -306,6 +309,7 @@ public class Noeud implements INoeud {
 			index++;
 		}
 		if(index>=this.liensSortants.size())return false;
+		System.out.println("lien sortant suprimer");
 		return this.liensSortants.remove(index)!=null;
 	}
 

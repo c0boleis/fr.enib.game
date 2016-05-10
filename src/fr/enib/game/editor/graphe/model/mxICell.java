@@ -247,7 +247,7 @@ public interface mxICell
 	 * @param isOutgoing Boolean that specifies if the edge is outgoing.
 	 * @return Returns the new edge.
 	 */
-	mxICell insertEdge(mxICell edge, boolean isOutgoing);
+	mxICell insertEdge(mxICell edge, boolean isOutgoing,boolean creerLien);
 
 	/**
 	 * Removes the specified edge from the edge array and returns the edge.
@@ -257,7 +257,7 @@ public interface mxICell
 	 * @param isOutgoing Boolean that specifies if the edge is outgoing.
 	 * @return Returns the edge that was removed.
 	 */
-	mxICell removeEdge(mxICell edge, boolean isOutgoing,boolean removeILIen);
+	mxICell removeEdge(mxICell edge, boolean isOutgoing);
 
 	/**
 	 * Removes the edge from its source or target terminal.

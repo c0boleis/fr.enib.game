@@ -78,7 +78,7 @@ public class mxConnectPreview extends mxEventSource
 				.createEdge(null, null, "",
 						(startState != null) ? startState.getCell() : null,
 						null, style));
-		((mxICell) startState.getCell()).insertEdge(cell, true);
+		((mxICell) startState.getCell()).insertEdge(cell, true,false);
 
 		return cell;
 	}
@@ -137,10 +137,9 @@ public class mxConnectPreview extends mxEventSource
 	 * @param targetState 
 	 * @param x 
 	 * @param y 
-	 * @param removeILien 
 	 * 
 	 */
-	public void update(MouseEvent e, mxCellState targetState, double x, double y,boolean removeILien)
+	public void update(MouseEvent e, mxCellState targetState, double x, double y)
 	{
 		mxGraph graph = graphComponent.getGraph();
 		mxICell cell = (mxICell) previewState.getCell();
@@ -150,12 +149,12 @@ public class mxConnectPreview extends mxEventSource
 
 		if (cell.getTerminal(false) != null)
 		{
-			cell.getTerminal(false).removeEdge(cell, false,removeILien);
+			cell.getTerminal(false).removeEdge(cell, false);
 		}
 
 		if (targetState != null)
 		{
-			((mxICell) targetState.getCell()).insertEdge(cell, false);
+			((mxICell) targetState.getCell()).insertEdge(cell, false,false);
 		}
 
 		mxGeometry geo = graph.getCellGeometry(previewState.getCell());
@@ -322,12 +321,12 @@ public class mxConnectPreview extends mxEventSource
 
 				if (src != null)
 				{
-					((mxICell) src).removeEdge(cell, true,true);
+					((mxICell) src).removeEdge(cell, true);
 				}
 
 				if (trg != null)
 				{
-					((mxICell) trg).removeEdge(cell, false,true);
+					((mxICell) trg).removeEdge(cell, false);
 				}
 
 				if (commit)

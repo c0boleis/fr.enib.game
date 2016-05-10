@@ -660,7 +660,7 @@ public class mxConnectionHandler extends mxMouseAdapter
 				if (connectPreview.isActive())
 				{
 					connectPreview.update(e, marker.getValidState(), e.getX(),
-							e.getY(),false);
+							e.getY());
 					setBounds(null);
 					e.consume();
 				}
@@ -743,7 +743,7 @@ public class mxConnectionHandler extends mxMouseAdapter
 							mxCellState targetState = graph.getView().getState(
 									vertex, true);
 							connectPreview.update(e, targetState, e.getX(),
-									e.getY(),false);
+									e.getY());
 						}
 	
 						Object cell = connectPreview.stop(
