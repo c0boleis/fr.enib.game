@@ -13,6 +13,7 @@ import com.jogamp.opengl.GL2;
 import fr.enib.game.monde.builder.Monde;
 import fr.enib.game.monde.capteur.Capteur;
 import fr.enib.game.monde.capteur.CapteurCubique;
+import fr.enib.game.monde.capteur.CapteurVision;
 import fr.enib.game.monde.core.CtxPose;
 import fr.enib.game.monde.core.Observable;
 import fr.enib.game.monde.core.Observer;
@@ -28,12 +29,16 @@ import fr.enib.game.monde.objet.Sol;
 import fr.enib.game.monde.objet.Tableau;
 import fr.enib.game.monde.objet.TypeObjet;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Salle extends Situable implements Observer{
 	private static Logger LOGGER = Logger.getLogger(Salle.class);
 
 	private static  final float ESPACE_ENTRE_TABLEAU = 0.25f;
 	
-	//private boolean visiter = false;
 	public CapteurCubique capteurPresenceAvatar;
 
 	public int nbrPorte;
@@ -42,6 +47,7 @@ public class Salle extends Situable implements Observer{
 
 	public HashMap<String,Objet>   objets;
 	public HashMap<String,Capteur> capteurs;
+	public HashMap<String,Capteur> capteursTableaux;
 	public HashMap<String,Salle>   voisines;
 	
 	/**
@@ -55,12 +61,13 @@ public class Salle extends Situable implements Observer{
 		this.hauteur = 3.0f;
 		// pour l'instant une salle ne peut pas avoir de maitre.
 		this.setMaitre(null);
-		this.objets     = new HashMap<String,Objet>() ;
-		this.capteurs   = new HashMap<String,Capteur>() ;
+		this.objets = new HashMap<String,Objet>() ;
+		this.capteurs = new HashMap<String,Capteur>();
+		this.capteursTableaux = new HashMap<String,Capteur>();
 		
-		capteurPresenceAvatar = new CapteurCubique("capt"+getId(), Avatar.get(), this);
-		capteurPresenceAvatar.add(this);
-		ajouter( capteurPresenceAvatar);
+		//capteurPresenceAvatar = new CapteurCubique("capt"+getId(), Avatar.get(), this);
+		//capteurPresenceAvatar.add(this);
+		//ajouter( capteurPresenceAvatar);
 	}
 	
 	/**
@@ -90,6 +97,7 @@ public class Salle extends Situable implements Observer{
 		this.objets     = new HashMap<String,Objet>() ;
 		this.capteurs   = new HashMap<String,Capteur>() ;
 		this.voisines   = new HashMap<String,Salle>() ;
+		this.capteursTableaux = new HashMap<String,Capteur>();
 
 		this.nbrPorte = 0;
 		this.largeur = largeur;
@@ -152,6 +160,17 @@ public class Salle extends Situable implements Observer{
 		new CtxPose("ctxPose"+capteur.getId(), this, capteur, 0.0f, 0.0f, 0.0f, 0.0f);
 		this.ajouterEsclave(capteur);
 	}
+	
+	/**
+	 * Ajout d'un capteur dans la salle
+	 * @param capteur le capteur a ajouter dans la salle
+	 */
+	public void ajouterCapteurTableau(Capteur capteur){
+		capteursTableaux.put(capteur.getId(),capteur);
+		//tout élément ajouté à la salle est esclave de celle ci.
+		new CtxPose("ctxPose"+capteur.getId(), this, capteur, 0.0f, 0.0f, 0.0f, 0.0f);
+		this.ajouterEsclave(capteur);
+	}
 
 	/**
 	 * Ajout d'une salle voisine a la salle
@@ -174,7 +193,6 @@ public class Salle extends Situable implements Observer{
 		if(ajouterPorte){
 			ajouterPorte(salle);
 		}
-		
 	}
 	
 	/**
@@ -204,8 +222,7 @@ public class Salle extends Situable implements Observer{
 	 * Ajout d'une porte a la salle en fonction de la salle voisine 
 	 * @param salleVoisine la salle voisine ou l'on veut ajouter la porte
 	 */
-	public void ajouterPorte(Salle salleVoisine){ // TODO faire les salles en diagonales
-		//String id_porte = "trou0"+ nbrPorte + "_" + this.getId();
+	public void ajouterPorte(Salle salleVoisine){ // TODO faire les salles en diagonales ?
 		float dM = -1.0f;
 		float pTrouSalle;
 		
@@ -285,7 +302,6 @@ public class Salle extends Situable implements Observer{
 						voisines.get("porte" + salleVoisine.getId() + "_" + getId()) == null){
 					porte = new Couloir("porte" + getId() + "_" + salleVoisine.getId(), largeurPorte, dM, hauteurPorte);
 					ajouterCouloirPorte(porte, salleVoisine);
-					//porte.placer(new Vec3(dx/2.0f + getPosition().x, getPosition().y + sv.getPosition().y, 0.0f));
 					porte.placer(new Vec3(dx/2.0f + getPosition().x, dy/2.0f + getPosition().y, 0.0f));
 					porte.orienter((float) Math.PI/2.0f);
 				}
@@ -330,14 +346,38 @@ public class Salle extends Situable implements Observer{
 		if(c == null) return false;
 
 		float posTab = trouverPlaceTableau(tableau.getTableau().getLargeur(), mur);
-		//LOGGER.info("Tableau " + tableau.getId() + " pos : " + posTab);
-
+		
 		if(posTab > -999.0f){
 			this.objets.put(tableau.getId(), tableau);
 
 			tableau.setPosition(posTab);
 			tableau.placer(0.0f, posTab, this.getHauteur()/2);
 			tableau.orienter((float) Math.PI);
+			
+
+			float x_tab = 0.0f;
+			float y_tab = 0.0f;
+			if(mur.equals(TypeObjet.MUR_AVANT) || mur.equals(TypeObjet.MUR_ARRIERE)){
+				if(c.getPositionRepere().x >= 0) x_tab = c.getPositionRepere().x - tableau.getPosition();
+				else x_tab = c.getPositionRepere().x + tableau.getPosition();
+				//x_tab = c.getPositionRepere().x - tableau.getPosition();
+				y_tab = c.getPositionRepere().y;
+			}
+			else if(mur.equals(TypeObjet.MUR_GAUCHE) || mur.equals(TypeObjet.MUR_DROIT)){
+				x_tab = c.getPositionRepere().x;
+				if(c.getPositionRepere().y >= 0) y_tab = c.getPositionRepere().y - tableau.getPosition();
+				else y_tab = c.getPositionRepere().y + tableau.getPosition();
+				//y_tab = c.getPositionRepere().y + tableau.getPosition();
+			}
+			
+			tableau.setPositionInRepere(new Vec3(x_tab, y_tab, c.getPositionRepere().z));
+
+			//LOGGER.info("tab: " + tableau.getId() + " -- " + tableau.getPositionInRepere());
+			
+			Capteur capTab = new CapteurVision("captT" + tableau.getId(), Avatar.get(), tableau);
+			capTab.add(this);
+			ajouterCapteurTableau(capTab);
+			
 			return c.ajouterEsclave(tableau);
 		}
 		return false;
@@ -501,6 +541,11 @@ public class Salle extends Situable implements Observer{
 			//LOGGER.debug("teste capteur("+capteur.getId()+") salle:\t" + this.getId());
 			capteur.tester(t); 
 		}
+		if(avatarPresent()){
+			for(Capteur c : capteursTableaux.values()){
+				c.tester(t);
+			}
+		}
 	}
 
 	/**
@@ -605,7 +650,7 @@ public class Salle extends Situable implements Observer{
 	 * @return true si l'avatar est a l'interieur de la piece, sinon false
 	 */
 	public boolean avatarPresent(){
-		return capteurPresenceAvatar.interieur(); 
+		return capteurPresenceAvatar != null && capteurPresenceAvatar.interieur(); 
 	}
 	
 	/**
@@ -637,22 +682,6 @@ public class Salle extends Situable implements Observer{
 				}*/
 	}
 	
-
-	/**
-	 * reinitialise les portes de la salle
-	 */
-	/*private void reInitSalleVoisine(){
-		suprimerTousLesTrou();
-		//on créer un copie de la liste des salles voisines
-		//pour éviter : java.util.ConcurrentModificationException
-		List<Salle> listeTmp = new ArrayList<Salle>();
-		listeTmp.addAll(this.voisines.values());
-
-		for(Salle salleVoisine : listeTmp){
-			ajouterPorte(salleVoisine);
-		}
-	}*/
-
 	/**
 	 * Classe representant une position avec une largeur (utilise pour le placement des tableaux 
 	 * et pour savoir s'il reste de la place sur un mur de la salle)

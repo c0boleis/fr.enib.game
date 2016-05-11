@@ -3,6 +3,11 @@ package fr.enib.game.monde.capteur;
 import fr.enib.game.monde.core.Situable;
 import fr.enib.game.monde.objet.Objet;
 
+/**
+ * 
+ * @author Ronan Morel
+ *
+ */
 public abstract class Capteur extends Situable  {
 	 
 	protected Objet cible ;

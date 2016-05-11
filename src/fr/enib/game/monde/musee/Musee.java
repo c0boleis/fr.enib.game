@@ -9,6 +9,11 @@ import fr.enib.game.model.interfaces.ITableau;
 import fr.enib.game.monde.builder.Monde;
 import fr.enib.game.monde.objet.Tableau;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Musee {
 	private static Logger LOGGER = Logger.getLogger(Musee.class);
 	
@@ -26,10 +31,17 @@ public class Musee {
 	
 	private Monde monde;
 	
+	/**
+	 * 
+	 */
 	public Musee(){
-		this(new HashMap<>());
+		this(new HashMap<String,ITableau[]>());
 	}
 	
+	/**
+	 * 
+	 * @param listeTableaux
+	 */
 	public Musee(HashMap<String,ITableau[]> listeTableaux){
 		this.distanceMur = 0.5f;
 		this.largeurSalle = 5.0f;
@@ -42,12 +54,20 @@ public class Musee {
 		this.monde = Monde.get();
 	}
 
+	/**
+	 * 
+	 * @param nomNoeud
+	 * @param tableaux
+	 */
 	public void ajouterListeTableau(String nomNoeud, ITableau[] tableaux){
 		if(tableaux != null){
 			listeTableaux.put(nomNoeud, tableaux);
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void genererSalles(){
 		for(Entry<String, ITableau[]> entry : listeTableaux.entrySet()) {
 		    String k = entry.getKey();
@@ -62,6 +82,10 @@ public class Musee {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param nom
+	 */
 	private void construireSalle(String nom){
 		Salle s = new Salle(prefixIdSalle + nom, this.largeurSalle, this.profondeurSalle, this.hauteurSalle);
 		if(salleCourante == null){
@@ -72,6 +96,9 @@ public class Musee {
 		salles.put(s.getId(), s);
 	}
 	
+	/**
+	 * 
+	 */
 	private void placerSalles(){
 		boolean avant =false;
 		boolean gauche=false;
@@ -115,6 +142,11 @@ public class Musee {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param nom
+	 * @param tableaux
+	 */
 	private void ajouterTableau(String nom, ITableau[] tableaux){
 		Salle s = salles.get(prefixIdSalle + nom);
 		if(s != null){

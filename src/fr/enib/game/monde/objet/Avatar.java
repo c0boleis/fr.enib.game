@@ -5,13 +5,19 @@ import com.jogamp.opengl.glu.GLU;
 
 import fr.enib.game.monde.geo.Vec3;
 
-
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Avatar extends Objet {
 	
-	private static Avatar INSTANCE = new Avatar("avatar");
+	private static Avatar INSTANCE = null;
 
 	public static final float HAUTEUR = 1.6f;
 
+	private GLU regard;
+	
 	/**
 	 * Constructeur prive pour applique le singleton
 	 * @param id l'identifiant de l'avatar
@@ -19,6 +25,7 @@ public class Avatar extends Objet {
 	private Avatar(String id){
 		super(id) ; 
 		repere.getPostiton().fixer(0.0f,0.0f,HAUTEUR) ; 
+		regard = new GLU();
 	}
 	
 	/**
@@ -26,6 +33,9 @@ public class Avatar extends Objet {
 	 * @return l'instance de l'avatar
 	 */
 	public static Avatar get(){
+		if(INSTANCE == null){
+			INSTANCE = new Avatar("avatar");
+		}
 		return INSTANCE;
 	}
 
@@ -43,6 +53,10 @@ public class Avatar extends Objet {
 		gl.glLoadIdentity() ;
 		Vec3 o = repere.getPostiton() ;
 		Vec3 u = repere.getDirection() ; 
-		(new GLU()).gluLookAt(o.x,o.y,o.z,o.x+u.x,o.y+u.y,o.z+u.z,0.0f,0.0f,1.0f) ; 
+		regard.gluLookAt(o.x,o.y,o.z,o.x+u.x,o.y+u.y,o.z+u.z,0.0f,0.0f,1.0f) ; 
+	}
+	
+	public Vec3 getDirectionRegard(){
+		return repere.getDirection();
 	}
 }

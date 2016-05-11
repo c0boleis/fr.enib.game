@@ -7,6 +7,11 @@ import fr.enib.game.model.interfaces.ITableau;
 import fr.enib.game.monde.musee.Musee;
 import fr.enib.game.monde.objet.RessourceProvider;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Builder {
 	//private static Logger LOGGER = Logger.getLogger(Builder.class);
 	

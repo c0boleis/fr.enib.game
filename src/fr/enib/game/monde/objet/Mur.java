@@ -8,6 +8,11 @@ import fr.enib.game.monde.graphic_core.Forme;
 import fr.enib.game.monde.graphic_core.Shape;
 import fr.enib.game.monde.graphic_core.TrouMur;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Mur extends Objet {
 	
 	private List<TrouMur> trous;

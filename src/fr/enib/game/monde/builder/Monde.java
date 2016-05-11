@@ -13,6 +13,11 @@ import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.monde.objet.Avatar;
 import fr.enib.game.monde.objet.Objet;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Monde {
 	private static Logger LOGGER = Logger.getLogger(Monde.class);
 
@@ -95,6 +100,17 @@ public class Monde {
 
 	public void actualiser(float t){
 		if(salleCourante != null){
+			if(!salleCourante.avatarPresent()){
+				if(salleCourante.voisines != null){
+					for(Salle salleVoisine : salleCourante.voisines.values()){
+						if(salleVoisine.avatarPresent()){
+							this.salleCourante = salleVoisine;
+							break;
+						}
+					}
+				}
+			}
+			
 			salleCourante.actualiser(0.0f,0.0f) ;
 			if(salleCourante.voisines != null){
 				for(Salle salleVoisine : salleCourante.voisines.values()){

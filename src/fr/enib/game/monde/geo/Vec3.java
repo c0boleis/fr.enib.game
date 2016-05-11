@@ -1,5 +1,10 @@
 package fr.enib.game.monde.geo;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Vec3 {
 
 	public float x = 0.0f ;
@@ -137,4 +142,11 @@ public class Vec3 {
 		if(d>dmax)
 			alpha(dmax/d) ;		
 	}
+
+	@Override
+	public String toString() {
+		return x + ", " + y + ", " + z;
+	}
+	
+	
 }

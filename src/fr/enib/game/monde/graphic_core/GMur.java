@@ -6,6 +6,11 @@ import java.util.List;
 
 import com.jogamp.opengl.GL2;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class GMur extends Forme {
 	private float hauteur;
 	private float largeur;

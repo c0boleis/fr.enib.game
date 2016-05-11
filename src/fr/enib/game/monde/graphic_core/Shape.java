@@ -2,6 +2,11 @@ package fr.enib.game.monde.graphic_core;
 
 import com.jogamp.opengl.GL2;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Shape implements Noeud {
 
 	  private Forme  forme  = null ; 

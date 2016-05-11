@@ -4,6 +4,11 @@ import org.apache.log4j.Logger;
 
 import fr.enib.game.monde.objet.Objet;
 
+/**
+ * 
+ * @author Ronan Morel
+ *
+ */
 public class CapteurSpherique extends Capteur {
 	
 	private static Logger LOGGER = Logger.getLogger(CapteurSpherique.class);
@@ -25,6 +30,7 @@ public class CapteurSpherique extends Capteur {
 	/**
 	 * Test si l'objet est entre ou sortie de la zone de surveillance du capteur
 	 */
+	@Override
 	public void tester(float t){
 		float d = repere.getPostiton().distance(cible.repere.getPostiton()) ; 
  

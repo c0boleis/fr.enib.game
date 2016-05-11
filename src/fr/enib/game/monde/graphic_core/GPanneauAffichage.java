@@ -5,6 +5,11 @@ import java.awt.Font;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.awt.TextRenderer;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class GPanneauAffichage extends Forme {
 	float hauteur ;
 	float largeur ;  
