@@ -24,6 +24,7 @@ import fr.enib.game.editor.graphe.costfunction.mxCostFunction;
 import fr.enib.game.editor.graphe.examples.swing.action.AlignCellsAction;
 import fr.enib.game.editor.graphe.examples.swing.action.AutosizeAction;
 import fr.enib.game.editor.graphe.examples.swing.action.ExitAction;
+import fr.enib.game.editor.graphe.examples.swing.action.ExportModelAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundImageAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ColorAction;
@@ -86,6 +87,10 @@ public class EditorMenuBar extends JMenuBar
 		menu.add(editor.bind(mxResources.get("save"), new SaveAction(false), "/fr/enib/game/editor/graphe/examples/swing/images/save.gif"));
 		menu.add(editor.bind(mxResources.get("saveAs"), new SaveAction(true), "/fr/enib/game/editor/graphe/examples/swing/images/saveas.gif"));
 
+		menu.addSeparator();
+		
+		menu.add(editor.bind(mxResources.get("export"), new ExportModelAction(), "/fr/enib/game/editor/graphe/examples/swing/images/save.gif"));
+		
 		menu.addSeparator();
 
 		menu.add(editor.bind(mxResources.get("pageSetup"), new PageSetupAction(), "/fr/enib/game/editor/graphe/examples/swing/images/pagesetup.gif"));

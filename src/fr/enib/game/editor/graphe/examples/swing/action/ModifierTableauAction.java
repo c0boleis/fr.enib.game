@@ -9,6 +9,8 @@ import java.io.File;
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 
+import fr.enib.game.editor.graphe.model.mxICell;
+import fr.enib.game.editor.graphe.view.mxGraph;
 import fr.enib.game.model.Tableau;
 import fr.enib.game.model.interfaces.ITableau;
 
@@ -16,7 +18,7 @@ import fr.enib.game.model.interfaces.ITableau;
  * @author Corentin Boleis
  *
  */
-public class ModifyTableauAction extends AbstractAction{
+public class ModifierTableauAction extends AbstractAction{
 
 	/**
 	 * 
@@ -25,8 +27,19 @@ public class ModifyTableauAction extends AbstractAction{
 	
 	private ITableau tableau;
 	
-	public ModifyTableauAction(ITableau tableau) {
+	private mxICell cell;
+	
+	private mxGraph graph;
+	
+	/**
+	 * @param tableau
+	 * @param cell 
+	 * @param graph 
+	 */
+	public ModifierTableauAction(ITableau tableau,mxICell cell,mxGraph graph) {
 		this.tableau = tableau;
+		this.cell = cell;
+		this.graph = graph;
 	}
 
 	/* (non-Javadoc)
@@ -41,6 +54,9 @@ public class ModifyTableauAction extends AbstractAction{
 		if(file!=null){
 			//TODO check with the absolute path
 			tableau.setUrlImage(file.getPath());
+			cell.setStyle("icon;image="+file.getPath().replace(File.separator, "/"));
+//			cell.setStyle("icon;image=/fr/enib/game/editor/graphe/examples/swing/images/wrench.png");
+			graph.refresh();
 		}
 	}
 

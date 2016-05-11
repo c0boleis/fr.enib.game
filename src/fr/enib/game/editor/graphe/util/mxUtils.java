@@ -19,11 +19,13 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -2014,7 +2016,18 @@ public class mxUtils
 				}
 				catch (Exception e)
 				{
-					realUrl = mxUtils.class.getResource(url);
+					File file = new File(url);
+					if(file.exists()){
+						try {
+							realUrl = file.toURI().toURL();
+						} catch (MalformedURLException e1) {
+							realUrl = mxUtils.class.getResource(url);
+						}
+					}
+					else{
+						realUrl = mxUtils.class.getResource(url);
+					}
+					
 				}
 
 				if (realUrl != null)

@@ -1,11 +1,3 @@
-/* 
- * Copyright (c) 2001-2005, Gaudenz Alder
- * 
- * All rights reserved.
- * 
- * See LICENSE file for license details. If you are unable to locate
- * this file please contact info (at) jgraph (dot) com.
- */
 package fr.enib.game.editor.graphe.examples.swing.editor;
 
 import java.awt.Color;
@@ -42,8 +34,7 @@ import fr.enib.game.editor.graphe.view.mxGraph;
  * Component that displays a ruler for a JGraph component.
  */
 public class EditorRuler extends JComponent implements MouseMotionListener,
-		DropTargetListener
-{
+DropTargetListener {
 
 	/**
 	 * 
@@ -53,7 +44,12 @@ public class EditorRuler extends JComponent implements MouseMotionListener,
 	/**
 	 * Defines the constants for horizontal and vertical orientation.
 	 */
-	public static int ORIENTATION_HORIZONTAL = 0, ORIENTATION_VERTICAL = 1;
+	public static int ORIENTATION_HORIZONTAL = 0;	
+	
+	/**
+	 * Defines the constants for horizontal and vertical orientation.
+	 */
+	public static int ORIENTATION_VERTICAL = 1;
 
 	/**
 	 * Internal constant used to describe the screen resolution (DPI). Default
@@ -161,7 +157,7 @@ public class EditorRuler extends JComponent implements MouseMotionListener,
 	/**
 	 * Constructs a new ruler for the specified graph and orientation.
 	 * 
-	 * @param graph
+	 * @param graphComponent
 	 *            The graph to create the ruler for.
 	 * @param orientation
 	 *            The orientation to use for the ruler.
@@ -265,6 +261,7 @@ public class EditorRuler extends JComponent implements MouseMotionListener,
 	}
 
 	/**
+	 * @param tickDistance 
 	 * 
 	 */
 	public void setTickDistance(int tickDistance)
@@ -273,6 +270,7 @@ public class EditorRuler extends JComponent implements MouseMotionListener,
 	}
 
 	/**
+	 * @return la distance entre chaque tick
 	 * 
 	 */
 	public int getTickDistance()

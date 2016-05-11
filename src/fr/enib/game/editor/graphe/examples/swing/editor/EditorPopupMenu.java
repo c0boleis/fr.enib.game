@@ -4,12 +4,14 @@ import javax.swing.JMenu;
 import javax.swing.JPopupMenu;
 import javax.swing.TransferHandler;
 
+import fr.enib.game.editor.graphe.examples.swing.action.ModifierTableauAction;
 import fr.enib.game.editor.graphe.examples.swing.action.SetIDModelObjectAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
 import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
 import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.model.interfaces.IModelObject;
+import fr.enib.game.model.interfaces.ITableau;
 
 public class EditorPopupMenu extends JPopupMenu
 {
@@ -34,8 +36,13 @@ public class EditorPopupMenu extends JPopupMenu
 				 */
 				add(editor.bind(mxResources.get("setid"), new SetIDModelObjectAction((IModelObject) objValue,editor.getGraphComponent().getGraph()),
 						"/fr/enib/game/editor/graphe/examples/swing/images/font.gif"));
-				addSeparator();
+				
 			}
+			if(objValue instanceof ITableau){
+				add(editor.bind(mxResources.get("set_tableau"), new ModifierTableauAction((ITableau) objValue,cell,editor.getGraphComponent().getGraph()),
+						"/fr/enib/game/editor/graphe/examples/swing/images/image.gif"));
+			}
+			addSeparator();
 		}
 
 

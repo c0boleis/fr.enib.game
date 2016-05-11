@@ -1,12 +1,8 @@
 package fr.enib.game.editor.graphe.examples.swing.editor;
 
 import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -15,24 +11,20 @@ import javax.swing.JToolBar;
 import javax.swing.TransferHandler;
 
 import fr.enib.game.editor.graphe.examples.swing.action.StartSimulationAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ColorAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.FontStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.KeyValueAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.NewAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PrintAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SaveAction;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
-import fr.enib.game.editor.graphe.util.mxConstants;
 import fr.enib.game.editor.graphe.util.mxEvent;
 import fr.enib.game.editor.graphe.util.mxEventObject;
-import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
-import fr.enib.game.editor.graphe.view.mxGraph;
+import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.view.mxGraphView;
-
+/**
+ * 
+ */
 public class EditorToolBar extends JToolBar
 {
 
@@ -41,14 +33,12 @@ public class EditorToolBar extends JToolBar
 	 */
 	private static final long serialVersionUID = -8015443128436394471L;
 
-	/**
-	 * 
-	 * @param frame
-	 * @param orientation
-	 */
+
 	private boolean ignoreZoomChange = false;
 
 	/**
+	 * @param editor 
+	 * @param orientation 
 	 * 
 	 */
 	public EditorToolBar(final BasicGraphEditor editor, int orientation)

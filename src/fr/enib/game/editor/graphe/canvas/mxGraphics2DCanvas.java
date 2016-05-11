@@ -281,14 +281,6 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 	/**
 	 * 
 	 */
-	public void drawImage(Rectangle bounds, String imageUrl)
-	{
-		drawImage(bounds, imageUrl, PRESERVE_IMAGE_ASPECT, false, false);
-	}
-
-	/**
-	 * 
-	 */
 	public void drawImage(Rectangle bounds, String imageUrl,
 			boolean preserveAspect, boolean flipH, boolean flipV)
 	{
@@ -305,8 +297,9 @@ public class mxGraphics2DCanvas extends mxBasicCanvas
 
 				if (preserveAspect)
 				{
-					double s = Math.min(bounds.width / (double) size.width,
-							bounds.height / (double) size.height);
+					double scaleX = bounds.width / (double) size.width;
+					double scaleY = bounds.height / (double) size.height;
+					double s = Math.min(scaleX,scaleY);
 					w = (int) (size.width * s);
 					h = (int) (size.height * s);
 					x += (bounds.width - w) / 2;
