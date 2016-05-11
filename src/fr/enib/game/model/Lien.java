@@ -3,6 +3,7 @@
  */
 package fr.enib.game.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import fr.enib.game.model.enums.AjoutLienInfos;
@@ -14,6 +15,7 @@ import fr.enib.game.model.interfaces.INoeud;
  * @author Corentin Boleis
  *
  */
+@XStreamAlias("Lien")
 public class Lien implements ILien {
 	
 	/**
@@ -31,6 +33,8 @@ public class Lien implements ILien {
 	@XStreamOmitField
 	private INoeud noeudDepart;
 	
+	private String idNoeudDepart = null;
+	
 	private float poids;
 	
 	/**
@@ -45,6 +49,7 @@ public class Lien implements ILien {
 		this.noeudArrivee = noeudA;
 		this.noeudDepart = noeudD;
 		this.id = noeudDepart.getId()+"_vers_"+noeudArrivee.getId();
+		
 		
 		AjoutLienInfos outLien = this.noeudDepart.ajouterLienSortant(this);
 		if(outLien != AjoutLienInfos.ok){
@@ -93,9 +98,6 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public INoeud getNoeudArrivee() {
-		if(this.noeudArrivee==null){
-			this.noeudArrivee = (INoeud) Model.get().getModelObject(idNoeudArrivee);
-		}
 		return this.noeudArrivee;
 	}
 	
@@ -182,6 +184,28 @@ public class Lien implements ILien {
 			return true;
 		}
 		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ILien#setNoeudArrvee(fr.enib.game.model.Noeud)
+	 */
+	@Override
+	public Object setNoeudArrivee(Noeud nouveauNoeud) {
+		if(nouveauNoeud == null) return "Le noeud d'arrivée ne doit pas être null";
+		noeudArrivee = nouveauNoeud;
+		this.idNoeudArrivee = noeudArrivee.getId();
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ILien#setNoeudDepart(fr.enib.game.model.Noeud)
+	 */
+	@Override
+	public Object setNoeudDepart(Noeud nouveauNoeud) {
+		if(nouveauNoeud == null) return "Le noeud de départ ne doit pas être null";
+		noeudDepart = nouveauNoeud;
+		this.idNoeudDepart = noeudDepart.getId();
+		return null;
 	}
 
 }

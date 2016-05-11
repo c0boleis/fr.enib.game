@@ -1,5 +1,7 @@
 package fr.enib.game.model.interfaces;
 
+import fr.enib.game.model.Noeud;
+
 /**
  * un lien lie deux des noeud du graphe
  * dans un sens precis. Un lien ne peux
@@ -24,5 +26,18 @@ public interface ILien extends IModelObject,IObjectPondere{
 	 * @return le noeud d'arrivée du lien.
 	 */
 	public INoeud getNoeudArrivee();
+	
+	/**
+	 * @param nouveauNoeud le noeud d'arrivée du lien.
+	 * @return retourne null si pas d'erreur
+	 */
+	public Object setNoeudArrivee(Noeud nouveauNoeud);
+	
+	/**
+	 * 
+	 * @param nouveauNoeud le noeud de départ du lien.
+	 * @return retourne null si pas d'erreur.
+	 */
+	public Object setNoeudDepart(Noeud nouveauNoeud);
 
 }
