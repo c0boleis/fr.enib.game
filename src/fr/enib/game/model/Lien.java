@@ -115,7 +115,7 @@ public class Lien implements ILien {
 	 * @see fr.enib.game.model.interfaces.IClonableObject#cloneObject()
 	 */
 	@Override
-	public Lien cloneObject(){
+	public Lien cloneObject(Object object){
 		Lien newLien = new Lien();
 //		/*
 //		 * comme il ne peut pas exité deux objet avec la même

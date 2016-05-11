@@ -139,7 +139,7 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.IClonableObject#cloneObject()
 	 */
 	@Override
-	public Noeud cloneObject(){
+	public Noeud cloneObject(Object object){
 		Noeud newNoeud = new Noeud();
 		newNoeud.id = Model.get().getNextId(id);
 		if(Model.get().ajouterModelObject(newNoeud)){

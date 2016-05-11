@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+import fr.enib.game.editor.graphe.examples.swing.action.ModifierTableauAction;
+import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
 
@@ -107,13 +109,14 @@ public class Tableau extends Noeud implements ITableau{
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public Tableau cloneObject(){
+	public Tableau cloneObject(Object object){
 		Tableau newTableau = new Tableau();
 		newTableau.setId(Model.get().getNextId(this.getId()));
 		newTableau.description = description;
 		newTableau.url = url;
 		newTableau.nom = nom;
 		if(Model.get().ajouterModelObject(newTableau)){
+			ModifierTableauAction.useNextFile(newTableau, (mxCell) object);
 			return newTableau;
 		}
 		return null;
