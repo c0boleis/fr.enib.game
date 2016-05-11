@@ -5,6 +5,11 @@ import org.apache.log4j.Logger;
 import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.monde.objet.Objet;
 
+/**
+ * 
+ * @author Ronan Morel
+ *
+ */
 public class CapteurCubique extends Capteur {
 
 	private static Logger LOGGER = Logger.getLogger(CapteurCubique.class);
@@ -12,6 +17,8 @@ public class CapteurCubique extends Capteur {
 	private float distanceX;
 
 	private float distanceY;
+	
+	private float offset;
 
 	//private float distanceZ;
 
@@ -29,8 +36,8 @@ public class CapteurCubique extends Capteur {
 		distanceX = dx;
 		distanceY = dy;
 		//distanceZ = dz;
-		interieur = false;
 		//tester(0.1f);
+		offset = 0.01f;
 	}
 
 	/**
@@ -55,34 +62,27 @@ public class CapteurCubique extends Capteur {
 	/**
 	 * test si l'avatar est present dans la zone 
 	 */
+	@Override
 	public void tester(float t){
 		if (!testeX()){
-			//LOGGER.debug(SORTIE) ;
 			if(interieur){
 				interieur = false ; 
-				//LOGGER.info(SORTIE+":x;\t"+getId()) ;
-				update(SORTIE,null) ;
+				update(SORTIE, cible);
 			}
-
 			return;
 		}
 		if (!testeY()){
-			//LOGGER.debug(SORTIE) ;
 			if(interieur){
-				//LOGGER.info(SORTIE+":y;\t"+getId()) ;
 				interieur = false ; 
-				update(SORTIE,null) ;
+				update(SORTIE, cible);
 			}
-
 			return;
 		}
 		if(!interieur){
-			LOGGER.info(ENTREE+":\t"+getId()) ;
+			LOGGER.info(ENTREE + ":\t" + getId()) ;
 			interieur = true ; 
-			update(ENTREE,null) ;
+			update(ENTREE, cible);
 		}
-		//LOGGER.debug("teste:\t"+getId()+"\t:"+interieur) ;
-
 	}
 
 	/*private boolean testeZ() {
@@ -97,10 +97,8 @@ public class CapteurCubique extends Capteur {
 	 * @return true si la cible est a l'interieur de la zone du capteur, en y, sinon false
 	 */
 	private boolean testeY() {
-		if(cible.getRepere().getPostiton().y<repere.getPostiton().y+distanceY){
-			return cible.getRepere().getPostiton().y>repere.getPostiton().y-distanceY;
-		}
-		return false;
+		return cible.getPositionRepere().y < getPositionRepere().y + distanceY - offset
+			&& cible.getPositionRepere().y > getPositionRepere().y - distanceY + offset;
 	}
 
 	/**
@@ -108,10 +106,8 @@ public class CapteurCubique extends Capteur {
 	 * @return true si la cible est a l'interieur de la zone du capteur, en x, sinon false
 	 */
 	private boolean testeX() {
-		if(cible.getRepere().getPostiton().x<repere.getPostiton().x+distanceX){
-			return cible.getRepere().getPostiton().x>repere.getPostiton().x-distanceX;
-		}
-		return false;
+		return cible.getPositionRepere().x < getPositionRepere().x + distanceX - offset
+			&& cible.getPositionRepere().x > getPositionRepere().x - distanceX + offset;
 	}
 
 	

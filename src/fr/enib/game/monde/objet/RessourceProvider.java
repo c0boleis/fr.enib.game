@@ -4,6 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class RessourceProvider {
 
 	public static final String pathTextureSol = "data"+File.separator+"textures"+File.separator+"tSol1.jpg";

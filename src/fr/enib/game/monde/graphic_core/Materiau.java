@@ -15,6 +15,11 @@ import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
 import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Materiau {
 
 	private static Logger LOGGER = Logger.getLogger(Materiau.class);

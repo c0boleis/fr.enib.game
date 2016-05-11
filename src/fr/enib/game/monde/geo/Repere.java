@@ -2,6 +2,11 @@ package fr.enib.game.monde.geo;
 
 import com.jogamp.opengl.GL2;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Repere {
 	private Vec3 o ;
 	private Vec3 u ; 

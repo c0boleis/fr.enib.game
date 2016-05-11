@@ -2,6 +2,11 @@ package fr.enib.game.monde.core;
 
 import fr.enib.game.monde.geo.Vec3;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class CtxPose implements Observer {
 	
 	//private static Logger LOGGER = Logger.getLogger(CtxPose.class);

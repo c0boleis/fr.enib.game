@@ -6,6 +6,11 @@ import fr.enib.game.monde.core.Situable;
 import fr.enib.game.monde.graphic_core.Materiau;
 import fr.enib.game.monde.graphic_core.Noeud;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Objet extends Situable {
 	 
 	public Noeud  forme  = null ;
