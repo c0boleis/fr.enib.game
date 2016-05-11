@@ -156,7 +156,7 @@ public class Tableau extends Noeud implements ITableau{
 	 * @see fr.enib.game.model.interfaces.INoeud#getTableau(int)
 	 */
 	@Override
-	public ArrayList<ITableau> getTableau(String idNoeud) {
+	public ArrayList<ITableau> getTableau() {
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
 		mesTableaux.add(this);
 		return mesTableaux;

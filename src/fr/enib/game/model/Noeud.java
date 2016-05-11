@@ -24,6 +24,8 @@ public class Noeud implements INoeud {
 	/**
 	 * 
 	 */
+	private static boolean sort = true;
+	
 	private static final long serialVersionUID = 734404660422963476L;
 	
 	private String id;
@@ -359,12 +361,11 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.INoeud#getTableau(int)
 	 */
 	@Override
-	public ArrayList<ITableau> getTableau(String idNoeud) {
+	public ArrayList<ITableau> getTableau() {
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
-		if(idNoeud.isEmpty()){return mesTableaux;}
 		ArrayList<INoeud> noeudsEnfants = this.getNoeudsDescendantDirect();
 		for(INoeud noeud : noeudsEnfants){
-			ArrayList<ITableau> tab = noeud.getTableau(noeud.getId());
+			ArrayList<ITableau> tab = noeud.getTableau();
 			mesTableaux.addAll(tab);
 		}
 		return mesTableaux;
