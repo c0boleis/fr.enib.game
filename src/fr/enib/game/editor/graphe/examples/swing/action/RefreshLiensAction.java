@@ -15,6 +15,10 @@ import fr.enib.game.editor.graphe.view.mxGraph;
  */
 public class RefreshLiensAction extends AbstractAction{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5718256173674645915L;
 	private mxGraph graph;
 
 	/* (non-Javadoc)

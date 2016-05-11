@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import fr.enib.game.editor.graphe.io.mxCellCodec;
 import fr.enib.game.editor.graphe.io.mxCodec;
 import fr.enib.game.editor.graphe.io.mxCodecRegistry;
 import fr.enib.game.editor.graphe.io.mxObjectCodec;
@@ -22,7 +23,7 @@ import fr.enib.game.model.interfaces.INoeud;
  * @see mxCodecRegistry
  *
  */
-public class CodecNoeud extends mxObjectCodec {
+public class CodecNoeud extends mxCellCodec {
 	
 	/**
 	 * 
@@ -60,7 +61,7 @@ public class CodecNoeud extends mxObjectCodec {
 		if(obj instanceof INoeud){
 			NoeudImportExport.get().exportObject(obj, node);
 		}
-		return node;
+		return super.afterEncode(enc, obj, node);
 	}
 	
 	/*
@@ -73,7 +74,7 @@ public class CodecNoeud extends mxObjectCodec {
 		if(obj instanceof Noeud){
 			NoeudImportExport.get().importObject(obj, node);
 		}
-		return obj;
+		return super.afterDecode(dec, node, obj);
 	}
 
 }

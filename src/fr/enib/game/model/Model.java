@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import fr.enib.game.model.interfaces.IModel;
@@ -24,8 +25,11 @@ import fr.enib.game.model.listeners.IModelListener;
 public class Model implements IModel{
 		
 	private List<IModelObject> modelObjects = new ArrayList<IModelObject>();
+	
+	@XStreamOmitField
 	private List<IListener> listListener = new ArrayList<IListener>();
 	
+	@XStreamOmitField
 	private static final Model INSTANCE = new Model();
 
 	private Model() {

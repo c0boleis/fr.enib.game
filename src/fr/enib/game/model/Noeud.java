@@ -6,6 +6,8 @@ package fr.enib.game.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import fr.enib.game.model.enums.AjoutLienInfos;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
@@ -14,6 +16,7 @@ import fr.enib.game.model.interfaces.INoeud;
  * @author Corentin Boleis
  *
  */
+@XStreamAlias("Noeud")
 public class Noeud implements INoeud {
 	
 	/**
@@ -320,7 +323,7 @@ public class Noeud implements INoeud {
 	public boolean setDegreInteret(float degre) {
 		// TODO Auto-generated method stub
 		DegreInteret = degre;
-		return false;
+		return true;
 		
 		
 	}

@@ -3,6 +3,8 @@
  */
 package fr.enib.game.model;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import fr.enib.game.model.enums.AjoutLienInfos;
 import fr.enib.game.model.exceptions.LimitLienException;
 import fr.enib.game.model.interfaces.ILien;
@@ -21,8 +23,12 @@ public class Lien implements ILien {
 	
 	private String id;
 	
-	private INoeud noeudArrivee;
+	@XStreamOmitField
+	private INoeud noeudArrivee = null;
 	
+	private String idNoeudArrivee = null;
+	
+	@XStreamOmitField
 	private INoeud noeudDepart;
 	
 	private float poids;
@@ -87,6 +93,9 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public INoeud getNoeudArrivee() {
+		if(this.noeudArrivee==null){
+			this.noeudArrivee = (INoeud) Model.get().getModelObject(idNoeudArrivee);
+		}
 		return this.noeudArrivee;
 	}
 	
