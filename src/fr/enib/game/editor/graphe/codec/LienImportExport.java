@@ -6,6 +6,7 @@ package fr.enib.game.editor.graphe.codec;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import fr.enib.game.model.Model;
 import fr.enib.game.model.Noeud;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModelObject;
@@ -18,22 +19,22 @@ import fr.enib.game.model.interfaces.IVisitableObject;
  * @author Corentin Boleis
  *
  */
-public class LienImportExprot extends ICodecModelObject {
+public class LienImportExport extends ICodecModelObject {
 	
-	private static final LienImportExprot INSTANCE = new LienImportExprot();
+	private static final LienImportExport INSTANCE = new LienImportExport();
 	
 	private static final String ID_NOEUD_ARRIVEE = "id_arrivee";
 	
 	private static final String ID_NOEUD_DEPART = "id_depart";
 	
-	private LienImportExprot() {
+	private LienImportExport() {
 		// rien à faire
 	}
 	
 	/**
 	 * @return l'unique instance de cette calss
 	 */
-	public static final LienImportExprot get(){
+	public static final LienImportExport get(){
 		return INSTANCE;
 	}
 
@@ -120,7 +121,7 @@ public class LienImportExprot extends ICodecModelObject {
 		elm = (Element) getNodeByName(node, ID_NOEUD_DEPART);
 		String id_depart = elm.getTextContent();
 		//TODO
-		
+		Model.get().ajouterModelObject(lien);
 		return true;
 	}
 

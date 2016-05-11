@@ -9,6 +9,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 import fr.enib.game.model.Model;
+import fr.enib.game.model.Noeud;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.INoeud;
@@ -54,6 +55,7 @@ public class EditorModel extends JScrollPane {
 		root.add(getNodeNoeuds());
 		root.add(getNodeLiens());
 		root.add(getNodeTableaux());
+		root.add(getNodeTreeModel());
 		return root;
 	}
 	
@@ -86,6 +88,26 @@ public class EditorModel extends JScrollPane {
 		return noeudLiens;
 	}
 	
+	private DefaultMutableTreeNode getNodeTreeModel(){
+		DefaultMutableTreeNode nodeTreeModel = new DefaultMutableTreeNode("Tree");
+		INoeud noeudRoot = getModelRoot();
+		if(noeudRoot==null){
+			return nodeTreeModel;
+		}
+		DefaultMutableTreeNode nodeRoot = fillNodeModel(noeudRoot);
+		nodeTreeModel.add(nodeRoot);
+		return nodeTreeModel;
+	}
+	
+	private static DefaultMutableTreeNode fillNodeModel(INoeud noeudModel){
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(noeudModel.getId());
+		ILien[] liens = noeudModel.getLiensSortant();
+		for(ILien lien : liens){
+			node.add(fillNodeModel(lien.getNoeudArrivee()));
+		}
+		return node;
+	}
+	
 	private DefaultMutableTreeNode getNodeTableaux(){
 		DefaultMutableTreeNode noeudTableau = new DefaultMutableTreeNode("Tableaux");
 		IModelObject[] tmp = Model.get().getModelObjects();
@@ -96,6 +118,23 @@ public class EditorModel extends JScrollPane {
 			noeudTableau.add(node);
 		}
 		return noeudTableau;
+	}
+	
+	private INoeud getModelRoot(){
+		IModelObject[] tmp = Model.get().getModelObjects();
+		DefaultMutableTreeNode node =null;
+		INoeud noeudOut = null;
+		for(IModelObject obj : tmp){
+			if(!(obj instanceof INoeud))continue;
+			INoeud noeud = (INoeud)obj;
+			if(noeud.getLiensEntrant().length==0){
+				if(noeudOut!=null){
+					return null;
+				}
+				noeudOut = noeud;
+			}
+		}
+		return noeudOut;
 	}
 
 	/**

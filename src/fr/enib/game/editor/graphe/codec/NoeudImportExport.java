@@ -6,8 +6,10 @@ package fr.enib.game.editor.graphe.codec;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import fr.enib.game.model.Model;
 import fr.enib.game.model.Noeud;
 import fr.enib.game.model.interfaces.IModelObject;
+import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.IObjectInteret;
 import fr.enib.game.model.interfaces.IObjectPondere;
 import fr.enib.game.model.interfaces.IVisitableObject;
@@ -92,6 +94,12 @@ public class NoeudImportExport extends ICodecModelObject {
 				return false;
 			}
 		}
+		if(!(obj instanceof INoeud)){
+			return false;
+		}
+		INoeud noeud = (INoeud) obj;
+		//TODO
+		Model.get().ajouterModelObject(noeud);
 		return true;
 	}
 
