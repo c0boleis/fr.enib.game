@@ -4,6 +4,7 @@
 package fr.enib.game.editor.graphe.examples.swing.action;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
@@ -27,8 +28,12 @@ public class ExportModelAction extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		TODO remove JFileChooser
-//		Model.get().sauvegarderModel();
+		JFileChooser chooser = new JFileChooser();
+		chooser.showOpenDialog(null);
+		File file = chooser.getSelectedFile();
+		if(file!=null){
+			Model.get().sauvegarderModel(file);
+		}
 	}
 
 }

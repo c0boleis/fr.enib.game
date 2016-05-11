@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 
 import fr.enib.game.editor.graphe.view.mxGraph;
+import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModelObject;
 
 /**
@@ -45,6 +46,15 @@ public class SetIDModelObjectAction extends AbstractAction {
 		if(newId==null)return;
 		this.modelObject.setId(newId);
 		this.graph.refresh();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see javax.swing.AbstractAction#isEnabled()
+	 */
+	@Override
+	public boolean isEnabled(){
+		return !(modelObject instanceof ILien);
 	}
 
 }
