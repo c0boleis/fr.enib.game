@@ -58,15 +58,21 @@ public class GraphEditeur extends BasicGraphEditor
 	 * connections. This is currently unused.
 	 */
 	public static URL url = null;
+	
+	public static final GraphEditeur INSTANCE = new GraphEditeur();
 
 	//GraphEditor.class.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connector.gif");
 
 	/**
 	 * 
 	 */
-	public GraphEditeur()
+	private GraphEditeur()
 	{
 		this("mxGraph Editor", new CustomGraphComponent(new CustomGraph()));
+	}
+	
+	public static GraphEditeur get(){
+		return INSTANCE;
 	}
 
 	/**
@@ -74,7 +80,7 @@ public class GraphEditeur extends BasicGraphEditor
 	 * @param component 
 	 * 
 	 */
-	public GraphEditeur(String appTitle, mxGraphComponent component)
+	private GraphEditeur(String appTitle, mxGraphComponent component)
 	{
 		super(appTitle, component);
 		final mxGraph graph = graphComponent.getGraph();
@@ -391,7 +397,6 @@ public class GraphEditeur extends BasicGraphEditor
 		mxSwingConstants.SHADOW_COLOR = Color.LIGHT_GRAY;
 		mxConstants.W3C_SHADOWCOLOR = "#D3D3D3";
 
-		GraphEditeur editor = new GraphEditeur();
-		editor.createFrame(new EditorMenuBar(editor)).setVisible(true);
+		GraphEditeur.get().createFrame(new EditorMenuBar(GraphEditeur.get())).setVisible(true);
 	}
 }
