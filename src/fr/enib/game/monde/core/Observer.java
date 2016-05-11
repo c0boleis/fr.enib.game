@@ -1,5 +1,10 @@
 package fr.enib.game.monde.core;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public interface Observer {
 	
 	public String getId() ;

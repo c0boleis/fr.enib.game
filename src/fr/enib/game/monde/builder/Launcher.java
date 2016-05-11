@@ -34,6 +34,11 @@ import com.jogamp.opengl.util.FPSAnimator;
 
 import fr.enib.game.monde.objet.Avatar;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Launcher extends JFrame implements GLEventListener, MouseListener, MouseMotionListener, KeyListener{
 	private static final long serialVersionUID = 1L;
 	private static Logger LOGGER = Logger.getLogger(Launcher.class);
@@ -52,11 +57,13 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
     private Robot robot;
 	
 	private boolean lockMouse;
+	private Avatar avatar;
 	
 	public Launcher(boolean loadfromFile) {
 		super(TITLE);
 
 		initLog();
+		avatar = Avatar.get();
 		lockMouse = true;
 		builder = new Builder(loadfromFile);
 		
@@ -95,6 +102,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 		oldX = 0;
 		oldY = 0;
+		
 		
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
@@ -177,40 +185,40 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				System.out.println(lockMouse);
 				break;
 			case KeyEvent.VK_Q:
-				Avatar.get().deplacerAxe(0.0f,0.25f,0.0f,1.0f,1.0f,0.0f) ; 
+				avatar.deplacerAxe(0.0f,0.25f,0.0f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_D:
-				Avatar.get().deplacerAxe(0.0f,-0.25f,0.0f,1.0f,1.0f,0.0f) ; 
+				avatar.deplacerAxe(0.0f,-0.25f,0.0f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_UP:
-				Avatar.get().avancerAxe(0.25f,1.0f,1.0f,0.0f) ; 
+				avatar.avancerAxe(0.25f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_DOWN:
-				Avatar.get().avancerAxe(-0.25f,1.0f,1.0f,0.0f) ; 
+				avatar.avancerAxe(-0.25f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_LEFT:
-				Avatar.get().deplacerAxe(0.0f,0.25f,0.0f,1.0f,1.0f,0.0f) ; 
+				avatar.deplacerAxe(0.0f,0.25f,0.0f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_RIGHT:
-				Avatar.get().deplacerAxe(0.0f,-0.25f,0.0f,1.0f,1.0f,0.0f) ; 
+				avatar.deplacerAxe(0.0f,-0.25f,0.0f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_Z:
-				Avatar.get().avancerAxe(0.25f,1.0f,1.0f,0.0f) ; 
+				avatar.avancerAxe(0.25f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_PAGE_UP:
-				Avatar.get().monter(0.1f);
+				avatar.monter(0.1f);
 				break;
 			case KeyEvent.VK_S:
-				Avatar.get().avancerAxe(-0.25f,1.0f,1.0f,0.0f) ; 
+				avatar.avancerAxe(-0.25f,1.0f,1.0f,0.0f) ; 
 				break;
 			case KeyEvent.VK_PAGE_DOWN:
-				Avatar.get().monter(-0.1f);
+				avatar.monter(-0.1f);
 				break;
 			case KeyEvent.VK_A:
-				Avatar.get().tournerGauche((float)(Math.PI/180.0)) ;
+				avatar.tournerGauche((float)(Math.PI/180.0)) ;
 				break;
 			case KeyEvent.VK_E:
-				Avatar.get().tournerGauche(-(float)(Math.PI/180.0)) ;
+				avatar.tournerGauche(-(float)(Math.PI/180.0)) ;
 				break;
 			case KeyEvent.VK_U:
 				break;
@@ -255,20 +263,21 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	
 	private void moveLookAvatar(){
 		if ((dx < 0) && (dx > -10)){
-			Avatar.get().tournerGauche((float)(Math.PI/180.0)) ;
+			avatar.tournerGauche((float)(Math.PI/180.0)) ;
 		}
 
 		else if ((dx > 0) && (dx < 10)){
-			Avatar.get().tournerGauche(-(float)(Math.PI/180.0)) ;
+			avatar.tournerGauche(-(float)(Math.PI/180.0)) ;
 		}
 
 		if ((dy < 0) && (dy > -10)){
-			Avatar.get().tournerHaut((float)(Math.PI/180.0)) ;
+			avatar.tournerHaut((float)(Math.PI/180.0)) ;
 		}
 
 		else if ((dy > 0) && (dy < 10)){
-			Avatar.get().tournerHaut(-(float)(Math.PI/180.0)) ;
+			avatar.tournerHaut(-(float)(Math.PI/180.0)) ;
 		}
+		LOGGER.info("dir : " + avatar.getDirectionRegard());
 	}
 	
 	public boolean isCentre(int x, int y){

@@ -1,5 +1,7 @@
 package fr.enib.game.model.interfaces;
 
+import java.io.File;
+
 import fr.enib.game.model.listeners.IEcouteurListener;
 
 
@@ -48,9 +50,10 @@ public interface IModel extends IEcouteurListener {
 	
 	/**
 	 * 
-	 * @return true si sauvegarde reussi
+	 * @param monFichierXml le fichier xml où l'on sauvegarde.
+	 * @return true si sauvegarde reussi.
 	 */
-	public boolean sauvegarderModel();
+	public boolean sauvegarderModel(File monFichierXml);
 	
 
 }

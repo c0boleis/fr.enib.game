@@ -1,5 +1,10 @@
 package fr.enib.game.monde.graphic_core;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class TrouMur {
 	private float hauteur;
 	private float largeur;

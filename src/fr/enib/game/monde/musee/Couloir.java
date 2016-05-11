@@ -6,8 +6,20 @@ import fr.enib.game.monde.objet.RessourceProvider;
 import fr.enib.game.monde.objet.Sol;
 import fr.enib.game.monde.objet.TypeObjet;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Couloir extends Salle{
 
+	/**
+	 * 
+	 * @param id
+	 * @param largeur
+	 * @param profondeur
+	 * @param hauteur
+	 */
 	protected Couloir(String id, float largeur, float profondeur, float hauteur) {
 		super(id);
 
@@ -30,6 +42,5 @@ public class Couloir extends Salle{
 		getMurDroite().orienter((float) -Math.PI/2.0f); 
 		getMurDroite().placer(-profondeur/2.0f,-getLargeur()/2.0f,0.0f); 
 	}
-
 	
 }

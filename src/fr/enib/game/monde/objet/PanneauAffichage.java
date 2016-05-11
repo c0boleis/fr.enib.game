@@ -4,6 +4,11 @@ import fr.enib.game.monde.graphic_core.Forme;
 import fr.enib.game.monde.graphic_core.GPanneauAffichage;
 import fr.enib.game.monde.graphic_core.Shape;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class PanneauAffichage extends Objet {
 	
 	private float position;

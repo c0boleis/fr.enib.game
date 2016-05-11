@@ -4,6 +4,11 @@ import fr.enib.game.monde.graphic_core.Forme;
 import fr.enib.game.monde.graphic_core.GPlafond;
 import fr.enib.game.monde.graphic_core.Shape;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Plafond extends Objet {
 	
 	public Plafond(String id, String pathTexture,float hauteur, float largeur){

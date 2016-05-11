@@ -5,6 +5,11 @@ import java.util.HashMap;
 import fr.enib.game.monde.geo.Repere;
 import fr.enib.game.monde.geo.Vec3;
 
+/**
+ * 
+ * @author Ronan MOREL
+ *
+ */
 public class Situable implements Observable{
 	private String id ;
 
@@ -150,7 +155,7 @@ public class Situable implements Observable{
 
 	public Repere getRepere() {
 		if(this.getMaitre()==null){
-			// ce situable n'a pas de metre donc on renvoi sont repere
+			// ce situable n'a pas de maitre donc on renvoi sont repere
 			return repere;
 		}
 		else{
@@ -158,5 +163,9 @@ public class Situable implements Observable{
 			rep.accumuler(this.getMaitre().getRepere());
 			return rep;
 		}
+	}
+	
+	public Vec3 getPositionRepere(){
+		return repere.getPostiton();
 	}
 }

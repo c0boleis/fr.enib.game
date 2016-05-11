@@ -3,12 +3,16 @@
  */
 package fr.enib.game.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import fr.enib.game.model.interfaces.ITableau;
 
 /**
  * @author Corentin Boleis
  *
  */
+@XStreamAlias("Tableau")
 public class Tableau extends Noeud implements ITableau{
 	
 	private float largeurTableau;
@@ -17,11 +21,13 @@ public class Tableau extends Noeud implements ITableau{
 	/**
 	 * 
 	 */
+	@XStreamOmitField
 	private static final long serialVersionUID = 7748082203188285353L;
 	
 	/**
 	 * le nom par default des tableaux
 	 */
+	@XStreamOmitField
 	public static final String NOM_PAR_DEFAULT = "Tableau";
 	
 	private String description = null;
