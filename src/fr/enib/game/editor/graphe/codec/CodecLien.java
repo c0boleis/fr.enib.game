@@ -50,7 +50,7 @@ public class CodecLien extends mxObjectCodec {
 	public Node afterEncode(mxCodec enc, Object obj, Node node)
 	{
 		if(obj instanceof ILien){
-			LienImportExprot.get().exportObject(obj, node);
+			LienImportExport.get().exportObject(obj, node);
 		}
 		return node;
 	}
@@ -58,7 +58,7 @@ public class CodecLien extends mxObjectCodec {
 	public Object afterDecode(mxCodec dec, Node node, Object obj)
 	{
 		if(obj instanceof ILien){
-			LienImportExprot.get().importObject(obj, node);
+			LienImportExport.get().importObject(obj, node);
 		}
 		return obj;
 	}

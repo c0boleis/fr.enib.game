@@ -50,6 +50,11 @@ public class CodecNoeud extends mxObjectCodec {
 		super(template, exclude, idrefs, mapping);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see fr.enib.game.editor.graphe.io.mxObjectCodec#afterEncode(fr.enib.game.editor.graphe.io.mxCodec, java.lang.Object, org.w3c.dom.Node)
+	 */
+	@Override
 	public Node afterEncode(mxCodec enc, Object obj, Node node)
 	{
 		if(obj instanceof INoeud){
@@ -58,6 +63,11 @@ public class CodecNoeud extends mxObjectCodec {
 		return node;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see fr.enib.game.editor.graphe.io.mxObjectCodec#afterDecode(fr.enib.game.editor.graphe.io.mxCodec, org.w3c.dom.Node, java.lang.Object)
+	 */
+	@Override
 	public Object afterDecode(mxCodec dec, Node node, Object obj)
 	{
 		if(obj instanceof Noeud){
