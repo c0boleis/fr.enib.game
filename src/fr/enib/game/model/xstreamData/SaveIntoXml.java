@@ -17,6 +17,7 @@ import java.nio.charset.Charset;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
+import fr.enib.game.model.Model;
 import fr.enib.game.model.interfaces.IModelObject;
 
 /**
@@ -42,9 +43,9 @@ public class SaveIntoXml {
 			//Ecriture dans le fichier XML
 			buf = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(fichier), "UTF8"));
-			//String xml = xstream.toXML(Model.get());
+			String xml = xstream.toXML(Model.get());
 			buf.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-			//buf.write(xml);
+			buf.write(xml);
 			buf.close();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

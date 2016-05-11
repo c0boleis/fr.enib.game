@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.w3c.dom.Node;
 
+import fr.enib.game.editor.graphe.io.mxCellCodec;
 import fr.enib.game.editor.graphe.io.mxCodec;
 import fr.enib.game.editor.graphe.io.mxCodecRegistry;
 import fr.enib.game.editor.graphe.io.mxObjectCodec;
@@ -17,7 +18,7 @@ import fr.enib.game.model.interfaces.ITableau;
  * @author Corentin Boleis
  * @see mxCodecRegistry
  */
-public class CodecTableau extends mxObjectCodec {
+public class CodecTableau extends mxCellCodec {
 	
 	/**
 	 * 
@@ -50,7 +51,7 @@ public class CodecTableau extends mxObjectCodec {
 		if(obj instanceof ITableau){
 			TableauImportExport.get().exportObject(obj, node);
 		}
-		return node;
+		return super.afterEncode(enc, obj, node);
 	}
 	
 	public Object afterDecode(mxCodec dec, Node node, Object obj)
@@ -58,7 +59,7 @@ public class CodecTableau extends mxObjectCodec {
 		if(obj instanceof ITableau){
 			TableauImportExport.get().importObject(obj, node);
 		}
-		return obj;
+		return super.afterDecode(dec, node, obj);
 	}
 
 }
