@@ -35,7 +35,6 @@ public class ParcoursGraphe {
 		INoeud noeud8 = new Noeud();
 		INoeud noeud9 = new Noeud();
 		INoeud noeud10 = new Noeud();
-		INoeud noeud11 = new Noeud();
 		
 		//Création d'un noeud qui est tableau 
 		//ITableau tab1 = new Tableau();
@@ -55,7 +54,6 @@ public class ParcoursGraphe {
 		noeud8.setId("blabla");
 		noeud9.setId("blublu");
 		noeud10.setId("A");
-		noeud11.setId("B");
 		
 		//Creation des liens : 
 		ILien lien10 = new Lien((Noeud)noeud10,(Noeud)noeud1);
