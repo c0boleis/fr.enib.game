@@ -8,6 +8,7 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
+import fr.enib.game.editor.graphe.examples.swing.action.OpenAction;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.handler.mxKeyboardHandler;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
@@ -63,7 +64,7 @@ public class EditorKeyboardHandler extends mxKeyboardHandler
 		map.put("save", new EditorActions.SaveAction(false));
 		map.put("saveAs", new EditorActions.SaveAction(true));
 		map.put("new", new EditorActions.NewAction());
-		map.put("open", new EditorActions.OpenAction());
+		map.put("open", new OpenAction());
 		map.put("undo", new EditorActions.HistoryAction(true));
 		map.put("redo", new EditorActions.HistoryAction(false));
 		map.put("selectVertices", mxGraphActions.getSelectVerticesAction());

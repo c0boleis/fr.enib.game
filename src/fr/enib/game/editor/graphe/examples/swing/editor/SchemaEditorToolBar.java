@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.TransferHandler;
 
+import fr.enib.game.editor.graphe.examples.swing.action.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.NewAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PrintAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SaveAction;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
@@ -23,6 +23,9 @@ import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
 import fr.enib.game.editor.graphe.view.mxGraphView;
 
+/**
+ *
+ */
 public class SchemaEditorToolBar extends JToolBar
 {
 
@@ -31,14 +34,11 @@ public class SchemaEditorToolBar extends JToolBar
 	 */
 	private static final long serialVersionUID = -3979320704834605323L;
 
-	/**
-	 * 
-	 * @param frame
-	 * @param orientation
-	 */
 	private boolean ignoreZoomChange = false;
 
 	/**
+	 * @param editor 
+	 * @param orientation 
 	 * 
 	 */
 	public SchemaEditorToolBar(final BasicGraphEditor editor, int orientation)
@@ -85,9 +85,8 @@ public class SchemaEditorToolBar extends JToolBar
 
 		final mxGraphView view = editor.getGraphComponent().getGraph()
 				.getView();
-		final JComboBox zoomCombo = new JComboBox(new Object[] { "400%",
-				"200%", "150%", "100%", "75%", "50%", mxResources.get("page"),
-				mxResources.get("width"), mxResources.get("actualSize") });
+		final JComboBox<String> zoomCombo = new JComboBox<String>(new String[] { "400%",
+				"200%", "150%", "100%", "75%", "50%" });
 		zoomCombo.setEditable(true);
 		zoomCombo.setMinimumSize(new Dimension(75, 0));
 		zoomCombo.setPreferredSize(new Dimension(75, 0));

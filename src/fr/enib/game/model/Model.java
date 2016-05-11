@@ -8,11 +8,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 
+import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.listeners.IListener;
@@ -209,6 +208,19 @@ public class Model implements IModel{
 			listListener.remove(listener);
 		}
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#refresh()
+	 */
+	@Override
+	public void refresh() {
+		IModelObject[] tmp = getModelObjects();
+		for(IModelObject object : tmp){
+			if( object instanceof ILien){
+				((ILien) object).refresh();
+			}
+		}
 	}
 
 }

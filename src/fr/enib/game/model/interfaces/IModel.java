@@ -55,5 +55,10 @@ public interface IModel extends IEcouteurListener {
 	 */
 	public boolean sauvegarderModel(File monFichierXml);
 	
+	/**
+	 * met à jour le model
+	 */
+	public void refresh();
+	
 
 }

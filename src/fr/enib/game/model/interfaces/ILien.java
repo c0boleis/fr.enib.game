@@ -39,5 +39,10 @@ public interface ILien extends IModelObject,IObjectPondere{
 	 * @return retourne null si pas d'erreur.
 	 */
 	public Object setNoeudDepart(Noeud nouveauNoeud);
+	
+	/**
+	 * regarde si le lien est biens lié à ses noeuds de départ et d'arrivée
+	 */
+	public void refresh();
 
 }

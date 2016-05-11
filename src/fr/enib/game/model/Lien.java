@@ -208,4 +208,20 @@ public class Lien implements ILien {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.ILien#refresh()
+	 */
+	@Override
+	public void refresh() {
+		INoeud noeud = getNoeudArrivee();
+		if(noeud!=null){
+			noeud.ajouterLienEntrant(this);
+		}
+		 noeud = getNoeudDepart();
+			if(noeud!=null){
+				noeud.ajouterLienSortant(this);
+			}
+		
+	}
+
 }

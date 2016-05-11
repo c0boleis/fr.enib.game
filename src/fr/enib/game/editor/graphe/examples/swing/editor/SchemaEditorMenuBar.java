@@ -12,6 +12,7 @@ import javax.swing.TransferHandler;
 import javax.swing.UIManager;
 
 import fr.enib.game.editor.graphe.examples.swing.action.ExitAction;
+import fr.enib.game.editor.graphe.examples.swing.action.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.action.StylesheetAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.BackgroundImageAction;
@@ -19,7 +20,6 @@ import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridColorA
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridStyleAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.NewAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PageBackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PageSetupAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PrintAction;

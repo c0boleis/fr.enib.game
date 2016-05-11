@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.TransferHandler;
 
+import fr.enib.game.editor.graphe.examples.swing.action.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.action.StartSimulationAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.OpenAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PrintAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.SaveAction;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
