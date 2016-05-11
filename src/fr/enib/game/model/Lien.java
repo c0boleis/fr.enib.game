@@ -165,8 +165,8 @@ public class Lien implements ILien {
 				}
 			}
 			//on casse le lien avec le noeud de départ
-			if(this.getNoeudArrivee()!=null){
-				if(!this.getNoeudArrivee().suprimerLienEntrant(this)){
+			if(this.getNoeudDepart()!=null){
+				if(!this.getNoeudDepart().suprimerLienSortant(this)){
 					return false;
 				}
 			}

@@ -373,7 +373,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 
 				if (tmp != null)
 				{
-					tmp.insertEdge(mxc, true);
+					tmp.insertEdge(mxc, true,false);
 				}
 			}
 
@@ -385,7 +385,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 
 				if (tmp != null)
 				{
-					tmp.insertEdge(mxc, false);
+					tmp.insertEdge(mxc, false,false);
 				}
 			}
 		}
@@ -651,16 +651,17 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	protected Object terminalForCellChanged(Object edge, Object terminal,
 			boolean isSource)
 	{
+		System.out.println("######## terminal");
 		mxICell previous = (mxICell) getTerminal(edge, isSource);
 
 		if (terminal != null)
 		{
-			((mxICell) terminal).insertEdge((mxICell) edge, isSource);
+			((mxICell) terminal).insertEdge((mxICell) edge, isSource,true);
 		}
 		else if (previous != null)
 		{
 			//TODO check remove edge
-			previous.removeEdge((mxICell) edge, isSource,true);
+			previous.removeEdge((mxICell) edge, isSource);
 		}
 
 		return previous;

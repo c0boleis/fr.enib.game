@@ -309,10 +309,18 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	 * Sets the source terminal.
 	 * 
 	 * @param source Cell that represents the new source terminal.
+	 * @param terminal 
 	 */
-	public void setSource(mxICell source)
+	private void setSource(mxICell source,boolean terminal)
 	{
 		this.source = source;
+		if(isEdge() && terminal){
+			System.out.println("\tset SOURCE");
+			if(this.value==null)return;
+			if(!(this.value instanceof ILien))return;
+			ILien lien = (ILien) this.value;
+			//TODO set noeud de depart
+		}
 	}
 
 	/**
@@ -327,10 +335,18 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	 * Sets the target terminal.
 	 * 
 	 * @param target Cell that represents the new target terminal.
+	 * @param terminal 
 	 */
-	public void setTarget(mxICell target)
+	private void setTarget(mxICell target,boolean terminal)
 	{
 		this.target = target;
+		if(isEdge() && terminal){
+			System.out.println("\tset TARGET");
+			if(this.value==null)return;
+			if(!(this.value instanceof ILien))return;
+			ILien lien = (ILien) this.value;
+			//TODO set noeud de d'arrivée
+		}
 	}
 
 	/* (non-Javadoc)
@@ -348,11 +364,11 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	{
 		if (isSource)
 		{
-			setSource(terminal);
+			setSource(terminal,true);
 		}
 		else
 		{
-			setTarget(terminal);
+			setTarget(terminal,true);
 		}
 
 		return terminal;
@@ -492,8 +508,9 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	/* (non-Javadoc)
 	 * @see fr.enib.game.editor.graphe.model.mxICell#insertEdge(fr.enib.game.editor.graphe.model.mxICell, boolean)
 	 */
-	public mxICell insertEdge(mxICell edge, boolean isOutgoing)
+	public mxICell insertEdge(mxICell edge, boolean isOutgoing,boolean creerLien)
 	{
+		
 		if (edge != null)
 		{
 			edge.removeFromTerminal(isOutgoing);
@@ -503,7 +520,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 					|| !edges.contains(edge))
 			{
 				if (edges == null)
-				{
+				{ 
 					edges = new ArrayList<Object>();
 				}
 
@@ -518,20 +535,25 @@ public class mxCell implements mxICell, Cloneable, Serializable
 				if(!(obj2 instanceof INoeud))return edge;
 				INoeud noeud1 = (INoeud)obj1;
 				INoeud noeud2 = (INoeud)obj2;
+				if(!creerLien)return edge;
 				try{
 					ILien  lien = new Lien(noeud1,noeud2);
 					((mxCell) edge).value = lien;
-					Model.get().ajouterModelObject(lien);
+					if(!Model.get().ajouterModelObject(lien)){
+						((mxCell) edge).value = null;
+					}
 				}catch(IllegalArgumentException e){
 					//								this.removeEdge(edge, isOutgoing);
 					//								cell.removeEdge(edge, !isOutgoing);
 					//								edge.removeFromParent();
 					//								e.printStackTrace();
+//					((mxCell) edge).value = null;
 				}catch(LimitLienException e){
-					this.removeEdge(edge, isOutgoing,true);
-					cell.removeEdge(edge, !isOutgoing,true);
+					this.removeEdge(edge, isOutgoing);
+					cell.removeEdge(edge, !isOutgoing);
 					edge.removeFromParent();
 					e.printStackTrace();
+//					((mxCell) edge).value = null;
 				}
 			}
 		}
@@ -544,7 +566,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	 * @see fr.enib.game.editor.graphe.model.mxICell#removeEdge(fr.enib.game.editor.graphe.model.mxICell, boolean, boolean)
 	 */
 	@Override
-	public mxICell removeEdge(mxICell edge, boolean isOutgoing,boolean removeEdge)
+	public mxICell removeEdge(mxICell edge, boolean isOutgoing)
 	{
 		if (edge != null)
 		{
@@ -555,7 +577,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 
 			edge.setTerminal(null, isOutgoing);
 			if(edge.getValue() instanceof IRemovable){
-				if(removeEdge)((IRemovable) edge.getValue()).remove();
+				((IRemovable) edge.getValue()).remove();
 			}
 		}
 
@@ -571,7 +593,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 
 		if (terminal != null)
 		{
-			terminal.removeEdge(this, isSource,true);
+			terminal.removeEdge(this, isSource);
 		}
 	}
 
@@ -646,8 +668,8 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		clone.setVertex(isVertex());
 		clone.setVisible(isVisible());
 		clone.setParent(null);
-		clone.setSource(null);
-		clone.setTarget(null);
+		clone.setSource(null,false);
+		clone.setTarget(null,false);
 		clone.children = null;
 		clone.edges = null;
 

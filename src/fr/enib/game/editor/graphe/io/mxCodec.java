@@ -79,6 +79,7 @@ public class mxCodec
 
 	/**
 	 * Sets the owner document of the codec.
+	 * @param value 
 	 */
 	public void setDocument(Document value)
 	{
@@ -86,7 +87,7 @@ public class mxCodec
 	}
 
 	/**
-	 * Returns if default values of member variables should be encoded.
+	 * @return if default values of member variables should be encoded.
 	 */
 	public boolean isEncodeDefaults()
 	{
@@ -95,6 +96,7 @@ public class mxCodec
 
 	/**
 	 * Sets if default values of member variables should be encoded.
+	 * @param encodeDefaults 
 	 */
 	public void setEncodeDefaults(boolean encodeDefaults)
 	{
@@ -102,7 +104,7 @@ public class mxCodec
 	}
 
 	/**
-	 * Returns the object lookup table.
+	 * @return the object lookup table.
 	 */
 	public Map<String, Object> getObjects()
 	{
@@ -439,6 +441,7 @@ public class mxCodec
 	
 	/**
 	 * Inserts the given cell into its parent and terminal cells.
+	 * @param cell 
 	 */
 	public void insertIntoGraph(mxICell cell)
 	{
@@ -458,12 +461,12 @@ public class mxCodec
 
 		if (source != null)
 		{
-			source.insertEdge(cell, true);
+			source.insertEdge(cell, true,false);
 		}
 
 		if (target != null)
 		{
-			target.insertEdge(cell, false);
+			target.insertEdge(cell, false,false);
 		}
 	}
 
