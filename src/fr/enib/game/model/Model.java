@@ -4,6 +4,7 @@
 package fr.enib.game.model;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.listeners.IListener;
 import fr.enib.game.model.listeners.IModelListener;
+import fr.enib.game.model.xstreamData.SaveIntoXml;
 
 /**
  * @author Corentin Boleis
@@ -76,11 +78,13 @@ public class Model implements IModel{
 	 * @see fr.enib.game.model.interfaces.IModel#sauvegarderModele()
 	 */
 	@Override
-	public boolean sauvegarderModel() {
+	public boolean sauvegarderModel(File monFichierXml) {
 		// TODO Auto-generated method stub
 		if(modelObjects.isEmpty()){
 			return false;
 		}
+		SaveIntoXml masauvegarde = new SaveIntoXml(monFichierXml);
+		masauvegarde.enregistrer();
 		return true;
 	}
 

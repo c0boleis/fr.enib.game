@@ -4,6 +4,7 @@
 package fr.enib.game.model.xstreamData;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,14 +28,15 @@ import fr.enib.game.model.interfaces.IModelObject;
  */
 public class SaveIntoXml {
 	
-	private String fichier;
+	private File fichier;
 	private XStream xstream;
 	
-	public SaveIntoXml(String cheminNouveauFichier){
+	/**
+	 * @param cheminNouveauFichier le chemin du fichier xml
+	 */
+	public SaveIntoXml(File cheminNouveauFichier){
 		setFichier(cheminNouveauFichier);
-		
 		xstream = new XStream(new DomDriver());
-		
 	}
 	
 	public void enregistrer(){
@@ -56,36 +58,7 @@ public class SaveIntoXml {
 		}
 	}
 	
-	public void save(){
-		try {
-			// Instanciation de la classe XStream
-			XStream xstream = new XStream(new DomDriver());
-			// Instanciation de la classe Entete
-			//Entete entete = new Entete("Titre de l'article", new Date());
-			// Instanciation de la classe Article
-			//Article article = new Article(entete, "Un synopsis bien placé !!! <strong>avec une balise HTML</strong>");
-
-			// Instanciation d'un fichier c:/temp/article.xml
-			//File fichier = new File("c:/temp/article.xml");
-			// Instanciation d'un flux de sortie fichier vers
-			// c:/temp/article.xml
-			FileOutputStream fos = new FileOutputStream(fichier);
-			try {
-				// Sérialisation de l'objet article dans c:/temp/article.xml
-				//xstream.toXML(article, fos);
-			} finally {
-				// On s'assure de fermer le flux quoi qu'il arrive
-				fos.close();
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
-	}
-	
-	public void ouvrir(){
+	public void importer(){
 		InputStream inputStream = null;
 		Reader reader = null;
 	    //Lecture du fichier
@@ -102,14 +75,14 @@ public class SaveIntoXml {
 	/**
 	 * @return le nom du fichier
 	 */
-	public String getFichier() {
+	public File getFichier() {
 		return fichier;
 	}
 
 	/**
-	 * @param affecte le nouveau fichier
+	 * @param fichier fichier de sauvegarde.
 	 */
-	public void setFichier(String fichier) {
+	public void setFichier(File fichier) {
 		this.fichier = fichier;
 	}
 }
