@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2006, Gaudenz Alder
- */
 package fr.enib.game.editor.graphe.io;
 
 import java.lang.reflect.Array;
@@ -19,7 +16,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.editor.graphe.util.mxUtils;
 
 /**
@@ -29,7 +25,7 @@ import fr.enib.game.editor.graphe.util.mxUtils;
  * Note: Since booleans are numbers in JavaScript, all boolean values are
  * encoded into 1 for true and 0 for false.
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked","rawtypes"})
 public class mxObjectCodec
 {
 
@@ -76,6 +72,7 @@ public class mxObjectCodec
 
 	/**
 	 * Constructs a new codec for the specified template object.
+	 * @param template 
 	 */
 	public mxObjectCodec(Object template)
 	{
@@ -145,7 +142,7 @@ public class mxObjectCodec
 	}
 
 	/**
-	 * Returns the name used for the nodenames and lookup of the codec when
+	 * @return the name used for the nodenames and lookup of the codec when
 	 * classes are encoded and nodes are decoded. For classes to work with
 	 * this the codec registry automatically adds an alias for the classname
 	 * if that is different than what this returns. The default implementation

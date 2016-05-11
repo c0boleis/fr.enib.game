@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2010-2012, JGraph Ltd
- */
 package fr.enib.game.editor.graphe.io;
 
 import fr.enib.game.editor.graphe.model.mxGraphModel;
@@ -22,7 +19,22 @@ public class mxGdCodec
 	 */
 	public enum mxGDParseState
 	{
-		START, NUM_NODES, PARSING_NODES, PARSING_EDGES
+		/**
+		 * 
+		 */
+		START, 
+		/**
+		 * 
+		 */
+		NUM_NODES,
+		/**
+		 * 
+		 */
+		PARSING_NODES,
+		/**
+		 * 
+		 */
+		PARSING_EDGES
 	}
 
 	/**
@@ -42,7 +54,7 @@ public class mxGdCodec
 		Object parent = graph.getDefaultParent();
 
 		graph.getModel().beginUpdate();
-		
+
 		try
 		{
 			String line = br.readLine().trim();
@@ -50,98 +62,98 @@ public class mxGdCodec
 			{
 				switch (state)
 				{
-					case START:
+				case START:
+				{
+					if (!line.startsWith("#"))
 					{
-						if (!line.startsWith("#"))
+						state = mxGDParseState.NUM_NODES;
+					}
+					else
+					{
+						break;
+					}
+				}
+				case NUM_NODES:
+				{
+					if (!line.startsWith("#"))
+					{
+						int numVertices = Integer.valueOf(line);
+
+						for (int i = 0; i < numVertices; i++)
 						{
-							state = mxGDParseState.NUM_NODES;
+							String label = String.valueOf(i);
+							Object vertex = graph.insertVertex(parent, label, label,
+									0, 0, 10, 10);
+
+							cellsMap.put(label, vertex);
+						}
+					}
+					else
+					{
+						state = mxGDParseState.PARSING_EDGES;
+					}
+
+					break;
+				}
+				case PARSING_NODES:
+				{
+					if (line.startsWith("# Edges"))
+					{
+						state = mxGDParseState.PARSING_EDGES;
+					}
+					else if (!line.equals(""))
+					{
+						String[] items = line.split(",");
+						if (items.length != 5)
+						{
+							throw new Exception("Error in parsing");
 						}
 						else
 						{
-							break;
+							double x = Double.valueOf(items[1]);
+							double y = Double.valueOf(items[2]);
+							double width = Double.valueOf(items[3]);
+							double height = Double.valueOf(items[4]);
+
+
+							//Set the node name as label.
+							String label = items[0];
+
+							//Insert a new vertex in the graph
+							Object vertex = graph.insertVertex(parent, label, label,
+									x - width / 2.0, y - height / 2.0, width,
+									height);
+
+							cellsMap.put(label, vertex);
 						}
 					}
-					case NUM_NODES:
+					break;
+				}
+				case PARSING_EDGES:
+				{
+					if (!line.equals(""))
 					{
-						if (!line.startsWith("#"))
+						String[] items = line.split(" ");
+						if (items.length != 2)
 						{
-							int numVertices = Integer.valueOf(line);
-							
-							for (int i = 0; i < numVertices; i++)
-							{
-								String label = String.valueOf(i);
-								Object vertex = graph.insertVertex(parent, label, label,
-										0, 0, 10, 10);
-								
-								cellsMap.put(label, vertex);
-							}
+							throw new Exception("Error in parsing");
 						}
 						else
 						{
-							state = mxGDParseState.PARSING_EDGES;
-						}
-						
-						break;
-					}
-					case PARSING_NODES:
-					{
-						if (line.startsWith("# Edges"))
-						{
-							state = mxGDParseState.PARSING_EDGES;
-						}
-						else if (!line.equals(""))
-						{
-							String[] items = line.split(",");
-							if (items.length != 5)
-							{
-								throw new Exception("Error in parsing");
-							}
-							else
-							{
-								double x = Double.valueOf(items[1]);
-								double y = Double.valueOf(items[2]);
-								double width = Double.valueOf(items[3]);
-								double height = Double.valueOf(items[4]);
-								
-								
-								//Set the node name as label.
-								String label = items[0];
+							Object source = cellsMap.get(items[0]);
+							Object target = cellsMap.get(items[1]);
 
-								//Insert a new vertex in the graph
-								Object vertex = graph.insertVertex(parent, label, label,
-										x - width / 2.0, y - height / 2.0, width,
-										height);
-								
-								cellsMap.put(label, vertex);
-							}
+							graph.insertEdge(parent, null, "", source, target);
 						}
-						break;
 					}
-					case PARSING_EDGES:
-					{
-						if (!line.equals(""))
-						{
-							String[] items = line.split(" ");
-							if (items.length != 2)
-							{
-								throw new Exception("Error in parsing");
-							}
-							else
-							{
-								Object source = cellsMap.get(items[0]);
-								Object target = cellsMap.get(items[1]);
-
-								graph.insertEdge(parent, null, "", source, target);
-							}
-						}
-						break;
-					}
+					break;
+				}
 				}
 
 				line = br.readLine();
 			}
 		}
-		
+
 		catch (Exception e)
 		{
 			e.printStackTrace();
@@ -151,7 +163,7 @@ public class mxGdCodec
 			graph.getModel().endUpdate();
 		}
 	}
-	
+
 	/**
 	 * Generates a GD text output with the cells in the graph.
 	 * The implementation only uses the cells located in the default parent.
@@ -161,13 +173,13 @@ public class mxGdCodec
 	public static String encode(mxGraph graph)
 	{
 		StringBuilder builder = new StringBuilder();
-		
+
 		Object parent = graph.getDefaultParent();
 		Object[] vertices = mxGraphModel.getChildCells(graph.getModel(), parent, true, false);
-		
+
 		builder.append("# Number of Nodes (0-" + String.valueOf(vertices.length - 1) + ")");
 		builder.append(String.valueOf(vertices.length));
-		
+
 		// TODO
 
 		return builder.toString();

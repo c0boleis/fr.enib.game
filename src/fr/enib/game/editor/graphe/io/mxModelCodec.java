@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2006-2013, Gaudenz Alder, David Benson
- */
 package fr.enib.game.editor.graphe.io;
 
 import java.util.Map;
@@ -29,6 +26,7 @@ public class mxModelCodec extends mxObjectCodec
 
 	/**
 	 * Constructs a new model codec for the given template.
+	 * @param template 
 	 */
 	public mxModelCodec(Object template)
 	{
@@ -37,6 +35,10 @@ public class mxModelCodec extends mxObjectCodec
 
 	/**
 	 * Constructs a new model codec for the given arguments.
+	 * @param template 
+	 * @param exclude 
+	 * @param idrefs 
+	 * @param mapping 
 	 */
 	public mxModelCodec(Object template, String[] exclude, String[] idrefs,
 			Map<String, String> mapping)

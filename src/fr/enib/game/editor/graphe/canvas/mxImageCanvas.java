@@ -37,6 +37,11 @@ public class mxImageCanvas implements mxICanvas
 	protected BufferedImage image;
 
 	/**
+	 * @param canvas 
+	 * @param width 
+	 * @param height 
+	 * @param background 
+	 * @param antiAlias 
 	 * 
 	 */
 	public mxImageCanvas(mxGraphics2DCanvas canvas, int width, int height,
@@ -46,6 +51,12 @@ public class mxImageCanvas implements mxICanvas
 	}
 	
 	/**
+	 * @param canvas 
+	 * @param width 
+	 * @param height 
+	 * @param background 
+	 * @param antiAlias 
+	 * @param textAntiAlias 
 	 * 
 	 */
 	public mxImageCanvas(mxGraphics2DCanvas canvas, int width, int height,
@@ -64,6 +75,7 @@ public class mxImageCanvas implements mxICanvas
 	}
 
 	/**
+	 * @return {@link mxGraphics2DCanvas}
 	 * 
 	 */
 	public mxGraphics2DCanvas getGraphicsCanvas()
@@ -72,6 +84,7 @@ public class mxImageCanvas implements mxICanvas
 	}
 
 	/**
+	 * @return {@link BufferedImage}
 	 * 
 	 */
 	public BufferedImage getImage()
@@ -128,6 +141,7 @@ public class mxImageCanvas implements mxICanvas
 	}
 
 	/**
+	 * @return {@link BufferedImage}
 	 * 
 	 */
 	public BufferedImage destroy()

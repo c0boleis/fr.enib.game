@@ -15,7 +15,7 @@ public abstract class ICodecModelObject {
 	/**
 	 * @param obj
 	 * @param node
-	 * @return
+	 * @return true si l'objet à été exporté
 	 */
 	public abstract boolean exportObject(Object obj,Node node);
 	

@@ -5,16 +5,11 @@ package fr.enib.game.editor.graphe.codec;
 
 import java.util.Map;
 
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import fr.enib.game.editor.graphe.io.mxCellCodec;
 import fr.enib.game.editor.graphe.io.mxCodec;
 import fr.enib.game.editor.graphe.io.mxCodecRegistry;
-import fr.enib.game.editor.graphe.io.mxObjectCodec;
-import fr.enib.game.editor.graphe.model.mxCell;
-import fr.enib.game.model.Model;
 import fr.enib.game.model.Noeud;
 import fr.enib.game.model.interfaces.INoeud;
 

@@ -6,10 +6,8 @@ package fr.enib.game.editor.graphe.codec;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
-import fr.enib.game.model.interfaces.IVisitableObject;
 
 /**
  * @author Corentin Boleis

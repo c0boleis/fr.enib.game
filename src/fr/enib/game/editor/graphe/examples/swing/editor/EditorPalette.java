@@ -37,6 +37,9 @@ import fr.enib.game.editor.graphe.util.mxPoint;
 import fr.enib.game.editor.graphe.util.mxRectangle;
 import fr.enib.game.editor.graphe.util.mxEventSource.mxIEventListener;
 
+/**
+ *
+ */
 public class EditorPalette extends JPanel
 {
 
@@ -127,6 +130,7 @@ public class EditorPalette extends JPanel
 	}
 
 	/**
+	 * @param c 
 	 * 
 	 */
 	public void setGradientColor(Color c)
@@ -135,6 +139,7 @@ public class EditorPalette extends JPanel
 	}
 
 	/**
+	 * @return  {@link Color}
 	 * 
 	 */
 	public Color getGradientColor()
@@ -177,6 +182,8 @@ public class EditorPalette extends JPanel
 	}
 
 	/**
+	 * @param entry 
+	 * @param t 
 	 * 
 	 */
 	public void setSelectionEntry(JLabel entry, mxGraphTransferable t)
@@ -201,6 +208,7 @@ public class EditorPalette extends JPanel
 	}
 
 	/**
+	 * @param width 
 	 * 
 	 */
 	public void setPreferredWidth(int width)

@@ -100,6 +100,8 @@ public class JTableRenderer extends JComponent
 	public JTable table;
 
 	/**
+	 * @param cell 
+	 * @param graphContainer 
 	 * 
 	 */
 	@SuppressWarnings("serial")
@@ -213,11 +215,17 @@ public class JTableRenderer extends JComponent
 
 		protected int index;
 
+		/**
+		 * 
+		 */
 		public ResizeHandler()
 		{
 			this(7);
 		}
 
+		/**
+		 * @param index
+		 */
 		public ResizeHandler(int index)
 		{
 			this.index = index;
@@ -295,6 +303,9 @@ public class JTableRenderer extends JComponent
 
 		String[] colNames = new String[] { "A", "B", "C", "D", "E" };
 
+		/**
+		 * 
+		 */
 		@SuppressWarnings("serial")
 		public MyTable()
 		{
@@ -517,6 +528,8 @@ public class JTableRenderer extends JComponent
 	}
 
 	/**
+	 * @param component 
+	 * @return {@link JTableRenderer}
 	 * 
 	 */
 	public static JTableRenderer getVertex(Component component)

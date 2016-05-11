@@ -31,6 +31,7 @@ public class mxStylesheetCodec extends mxObjectCodec
 
 	/**
 	 * Constructs a new stylesheet codec for the given template.
+	 * @param template 
 	 */
 	public mxStylesheetCodec(Object template)
 	{
@@ -39,6 +40,10 @@ public class mxStylesheetCodec extends mxObjectCodec
 
 	/**
 	 * Constructs a new model codec for the given arguments.
+	 * @param template 
+	 * @param exclude 
+	 * @param idrefs 
+	 * @param mapping 
 	 */
 	public mxStylesheetCodec(Object template, String[] exclude,
 			String[] idrefs, Map<String, String> mapping)

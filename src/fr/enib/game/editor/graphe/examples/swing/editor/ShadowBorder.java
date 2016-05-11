@@ -30,6 +30,9 @@ public class ShadowBorder implements Border, Serializable
 
 	private Insets insets;
 
+	/**
+	 * 
+	 */
 	public static ShadowBorder sharedInstance = new ShadowBorder();
 
 	private ShadowBorder()
@@ -87,6 +90,9 @@ public class ShadowBorder implements Border, Serializable
 		return new Color(red, green, blue);
 	}
 
+	/**
+	 * @return {@link ShadowBorder}
+	 */
 	public static ShadowBorder getSharedInstance()
 	{
 		return sharedInstance;

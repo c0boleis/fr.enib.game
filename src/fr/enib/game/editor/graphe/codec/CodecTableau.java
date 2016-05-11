@@ -10,7 +10,6 @@ import org.w3c.dom.Node;
 import fr.enib.game.editor.graphe.io.mxCellCodec;
 import fr.enib.game.editor.graphe.io.mxCodec;
 import fr.enib.game.editor.graphe.io.mxCodecRegistry;
-import fr.enib.game.editor.graphe.io.mxObjectCodec;
 import fr.enib.game.model.Tableau;
 import fr.enib.game.model.interfaces.ITableau;
 

@@ -78,6 +78,8 @@ public class mxCodecRegistry
 	 * Registers a new codec and associates the name of the template constructor
 	 * in the codec with the codec object. Automatically creates an alias if the
 	 * codename and the classname are not equal.
+	 * @param codec 
+	 * @return {@link mxObjectCodec}
 	 */
 	public static mxObjectCodec register(mxObjectCodec codec)
 	{
@@ -99,6 +101,8 @@ public class mxCodecRegistry
 
 	/**
 	 * Adds an alias for mapping a classname to a codecname.
+	 * @param classname 
+	 * @param codecname 
 	 */
 	public static void addAlias(String classname, String codecname)
 	{
@@ -106,10 +110,10 @@ public class mxCodecRegistry
 	}
 
 	/**
-	 * Returns a codec that handles the given object, which can be an object
-	 * instance or an XML node.
-	 * 
 	 * @param name Java class name.
+	 * 
+	 * @return a codec that handles the given object, which can be an object
+	 * instance or an XML node.
 	 */
 	public static mxObjectCodec getCodec(String name)
 	{

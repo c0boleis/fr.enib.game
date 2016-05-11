@@ -9,7 +9,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 import fr.enib.game.model.Model;
-import fr.enib.game.model.Noeud;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.INoeud;

@@ -29,6 +29,10 @@ public class mxRootChangeCodec extends mxObjectCodec
 
 	/**
 	 * Constructs a new model codec for the given arguments.
+	 * @param template 
+	 * @param exclude 
+	 * @param idrefs 
+	 * @param mapping 
 	 */
 	public mxRootChangeCodec(Object template, String[] exclude,
 			String[] idrefs, Map<String, String> mapping)

@@ -42,7 +42,7 @@ public class SetIDModelObjectAction extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String newId = JOptionPane.showInputDialog(null, "Entrez l'id", "id");
+		String newId = JOptionPane.showInputDialog(null, "Entrez l'id", this.modelObject.getId());
 		if(newId==null)return;
 		this.modelObject.setId(newId);
 		this.graph.refresh();

@@ -37,8 +37,6 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
-import fr.enib.game.editor.graphe.canvas.mxICanvas;
-import fr.enib.game.editor.graphe.canvas.mxSvgCanvas;
 import fr.enib.game.editor.graphe.io.mxCodec;
 import fr.enib.game.editor.graphe.io.mxGdCodec;
 import fr.enib.game.editor.graphe.model.mxCell;
@@ -49,9 +47,7 @@ import fr.enib.game.editor.graphe.swing.handler.mxConnectionHandler;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
 import fr.enib.game.editor.graphe.swing.view.mxCellEditor;
 import fr.enib.game.editor.graphe.util.mxCellRenderer;
-import fr.enib.game.editor.graphe.util.mxCellRenderer.CanvasFactory;
 import fr.enib.game.editor.graphe.util.mxConstants;
-import fr.enib.game.editor.graphe.util.mxDomUtils;
 import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.util.mxUtils;
 import fr.enib.game.editor.graphe.util.mxXmlUtils;
@@ -274,6 +270,7 @@ public class EditorActions
 		protected int style;
 
 		/**
+		 * @param style 
 		 * 
 		 */
 		public GridStyleAction(int style)
@@ -461,6 +458,7 @@ public class EditorActions
 		protected String lastDir = null;
 
 		/**
+		 * @param showDialog 
 		 * 
 		 */
 		public SaveAction(boolean showDialog)
@@ -531,8 +529,6 @@ public class EditorActions
 				FileFilter selectedFilter = null;
 				DefaultFileFilter xmlPngFilter = new DefaultFileFilter(".png",
 						"PNG+XML " + mxResources.get("file") + " (.png)");
-				FileFilter vmlFileFilter = new DefaultFileFilter(".html",
-						"VML " + mxResources.get("file") + " (.html)");
 				String filename = null;
 				boolean dialogShown = false;
 
@@ -566,11 +562,6 @@ public class EditorActions
 					fc.addChoosableFileFilter(new DefaultFileFilter(".txt",
 							"Graph Drawing " + mxResources.get("file")
 									+ " (.txt)"));
-					fc.addChoosableFileFilter(new DefaultFileFilter(".svg",
-							"SVG " + mxResources.get("file") + " (.svg)"));
-					fc.addChoosableFileFilter(vmlFileFilter);
-					fc.addChoosableFileFilter(new DefaultFileFilter(".html",
-							"HTML " + mxResources.get("file") + " (.html)"));
 
 					// Adds a filter for each supported image format
 					Object[] imageFormats = ImageIO.getReaderFormatNames();
@@ -641,41 +632,7 @@ public class EditorActions
 					String ext = filename
 							.substring(filename.lastIndexOf('.') + 1);
 
-					if (ext.equalsIgnoreCase("svg"))
-					{
-						mxSvgCanvas canvas = (mxSvgCanvas) mxCellRenderer
-								.drawCells(graph, null, 1, null,
-										new CanvasFactory()
-										{
-											public mxICanvas createCanvas(
-													int width, int height)
-											{
-												mxSvgCanvas canvas = new mxSvgCanvas(
-														mxDomUtils.createSvgDocument(
-																width, height));
-												canvas.setEmbedded(true);
-
-												return canvas;
-											}
-
-										});
-
-						mxUtils.writeFile(mxXmlUtils.getXml(canvas.getDocument()),
-								filename);
-					}
-					else if (selectedFilter == vmlFileFilter)
-					{
-						mxUtils.writeFile(mxXmlUtils.getXml(mxCellRenderer
-								.createVmlDocument(graph, null, 1, null, null)
-								.getDocumentElement()), filename);
-					}
-					else if (ext.equalsIgnoreCase("html"))
-					{
-						mxUtils.writeFile(mxXmlUtils.getXml(mxCellRenderer
-								.createHtmlDocument(graph, null, 1, null, null)
-								.getDocumentElement()), filename);
-					}
-					else if (ext.equalsIgnoreCase("mxe")
+					if (ext.equalsIgnoreCase("mxe")
 							|| ext.equalsIgnoreCase("xml"))
 					{
 						mxCodec codec = new mxCodec();
@@ -792,6 +749,8 @@ public class EditorActions
 	public static class ToggleCreateTargetItem extends JCheckBoxMenuItem
 	{
 		/**
+		 * @param editor 
+		 * @param name 
 		 * 
 		 */
 		public ToggleCreateTargetItem(final BasicGraphEditor editor, String name)
@@ -838,6 +797,8 @@ public class EditorActions
 		protected String fieldname, message;
 
 		/**
+		 * @param target 
+		 * @param message 
 		 * 
 		 */
 		public PromptPropertyAction(Object target, String message)
@@ -846,6 +807,9 @@ public class EditorActions
 		}
 
 		/**
+		 * @param target 
+		 * @param message 
+		 * @param fieldname 
 		 * 
 		 */
 		public PromptPropertyAction(Object target, String message,
@@ -869,7 +833,6 @@ public class EditorActions
 							"get" + fieldname);
 					Object current = getter.invoke(target);
 
-					// TODO: Support other atomic types
 					if (current instanceof Integer)
 					{
 						Method setter = target.getClass().getMethod(
@@ -908,6 +871,9 @@ public class EditorActions
 	public static class TogglePropertyItem extends JCheckBoxMenuItem
 	{
 		/**
+		 * @param target 
+		 * @param name 
+		 * @param fieldname 
 		 * 
 		 */
 		public TogglePropertyItem(Object target, String name, String fieldname)
@@ -916,6 +882,10 @@ public class EditorActions
 		}
 
 		/**
+		 * @param target 
+		 * @param name 
+		 * @param fieldname 
+		 * @param refresh 
 		 * 
 		 */
 		public TogglePropertyItem(Object target, String name, String fieldname,
@@ -925,6 +895,11 @@ public class EditorActions
 		}
 
 		/**
+		 * @param target 
+		 * @param name 
+		 * @param fieldname 
+		 * @param refresh 
+		 * @param listener 
 		 * 
 		 */
 		public TogglePropertyItem(final Object target, String name,
@@ -982,6 +957,8 @@ public class EditorActions
 		}
 
 		/**
+		 * @param target 
+		 * @param fieldname 
 		 * 
 		 */
 		public void update(Object target, String fieldname)
@@ -1011,6 +988,9 @@ public class EditorActions
 		}
 
 		/**
+		 * @param target 
+		 * @param fieldname 
+		 * @param refresh 
 		 * 
 		 */
 		public void execute(Object target, String fieldname, boolean refresh)
@@ -1069,6 +1049,7 @@ public class EditorActions
 		protected boolean undo;
 
 		/**
+		 * @param undo 
 		 * 
 		 */
 		public HistoryAction(boolean undo)
@@ -1109,6 +1090,7 @@ public class EditorActions
 		protected boolean bold;
 
 		/**
+		 * @param bold 
 		 * 
 		 */
 		public FontStyleAction(boolean bold)
@@ -1282,6 +1264,7 @@ public class EditorActions
 		/**
 		 * 
 		 * @param key
+		 * @param defaultValue 
 		 */
 		public ToggleAction(String key, boolean defaultValue)
 		{
@@ -1316,7 +1299,8 @@ public class EditorActions
 
 		/**
 		 * 
-		 * @param key
+		 * @param labelPosition 
+		 * @param alignment 
 		 */
 		public SetLabelPositionAction(String labelPosition, String alignment)
 		{
@@ -1375,7 +1359,7 @@ public class EditorActions
 
 		/**
 		 * 
-		 * @param key
+		 * @param value 
 		 */
 		public SetStyleAction(String value)
 		{
@@ -1419,6 +1403,7 @@ public class EditorActions
 		/**
 		 * 
 		 * @param key
+		 * @param value 
 		 */
 		public KeyValueAction(String key, String value)
 		{
@@ -1454,6 +1439,7 @@ public class EditorActions
 		/**
 		 * 
 		 * @param key
+		 * @param message 
 		 */
 		public PromptValueAction(String key, String message)
 		{
@@ -1507,6 +1493,7 @@ public class EditorActions
 
 		/**
 		 * 
+		 * @param name 
 		 * @param key
 		 */
 		public ColorAction(String name, String key)

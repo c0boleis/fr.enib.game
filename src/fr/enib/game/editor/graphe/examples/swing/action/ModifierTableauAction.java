@@ -11,7 +11,6 @@ import javax.swing.JFileChooser;
 
 import fr.enib.game.editor.graphe.model.mxICell;
 import fr.enib.game.editor.graphe.view.mxGraph;
-import fr.enib.game.model.Tableau;
 import fr.enib.game.model.interfaces.ITableau;
 
 /**

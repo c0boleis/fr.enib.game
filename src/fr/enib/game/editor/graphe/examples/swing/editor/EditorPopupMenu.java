@@ -6,13 +6,21 @@ import javax.swing.TransferHandler;
 
 import fr.enib.game.editor.graphe.examples.swing.action.ModifierTableauAction;
 import fr.enib.game.editor.graphe.examples.swing.action.SetIDModelObjectAction;
+import fr.enib.game.editor.graphe.examples.swing.action.SetInteretAction;
+import fr.enib.game.editor.graphe.examples.swing.action.SetPoidsAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
 import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
 import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.model.interfaces.IModelObject;
+import fr.enib.game.model.interfaces.IObjectInteret;
+import fr.enib.game.model.interfaces.IObjectPondere;
 import fr.enib.game.model.interfaces.ITableau;
 
+/**
+ * @author Corentin Boleis
+ *
+ */
 public class EditorPopupMenu extends JPopupMenu
 {
 
@@ -21,6 +29,9 @@ public class EditorPopupMenu extends JPopupMenu
 	 */
 	private static final long serialVersionUID = -3132749140550242191L;
 
+	/**
+	 * @param editor
+	 */
 	public EditorPopupMenu(BasicGraphEditor editor)
 	{
 		boolean selected = !editor.getGraphComponent().getGraph()
@@ -34,12 +45,21 @@ public class EditorPopupMenu extends JPopupMenu
 				/*
 				 * add model object menbu
 				 */
-				add(editor.bind(mxResources.get("setid"), new SetIDModelObjectAction((IModelObject) objValue,editor.getGraphComponent().getGraph()),
-						"/fr/enib/game/editor/graphe/examples/swing/images/font.gif"));
+				SetIDModelObjectAction action = new SetIDModelObjectAction((IModelObject) objValue,editor.getGraphComponent().getGraph());
+				add(editor.bind(mxResources.get("setid"), action,
+						"/fr/enib/game/editor/graphe/examples/swing/images/font.gif")).setEnabled(action.isEnabled());
 				
 			}
 			if(objValue instanceof ITableau){
 				add(editor.bind(mxResources.get("set_tableau"), new ModifierTableauAction((ITableau) objValue,cell,editor.getGraphComponent().getGraph()),
+						"/fr/enib/game/editor/graphe/examples/swing/images/image.gif"));
+			}
+			if(objValue instanceof IObjectPondere){
+				add(editor.bind(mxResources.get("set_poids"), new SetPoidsAction((IObjectPondere) objValue,editor.getGraphComponent().getGraph()),
+						"/fr/enib/game/editor/graphe/examples/swing/images/image.gif"));
+			}
+			if(objValue instanceof IObjectInteret){
+				add(editor.bind(mxResources.get("set_interet"), new SetInteretAction((IObjectInteret) objValue,editor.getGraphComponent().getGraph()),
 						"/fr/enib/game/editor/graphe/examples/swing/images/image.gif"));
 			}
 			addSeparator();

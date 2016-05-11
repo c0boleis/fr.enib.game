@@ -1,10 +1,7 @@
 package fr.enib.game.editor.graphe.examples.swing.editor;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JMenu;
@@ -41,15 +38,16 @@ import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleGrid
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleOutlineItem;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.TogglePropertyItem;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ToggleRulersItem;
-import fr.enib.game.editor.graphe.model.mxIGraphModel;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
 import fr.enib.game.editor.graphe.util.mxConstants;
 import fr.enib.game.editor.graphe.util.mxPoint;
 import fr.enib.game.editor.graphe.util.mxResources;
 import fr.enib.game.editor.graphe.view.mxGraph;
-import fr.enib.game.editor.graphe.view.mxGraphView;
 
+/**
+ *
+ */
 public class EditorMenuBar extends JMenuBar
 {
 
@@ -281,6 +279,8 @@ public class EditorMenuBar extends JMenuBar
 	/**
 	 * Adds menu items to the given shape menu. This is factored out because
 	 * the shape menu appears in the menubar and also in the popupmenu.
+	 * @param menu 
+	 * @param editor 
 	 */
 	public static void populateShapeMenu(JMenu menu, BasicGraphEditor editor)
 	{
@@ -317,6 +317,8 @@ public class EditorMenuBar extends JMenuBar
 	/**
 	 * Adds menu items to the given format menu. This is factored out because
 	 * the format menu appears in the menubar and also in the popupmenu.
+	 * @param menu 
+	 * @param editor 
 	 */
 	public static void populateFormatMenu(JMenu menu, BasicGraphEditor editor)
 	{

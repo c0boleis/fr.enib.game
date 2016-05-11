@@ -30,6 +30,7 @@ public class mxCellCodec extends mxObjectCodec
 
 	/**
 	 * Constructs a new cell codec for the given template.
+	 * @param template 
 	 */
 	public mxCellCodec(Object template)
 	{
@@ -38,6 +39,10 @@ public class mxCellCodec extends mxObjectCodec
 
 	/**
 	 * Constructs a new cell codec for the given arguments.
+	 * @param template 
+	 * @param exclude 
+	 * @param idrefs 
+	 * @param mapping 
 	 */
 	public mxCellCodec(Object template, String[] exclude, String[] idrefs,
 			Map<String, String> mapping)
