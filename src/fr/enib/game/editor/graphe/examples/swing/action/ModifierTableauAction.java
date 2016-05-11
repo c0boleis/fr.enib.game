@@ -95,8 +95,17 @@ public class ModifierTableauAction extends AbstractAction{
 			File file= files[indexFile];
 			tableau.setUrlImage(file.getPath());
 			cell.setStyle("icon;image="+file.getPath().replace(File.separator, "/"));
+			indexFile++;
 		}
 		return null;
+	}
+	
+	public static void updateParentAndIndex(File file){
+		if(!file.exists()){
+			return;
+		}
+		parent = file.getParentFile();
+		modifyNextIndex(file);
 	}
 
 }
