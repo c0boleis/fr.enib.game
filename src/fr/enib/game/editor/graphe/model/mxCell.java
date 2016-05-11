@@ -714,7 +714,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 			 * pas la "value"
 			 */
 			if(transfert)return value;
-			return ((IClonableObject)value).cloneObject();
+			return ((IClonableObject)value).cloneObject(this);
 		}
 
 		return value;

@@ -10,8 +10,9 @@ package fr.enib.game.model.interfaces;
 public interface IClonableObject {
 	
 	/**
+	 * @param object 
 	 * @return le clone de l'objet
 	 */
-	public Object cloneObject();
+	public Object cloneObject(Object object);
 
 }
