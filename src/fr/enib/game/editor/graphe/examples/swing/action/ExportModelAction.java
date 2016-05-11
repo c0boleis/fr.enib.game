@@ -6,6 +6,7 @@ package fr.enib.game.editor.graphe.examples.swing.action;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import fr.enib.game.model.Model;
@@ -26,7 +27,8 @@ public class ExportModelAction extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Model.get().sauvegarderModel();
+//		TODO remove JFileChooser
+//		Model.get().sauvegarderModel();
 	}
 
 }
