@@ -10,8 +10,6 @@ import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
 import fr.enib.game.parcours.graphe.Parcours;
-import fr.enib.game.parcours.graphe.ParcoursDegre;
-import fr.enib.game.parcours.graphe.ParcoursPoids;
 
 /**
  * @author Ronan Morel
@@ -34,11 +32,17 @@ public class ParcoursGraphe {
 		INoeud noeud5 = new Noeud();
 		INoeud noeud6 = new Noeud();
 		INoeud noeud7 = new Noeud();
+		INoeud noeud8 = new Noeud();
+		INoeud noeud9 = new Noeud();
+		INoeud noeud10 = new Noeud();
+		INoeud noeud11 = new Noeud();
 		
-		ITableau tab1 = new Tableau();
-		tab1.setUrlImage("C:\\Users\\magal_000\\git\\fr.enib.game\\data\\Image_graphe");
-		tab1.setNomTableau("abri-et-rampe-de-mise-a-leau-du-canot-de-sauvetage-hoedic.jpg");
-		tab1.setId("Tableau plage");
+		//Création d'un noeud qui est tableau 
+		//ITableau tab1 = new Tableau();
+		//tab1.setUrlImage("C:\\Users\\magal_000\\git\\fr.enib.game\\data\\Image_graphe");
+		//tab1.setNomTableau("abri-et-rampe-de-mise-a-leau-du-canot-de-sauvetage-hoedic.jpg");
+		//tab1.setId("Tableau plage");
+		
 		
 		//On nomme les noeuds du graphe :		
 		noeud1.setId("Patrimoine");
@@ -48,15 +52,24 @@ public class ParcoursGraphe {
 		noeud5.setId("Chateau");
 		noeud6.setId("Plage");
 		noeud7.setId("Montagne");
+		noeud8.setId("blabla");
+		noeud9.setId("blublu");
+		noeud10.setId("A");
+		noeud11.setId("B");
 		
 		//Creation des liens : 
+		ILien lien10 = new Lien((Noeud)noeud10,(Noeud)noeud1);
 		ILien lien1 = new Lien((Noeud)noeud1,(Noeud)noeud2);
 		ILien lien2 = new Lien((Noeud)noeud1,(Noeud)noeud3);
+		ILien lien2_1 = new Lien((Noeud)noeud1,(Noeud)noeud8);
+		ILien lien2_2 = new Lien((Noeud)noeud1,(Noeud)noeud9);
 		ILien lien3 = new Lien((Noeud)noeud2,(Noeud)noeud4);
 		ILien lien4 = new Lien((Noeud)noeud2,(Noeud)noeud5);
 		ILien lien5 = new Lien((Noeud)noeud3,(Noeud)noeud6);
 		ILien lien6 = new Lien((Noeud)noeud3,(Noeud)noeud7);
-		ILien lien7 = new Lien((Noeud)noeud6,(Noeud)tab1);
+		//ILien lien7 = new Lien((Noeud)noeud6,(Noeud)tab1);
+		
+		//System.out.println(lien7.getNoeudDepart() + "--->" + lien7.getNoeudArrivee());
 		
 		//Affectation des poids a chaque lien
 		lien1.setPoids(2);
@@ -65,6 +78,10 @@ public class ParcoursGraphe {
 		lien4.setPoids(3);
 		lien5.setPoids(6);
 		lien6.setPoids(4);
+		lien2_1.setPoids(2);
+		lien2_2.setPoids(2);
+		lien10.setPoids(2);
+		
 	
 		//Affectation des degres au noeud
 		noeud1.setDegreInteret(20);
@@ -74,28 +91,27 @@ public class ParcoursGraphe {
 		noeud5.setDegreInteret(10);
 		noeud6.setDegreInteret(12);
 		noeud7.setDegreInteret(5);
-		
-		
+		noeud8.setDegreInteret(4);
+		noeud9.setDegreInteret(2);
+		noeud10.setDegreInteret(6);
 		
 		//Test du parcours du graphe : 
+		Parcours parcoursP = new Parcours(noeud1);
 		
-		Parcours parcoursP = new ParcoursPoids(noeud1);
-		parcoursP.parcoursObjetSuivant();
+		INoeud n[] = parcoursP.calcul_Noeud_Suivant();
+		for(int i = 0; i<n.length; i++)
+		{
+			System.out.println(n[i].getId());
+		}
 		
-		Parcours parcoursP2 = new ParcoursPoids(noeud2);	
-		parcoursP2.parcoursObjetSuivant();
+		 /*Parcours parcoursP2 = new ParcoursPoids(noeud2);	
+		 parcoursP2.parcoursObjetSuivant();
+		 INoeud n[] = parcoursP2.calcul_Noeud_Suivant();
+		 for(int i = 0; i<n.length; i++)
+		 {
+			System.out.println(n[i].getId());
+		 }*/
 		
-		Parcours parcoursD = new ParcoursDegre(noeud1);	
-		parcoursD.parcoursObjetSuivant();
-		
-		Parcours parcoursD2 = new ParcoursDegre(noeud3);	
-		parcoursD2.parcoursObjetSuivant();
-		
-		Parcours parcoursTestFeuille = new ParcoursDegre(noeud4);	
-		parcoursTestFeuille.parcoursObjetSuivant();
-		
-		Parcours parcoursTestFeuille2 = new ParcoursPoids(noeud6);	
-		parcoursTestFeuille2.parcoursObjetSuivant();
 		//System.out.println(parcoursTestFeuille2.noeud_tableau().getUrlImage() + parcoursTestFeuille2.noeud_tableau().getNomTableau());
 		
 		
