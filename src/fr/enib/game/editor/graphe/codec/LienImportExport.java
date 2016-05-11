@@ -116,11 +116,11 @@ public class LienImportExport extends ICodecModelObject {
 		ILien lien = (ILien)obj;
 		Element elm = (Element) getNodeByName(node, ID_NOEUD_ARRIVEE);
 		String id_arrivee = elm.getTextContent();
-		//TODO
+		lien.setNoeudArrivee((Noeud) Model.get().getModelObject(id_arrivee));
 		
 		elm = (Element) getNodeByName(node, ID_NOEUD_DEPART);
 		String id_depart = elm.getTextContent();
-		//TODO
+		lien.setNoeudDepart((Noeud) Model.get().getModelObject(id_depart));
 		Model.get().ajouterModelObject(lien);
 		return true;
 	}

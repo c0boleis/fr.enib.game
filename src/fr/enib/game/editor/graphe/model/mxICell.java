@@ -275,5 +275,11 @@ public interface mxICell
 	 * @throws CloneNotSupportedException 
 	 */
 	Object clone(boolean transfert) throws CloneNotSupportedException;
+	
+	/**
+	 * true si on peut bouger cette cells
+	 * @return
+	 */
+	boolean isMoovable();
 
 }

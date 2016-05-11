@@ -52,6 +52,7 @@ import fr.enib.game.editor.graphe.canvas.mxGraphics2DCanvas;
 import fr.enib.game.editor.graphe.canvas.mxICanvas;
 import fr.enib.game.editor.graphe.model.mxGraphModel;
 import fr.enib.game.editor.graphe.model.mxGraphModel.Filter;
+import fr.enib.game.editor.graphe.model.mxICell;
 import fr.enib.game.editor.graphe.model.mxIGraphModel;
 import fr.enib.game.editor.graphe.swing.handler.mxCellHandler;
 import fr.enib.game.editor.graphe.swing.handler.mxConnectionHandler;
@@ -2554,7 +2555,8 @@ public class mxGraphComponent extends JScrollPane implements Printable
 	}
 
 	/**
-	 * Returns all cells which may be exported via datatransfer.
+	 * @param cells 
+	 * @return all cells which may be exported via datatransfer.
 	 */
 	public Object[] getExportableCells(Object[] cells)
 	{
@@ -2568,7 +2570,8 @@ public class mxGraphComponent extends JScrollPane implements Printable
 	}
 
 	/**
-	 * Returns true if the given cell can be exported via datatransfer.
+	 * @param cell 
+	 * @return true if the given cell can be exported via datatransfer.
 	 */
 	public boolean canExportCell(Object cell)
 	{
@@ -2596,11 +2599,15 @@ public class mxGraphComponent extends JScrollPane implements Printable
 	}
 
 	/**
+	 * @param e 
+	 * @return false
 	 * 
 	 */
 	public boolean isEditEvent(MouseEvent e)
 	{
-		return (e != null) ? e.getClickCount() == 2 : false;
+		return false;
+//		on ne veut pas editer par un double click
+//		return (e != null) ? e.getClickCount() == 2 : false;
 	}
 
 	/**

@@ -14,12 +14,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.TransferHandler;
 import javax.swing.UIManager;
 
-import fr.enib.game.editor.graphe.analysis.StructuralException;
-import fr.enib.game.editor.graphe.analysis.mxAnalysisGraph;
-import fr.enib.game.editor.graphe.analysis.mxGraphProperties;
-import fr.enib.game.editor.graphe.analysis.mxGraphProperties.GraphType;
-import fr.enib.game.editor.graphe.analysis.mxGraphStructure;
-import fr.enib.game.editor.graphe.analysis.mxTraversal;
 import fr.enib.game.editor.graphe.examples.swing.action.AlignCellsAction;
 import fr.enib.game.editor.graphe.examples.swing.action.AutosizeAction;
 import fr.enib.game.editor.graphe.examples.swing.action.ExitAction;
@@ -71,7 +65,6 @@ public class EditorMenuBar extends JMenuBar
 	{
 		final mxGraphComponent graphComponent = editor.getGraphComponent();
 		final mxGraph graph = graphComponent.getGraph();
-		mxAnalysisGraph aGraph = new mxAnalysisGraph();
 
 		JMenu menu = null;
 		JMenu submenu = null;
@@ -523,100 +516,4 @@ public class EditorMenuBar extends JMenuBar
 		menu.add(editor.bind(mxResources.get("style"), new StyleAction()));
 	}
 
-	/**
-	 *
-	 */
-	public static class InsertGraph extends AbstractAction
-	{
-
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 4010463992665008365L;
-
-		/**
-		 * 
-		 */
-		protected GraphType graphType;
-
-		protected mxAnalysisGraph aGraph;
-
-		/**
-		 * @param aGraph 
-		 * 
-		 */
-		public InsertGraph(GraphType tree, mxAnalysisGraph aGraph)
-		{
-			this.graphType = tree;
-			this.aGraph = aGraph;
-		}
-
-		/**
-		 * 
-		 */
-		public void actionPerformed(ActionEvent e)
-		{
-			if (e.getSource() instanceof mxGraphComponent)
-			{
-				mxGraphComponent graphComponent = (mxGraphComponent) e.getSource();
-				mxGraph graph = graphComponent.getGraph();
-
-				// dialog = new FactoryConfigDialog();
-				String dialogText = "";
-				if (graphType == GraphType.NULL)
-					dialogText = "Configure null graph";
-				else if (graphType == GraphType.COMPLETE)
-					dialogText = "Configure complete graph";
-				else if (graphType == GraphType.NREGULAR)
-					dialogText = "Configure n-regular graph";
-				else if (graphType == GraphType.GRID)
-					dialogText = "Configure grid graph";
-				else if (graphType == GraphType.BIPARTITE)
-					dialogText = "Configure bipartite graph";
-				else if (graphType == GraphType.COMPLETE_BIPARTITE)
-					dialogText = "Configure complete bipartite graph";
-				else if (graphType == GraphType.BFS_DIR)
-					dialogText = "Configure BFS algorithm";
-				else if (graphType == GraphType.BFS_UNDIR)
-					dialogText = "Configure BFS algorithm";
-				else if (graphType == GraphType.DFS_DIR)
-					dialogText = "Configure DFS algorithm";
-				else if (graphType == GraphType.DFS_UNDIR)
-					dialogText = "Configure DFS algorithm";
-				else if (graphType == GraphType.DIJKSTRA)
-					dialogText = "Configure Dijkstra's algorithm";
-				else if (graphType == GraphType.BELLMAN_FORD)
-					dialogText = "Configure Bellman-Ford algorithm";
-				else if (graphType == GraphType.MAKE_TREE_DIRECTED)
-					dialogText = "Configure make tree directed algorithm";
-				else if (graphType == GraphType.KNIGHT_TOUR)
-					dialogText = "Configure knight's tour";
-				else if (graphType == GraphType.GET_ADJ_MATRIX)
-					dialogText = "Configure adjacency matrix";
-				else if (graphType == GraphType.FROM_ADJ_MATRIX)
-					dialogText = "Input adjacency matrix";
-				else if (graphType == GraphType.PETERSEN)
-					dialogText = "Configure Petersen graph";
-				else if (graphType == GraphType.WHEEL)
-					dialogText = "Configure Wheel graph";
-				else if (graphType == GraphType.STAR)
-					dialogText = "Configure Star graph";
-				else if (graphType == GraphType.PATH)
-					dialogText = "Configure Path graph";
-				else if (graphType == GraphType.FRIENDSHIP_WINDMILL)
-					dialogText = "Configure Friendship Windmill graph";
-				else if (graphType == GraphType.INDEGREE)
-					dialogText = "Configure indegree analysis";
-				else if (graphType == GraphType.OUTDEGREE)
-					dialogText = "Configure outdegree analysis";
-//			GraphConfigDialog dialog = new GraphConfigDialog(graphType, dialogText);
-//				dialog.configureLayout(graph, graphType, aGraph);
-//				dialog.setModal(true);
-//				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//				Dimension frameSize = dialog.getSize();
-//				dialog.setLocation(screenSize.width / 2 - (frameSize.width / 2), screenSize.height / 2 - (frameSize.height / 2));
-//				dialog.setVisible(true);
-			}
-		}
-	}
 };

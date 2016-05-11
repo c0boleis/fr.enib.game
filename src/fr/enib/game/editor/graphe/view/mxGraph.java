@@ -3757,6 +3757,13 @@ public class mxGraph extends mxEventSource
 	public Object[] moveCells(Object[] cells, double dx, double dy,
 			boolean clone, Object target, Point location)
 	{
+		for(Object cell : cells){
+			if(cell instanceof mxICell){
+				if(!((mxICell) cell).isMoovable()){
+					return cells;
+				}
+			}
+		}
 		if (cells != null && (dx != 0 || dy != 0 || clone || target != null))
 		{
 			model.beginUpdate();

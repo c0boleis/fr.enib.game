@@ -82,7 +82,14 @@ public class EditorModel extends JScrollPane {
 		DefaultMutableTreeNode node =null;
 		for(IModelObject obj : tmp){
 			if(!(obj instanceof ILien))continue;
-			node = new DefaultMutableTreeNode(obj.getId());
+			ILien lien = (ILien)obj;
+			node = new DefaultMutableTreeNode(lien.getId());
+			INoeud noeudArrivee = lien.getNoeudArrivee();
+			String arv = "Arrivée : "+noeudArrivee==null?"null":noeudArrivee.getId();
+			INoeud noeudDepart = lien.getNoeudDepart();
+			String dep = "Départ : "+noeudDepart==null?"null":noeudDepart.getId();
+			node.add(new DefaultMutableTreeNode(dep));
+			node.add(new DefaultMutableTreeNode(arv));
 			noeudLiens.add(node);
 		}
 		return noeudLiens;
@@ -122,7 +129,6 @@ public class EditorModel extends JScrollPane {
 	
 	private INoeud getModelRoot(){
 		IModelObject[] tmp = Model.get().getModelObjects();
-		DefaultMutableTreeNode node =null;
 		INoeud noeudOut = null;
 		for(IModelObject obj : tmp){
 			if(!(obj instanceof INoeud))continue;

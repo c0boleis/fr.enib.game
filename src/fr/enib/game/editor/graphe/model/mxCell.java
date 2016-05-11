@@ -720,4 +720,16 @@ public class mxCell implements mxICell, Cloneable, Serializable
 		return value;
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.enib.game.editor.graphe.model.mxICell#isMoovable()
+	 */
+	@Override
+	public boolean isMoovable() {
+		/*
+		 * un edge ne peut pas etre bouger
+		 * séparément des cells
+		 */
+		return !isEdge();
+	}
+
 }

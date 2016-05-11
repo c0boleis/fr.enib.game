@@ -221,6 +221,7 @@ public class Model implements IModel{
 				((ILien) object).refresh();
 			}
 		}
+		fireAddModelObject(null);
 	}
 
 }

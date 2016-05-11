@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
+import fr.enib.game.editor.graphe.model.mxICell;
 import fr.enib.game.editor.graphe.swing.mxGraphComponent;
 import fr.enib.game.editor.graphe.swing.util.mxGraphTransferable;
 import fr.enib.game.editor.graphe.util.mxCellRenderer;
@@ -187,7 +188,9 @@ public class mxGraphTransferHandler extends TransferHandler
 		{
 			mxGraphComponent graphComponent = (mxGraphComponent) c;
 			mxGraph graph = graphComponent.getGraph();
-
+			if(this.selectionContainsCellsNoTransferable(graph)){
+				return null;
+			}
 			if (!graph.isSelectionEmpty())
 			{
 				originalCells = graphComponent.getExportableCells(graph
@@ -205,6 +208,18 @@ public class mxGraphTransferHandler extends TransferHandler
 		}
 
 		return null;
+	}
+	
+	private boolean selectionContainsCellsNoTransferable(mxGraph graph){
+		 Object[] tmp = graph.getSelectionCells();
+		 for(Object object : tmp){
+			 if(object instanceof mxICell){
+				 if(!((mxICell) object).isMoovable()){
+					 return true;
+				 }
+			 }
+		 }
+		 return false;
 	}
 
 	/**
