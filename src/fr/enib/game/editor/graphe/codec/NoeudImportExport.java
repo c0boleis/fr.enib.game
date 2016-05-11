@@ -72,7 +72,9 @@ public class NoeudImportExport extends ICodecModelObject {
 	@Override
 	public boolean importObject(Object obj, Node node) {
 		if(obj instanceof IModelObject){
-			ModelObjectImportExport.get().importObject(obj, node);
+			if(!ModelObjectImportExport.get().importObject(obj, node)){
+				return false;
+			}
 		}
 		else{
 			return false;
