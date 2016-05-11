@@ -104,6 +104,8 @@ public class BasicGraphEditor extends JPanel
 	protected JTabbedPane toolPane;
 	
 	private EditorModel editorModel;
+	
+	private ObjectEditor objectEditor;
 
 	/**
 	 * 
@@ -209,8 +211,15 @@ public class BasicGraphEditor extends JPanel
 		toolPane = new JTabbedPane();
 		
 		editorModel = new EditorModel();
-		
-		toolPane.add("Model", editorModel);
+		objectEditor = new ObjectEditor();
+		JSplitPane inner0 = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+				editorModel, objectEditor);
+		inner0.setDividerLocation(320);
+		inner0.setResizeWeight(1);
+		inner0.setDividerSize(6);
+		inner0.setBorder(null);
+
+		toolPane.add("Model", inner0);
 
 		// Creates the library pane that contains the tabs with the palettes
 		libraryPane = new JPanel();
@@ -253,6 +262,14 @@ public class BasicGraphEditor extends JPanel
 		installHandlers();
 		installListeners();
 		updateTitle();
+	}
+	
+	/**
+	 * 
+	 * @return {@link ObjectEditor}
+	 */
+	public ObjectEditor getObjectEditor(){
+		return objectEditor;
 	}
 
 	/**

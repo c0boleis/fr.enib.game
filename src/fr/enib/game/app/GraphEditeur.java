@@ -60,6 +60,8 @@ public class GraphEditeur extends BasicGraphEditor
 	public static URL url = null;
 	
 	public static final GraphEditeur INSTANCE = new GraphEditeur();
+	
+	private static boolean drawTableau = false;
 
 	//GraphEditor.class.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connector.gif");
 
@@ -71,6 +73,10 @@ public class GraphEditeur extends BasicGraphEditor
 		this("mxGraph Editor", new CustomGraphComponent(new CustomGraph()));
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public static GraphEditeur get(){
 		return INSTANCE;
 	}
@@ -398,5 +404,19 @@ public class GraphEditeur extends BasicGraphEditor
 		mxConstants.W3C_SHADOWCOLOR = "#D3D3D3";
 
 		GraphEditeur.get().createFrame(new EditorMenuBar(GraphEditeur.get())).setVisible(true);
+	}
+
+	/**
+	 * @return the drawTableau
+	 */
+	public static boolean isDrawTableau() {
+		return drawTableau;
+	}
+
+	/**
+	 * @param drawTableau the drawTableau to set
+	 */
+	public static void setDrawTableau(boolean drawTableau) {
+		GraphEditeur.drawTableau = drawTableau;
 	}
 }

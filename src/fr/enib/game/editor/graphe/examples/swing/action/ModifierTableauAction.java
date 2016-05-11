@@ -113,6 +113,10 @@ public class ModifierTableauAction extends AbstractAction{
 	public static void checkFileTableau(){
 		ITableau[] tableaux = getAllTableaux();
 		String path = tableaux[0].getUrlImage();
+		if(path==null){
+			System.err.println("impossible de checker les tableaux");
+			return;
+		}
 		path = path.replace(File.separator, "/");
 		for(ITableau tableau : tableaux){
 			path = checkTableau(tableau, path);

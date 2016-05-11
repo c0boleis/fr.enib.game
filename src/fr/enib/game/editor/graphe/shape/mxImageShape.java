@@ -6,6 +6,7 @@ package fr.enib.game.editor.graphe.shape;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import fr.enib.game.app.GraphEditeur;
 import fr.enib.game.editor.graphe.canvas.mxGraphics2DCanvas;
 import fr.enib.game.editor.graphe.util.mxConstants;
 import fr.enib.game.editor.graphe.util.mxUtils;
@@ -28,12 +29,11 @@ public class mxImageShape extends mxRectangleShape
 				mxConstants.STYLE_IMAGE_FLIPH, false);
 		boolean flipV = mxUtils.isTrue(state.getStyle(),
 				mxConstants.STYLE_IMAGE_FLIPV, false);
-		canvas.drawImage(state.getRectangle(),
-		getImageForStyle(canvas, state),
-		mxGraphics2DCanvas.PRESERVE_IMAGE_ASPECT, flipH, flipV);
-//		canvas.drawImage(getImageBounds(canvas, state),
-//				getImageForStyle(canvas, state),
-//				mxGraphics2DCanvas.PRESERVE_IMAGE_ASPECT, flipH, flipV);
+		if(GraphEditeur.isDrawTableau()){
+			canvas.drawImage(state.getRectangle(),
+					getImageForStyle(canvas, state),
+					mxGraphics2DCanvas.PRESERVE_IMAGE_ASPECT, flipH, flipV);
+		}
 	}
 
 	/**
