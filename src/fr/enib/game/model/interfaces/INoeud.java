@@ -72,7 +72,7 @@ public interface INoeud extends IModelObject,IVisitableObject,IObjectInteret{
 	 * @param id : id du noeud dont on cherche tous les tableaux. 
 	 * @return liste des tableaux associés au noeud.
 	 */
-	public ArrayList<ITableau> getTableau(String id);
+	public ArrayList<ITableau> getTableau();
 	
 	/**
 	 * 
