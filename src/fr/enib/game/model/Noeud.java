@@ -10,7 +10,9 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import fr.enib.game.model.enums.AjoutLienInfos;
 import fr.enib.game.model.interfaces.ILien;
+import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.INoeud;
+import fr.enib.game.model.interfaces.ITableau;
 
 /**
  * @author Corentin Boleis
@@ -129,7 +131,7 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public String toString(){
-		return getId();
+		return getId()+"("+this.getDegreInteret()+")";
 	}
 	
 	/*
@@ -351,6 +353,34 @@ public class Noeud implements INoeud {
 	@Override
 	public boolean lienSortantSontConectables() {
 		return this.liensSortants.size()<this.limitLienSortant|| this.limitLienSortant<0;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.INoeud#getTableau(int)
+	 */
+	@Override
+	public ArrayList<ITableau> getTableau(String idNoeud) {
+		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
+		if(idNoeud.isEmpty()){return mesTableaux;}
+		ArrayList<INoeud> noeudsEnfants = this.getNoeudsDescendantDirect();
+		for(INoeud noeud : noeudsEnfants){
+			ArrayList<ITableau> tab = noeud.getTableau(noeud.getId());
+			mesTableaux.addAll(tab);
+		}
+		return mesTableaux;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.INoeud#getNoeudsDirect(java.lang.String)
+	 */
+	@Override
+	public ArrayList<INoeud> getNoeudsDescendantDirect() {
+		ArrayList<INoeud> mesNoeudsDescendantsDirects = new ArrayList<INoeud>();
+		ILien[] mesLiens = this.getLiensSortant();
+		for(ILien lien : mesLiens){
+			mesNoeudsDescendantsDirects.add(lien.getNoeudArrivee());
+		}
+		return mesNoeudsDescendantsDirects;
 	}
 
 }

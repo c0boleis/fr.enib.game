@@ -3,9 +3,12 @@
  */
 package fr.enib.game.model;
 
+import java.util.ArrayList;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
 
 /**
@@ -144,5 +147,15 @@ public class Tableau extends Noeud implements ITableau{
 	 */
 	public void setLargeurTableau(float largeurTableau) {
 		this.largeurTableau = largeurTableau;
-	}	
+	}
+	
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.INoeud#getTableau(int)
+	 */
+	@Override
+	public ArrayList<ITableau> getTableau(String idNoeud) {
+		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
+		mesTableaux.add(this);
+		return mesTableaux;
+	}
 }

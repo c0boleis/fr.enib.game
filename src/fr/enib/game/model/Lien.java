@@ -107,7 +107,7 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public String toString(){
-		return getId();
+		return String.valueOf(this.getPoids());
 	}
 	
 	/*

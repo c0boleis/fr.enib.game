@@ -1,5 +1,8 @@
 package fr.enib.game.model.interfaces;
 
+import java.util.ArrayList;
+
+import fr.enib.game.model.Tableau;
 import fr.enib.game.model.enums.AjoutLienInfos;
 
 /**
@@ -63,4 +66,17 @@ public interface INoeud extends IModelObject,IVisitableObject,IObjectInteret{
 	 * @return true si le le noeud n'a pas d'enfant
 	 */
 	public boolean estFeuille();
+	
+	/**
+	 * 
+	 * @param id : id du noeud dont on cherche tous les tableaux. 
+	 * @return liste des tableaux associés au noeud.
+	 */
+	public ArrayList<ITableau> getTableau(String id);
+	
+	/**
+	 * 
+	 * @return liste des noeuds descendants associés au noeud parent.
+	 */
+	public ArrayList<INoeud> getNoeudsDescendantDirect();
 }
