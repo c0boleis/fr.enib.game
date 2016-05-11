@@ -138,7 +138,7 @@ public class Lien implements ILien {
 		//l'id ne dois pas déja existé dans le Model
 		if(Model.get().containsModeObject(id))return false;
 		this.id = id;
-		return false;
+		return true;
 	}
 
 	/* (non-Javadoc)

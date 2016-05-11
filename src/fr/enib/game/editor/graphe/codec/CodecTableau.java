@@ -24,7 +24,7 @@ public class CodecTableau extends mxCellCodec {
 	 * 
 	 */
 	public CodecTableau(){
-		this(new Tableau(),null,new String[]{},null);
+		this(new Tableau(),null, new String[] { "parent", "source", "target" },null);
 	}
 
 	/**

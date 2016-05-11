@@ -19,6 +19,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
+import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.editor.graphe.util.mxUtils;
 
 /**
@@ -777,7 +778,7 @@ public class mxObjectCodec
 			}
 			catch (Exception e)
 			{
-				// ignore
+				//				ignore e.printStackTrace();
 			}
 
 			type = type.getSuperclass();
@@ -869,7 +870,7 @@ public class mxObjectCodec
 				{
 					value = (value.equals("1") || String.valueOf(value)
 							.equalsIgnoreCase("true")) ? Boolean.TRUE
-							: Boolean.FALSE;
+									: Boolean.FALSE;
 				}
 
 				if (Modifier.isPublic(field.getModifiers()))

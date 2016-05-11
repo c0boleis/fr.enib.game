@@ -29,7 +29,7 @@ public class CodecNoeud extends mxCellCodec {
 	 * 
 	 */
 	public CodecNoeud(){
-		this(new Noeud(),null,new String[]{},null);
+		this(new Noeud(),null, new String[] { "parent", "source", "target" },null);
 	}
 
 	/**

@@ -307,11 +307,13 @@ public class mxCell implements mxICell, Cloneable, Serializable
 
 	/**
 	 * Sets the source terminal.
+	 * cette fonction doit imperativement rester public car elle
+	 * est utiliser dans les codec
 	 * 
 	 * @param source Cell that represents the new source terminal.
 	 * @param terminal 
 	 */
-	private void setSource(mxICell source,boolean terminal)
+	public void setSource(mxICell source,boolean terminal)
 	{
 		this.source = source;
 		if(isEdge() && terminal){
@@ -322,9 +324,14 @@ public class mxCell implements mxICell, Cloneable, Serializable
 			//TODO set noeud de depart
 		}
 	}
+	
+	public void setSource(mxICell source)
+	{
+		this.setSource(source,false);
+	}
 
 	/**
-	 * Returns the target terminal.
+	 * @return the target terminal.
 	 */
 	public mxICell getTarget()
 	{
@@ -333,11 +340,13 @@ public class mxCell implements mxICell, Cloneable, Serializable
 
 	/**
 	 * Sets the target terminal.
+	 * cette fonction doit imperativement rester public car elle
+	 * est utiliser dans les codec
 	 * 
 	 * @param target Cell that represents the new target terminal.
 	 * @param terminal 
 	 */
-	private void setTarget(mxICell target,boolean terminal)
+	public void setTarget(mxICell target,boolean terminal)
 	{
 		this.target = target;
 		if(isEdge() && terminal){
@@ -347,6 +356,10 @@ public class mxCell implements mxICell, Cloneable, Serializable
 			ILien lien = (ILien) this.value;
 			//TODO set noeud de d'arrivée
 		}
+	}
+	
+	public void setTarget(mxICell target){
+		this.setTarget(target, false);
 	}
 
 	/* (non-Javadoc)

@@ -26,7 +26,7 @@ public class CodecLien extends mxCellCodec {
 	 * 
 	 */
 	public CodecLien(){
-		this(new Lien(),null,new String[]{},null);
+		this(new Lien(),null, new String[] { "parent", "source", "target" },null);
 	}
 
 	/**
