@@ -15,7 +15,7 @@ public class PanneauAffichage extends Objet {
 	public PanneauAffichage(String id, String img, float largeur, float hauteur) {
 		super(id, img);
 
-		Forme geo = new GPanneauAffichage(largeur, hauteur); 
+		Forme geo = new GPanneauAffichage(largeur, hauteur, ""); 
 		this.forme = new Shape(geo, mat); 
 	}
 	
