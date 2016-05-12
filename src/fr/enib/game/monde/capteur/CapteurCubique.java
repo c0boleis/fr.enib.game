@@ -79,7 +79,7 @@ public class CapteurCubique extends Capteur {
 			return;
 		}
 		if(!interieur){
-			LOGGER.info(ENTREE + ":\t" + getId()) ;
+			//LOGGER.info(ENTREE + ":\t" + getId()) ;
 			interieur = true ; 
 			update(ENTREE, cible);
 		}

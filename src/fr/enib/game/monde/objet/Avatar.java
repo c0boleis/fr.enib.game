@@ -52,6 +52,7 @@ public class Avatar extends Objet {
 	public void placer(GL2 gl){
 		gl.glLoadIdentity() ;
 		Vec3 o = repere.getPostiton() ;
+		//System.out.println(o);
 		Vec3 u = repere.getDirection() ; 
 		regard.gluLookAt(o.x,o.y,o.z,o.x+u.x,o.y+u.y,o.z+u.z,0.0f,0.0f,1.0f) ; 
 	}
@@ -61,7 +62,20 @@ public class Avatar extends Objet {
 	}
 	
 	public void resetPosition(){
-		//TODO probleme de position
-		getPositionRepere().fixer(0.0f, 0.0f, HAUTEUR);
+		Vec3 pos = getPositionRepere().cloner();
+		tournerGauche((float)(Math.PI));
+		
+		if(pos.x < -2.5){ // Arriere
+			deplacer(0.6f, 0.0f, 0.0f);
+		}
+		else if(pos.x > 2.5){ // Avant
+			deplacer(-0.6f, 0.0f, 0.0f);
+		}
+		else if(pos.y < 2.5){ // Droite
+			deplacer(0.0f, 0.6f, 0.0f);
+		}
+		else if(pos.y > 2.5){ // Gauche
+			deplacer(0.0f, -0.6f, 0.0f);
+		}
 	}
 }

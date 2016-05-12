@@ -169,5 +169,9 @@ public class Monde {
 		this.iActu = iActu;
 	}
 	
-	
+	public void clear(){
+		salles.clear();
+		capteurs.clear();
+		objets.clear();
+	}
 }
