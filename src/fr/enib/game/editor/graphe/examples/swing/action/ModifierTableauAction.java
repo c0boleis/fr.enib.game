@@ -117,9 +117,12 @@ public class ModifierTableauAction extends AbstractAction{
 			System.err.println("impossible de checker les tableaux");
 			return;
 		}
-		path = path.replace(File.separator, "/");
 		for(ITableau tableau : tableaux){
 			path = checkTableau(tableau, path);
+		}
+		File fileTest = new File(path);
+		if(fileTest.exists()){
+			return;
 		}
 		int rep = JOptionPane.showConfirmDialog(null, "Voulez remplacez : \""+path+"\", par un autre dossier?");
 		if(rep!=JOptionPane.OK_OPTION)return;
@@ -142,18 +145,21 @@ public class ModifierTableauAction extends AbstractAction{
 			pt = pt.replace(path, pathFoler);
 			tableau.setUrlImage(pt);
 		}
-		Object[] tmp = graph.getChildCells(graph.getCurrentRoot());
+		Object[] tmp = graph.getChildCells(graph.getDefaultParent());
+		path = path.replace(File.separator, "/");
+		pathFoler = pathFoler.replace(File.separator, "/");
 		for(Object object : tmp){
 			if(object instanceof mxCell){
 				String st = ((mxCell) object).getStyle();
 				st = st.replace(path, pathFoler);
+				((mxCell) object).setStyle(st);
 			}
 		}
 		graph.refresh();
 	}
 
 	private static String checkTableau(ITableau tableau,String path){
-		String pathTableau = tableau.getUrlImage().replace(File.separator, "/");
+		String pathTableau = tableau.getUrlImage();
 		while(!pathTableau.contains(path)){
 			path = reducePath(path);
 		}
@@ -161,7 +167,7 @@ public class ModifierTableauAction extends AbstractAction{
 	}
 
 	private static String reducePath(String path){
-		int k = path.lastIndexOf("/");
+		int k = path.lastIndexOf(File.separator);
 		if(k<0){
 			return "";
 		}
