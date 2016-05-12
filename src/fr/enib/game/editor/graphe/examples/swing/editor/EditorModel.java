@@ -63,7 +63,9 @@ public class EditorModel extends JScrollPane {
 	}
 	
 	private DefaultMutableTreeNode getNodeNoeuds(){
-		DefaultMutableTreeNode noeudNoeuds = new DefaultMutableTreeNode("Noeuds");
+		int count = getNumberOfUnlinkNoeud();
+		String stCount = count<=0?"":"("+String.valueOf(count)+")";
+		DefaultMutableTreeNode noeudNoeuds = new DefaultMutableTreeNode("Noeuds"+stCount);
 		IModelObject[] tmp = Model.get().getModelObjects();
 		DefaultMutableTreeNode node =null;
 		for(IModelObject obj : tmp){
@@ -95,7 +97,9 @@ public class EditorModel extends JScrollPane {
 	}
 	
 	private DefaultMutableTreeNode getNodeTreeModel(){
-		DefaultMutableTreeNode nodeTreeModel = new DefaultMutableTreeNode("Tree");
+		int count = getNumberOfUnlinkNode();
+		String stCount = count<=1?"":"("+String.valueOf(count)+")";
+		DefaultMutableTreeNode nodeTreeModel = new DefaultMutableTreeNode("Tree"+stCount);
 		INoeud noeudRoot = getModelRoot();
 		if(noeudRoot==null){
 			return nodeTreeModel;
@@ -115,12 +119,18 @@ public class EditorModel extends JScrollPane {
 	}
 	
 	private DefaultMutableTreeNode getNodeTableaux(){
-		DefaultMutableTreeNode noeudTableau = new DefaultMutableTreeNode("Tableaux");
+		int count = getNumberOfUnlinkTableau();
+		String stCount = count<=0?"":"("+String.valueOf(count)+")";
+		DefaultMutableTreeNode noeudTableau = new DefaultMutableTreeNode("Tableaux"+stCount);
 		IModelObject[] tmp = Model.get().getModelObjects();
 		DefaultMutableTreeNode node =null;
 		for(IModelObject obj : tmp){
 			if(!(obj instanceof ITableau))continue;
-			node = new DefaultMutableTreeNode(obj.getId());
+			String inf = "";
+			if(((ITableau)obj).getLiensEntrant().length==0){
+				inf="(**)";
+			}
+			node = new DefaultMutableTreeNode(obj.getId()+inf);
 			noeudTableau.add(node);
 		}
 		return noeudTableau;
@@ -140,6 +150,46 @@ public class EditorModel extends JScrollPane {
 			}
 		}
 		return noeudOut;
+	}
+	
+	private int getNumberOfUnlinkNode(){
+		IModelObject[] tmp = Model.get().getModelObjects();
+		int count = 0;
+		for(IModelObject obj : tmp){
+			if(!(obj instanceof INoeud))continue;
+			INoeud noeud = (INoeud)obj;
+			if(noeud.getLiensEntrant().length==0){
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	private int getNumberOfUnlinkNoeud(){
+		IModelObject[] tmp = Model.get().getModelObjects();
+		int count = 0;
+		for(IModelObject obj : tmp){
+			if(!(obj instanceof INoeud))continue;
+			if(obj instanceof ITableau)continue;
+			INoeud noeud = (INoeud)obj;
+			if(noeud.getLiensEntrant().length==0){
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	private int getNumberOfUnlinkTableau(){
+		IModelObject[] tmp = Model.get().getModelObjects();
+		int count = 0;
+		for(IModelObject obj : tmp){
+			if(!(obj instanceof ITableau))continue;
+			INoeud noeud = (INoeud)obj;
+			if(noeud.getLiensEntrant().length==0){
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/**

@@ -27,7 +27,7 @@ public class Parcours {
 
 	
 	/**
-	 * @return the noeudCourant
+	 * @return the noeudCorant
 	 */
 	public INoeud getNoeudCourant() {
 		return noeudCourant;
@@ -137,22 +137,27 @@ public class Parcours {
 			//Si la liste n'est pas vide il y des noeuds suivants
 			if(tab_noeud.isEmpty() == false)
 			{
-				//Pour tous les noeuds qui suivant
+				//Pour tous les noeuds qui suivant 
 				for(int j =0; j< calculs.length; j++)
 				{
+					//Calcule le noeud suivant qui interesse le plus l'utilisateur
 					calculs[j] = noeudCourant.getLiensSortant()[j].getPoids()* noeudCourant.getLiensSortant()[j].getNoeudArrivee().getDegreInteret();
-					if(calculs[j]>maxi)
+					if(calculs[j]>maxi)  //Si le calcul est le maximum
 					{		
+						//Si le noeud est toujouts dans la liste c'est qu'il n'est pas dans le tableau qui sera retourne donc on pourra l'inserer esuite
 						if(tab_noeud.contains(noeudCourant.getLiensSortant()[j].getNoeudArrivee()) == true)
 						{
 							maxi = calculs[j];
+							//On récupere le noeud qui a le calcul le plus eleve
 							noeud2 = noeudCourant.getLiensSortant()[j].getNoeudArrivee();
 						}
 					}
 				}
 				System.out.println("Maxi : " + maxi);
 				maxi = 0;
+				//On supprime le noeud qui a ete retenu (avec le calcul le plus eleve)
 				tab_noeud.remove(noeud2);
+				//On l'insere ensuite dans le tableau qui sera retourne 
 				noeudGagnants[i+temp]= noeud2;
 			}
 			else
