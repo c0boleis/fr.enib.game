@@ -9,6 +9,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 
 import fr.enib.game.monde.capteur.Capteur;
+import fr.enib.game.monde.musee.Musee;
 import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.monde.objet.Avatar;
 import fr.enib.game.monde.objet.Objet;
@@ -25,6 +26,8 @@ public class Monde {
 
 	private Salle  salleCourante ; 
 
+	private IActualisation iActu = null;
+	
 	private static HashMap<String,Objet> objets     = new HashMap<String,Objet>() ;
 	private static HashMap<String,Capteur> capteurs = new HashMap<String,Capteur>() ;
 	private static HashMap<String,Salle> salles     = new HashMap<String,Salle>() ; 
@@ -105,6 +108,10 @@ public class Monde {
 					for(Salle salleVoisine : salleCourante.voisines.values()){
 						if(salleVoisine.avatarPresent()){
 							this.salleCourante = salleVoisine;
+							if(iActu != null){
+								String id = salleCourante.getId().substring(Musee.prefixIdSalle.length());
+								iActu.changementSalle(id);
+							}
 							break;
 						}
 					}
@@ -157,4 +164,10 @@ public class Monde {
 		salleCourante = salle;
 		LOGGER.info("salle courante : " + salleCourante.getId());
 	}
+
+	public void setiActu(IActualisation iActu) {
+		this.iActu = iActu;
+	}
+	
+	
 }

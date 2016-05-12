@@ -216,9 +216,11 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				break;
 			case KeyEvent.VK_A:
 				avatar.tournerGauche((float)(Math.PI/180.0)) ;
+				//LOGGER.info("dir : " + avatar.getDirectionRegard().x);
 				break;
 			case KeyEvent.VK_E:
 				avatar.tournerGauche(-(float)(Math.PI/180.0)) ;
+				//LOGGER.info("dir : " + avatar.getDirectionRegard().x);
 				break;
 			case KeyEvent.VK_U:
 				break;
@@ -236,9 +238,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		}
 	}
 	
-	public static void quitter(){
+	public void quitter(){
 		LOGGER.info("Arret du programme");
 		System.exit(0);
+		//dispose();
 	}
 
 	@Override
@@ -277,7 +280,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		else if ((dy > 0) && (dy < 10)){
 			avatar.tournerHaut(-(float)(Math.PI/180.0)) ;
 		}
-		LOGGER.info("dir : " + avatar.getDirectionRegard());
+		
 	}
 	
 	public boolean isCentre(int x, int y){

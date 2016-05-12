@@ -1,6 +1,7 @@
 package fr.enib.game.monde.musee;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -22,7 +23,7 @@ public class Musee {
 
 	private Salle salleCourante;
 
-	private static final String prefixIdSalle = "salle_";
+	public static final String prefixIdSalle = "salle_";
 	
 	private float largeurSalle;
 	private float hauteurSalle;
@@ -35,7 +36,7 @@ public class Musee {
 	 * 
 	 */
 	public Musee(){
-		this(new HashMap<String,ITableau[]>());
+		this(new LinkedHashMap<>());
 	}
 	
 	/**
@@ -115,7 +116,12 @@ public class Musee {
 				v.placer(0.0f, 0.0f, 0.0f);
 			}
 			else{
-				if(!avant){
+				if(!arriere){
+					v.placer(-profondeurSalle - distanceMur, 0.0f, 0.0f);
+					salleCourante.ajouterSalleVoisine(v);
+					arriere = true;
+				}
+				else if(!avant){
 					v.placer(profondeurSalle + distanceMur, 0.0f, 0.0f);
 					salleCourante.ajouterSalleVoisine(v);
 					avant = true;
@@ -129,11 +135,6 @@ public class Musee {
 					v.placer(0.0f, -largeurSalle - distanceMur, 0.0f);
 					salleCourante.ajouterSalleVoisine(v);
 					droite = true;
-				}
-				else if(!arriere){
-					v.placer(-profondeurSalle - distanceMur, 0.0f, 0.0f);
-					salleCourante.ajouterSalleVoisine(v);
-					arriere = true;
 				}
 				else{
 					LOGGER.info("Trop de salle voisine, ne gère pas cela pour le moment");
@@ -158,5 +159,14 @@ public class Musee {
 			LOGGER.info("Problème construction salle");
 		}
 	}
+
+	public void setListeTableaux(HashMap<String, ITableau[]> listeTableaux) {
+		this.listeTableaux = listeTableaux;
+	}
 	
+	public void clear(){
+		listeTableaux.clear();
+		salleCourante = null;
+		salles.clear();
+	}
 }

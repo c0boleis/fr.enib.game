@@ -1,7 +1,5 @@
 package fr.enib.game.monde.capteur;
 
-import org.apache.log4j.Logger;
-
 import fr.enib.game.monde.geo.Vec3;
 import fr.enib.game.monde.objet.Avatar;
 import fr.enib.game.monde.objet.Objet;
@@ -14,7 +12,7 @@ import fr.enib.game.monde.objet.Tableau;
  */
 public class CapteurVision extends Capteur{
 
-	private static Logger LOGGER = Logger.getLogger(CapteurVision.class);
+	//private static Logger LOGGER = Logger.getLogger(CapteurVision.class);
 	
 	private float dis;
 	
@@ -40,8 +38,9 @@ public class CapteurVision extends Capteur{
 	public void tester(float t) {
 		Tableau tab = (Tableau) cible;
 		if(calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere()) <= this.dis){
+			//float dir = avatar.getDirectionRegard().x;
 			if(tab.getPositionInRepere().x >= 0 && tab.getPositionInRepere().y >= 0){
-				if(avatar.getDirectionRegard().x >= 0) LOGGER.info("Capteur visition : " + getId()); 
+				//if(dir >= 0.75 && dir < 1) LOGGER.info("Capteur visition : " + getId()); 
 			}
 			else if(tab.getPositionInRepere().x <= 0 && tab.getPositionInRepere().y >= 0){
 				
