@@ -64,7 +64,7 @@ public class EditorModel extends JScrollPane {
 	
 	private DefaultMutableTreeNode getNodeNoeuds(){
 		int count = getNumberOfUnlinkNoeud();
-		String stCount = count==1?"":"("+String.valueOf(count)+")";
+		String stCount = count<=0?"":"("+String.valueOf(count)+")";
 		DefaultMutableTreeNode noeudNoeuds = new DefaultMutableTreeNode("Noeuds"+stCount);
 		IModelObject[] tmp = Model.get().getModelObjects();
 		DefaultMutableTreeNode node =null;
@@ -98,7 +98,7 @@ public class EditorModel extends JScrollPane {
 	
 	private DefaultMutableTreeNode getNodeTreeModel(){
 		int count = getNumberOfUnlinkNode();
-		String stCount = count==1?"":"("+String.valueOf(count)+")";
+		String stCount = count<=1?"":"("+String.valueOf(count)+")";
 		DefaultMutableTreeNode nodeTreeModel = new DefaultMutableTreeNode("Tree"+stCount);
 		INoeud noeudRoot = getModelRoot();
 		if(noeudRoot==null){
@@ -120,7 +120,7 @@ public class EditorModel extends JScrollPane {
 	
 	private DefaultMutableTreeNode getNodeTableaux(){
 		int count = getNumberOfUnlinkTableau();
-		String stCount = count==0?"":"("+String.valueOf(count)+")";
+		String stCount = count<=0?"":"("+String.valueOf(count)+")";
 		DefaultMutableTreeNode noeudTableau = new DefaultMutableTreeNode("Tableaux"+stCount);
 		IModelObject[] tmp = Model.get().getModelObjects();
 		DefaultMutableTreeNode node =null;

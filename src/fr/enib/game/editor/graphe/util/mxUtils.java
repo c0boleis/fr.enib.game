@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
@@ -34,6 +35,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Formatter;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -63,6 +65,8 @@ import fr.enib.game.editor.graphe.view.mxCellState;
 public class mxUtils
 {
 
+	
+	private static HashMap<String,BufferedImage> images = new HashMap<String,BufferedImage>();
 	/**
 	 * True if the machine is a Mac.
 	 */
@@ -1987,8 +1991,10 @@ public class mxUtils
 	 */
 	public static BufferedImage loadImage(String url)
 	{
-		BufferedImage img = null;
-
+		BufferedImage img = images.get(url);
+		if(img!=null){
+			return img;
+		}
 		if (url != null)
 		{
 			// Parses data URIs of the form data:image/format;base64,xxx
@@ -2043,7 +2049,7 @@ public class mxUtils
 				}
 			}
 		}
-
+		images.put(url, img);
 		return img;
 	}
 

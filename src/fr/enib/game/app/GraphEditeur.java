@@ -59,7 +59,7 @@ public class GraphEditeur extends BasicGraphEditor
 	 */
 	public static URL url = null;
 	
-	public static final GraphEditeur INSTANCE = new GraphEditeur();
+	private static final GraphEditeur INSTANCE = new GraphEditeur();
 	
 	private static boolean drawTableau = false;
 
@@ -75,7 +75,7 @@ public class GraphEditeur extends BasicGraphEditor
 	
 	/**
 	 * 
-	 * @return
+	 * @return l'unique intance du {@link GraphEditeur}
 	 */
 	public static GraphEditeur get(){
 		return INSTANCE;
