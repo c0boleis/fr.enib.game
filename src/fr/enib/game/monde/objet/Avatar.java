@@ -59,4 +59,9 @@ public class Avatar extends Objet {
 	public Vec3 getDirectionRegard(){
 		return repere.getDirection();
 	}
+	
+	public void resetPosition(){
+		//TODO probleme de position
+		getPositionRepere().fixer(0.0f, 0.0f, HAUTEUR);
+	}
 }
