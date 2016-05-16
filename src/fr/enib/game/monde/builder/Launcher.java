@@ -2,8 +2,6 @@ package fr.enib.game.monde.builder;
 
 import java.awt.AWTException;
 import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -55,9 +53,14 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	private GLCanvas canvas;
 	private Builder builder;
     private Robot robot;
+    private GLU glu = new GLU() ;
 	
 	private boolean lockMouse;
 	private Avatar avatar;
+
+	private float [] diffus = {1.0f,1.0f,1.0f,1.0f} ; 
+	private float [] position = {5.0f,1.0f,10.0f,1.0f} ;
+	private float [] ambient  = { 1.0f,1.0f,1.0f,1.0f} ; 
 	
 	public Launcher(boolean loadfromFile) {
 		super(TITLE);
@@ -123,9 +126,11 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 	@Override
 	public void display(GLAutoDrawable drawable) {
-		float t = (float)(System.currentTimeMillis()) ;
-		Monde.get().display(drawable);
-		Monde.get().actualiser(t); 
+		//float t = (float)(System.currentTimeMillis()) ;
+		if(!Monde.actualisationEnCours){
+			Monde.get().display(drawable);
+			Monde.get().actualiser(); 
+		}
 	}
 
 	@Override
@@ -143,9 +148,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 		gl.glEnable(GL2.GL_TEXTURE_2D) ; 
 
-		float [] diffus = {1.0f,1.0f,1.0f,1.0f} ; 
-		float [] position = {5.0f,1.0f,10.0f,1.0f} ;
-		float [] ambient  = { 1.0f,1.0f,1.0f,1.0f} ; 
 		gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_DIFFUSE,diffus,0) ; 
 		gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION,position,0) ; 
 		gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_AMBIENT,ambient,0) ;
@@ -156,18 +158,18 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	@Override
 	public void reshape(GLAutoDrawable drawable, int x, int y, int w, int h) {
 		GL2 gl = drawable.getGL().getGL2() ; 
-		GLU glu = new GLU() ;
+		//GLU glu = new GLU() ;
 		gl.glViewport(0,0,w,h) ; 
 		gl.glMatrixMode(GLMatrixFunc.GL_PROJECTION) ; 
 		gl.glLoadIdentity() ; 
 		glu.gluPerspective(60.0f,(float)w/h,0.1f,1000.f) ; 
 		gl.glMatrixMode(GLMatrixFunc.GL_MODELVIEW) ; 
 		
-		final Rectangle r = canvas.getParent().getBounds();
-        final Point p = canvas.getParent().getLocationOnScreen();
+		//final Rectangle r = canvas.getParent().getBounds();
+        //final Point p = canvas.getParent().getLocationOnScreen();
 
-        centerX = r.x + p.x + width / 2;
-        centerY = r.y + p.y + height / 2;
+        //centerX = r.x + p.x + width / 2;
+        //centerY = r.y + p.y + height / 2;
 	}
 	
 	public void processKeyEvent(KeyEvent e, boolean pressed) {

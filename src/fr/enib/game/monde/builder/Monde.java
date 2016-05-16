@@ -25,6 +25,8 @@ public class Monde {
 	public float t0 = (float)(System.currentTimeMillis())/1000.f ;
 
 	private Salle  salleCourante ; 
+	
+	public volatile static boolean actualisationEnCours = false;
 
 	private IActualisation iActu = null;
 	
@@ -88,53 +90,50 @@ public class Monde {
 		gl.glClear(GL.GL_COLOR_BUFFER_BIT) ; 
 		gl.glClear(GL.GL_DEPTH_BUFFER_BIT) ; 
 
-		Avatar.get().placer(gl) ;
+		if(!actualisationEnCours){
+			Avatar.get().placer(gl) ;
 
-		if(salleCourante != null){
-			salleCourante.dessiner(gl);
-			if(salleCourante.voisines != null){
-				for(Salle salleVoisine : salleCourante.voisines.values()){
-					salleVoisine.dessiner(gl);
-				}
-			}
-		}
-		
-	}
-
-	public void actualiser(float t){
-		if(salleCourante != null){
-			if(!salleCourante.avatarPresent()){
+			if(salleCourante != null){
+				salleCourante.dessiner(gl);
 				if(salleCourante.voisines != null){
 					for(Salle salleVoisine : salleCourante.voisines.values()){
-						if(salleVoisine.avatarPresent()){
-							this.salleCourante = salleVoisine;
-							if(iActu != null){
-								String id = salleCourante.getId().substring(Musee.prefixIdSalle.length());
-								iActu.changementSalle(id);
-							}
-							break;
-						}
+						salleVoisine.dessiner(gl);
 					}
 				}
 			}
-			
-			salleCourante.actualiser(0.0f,0.0f) ;
-			if(salleCourante.voisines != null){
-				for(Salle salleVoisine : salleCourante.voisines.values()){
-					salleVoisine.actualiser(0.0f, 0.0f);
-				}
-			}
 		}
 		
 		
-		//on créer un copie de la liste des salles voisines
-		//pour éviter : java.util.ConcurrentModificationException
-		/*List<Salle> listeTmp = new ArrayList<Salle>();
-		listeTmp.addAll(salleCourante.voisines.values());
-		
-		for(Salle s : listeTmp){
-			s.actualiser(0.0f,0.0f) ;
-		}*/
+	}
+
+	public void actualiser(){
+		if(!actualisationEnCours){
+			if(salleCourante != null){
+				if(!salleCourante.avatarPresent()){
+					if(salleCourante.voisines != null){
+						for(Salle salleVoisine : salleCourante.voisines.values()){
+							if(salleVoisine.avatarPresent()){
+								this.salleCourante = salleVoisine;
+								if(iActu != null){
+									String id = salleCourante.getId().substring(Musee.PREFIX_ID_SALLE.length());
+									actualisationEnCours = true;
+									iActu.changementSalle(id);
+									actualisationEnCours = false;
+								}
+								break;
+							}
+						}
+					}
+				}
+				
+				salleCourante.actualiser(0.0f,0.0f) ;
+				if(salleCourante.voisines != null){
+					for(Salle salleVoisine : salleCourante.voisines.values()){
+						salleVoisine.actualiser(0.0f, 0.0f);
+					}
+				}
+			}
+		}
 	}
 
 	/**

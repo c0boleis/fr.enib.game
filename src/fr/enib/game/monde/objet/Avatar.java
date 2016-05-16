@@ -61,7 +61,7 @@ public class Avatar extends Objet {
 		return repere.getDirection();
 	}
 	
-	public void resetPosition(){
+	/*public void resetPosition(){
 		Vec3 pos = getPositionRepere().cloner();
 		tournerGauche((float)(Math.PI));
 		
@@ -77,5 +77,5 @@ public class Avatar extends Objet {
 		else if(pos.y > 2.5){ // Gauche
 			deplacer(0.0f, -0.6f, 0.0f);
 		}
-	}
+	}*/
 }

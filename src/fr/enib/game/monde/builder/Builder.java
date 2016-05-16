@@ -38,10 +38,11 @@ public class Builder {
 				INoeud n = getNoeudById(id);
 				if(n != null){
 					parcoursP.setNoeudCourant(n);
-					Avatar.get().resetPosition();
 					Monde.get().clear();
 					musee.clear(); 
+					musee.setPositionCentre(Avatar.get().getPositionRepere());
 					construire();
+					System.out.println(Avatar.get().getPositionRepere());
 				}
 			}
 		};
