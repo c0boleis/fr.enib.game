@@ -66,5 +66,10 @@ public interface IModel extends IEcouteurListener {
 	 */
 	public INoeud getRoot();
 	
-
+	/**
+	 * 
+	 * @param fichierXml d'import
+	 * @return statut de l'importation
+	 */
+	public boolean importerModel(File fichierXml);
 }

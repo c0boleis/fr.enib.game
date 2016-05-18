@@ -58,18 +58,20 @@ public class SaveIntoXml {
 		}
 	}
 	
-	public void importer(){
+	public Model importer(){
 		InputStream inputStream = null;
 		Reader reader = null;
+		Model modele = null;
 	    //Lecture du fichier
 		try {
 			inputStream = new java.io.FileInputStream(fichier);
 			reader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
-			xstream.fromXML(reader);
+			modele = (Model)xstream.fromXML(reader);
 			//Model.get().initPostionNoeud();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		return modele;
 	}
 
 	/**
