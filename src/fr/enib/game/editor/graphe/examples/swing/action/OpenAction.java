@@ -158,6 +158,7 @@ public class OpenAction extends AbstractAction
 //							Model.get().setAllDegreeInteret(1.0f);
 //							Model.get().setAllPoids(1.0f);
 							Model.get().refresh();
+							ModifierTableauAction.checkFileTableau();
 						}
 						catch (IOException ex)
 						{

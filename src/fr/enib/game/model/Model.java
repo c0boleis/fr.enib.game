@@ -212,7 +212,6 @@ public class Model implements IModel{
 			}
 		}
 		fireAddModelObject(null);
-		ModifierTableauAction.checkFileTableau();
 	}
 
 	/* (non-Javadoc)
