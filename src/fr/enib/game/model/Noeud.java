@@ -377,7 +377,7 @@ public class Noeud implements INoeud {
 					tmp.add(tableau);
 				}
 			}
-			//mesTableaux = tmp;
+			mesTableaux = tmp;
 		}
 		return mesTableaux;
 	}
