@@ -75,6 +75,8 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		initLog();
 		avatar = Avatar.get();
 		lockMouse = true;
+		
+		if(loadfromFile) loadData();
 		builder = new Builder(loadfromFile);
 		
 		this.loadFromFile = loadfromFile;
@@ -115,9 +117,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		oldX = 0;
 		oldY = 0;
 		
-		
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
+		
 	}
 	
 	private void initLog(){
@@ -193,7 +195,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				break ; 
 			case KeyEvent.VK_SPACE:
 				quitter();
-				System.out.println(lockMouse);
+				//System.out.println(lockMouse);
 				break;
 			case KeyEvent.VK_Q:
 				avatar.deplacerAxe(0.0f,0.25f,0.0f,1.0f,1.0f,0.0f) ; 
@@ -246,6 +248,20 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		if(lockMouse){
 			if (robot != null)
 	            robot.mouseMove(centerX, centerY);
+		}
+	}
+	
+	public void loadData(){
+		JFileChooser j = new JFileChooser();
+		j.showOpenDialog(this);
+		File f = j.getSelectedFile();
+		if(f != null){
+			//TODO load le model depuis fichier
+			LOGGER.info("nom file : " + f.getName());
+		}
+		else{
+			LOGGER.error("Erreur , pas de fichier en entré");
+			System.exit(-1);
 		}
 	}
 	
