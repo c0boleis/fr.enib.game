@@ -81,7 +81,7 @@ public class EditorToolBar extends JToolBar
 
 		addSeparator();
 		
-		add(editor.bind("Run", new StartSimulationAction(),
+		add(editor.bind("Run", new StartSimulationAction(editor.getGraphComponent().getGraph()),
 				"/fr/enib/game/editor/graphe/examples/swing/images/start.png"));
 
 		addSeparator();
