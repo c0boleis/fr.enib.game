@@ -39,9 +39,15 @@ public class CapteurVision extends Capteur{
 	@Override
 	public void tester(float t) {
 		Tableau tab = (Tableau) cible;
-		if(calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere()) <= this.dis){
+		float distance =calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere());
+//		LOGGER.info("Capteur visition teste distance : " + distance+ "<"+this.dis);
+		if( distance <= this.dis){
 			float dir = avatar.getDirectionRegard().x;
-			if(dir >= 0.75 && dir < 1) LOGGER.info("Capteur visition : " + getId()); 
+//			LOGGER.info("Capteur visition teste : " + dir);
+			if(dir >= 0.75 && dir < 1){
+				tab.getiTableau().setDegreInteret(tab.getiTableau().getDegreInteret()+0.1f);
+				LOGGER.info("Capteur visition : " + getId()+ "(" + tab.getiTableau().getDegreInteret()+ ")"); 
+			}
 		}
 	}
 	
