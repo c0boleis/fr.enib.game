@@ -10,7 +10,7 @@ public class Viewer {
 	
 	public static void main(String [] args){
 		boolean b = false;
-		if(args.length >= 1){
+		if(args != null && args.length >= 1){
 			try{
 				b = args[0].toLowerCase().equals("true");
 			}catch(Exception e){

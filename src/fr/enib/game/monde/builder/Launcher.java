@@ -69,6 +69,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	private float [] position = {5.0f,1.0f,10.0f,1.0f} ;
 	private float [] ambient  = { 1.0f,1.0f,1.0f,1.0f} ; 
 	
+	/**
+	 * 
+	 * @param loadFromFile si false, on charge les donnees depuis l'éditeur, sinon on charge depuis un fichier
+	 */
 	public Launcher(boolean loadfromFile) {
 		super(TITLE);
 
@@ -77,7 +81,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		lockMouse = true;
 		
 		if(loadfromFile) loadData();
-		builder = new Builder(loadfromFile);
+		builder = new Builder();
 		
 		this.loadFromFile = loadfromFile;
 		
@@ -251,6 +255,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		}
 	}
 	
+	/**
+	 * Chargement des données depuis un fichier
+	 */
 	public void loadData(){
 		JFileChooser j = new JFileChooser();
 		j.showOpenDialog(this);
@@ -265,6 +272,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		}
 	}
 	
+	/**
+	 * Procedure de fermeture du programme
+	 */
 	public void quitter(){
 		if(loadFromFile){
 			if(ASK_SAVE){
