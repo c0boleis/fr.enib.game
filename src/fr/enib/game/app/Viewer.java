@@ -9,7 +9,15 @@ import fr.enib.game.monde.builder.Launcher;
 public class Viewer {
 	
 	public static void main(String [] args){
-		new Launcher(false);
+		boolean b = false;
+		if(args.length >= 1){
+			try{
+				b = args[0].toLowerCase().equals("true");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		new Launcher(b);
 	}
 
 }
