@@ -2,6 +2,7 @@ package fr.enib.game.monde.musee;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -70,10 +71,28 @@ public class Musee {
 	 * @param nomNoeud
 	 * @param tableaux
 	 */
-	public void ajouterListeTableau(String nomNoeud, ITableau[] tableaux){
+	public void ajouterListeTableaux(String nomNoeud, List<ITableau> tableaux){
+		ITableau[] tabs = limitTableaux(tableaux);
+		
 		if(tableaux != null){
-			listeTableaux.put(nomNoeud, tableaux);
+			listeTableaux.put(nomNoeud, tabs);
 		}
+	}
+	
+	private ITableau[] limitTableaux(List<ITableau> tableaux){
+		return limitTableaux(tableaux, 10);
+	}
+	
+	private ITableau[] limitTableaux(List<ITableau> tableaux, int nbre){
+		if(nbre > tableaux.size()){
+			nbre = tableaux.size();
+		}
+		ITableau[] tabs = new ITableau[nbre];
+		
+		for(int i = 0; i < nbre; i++){
+			tabs[i] = tableaux.get(i);
+		}
+		return tabs;
 	}
 	
 	/**

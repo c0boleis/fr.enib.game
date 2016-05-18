@@ -153,7 +153,7 @@ public class Parcours {
 						}
 					}
 				}
-				System.out.println("Maxi : " + maxi);
+				//System.out.println("Maxi : " + maxi);
 				maxi = 0;
 				//On supprime le noeud qui a ete retenu (avec le calcul le plus eleve)
 				tab_noeud.remove(noeud2);
@@ -163,7 +163,7 @@ public class Parcours {
 			else
 			{
 				//Si la liste est vide il n'y pas de noeud suivant
-				System.out.println("************");
+				//System.out.println("************");
 				return noeudGagnants;
 			}
 		}

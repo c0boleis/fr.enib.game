@@ -4,11 +4,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import fr.enib.game.model.Lien;
 import fr.enib.game.model.Model;
-import fr.enib.game.model.Noeud;
 import fr.enib.game.model.Tableau;
-import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
 import fr.enib.game.monde.musee.Musee;
@@ -28,7 +25,7 @@ public class Builder {
 	
 	private Musee musee;
 	
-	private ITableau[][] listeTableau;
+	//private ITableau[][] listeTableau;
 	
 	private Parcours parcoursP;
 	
@@ -59,7 +56,7 @@ public class Builder {
 		
 		if(loadFromFile){
 			LOGGER.info("Chargement depuis fichier");
-			noeuds = new INoeud[9];
+			/*noeuds = new INoeud[9];
 			noeuds[0] = new Noeud("X");
 			noeuds[1] = new Noeud("A");
 			noeuds[2] = new Noeud("AB");
@@ -103,7 +100,7 @@ public class Builder {
 			noeuds[7].setDegreInteret(5);
 			noeuds[8].setDegreInteret(8);
 			listeTableau = getTableau();
-			parcoursP = new Parcours(noeuds[0]);
+			parcoursP = new Parcours(noeuds[0]);*/
 		}
 		else{
 			LOGGER.info("Chargement depuis editeur");
@@ -211,13 +208,46 @@ public class Builder {
 	
 	public void construire(){
 		INoeud[] noeuds = parcoursP.calcul_Noeud_Suivant();
-
-		if(musee != null && noeuds != null && noeuds.length > 0 && listeTableau != null){
-			for(int i = 0; i < noeuds.length; i++){
-				if(noeuds[i] != null && noeuds[i].getId() != null)
-				musee.ajouterListeTableau(noeuds[i].getId(), listeTableau[i]);
-			}
-			musee.genererSalles();
+		/*INoeud[] noeuds = new INoeud[1];
+		noeuds[0] = Model.get().getRoot();*/
+		
+		if(musee == null){
+			LOGGER.info("Error musée null");
+			return;
 		}
+		if(noeuds == null){
+			LOGGER.info("noeuds null");
+			return;
+		}
+		if(noeuds.length <= 0){
+			LOGGER.info("nombre de noeuds = 0");
+			return;
+		}
+		
+		boolean error = false;
+		for(int i = 0; i < noeuds.length; i++){
+			if(noeuds[i] == null){
+				LOGGER.info("noeuds[" + i + "] null");
+				error = true;
+			}
+			if(noeuds[i].getId() == null){
+				LOGGER.info("noeuds[" + i + "] id null");
+				error = true;
+			}
+			if(noeuds[i].getTableau() == null){
+				LOGGER.info("noeuds[" + i + "] tableaux null");
+				error = true;
+			}
+			if(noeuds[i].getTableau().isEmpty()){
+				LOGGER.info("noeuds[" + i + "] " + noeuds[i].getId() + " tableaux => 0");
+				error = true;
+			}
+			if(!error){
+				musee.ajouterListeTableaux(noeuds[i].getId(), noeuds[i].getTableau());
+			}
+			error = false;
+		}
+		musee.genererSalles();
 	}
+	
 }
