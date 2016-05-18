@@ -256,9 +256,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	 * Chargement des données depuis un fichier
 	 */
 	public void loadData(){
-		JFileChooser j = new JFileChooser();
-		j.showOpenDialog(this);
-		File f = j.getSelectedFile();
+		//JFileChooser j = new JFileChooser();
+		//j.showOpenDialog(this);
+		//File f = j.getSelectedFile();
+		File f = new File("C:/Users/ronan/git/fr.enib.game/test.xml");
 		if(f != null){
 			boolean res = Model.get().importerModel(f);
 			if(!res){
@@ -266,10 +267,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				System.exit(-1);
 			}
 		}
-		else{
+		/*else{
 			LOGGER.error("Erreur , pas de fichier en entré");
 			System.exit(-1);
-		}
+		}*/
 	}
 	
 	/**

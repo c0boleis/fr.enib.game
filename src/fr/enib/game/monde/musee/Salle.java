@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 
 import com.jogamp.opengl.GL2;
 
-import fr.enib.game.monde.builder.Monde;
 import fr.enib.game.monde.capteur.Capteur;
 import fr.enib.game.monde.capteur.CapteurCubique;
 import fr.enib.game.monde.capteur.CapteurVision;
@@ -403,7 +402,7 @@ public class Salle extends Situable implements Observer{
 		// Cherche s'il y a des tableaux déjà ajoutés dans la salle
 		if(!c.getEsclave().isEmpty()){
 			for(Situable s : c.getEsclave().values()){
-				if(s.getId().contains("tab")){
+				if(s.getId().contains("Tab")){
 					Tableau t = (Tableau) s;
 					posLar.add(new PositionLargeur(t.getTableau().getLargeur(), t.getPosition()));
 				}
@@ -505,19 +504,19 @@ public class Salle extends Situable implements Observer{
 	 */
 	public void ajouterTableau(Tableau t) {
 		if(ajouterTableau(t, TypeObjet.MUR_AVANT)) {
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur avant ajouté !");
+			LOGGER.info("Tableau " + t.getId() + " sur mur avant ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_DROIT)){
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur droite ajouté !");
+			//LOGGER.info("Tableau " + t.getId() + " sur mur droite ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_GAUCHE)){
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur gauche ajouté !");
+			//LOGGER.info("Tableau " + t.getId() + " sur mur gauche ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_ARRIERE)){
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur arriere ajouté !");
+			//LOGGER.info("Tableau " + t.getId() + " sur mur arriere ajouté !");
 		}
 		else{
-			LOGGER.debug("Tableau " + t.getId() + " n'a pas été ajouté !");
+			LOGGER.info("Tableau " + t.getId() + " n'a pas été ajouté !");
 		}
 	}
 

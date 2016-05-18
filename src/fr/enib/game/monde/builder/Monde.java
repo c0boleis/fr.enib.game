@@ -1,18 +1,14 @@
 package fr.enib.game.monde.builder;
 
-import java.util.HashMap;
-
 import org.apache.log4j.Logger;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 
-import fr.enib.game.monde.capteur.Capteur;
 import fr.enib.game.monde.musee.Musee;
 import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.monde.objet.Avatar;
-import fr.enib.game.monde.objet.Objet;
 
 /**
  * 
