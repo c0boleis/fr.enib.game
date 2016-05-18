@@ -60,5 +60,11 @@ public interface IModel extends IEcouteurListener {
 	 */
 	public void refresh();
 	
+	/**
+	 * 
+	 * @return le noeud principal du graphe.
+	 */
+	public INoeud getRoot();
+	
 
 }

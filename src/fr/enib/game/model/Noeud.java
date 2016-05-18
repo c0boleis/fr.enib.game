@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import fr.enib.game.model.enums.AjoutLienInfos;
 import fr.enib.game.model.interfaces.ILien;
@@ -24,8 +25,10 @@ public class Noeud implements INoeud {
 	/**
 	 * 
 	 */
+	@XStreamOmitField
 	private static boolean sort = true;
 	
+	@XStreamOmitField
 	private static final long serialVersionUID = 734404660422963476L;
 	
 	private String id;
@@ -367,6 +370,17 @@ public class Noeud implements INoeud {
 		for(INoeud noeud : noeudsEnfants){
 			ArrayList<ITableau> tab = noeud.getTableau();
 			mesTableaux.addAll(tab);
+		}
+		//on trie les tableaux pour éviter les doublons.
+		//quand sort devient true?//////////////////////////////////////////////////////////////////////////
+		if(sort){
+			ArrayList<ITableau> tmp = new ArrayList<ITableau>();
+			for(ITableau tableau : mesTableaux){
+				if(!tmp.contains(tableau) && !tmp.isEmpty()){
+					tmp.add(tableau);
+				}
+			}
+			mesTableaux = tmp;
 		}
 		return mesTableaux;
 	}

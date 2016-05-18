@@ -14,6 +14,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
+import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.listeners.IListener;
 import fr.enib.game.model.listeners.IModelListener;
 import fr.enib.game.model.xstreamData.SaveIntoXml;
@@ -222,6 +223,26 @@ public class Model implements IModel{
 			}
 		}
 		fireAddModelObject(null);
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#getRoot()
+	 */
+	@Override
+	public INoeud getRoot() {
+		IModelObject[] tmp = getModelObjects();
+		INoeud noeudOut = null;
+		for(IModelObject obj : tmp){
+			if(!(obj instanceof INoeud))continue;
+			INoeud noeud = (INoeud)obj;
+			if(noeud.getLiensEntrant().length==0){
+				if(noeudOut!=null){
+					return null;
+				}
+				noeudOut = noeud;
+			}
+		}
+		return noeudOut;
 	}
 
 }
