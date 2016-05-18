@@ -18,7 +18,10 @@ import java.nio.charset.Charset;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
+import fr.enib.game.model.Lien;
 import fr.enib.game.model.Model;
+import fr.enib.game.model.Noeud;
+import fr.enib.game.model.Tableau;
 import fr.enib.game.model.interfaces.IModelObject;
 
 /**
@@ -39,6 +42,9 @@ public class SaveIntoXml {
 		xstream = new XStream(new DomDriver());
 		xstream.autodetectAnnotations(true);
 		xstream.alias("Model", Model.class);
+		xstream.alias("Noeud", Noeud.class);
+		xstream.alias("Lien", Lien.class);
+		xstream.alias("Tableau", Tableau.class);
 	}
 	
 	/**
