@@ -67,7 +67,6 @@ public class SaveIntoXml {
 			inputStream = new java.io.FileInputStream(fichier);
 			reader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
 			modele = (Model)xstream.fromXML(reader);
-			//Model.get().initPostionNoeud();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
