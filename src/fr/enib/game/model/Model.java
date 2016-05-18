@@ -11,6 +11,7 @@ import java.util.List;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+import fr.enib.game.editor.graphe.examples.swing.action.ModifierTableauAction;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
@@ -223,6 +224,7 @@ public class Model implements IModel{
 			}
 		}
 		fireAddModelObject(null);
+		ModifierTableauAction.checkFileTableau();
 	}
 
 	/* (non-Javadoc)

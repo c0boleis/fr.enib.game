@@ -22,5 +22,15 @@ public interface IVisitableObject {
 	 * @return true si le noeud a été visité.
 	 */
 	public boolean estVisiter();
+	
+	/**
+	 * @return la valeur donné par la parcours
+	 */
+	public double valeurDeParcours();
+	
+	/**
+	 * @param valeur modifi la valeur du parcours de graphe
+	 */
+	public void serValeurDeParcours(double valeur);
 
 }

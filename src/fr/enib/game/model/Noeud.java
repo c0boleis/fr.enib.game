@@ -45,7 +45,7 @@ public class Noeud implements INoeud {
 	
 	protected int limitLienSortant = -1;
 	
-	
+	private double valeur = Double.NaN;
 	/**
 	 * 
 	 */
@@ -328,7 +328,6 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean setDegreInteret(float degre) {
-		// TODO Auto-generated method stub
 		DegreInteret = degre;
 		return true;
 		
@@ -340,7 +339,6 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public float getDegreInteret() {
-		// TODO Auto-generated method stub
 		return DegreInteret;
 	}
 
@@ -396,6 +394,22 @@ public class Noeud implements INoeud {
 			mesNoeudsDescendantsDirects.add(lien.getNoeudArrivee());
 		}
 		return mesNoeudsDescendantsDirects;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IVisitableObject#valeurDeParcours()
+	 */
+	@Override
+	public double valeurDeParcours() {
+		return this.valeur;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IVisitableObject#serValeurDeParcours(double)
+	 */
+	@Override
+	public void serValeurDeParcours(double valeur) {
+		this.valeur = valeur;
 	}
 
 }
