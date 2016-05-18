@@ -29,7 +29,7 @@ public class Noeud implements INoeud {
 	
 	private boolean visiter = false;
 	
-	private float DegreInteret;
+	private float DegreInteret = 1.0f;
 	
 	private List<ILien> liensEntrants = new ArrayList<ILien>();
 	
@@ -415,6 +415,7 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public void calculValeurParcoursGraphe() {
+		Model.get().resetValeursParcours();
 		calculValeurParcoursGraphe(getValeurDeParcours());
 	}
 	
@@ -423,8 +424,10 @@ public class Noeud implements INoeud {
 		for(ILien lien : liens){
 			Noeud n = (Noeud) lien.getNoeudArrivee();
 			double transition = valeur+lien.getPoids()*n.getDegreInteret();
-			if(transition>this.getValeurDeParcours()){
-				this.setValeurDeParcours(transition);
+			if(n.getValeurDeParcours()==Double.NaN){
+				n.setValeurDeParcours(transition);
+			}else if(transition>n.getValeurDeParcours()){
+				n.setValeurDeParcours(transition);
 			}
 			n.calculValeurParcoursGraphe(getValeurDeParcours());
 		}

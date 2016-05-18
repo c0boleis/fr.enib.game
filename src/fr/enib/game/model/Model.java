@@ -16,6 +16,9 @@ import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.IModel;
 import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.INoeud;
+import fr.enib.game.model.interfaces.IObjectInteret;
+import fr.enib.game.model.interfaces.IObjectPondere;
+import fr.enib.game.model.interfaces.IVisitableObject;
 import fr.enib.game.model.listeners.IListener;
 import fr.enib.game.model.listeners.IModelListener;
 import fr.enib.game.model.xstreamData.SaveIntoXml;
@@ -262,6 +265,46 @@ public class Model implements IModel{
 		this.modelObjects = modele.modelObjects;
 		listListener = new ArrayList<IListener>();
 		return true;
+	}
+	
+	/**
+	 * reset tout les valeur du parcours de graphe
+	 */
+	public void resetValeursParcours(){
+		IModelObject[] tmp = getModelObjects();
+		for(IModelObject object : tmp){
+			if(object instanceof IVisitableObject){
+				((IVisitableObject) object).resetVisiter();
+				((IVisitableObject) object).setValeurDeParcours(Double.NaN);
+			}
+		}
+		
+	}
+	
+	/**
+	 * @param value à donner à tous les {@link IObjectPondere}
+	 */
+	public void setAllPoids(float value){
+		IModelObject[] tmp = getModelObjects();
+		for(IModelObject object : tmp){
+			if(object instanceof IObjectPondere){
+				((IObjectPondere) object).setPoids(value);
+			}
+		}
+		
+	}
+	
+	/**
+	 * @param value à donner à tous les {@link IObjectInteret}
+	 */
+	public void setAllDegreeInteret(float value){
+		IModelObject[] tmp = getModelObjects();
+		for(IModelObject object : tmp){
+			if(object instanceof IObjectInteret){
+				((IObjectInteret) object).setDegreInteret(value);
+			}
+		}
+		
 	}
 
 }

@@ -125,23 +125,6 @@ public class OpenAction extends AbstractAction
 							.getProperty("user.dir");
 
 					JFileChooser fc = new JFileChooser(wd);
-
-					// Adds file filter for supported file format
-					//					DefaultFileFilter defaultFilter = new DefaultFileFilter(
-					//							".mxe", mxResources.get("allSupportedFormats")
-					//									+ " (.mxe, .png, .vdx)")
-					//					{
-					//
-					//						public boolean accept(File file)
-					//						{
-					//							String lcase = file.getName().toLowerCase();
-					//
-					//							return super.accept(file)
-					//									|| lcase.endsWith(".png")
-					//									|| lcase.endsWith(".vdx");
-					//						}
-					//					};
-					//					fc.addChoosableFileFilter(defaultFilter);
 					DefaultFileFilter filter = new DefaultFileFilter(".mxe",
 							"mxGraph Editor " + mxResources.get("file")
 							+ " (.mxe)");
@@ -171,6 +154,9 @@ public class OpenAction extends AbstractAction
 									.getSelectedFile());
 
 							resetEditor(editor);
+//							utilisé pour l'initialisation du graphe
+//							Model.get().setAllDegreeInteret(1.0f);
+//							Model.get().setAllPoids(1.0f);
 							Model.get().refresh();
 						}
 						catch (IOException ex)

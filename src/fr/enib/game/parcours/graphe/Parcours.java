@@ -38,6 +38,7 @@ public class Parcours {
 	 * @param noeudCourant the noeudCourant to set
 	 */
 	public void setNoeudCourant(INoeud noeudCourant) {
+		this.noeudPrecedent = this.noeudCourant;
 		this.noeudCourant = noeudCourant;
 	}
 
