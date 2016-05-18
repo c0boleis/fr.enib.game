@@ -19,13 +19,26 @@ public class Tableau extends Objet {
 	
 	private ITableau iTableau;
 	
+	/**
+	 * 
+	 * @param id
+	 * @param img
+	 * @param iTableau
+	 */
 	public Tableau(String id, String img,ITableau iTableau) {
 		this(id, img, 1.5f, 1.0f,iTableau);
 	}
 	
+	/**
+	 * @param id
+	 * @param img
+	 * @param largeur
+	 * @param hauteur
+	 * @param iTableau
+	 */
 	public Tableau(String id, String img, float largeur, float hauteur,ITableau iTableau) {
 		super(id, img);
-
+		this.iTableau = iTableau;
 		Forme geo = new GTableau(largeur, hauteur); 
 		this.forme = new Shape(geo, mat); 
 		this.positionInRepere = new Vec3();
