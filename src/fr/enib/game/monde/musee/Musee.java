@@ -267,7 +267,7 @@ public class Musee {
 		else if(y < -(largeurSalle/2.0f + distanceMur)){
 			orientationAvatar = Orientation.DROITE;
 			positionCentre.y = positionCentre.y - largeurSalle - distanceMur;
-			
 		}
+		LOGGER.info("new pos -> x : " + positionCentre.x + ", " + positionCentre.y);
 	}
 }

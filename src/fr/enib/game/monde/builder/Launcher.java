@@ -10,10 +10,13 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.InputStream;
 import java.util.Properties;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -30,6 +33,7 @@ import com.jogamp.opengl.fixedfunc.GLMatrixFunc;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.FPSAnimator;
 
+import fr.enib.game.model.Model;
 import fr.enib.game.monde.objet.Avatar;
 
 /**
@@ -55,6 +59,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
     private Robot robot;
     private GLU glu = new GLU() ;
 	
+    private boolean loadFromFile;
+    private static final boolean ASK_SAVE = true;
+    
 	private boolean lockMouse;
 	private Avatar avatar;
 
@@ -69,6 +76,8 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		avatar = Avatar.get();
 		lockMouse = true;
 		builder = new Builder(loadfromFile);
+		
+		this.loadFromFile = loadfromFile;
 		
 		GLProfile glp = GLProfile.getDefault();
 		GLCapabilities caps = new GLCapabilities(glp);
@@ -241,9 +250,32 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	}
 	
 	public void quitter(){
-		LOGGER.info("Arret du programme");
-		System.exit(0);
-		//dispose();
+		if(loadFromFile){
+			if(ASK_SAVE){
+				JFileChooser j = new JFileChooser();
+				j.showSaveDialog(this);
+				File f = j.getSelectedFile();
+				
+				if(f != null){
+					boolean res = Model.get().sauvegarderModel(f);
+					if(!res){
+						LOGGER.error("Erreur sauvegarde du model");
+						JOptionPane.showMessageDialog(this, "Error", "Erreur de sauvegarde du fichier", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				else{
+					int res = JOptionPane.showConfirmDialog(this, "Etes-vous sur de quitter sans sauvegarder ?");
+					if(res != JOptionPane.YES_OPTION){
+						return;
+					}
+				}
+			}
+			LOGGER.info("Arret du programme");
+			System.exit(0);
+		}
+		else{
+			dispose();
+		}
 	}
 
 	@Override

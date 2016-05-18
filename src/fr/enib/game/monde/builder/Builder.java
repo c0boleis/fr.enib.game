@@ -29,6 +29,11 @@ public class Builder {
 	
 	private Parcours parcoursP;
 	
+	
+	/**
+	 * 
+	 * @param loadFromFile si false, on charge les donnees depuis l'éditeur, sinon on charge depuis un fichier
+	 */
 	public Builder(boolean loadFromFile){
 		musee = new Musee();
 		
@@ -42,7 +47,7 @@ public class Builder {
 					musee.clear(); 
 					musee.setPositionCentre(Avatar.get().getPositionRepere());
 					construire();
-					System.out.println(Avatar.get().getPositionRepere());
+					//System.out.println(Avatar.get().getPositionRepere());
 				}
 			}
 		};
