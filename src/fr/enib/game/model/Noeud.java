@@ -11,7 +11,6 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import fr.enib.game.model.enums.AjoutLienInfos;
 import fr.enib.game.model.interfaces.ILien;
-import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
 
@@ -361,7 +360,7 @@ public class Noeud implements INoeud {
 		return getTableau(true);
 	}
 	
-	private ArrayList<ITableau> getTableau(boolean sort) {
+	protected ArrayList<ITableau> getTableau(boolean sort) {
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
 		ArrayList<INoeud> noeudsEnfants = this.getNoeudsDescendantDirect();
 		for(INoeud noeud : noeudsEnfants){

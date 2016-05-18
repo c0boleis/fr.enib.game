@@ -49,6 +49,16 @@ public class Tableau extends Noeud implements ITableau{
 		this.limitLienEntrant = -1;
 		this.limitLienSortant = 0;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object o){
+		if(!(o instanceof Tableau))return false;
+		return ((Tableau)o).getId().equals(getId());
+	}
 
 	/* (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.ITableau#getDescription()
@@ -157,6 +167,17 @@ public class Tableau extends Noeud implements ITableau{
 	 */
 	@Override
 	public ArrayList<ITableau> getTableau() {
+		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
+		mesTableaux.add(this);
+		return mesTableaux;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see fr.enib.game.model.Noeud#getTableau(boolean)
+	 */
+	@Override
+	protected ArrayList<ITableau> getTableau(boolean sort) {
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
 		mesTableaux.add(this);
 		return mesTableaux;
