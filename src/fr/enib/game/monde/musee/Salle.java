@@ -93,7 +93,6 @@ public class Salle extends Situable implements Observer{
 	public Salle(String id, float largeur, float profondeur, float hauteur, float epaisseurMur, float largeurPorte, float hauteurPorte){
 		super(id);
 		//Monde.get().ajouterSalle(this);
-
 		this.objets     = new HashMap<String,Objet>() ;
 		this.capteurs   = new HashMap<String,Capteur>() ;
 		this.voisines   = new HashMap<String,Salle>() ;
@@ -116,6 +115,7 @@ public class Salle extends Situable implements Observer{
 		capteurPresenceAvatar.add(this);
 		ajouter(capteurPresenceAvatar);
 		capteurPresenceAvatar.setSalle(this);
+		
 
 		ajouter( new Sol(TypeObjet.SOL.toString() + getId() , RessourceProvider.pathTextureSol, largeur, profondeur));
 		ajouter( new Plafond(TypeObjet.PLAFOND.toString() + getId(), RessourceProvider.pathTexturePlafond, largeur, profondeur));  

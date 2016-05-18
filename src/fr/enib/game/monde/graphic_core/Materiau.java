@@ -3,6 +3,7 @@ package fr.enib.game.monde.graphic_core;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
@@ -23,6 +24,8 @@ import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
 public class Materiau {
 
 	private static Logger LOGGER = Logger.getLogger(Materiau.class);
+	
+	private static HashMap<String, BufferedImage> imgTextures = new HashMap<>();
 
 	/**
 	 * coeficient de GL_AMBIENT
@@ -86,23 +89,28 @@ public class Materiau {
 	 * @param pathTexture le chemin d'acces ou se trouve la texture a appliquer
 	 */
 	public void setTexture(String pathTexture){
-		try {
-			File infile = new File(pathTexture);
-			BufferedImage image = ImageIO.read(infile);
-			
-			if(image == null){
-				LOGGER.info("Erreur, texture pour le materiel non trouvé") ; 
+		BufferedImage img = null;
+		
+		img = imgTextures.get(pathTexture);
+		if(img == null){
+			try {
+				File infile = new File(pathTexture);
+				img = ImageIO.read(infile);
+				
+				if(img == null){
+					LOGGER.info("Erreur, texture pour le materiel non trouvé") ; 
+				}
+				ImageUtil.flipImageVertically(img);
+				imgTextures.put(pathTexture, img);
+			} catch(IOException e){
+				LOGGER.error(e);
 			}
-			
-			ImageUtil.flipImageVertically(image);
-			texture = TextureIO.newTexture(AWTTextureIO.newTextureData(gl.getGLProfile(), image, false));
-			texture.setTexParameteri(gl, GL2.GL_TEXTURE_WRAP_S, GL2.GL_REPEAT); // GL_REPEAT or GL_CLAMP
-			texture.setTexParameteri(gl, GL2.GL_TEXTURE_WRAP_T, GL2.GL_REPEAT);
-			texture.setTexParameteri(gl, GL2.GL_TEXTURE_MAG_FILTER, GL2.GL_LINEAR); // GL_LINEAR or GL_NEARESTor one of the mipmap ones
-			texture.setTexParameteri(gl, GL2.GL_TEXTURE_MIN_FILTER, GL2.GL_LINEAR);
-		} catch(IOException e){
-			LOGGER.error(e);
 		}
+		texture = TextureIO.newTexture(AWTTextureIO.newTextureData(gl.getGLProfile(), img, false));
+		texture.setTexParameteri(gl, GL2.GL_TEXTURE_WRAP_S, GL2.GL_REPEAT); // GL_REPEAT or GL_CLAMP
+		texture.setTexParameteri(gl, GL2.GL_TEXTURE_WRAP_T, GL2.GL_REPEAT);
+		texture.setTexParameteri(gl, GL2.GL_TEXTURE_MAG_FILTER, GL2.GL_LINEAR); // GL_LINEAR or GL_NEARESTor one of the mipmap ones
+		texture.setTexParameteri(gl, GL2.GL_TEXTURE_MIN_FILTER, GL2.GL_LINEAR);
 	}
 	
 	/**

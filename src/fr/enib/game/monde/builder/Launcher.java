@@ -58,7 +58,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
     private GLU glu = new GLU() ;
 	
     private boolean loadFromFile;
-    private static final boolean ASK_SAVE = true;
+    private static final boolean ASK_SAVE = false;
     
 	private boolean lockMouse;
 	private Avatar avatar;
@@ -99,8 +99,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setResizable(false);
-		
-		
 		
 		canvas.addGLEventListener(this);
 		canvas.addMouseListener(this); 
