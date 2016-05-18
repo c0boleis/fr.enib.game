@@ -369,16 +369,15 @@ public class Noeud implements INoeud {
 			ArrayList<ITableau> tab = noeud.getTableau();
 			mesTableaux.addAll(tab);
 		}
-		//on trie les tableaux pour éviter les doublons.
-		//quand sort devient true?//////////////////////////////////////////////////////////////////////////
+		//on trie le tableau de tableaux pour éviter les doublons
 		if(sort){
 			ArrayList<ITableau> tmp = new ArrayList<ITableau>();
 			for(ITableau tableau : mesTableaux){
-				if(!tmp.contains(tableau) && !tmp.isEmpty()){
+				if(!tmp.contains(tableau)){
 					tmp.add(tableau);
 				}
 			}
-			mesTableaux = tmp;
+			//mesTableaux = tmp;
 		}
 		return mesTableaux;
 	}
