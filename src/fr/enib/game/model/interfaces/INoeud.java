@@ -79,4 +79,9 @@ public interface INoeud extends IModelObject,IVisitableObject,IObjectInteret{
 	 * @return liste des noeuds descendants associés au noeud parent.
 	 */
 	public ArrayList<INoeud> getNoeudsDescendantDirect();
+	
+	/**
+	 * calcul les valeur du parcours pour touts les décendant
+	 */
+	public void calculValeurParcoursGraphe();
 }

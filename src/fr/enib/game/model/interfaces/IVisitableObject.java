@@ -31,6 +31,11 @@ public interface IVisitableObject {
 	/**
 	 * @param valeur modifi la valeur du parcours de graphe
 	 */
-	public void serValeurDeParcours(double valeur);
+	public void setValeurDeParcours(double valeur);
+	
+	/**
+	 * @return la valeur du parcours de graphe
+	 */
+	public double getValeurDeParcours();
 
 }

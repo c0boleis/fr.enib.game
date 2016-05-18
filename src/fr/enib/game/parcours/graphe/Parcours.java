@@ -84,14 +84,16 @@ public class Parcours {
 	}
 	
 	
-	//Calcul du noeud des noeuds suivants :
+	/**
+	 * @return la liste des Noeuds suivants
+	 */
 	public INoeud[] calcul_Noeud_Suivant()
 	{
 		float[] calculs = new float[noeudCourant.getLiensSortant().length];
 		float maxi =0;
 		int nbNoeud;
 		int temp; 
-		INoeud noeud2 = new Noeud();
+		INoeud noeud2 = null;
 		ArrayList<INoeud> tab_noeud = new ArrayList<INoeud>();
 		
 		INoeud noeudGagnants[];

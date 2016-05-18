@@ -406,8 +406,36 @@ public class Noeud implements INoeud {
 	 * @see fr.enib.game.model.interfaces.IVisitableObject#serValeurDeParcours(double)
 	 */
 	@Override
-	public void serValeurDeParcours(double valeur) {
+	public void setValeurDeParcours(double valeur) {
 		this.valeur = valeur;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.INoeud#calculValeurParcoursGraphe()
+	 */
+	@Override
+	public void calculValeurParcoursGraphe() {
+		calculValeurParcoursGraphe(getValeurDeParcours());
+	}
+	
+	protected void calculValeurParcoursGraphe(double valeur) {
+		ILien[] liens = getLiensSortant();
+		for(ILien lien : liens){
+			Noeud n = (Noeud) lien.getNoeudArrivee();
+			double transition = valeur+lien.getPoids()*n.getDegreInteret();
+			if(transition>this.getValeurDeParcours()){
+				this.setValeurDeParcours(transition);
+			}
+			n.calculValeurParcoursGraphe(getValeurDeParcours());
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IVisitableObject#getValeurDeParcours()
+	 */
+	@Override
+	public double getValeurDeParcours() {
+		return valeur;
 	}
 
 }
