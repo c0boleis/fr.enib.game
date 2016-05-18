@@ -260,7 +260,11 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 					boolean res = Model.get().sauvegarderModel(f);
 					if(!res){
 						LOGGER.error("Erreur sauvegarde du model");
-						JOptionPane.showMessageDialog(this, "Error", "Erreur de sauvegarde du fichier", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(this, "Erreur de sauvegarde du fichier", "Error", JOptionPane.ERROR_MESSAGE);
+						int res1 = JOptionPane.showConfirmDialog(this, "Etes-vous sur de quitter sans sauvegarder ?");
+						if(res1 != JOptionPane.YES_OPTION){
+							return;
+						}
 					}
 				}
 				else{
