@@ -2,7 +2,10 @@ package fr.enib.game.monde.builder;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import fr.enib.game.model.Lien;
+import fr.enib.game.model.Model;
 import fr.enib.game.model.Noeud;
 import fr.enib.game.model.Tableau;
 import fr.enib.game.model.interfaces.ILien;
@@ -19,7 +22,7 @@ import fr.enib.game.parcours.graphe.Parcours;
  *
  */
 public class Builder {
-	//private static Logger LOGGER = Logger.getLogger(Builder.class);
+	private static Logger LOGGER = Logger.getLogger(Builder.class);
 
 	private INoeud[] noeuds;
 	
@@ -53,53 +56,66 @@ public class Builder {
 		};
 		Monde.get().setiActu(iActu);
 		
-		noeuds = new INoeud[9];
-		noeuds[0] = new Noeud("X");
-		noeuds[1] = new Noeud("A");
-		noeuds[2] = new Noeud("AB");
-		noeuds[3] = new Noeud("AC");
-		noeuds[4] = new Noeud("B11");
-		noeuds[5] = new Noeud("B12");
-		noeuds[6] = new Noeud("C11");
-		noeuds[7] = new Noeud("C12");
-		noeuds[8] = new Noeud("C13");
 		
+		if(loadFromFile){
+			LOGGER.info("Chargement depuis fichier");
+			noeuds = new INoeud[9];
+			noeuds[0] = new Noeud("X");
+			noeuds[1] = new Noeud("A");
+			noeuds[2] = new Noeud("AB");
+			noeuds[3] = new Noeud("AC");
+			noeuds[4] = new Noeud("B11");
+			noeuds[5] = new Noeud("B12");
+			noeuds[6] = new Noeud("C11");
+			noeuds[7] = new Noeud("C12");
+			noeuds[8] = new Noeud("C13");
+			
 
-		//Creation des liens : 
-		ILien lienXA = new Lien((Noeud) noeuds[0],(Noeud)noeuds[1]);
-		ILien lienAB = new Lien((Noeud)noeuds[1],(Noeud)noeuds[2]);
-		ILien lienAC = new Lien((Noeud)noeuds[1],(Noeud)noeuds[3]);
-		ILien lienBB11 = new Lien((Noeud)noeuds[2],(Noeud)noeuds[4]);
-		ILien lienBB12 = new Lien((Noeud)noeuds[2],(Noeud)noeuds[5]);
-		ILien lienCC11 = new Lien((Noeud)noeuds[3],(Noeud)noeuds[6]);
-		ILien lienCC12 = new Lien((Noeud)noeuds[3],(Noeud)noeuds[7]);
-		ILien lienCC13 = new Lien((Noeud)noeuds[3],(Noeud)noeuds[8]);
+			//Creation des liens : 
+			ILien lienXA = new Lien((Noeud) noeuds[0],(Noeud)noeuds[1]);
+			ILien lienAB = new Lien((Noeud)noeuds[1],(Noeud)noeuds[2]);
+			ILien lienAC = new Lien((Noeud)noeuds[1],(Noeud)noeuds[3]);
+			ILien lienBB11 = new Lien((Noeud)noeuds[2],(Noeud)noeuds[4]);
+			ILien lienBB12 = new Lien((Noeud)noeuds[2],(Noeud)noeuds[5]);
+			ILien lienCC11 = new Lien((Noeud)noeuds[3],(Noeud)noeuds[6]);
+			ILien lienCC12 = new Lien((Noeud)noeuds[3],(Noeud)noeuds[7]);
+			ILien lienCC13 = new Lien((Noeud)noeuds[3],(Noeud)noeuds[8]);
+			
+			//Affectation des poids a chaque lien
+			lienXA.setPoids(1);
+			lienAB.setPoids(3);
+			lienAC.setPoids(2);
+			lienBB11.setPoids(2);
+			lienBB12.setPoids(3);
+			lienCC11.setPoids(6);
+			lienCC12.setPoids(2);
+			lienCC13.setPoids(3);
+			
 		
-		//Affectation des poids a chaque lien
-		lienXA.setPoids(1);
-		lienAB.setPoids(3);
-		lienAC.setPoids(2);
-		lienBB11.setPoids(2);
-		lienBB12.setPoids(3);
-		lienCC11.setPoids(6);
-		lienCC12.setPoids(2);
-		lienCC13.setPoids(3);
+			//Affectation des degres au noeud
+			noeuds[0].setDegreInteret(6);
+			noeuds[1].setDegreInteret(20);
+			noeuds[2].setDegreInteret(5);
+			noeuds[3].setDegreInteret(15);
+			noeuds[4].setDegreInteret(7);
+			noeuds[5].setDegreInteret(10);
+			noeuds[6].setDegreInteret(12);
+			noeuds[7].setDegreInteret(5);
+			noeuds[8].setDegreInteret(8);
+			listeTableau = getTableau();
+			parcoursP = new Parcours(noeuds[0]);
+		}
+		else{
+			LOGGER.info("Chargement depuis editeur");
+			INoeud n = Model.get().getRoot();
+			if(n == null){
+				LOGGER.error("Error");
+			}
+			parcoursP = new Parcours(n);
+		}
 		
-	
-		//Affectation des degres au noeud
-		noeuds[0].setDegreInteret(6);
-		noeuds[1].setDegreInteret(20);
-		noeuds[2].setDegreInteret(5);
-		noeuds[3].setDegreInteret(15);
-		noeuds[4].setDegreInteret(7);
-		noeuds[5].setDegreInteret(10);
-		noeuds[6].setDegreInteret(12);
-		noeuds[7].setDegreInteret(5);
-		noeuds[8].setDegreInteret(8);
 		
-		listeTableau = getTableau();
 		
-		parcoursP = new Parcours(noeuds[0]);
 	}
 	
 	public ITableau[][] getTableau(){
