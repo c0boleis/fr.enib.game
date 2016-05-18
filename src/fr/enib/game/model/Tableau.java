@@ -20,8 +20,8 @@ import fr.enib.game.model.interfaces.ITableau;
 @XStreamAlias("Tableau")
 public class Tableau extends Noeud implements ITableau{
 	
-	private float largeurTableau;
-	private float longueurTableau;
+	private float largeurTableau = 1.0f;
+	private float longueurTableau = 1.0f;
 	
 	/**
 	 * 

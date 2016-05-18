@@ -6,6 +6,8 @@ package fr.enib.game.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -21,6 +23,7 @@ import fr.enib.game.model.interfaces.ITableau;
 @XStreamAlias("Noeud")
 public class Noeud implements INoeud {
 	
+	private static final Logger LOGGER = Logger.getLogger(Noeud.class);
 	
 	@XStreamOmitField
 	private static final long serialVersionUID = 734404660422963476L;

@@ -17,26 +17,26 @@ import fr.enib.game.model.interfaces.INoeud;
  */
 @XStreamAlias("Lien")
 public class Lien implements ILien {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6374209663292757875L;
-	
+
 	private String id;
-	
+
 	@XStreamOmitField
 	private INoeud noeudArrivee = null;
-	
+
 	private String idNoeudArrivee = null;
-	
+
 	@XStreamOmitField
 	private INoeud noeudDepart;
-	
+
 	private String idNoeudDepart = null;
-	
+
 	private float poids;
-	
+
 	/**
 	 * 
 	 * @param noeudD Noeud de depart
@@ -49,8 +49,8 @@ public class Lien implements ILien {
 		this.noeudArrivee = noeudA;
 		this.noeudDepart = noeudD;
 		this.id = noeudDepart.getId()+"_vers_"+noeudArrivee.getId();
-		
-		
+
+
 		AjoutLienInfos outLien = this.noeudDepart.ajouterLienSortant(this);
 		if(outLien != AjoutLienInfos.ok){
 			if(outLien == AjoutLienInfos.limit){
@@ -90,6 +90,9 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public INoeud getNoeudDepart() {
+		if(this.noeudDepart==null){
+			this.noeudDepart = (INoeud) Model.get().getModelObject(idNoeudDepart);
+		}
 		return this.noeudDepart;
 	}
 
@@ -98,9 +101,12 @@ public class Lien implements ILien {
 	 */
 	@Override
 	public INoeud getNoeudArrivee() {
+		if(this.noeudArrivee==null){
+			this.noeudArrivee = (INoeud) Model.get().getModelObject(idNoeudArrivee);
+		}
 		return this.noeudArrivee;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -109,7 +115,7 @@ public class Lien implements ILien {
 	public String toString(){
 		return String.valueOf(this.getPoids());
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.IClonableObject#cloneObject()
@@ -117,14 +123,14 @@ public class Lien implements ILien {
 	@Override
 	public Lien cloneObject(Object object){
 		Lien newLien = new Lien();
-//		/*
-//		 * comme il ne peut pas exité deux objet avec la même
-//		 * id on demande a Model de générer un nouvelle id
-//		 */
-//		newLien.id = Model.get().getNextId(id);
-//		if(Model.get().ajouterModelObject(newLien)){
-//			return newLien;
-//		}
+		//		/*
+		//		 * comme il ne peut pas exité deux objet avec la même
+		//		 * id on demande a Model de générer un nouvelle id
+		//		 */
+		//		newLien.id = Model.get().getNextId(id);
+		//		if(Model.get().ajouterModelObject(newLien)){
+		//			return newLien;
+		//		}
 		return newLien;
 	}
 
@@ -217,11 +223,11 @@ public class Lien implements ILien {
 		if(noeud!=null){
 			noeud.ajouterLienEntrant(this);
 		}
-		 noeud = getNoeudDepart();
-			if(noeud!=null){
-				noeud.ajouterLienSortant(this);
-			}
-		
+		noeud = getNoeudDepart();
+		if(noeud!=null){
+			noeud.ajouterLienSortant(this);
+		}
+
 	}
 
 }

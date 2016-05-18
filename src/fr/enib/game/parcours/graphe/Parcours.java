@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 
 import java.util.Collections;
+import java.util.List;
 
 import fr.enib.game.model.Lien;
 import fr.enib.game.model.Noeud;
@@ -54,8 +55,8 @@ public class Parcours {
 	public INoeud[] calcul_Noeud_Suivant()
 	{
 		
-		ArrayList<INoeud> noeud = new ArrayList<INoeud>();
-		ArrayList<INoeud> noeudEnfant = new ArrayList<INoeud>();
+		List<INoeud> noeud = new ArrayList<INoeud>();
+		List<INoeud> noeudEnfant = new ArrayList<INoeud>();
 		noeudEnfant = this.noeudCourant.getNoeudsDescendantDirect();
 		int compt = 3;
 		
@@ -73,12 +74,12 @@ public class Parcours {
 		Collections.sort(noeudEnfant, new VisitableObjectComparator());
 		if(noeudEnfant.size() > compt)
 		{
-			noeudEnfant = (ArrayList<INoeud>) noeudEnfant.subList(0, compt);
+			noeudEnfant = noeudEnfant.subList(0, compt);
 		}
 		noeud.addAll(noeudEnfant);
 	
 		
-		return (INoeud[]) noeud.toArray();	
+		return noeud.toArray(new INoeud[0]);	
 	}
 	
 
