@@ -76,20 +76,6 @@ public class Model implements IModel{
 	}
 
 	/* (non-Javadoc)
-	 * @see fr.enib.game.model.interfaces.IModel#sauvegarderModele()
-	 */
-	@Override
-	public boolean sauvegarderModel(File monFichierXml) {
-		// TODO Auto-generated method stub
-		if(modelObjects.isEmpty()){
-			return false;
-		}
-		SaveIntoXml masauvegarde = new SaveIntoXml(monFichierXml);
-		masauvegarde.enregistrer();
-		return true;
-	}
-
-	/* (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.IModel#ajouterModelObject(fr.enib.game.model.interfaces.IModelObject)
 	 */
 	@Override
@@ -245,6 +231,37 @@ public class Model implements IModel{
 			}
 		}
 		return noeudOut;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#sauvegarderModele()
+	 */
+	@Override
+	public boolean sauvegarderModel(File monFichierXml) {
+		// TODO Auto-generated method stub
+		if(modelObjects.isEmpty()){
+			return false;
+		}
+		SaveIntoXml masauvegarde = new SaveIntoXml(monFichierXml);
+		masauvegarde.enregistrer();
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.IModel#importerModel(java.io.File)
+	 */
+	@Override
+	public boolean importerModel(File fichierXml) {
+		if(fichierXml == null){return false;};
+		if(!fichierXml.exists()){
+			return false;
+		}
+		modelObjects.clear();
+		SaveIntoXml importer = new SaveIntoXml(fichierXml);
+		Model modele = importer.importer();
+		this.modelObjects = modele.modelObjects;
+		listListener = new ArrayList<IListener>();
+		return true;
 	}
 
 }
