@@ -37,14 +37,20 @@ public class SaveIntoXml {
 	public SaveIntoXml(File cheminNouveauFichier){
 		setFichier(cheminNouveauFichier);
 		xstream = new XStream(new DomDriver());
+		xstream.autodetectAnnotations(true);
+		xstream.alias("Model", Model.class);
 	}
 	
+	/**
+	 * enregistre le Model au fromat xml
+	 */
 	public void enregistrer(){
 		BufferedWriter buf;
 		try {
 			//Ecriture dans le fichier XML
 			buf = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(fichier), "UTF8"));
+			
 			String xml = xstream.toXML(Model.get());
 			buf.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 			buf.write(xml);

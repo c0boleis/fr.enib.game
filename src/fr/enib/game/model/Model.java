@@ -27,7 +27,6 @@ import fr.enib.game.model.xstreamData.SaveIntoXml;
  * @author Corentin Boleis
  *
  */
-@XStreamAlias("Model")
 public class Model implements IModel{
 		
 	private List<IModelObject> modelObjects = new ArrayList<IModelObject>();
