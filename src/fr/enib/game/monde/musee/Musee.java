@@ -248,7 +248,7 @@ public class Musee {
 		Salle s = salles.get(PREFIX_ID_SALLE + nom);
 		if(s != null){
 			for(ITableau t : tableaux){
-				s.ajouterTableau(new Tableau(t.getId(), t.getUrlImage(), t.getLargeurTableau(), t.getHauteurTableau()));
+				s.ajouterTableau(new Tableau(t.getId(), t.getUrlImage(), t.getLargeurTableau(), t.getHauteurTableau(),t));
 			}
 		}
 		else{

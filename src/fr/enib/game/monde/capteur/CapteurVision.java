@@ -38,6 +38,7 @@ public class CapteurVision extends Capteur{
 	public void tester(float t) {
 		Tableau tab = (Tableau) cible;
 		if(calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere()) <= this.dis){
+			tab.getiTableau().setDegreInteret(tab.getiTableau().getDegreInteret()+0.1f);
 			//float dir = avatar.getDirectionRegard().x;
 			if(tab.getPositionInRepere().x >= 0 && tab.getPositionInRepere().y >= 0){
 				//if(dir >= 0.75 && dir < 1) LOGGER.info("Capteur visition : " + getId()); 
