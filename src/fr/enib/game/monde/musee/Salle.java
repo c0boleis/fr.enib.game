@@ -92,7 +92,7 @@ public class Salle extends Situable implements Observer{
 	 */
 	public Salle(String id, float largeur, float profondeur, float hauteur, float epaisseurMur, float largeurPorte, float hauteurPorte){
 		super(id);
-		Monde.get().ajouterSalle(this);
+		//Monde.get().ajouterSalle(this);
 
 		this.objets     = new HashMap<String,Objet>() ;
 		this.capteurs   = new HashMap<String,Capteur>() ;

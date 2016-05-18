@@ -34,7 +34,7 @@ public class Builder {
 				INoeud n = getNoeudById(id);
 				if(n != null){
 					parcoursP.setNoeudCourant(n);
-					Monde.get().clear();
+					//Monde.get().clear();
 					musee.clear(); 
 					musee.setPositionCentre(Avatar.get().getPositionRepere());
 					construire();

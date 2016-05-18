@@ -1,9 +1,6 @@
 package fr.enib.game.monde.builder;
 
-import java.awt.AWTException;
 import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -57,7 +54,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
     
 	private GLCanvas canvas;
 	private Builder builder;
-    private Robot robot;
+   // private Robot robot;
     private GLU glu = new GLU() ;
 	
     private boolean loadFromFile;
@@ -69,7 +66,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	private float [] diffus = {1.0f,1.0f,1.0f,1.0f} ; 
 	private float [] position = {5.0f,1.0f,10.0f,1.0f} ;
 	private float [] ambient  = { 1.0f,1.0f,1.0f,1.0f} ; 
-	
+
 	/**
 	 * 
 	 * @param loadFromFile si false, on charge les donnees depuis l'éditeur, sinon on charge depuis un fichier
@@ -80,6 +77,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		initLog();
 		avatar = Avatar.get();
 		lockMouse = true;
+		
+		centerX = (int)(width/2.0f);
+		centerY = (int)(height/2.0f);
 		
 		if(loadfromFile) loadData();
 		builder = new Builder();
@@ -100,12 +100,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		this.setVisible(true);
 		this.setResizable(false);
 		
-		Point p = getLocation();
 		
-		centerX = (int)(p.getX() + getWidth()/2.0f);
-		centerY = (int)(p.getY() + getHeight()/2.0f);
-		
-		System.out.println("Centre : " + centerX + " - " + centerY);
 		
 		canvas.addGLEventListener(this);
 		canvas.addMouseListener(this); 
@@ -120,11 +115,11 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 			}	
 		});
 
-		try {
+		/*try {
             robot = new Robot();
         } catch (final AWTException e) {
             e.printStackTrace();
-        }
+        }*/
 
 		oldX = 0;
 		oldY = 0;
@@ -187,12 +182,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		gl.glLoadIdentity() ; 
 		glu.gluPerspective(60.0f,(float)w/h,0.1f,1000.f) ; 
 		gl.glMatrixMode(GLMatrixFunc.GL_MODELVIEW) ; 
-		
-		//final Rectangle r = canvas.getParent().getBounds();
-        //final Point p = canvas.getParent().getLocationOnScreen();
-
-        //centerX = r.x + p.x + width / 2;
-        //centerY = r.y + p.y + height / 2;
 	}
 	
 	public void processKeyEvent(KeyEvent e, boolean pressed) {
@@ -256,12 +245,14 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		}
 	}
 	
-	public void mouseLock(){
+	/*public void mouseLock(){
 		if(lockMouse){
-			if (robot != null)
-	            robot.mouseMove(centerX, centerY);
+			if (robot != null){
+	            robot.mouseMove(getLocation().x + centerX, getLocation().y + centerY);
+	            moveFromRobot = true;
+			}
 		}
-	}
+	}*/
 	
 	/**
 	 * Chargement des données depuis un fichier
@@ -364,14 +355,19 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		/*if(lockMouse){
-			int x = e.getX();
-			int y = e.getY();
-			if(!isCentre(x, y)){
-				dXY(x, y);
-				moveLookAvatar();
-				mouseLock();
+		/*if(!moveFromRobot){
+			if(lockMouse){
+				int x = e.getX();
+				int y = e.getY();
+				if(!isCentre(x, y)){
+					dXY(x, y);
+					moveLookAvatar();
+					//mouseLock();
+				}
 			}
+		}
+		else{
+			moveFromRobot = false;
 		}*/
 	}
 
