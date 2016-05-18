@@ -60,6 +60,7 @@ public class Parcours {
 		noeudEnfant = this.noeudCourant.getNoeudsDescendantDirect();
 		int compt = 3;
 		
+		noeud.add(this.noeudCourant); 
 		if(this.noeudPrecedent == null)	
 		{
 			compt = 4;
@@ -67,7 +68,7 @@ public class Parcours {
 			noeud.add(this.noeudPrecedent);
 		}
 
-		noeud.add(this.noeudCourant); 
+		
 		
 		this.noeudCourant.calculValeurParcoursGraphe();
 		noeudEnfant.remove(this.noeudPrecedent);
