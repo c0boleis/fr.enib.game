@@ -95,19 +95,19 @@ public class Builder {
 		
 		boolean error = false;
 		for(int i = 0; i < noeuds.length; i++){
-			if(noeuds[i] == null){
+			if(!error && noeuds[i] == null){
 				LOGGER.info("noeuds[" + i + "] null");
 				error = true;
 			}
-			if(noeuds[i].getId() == null){
+			if(!error && noeuds[i].getId() == null){
 				LOGGER.info("noeuds[" + i + "] id null");
 				error = true;
 			}
-			if(noeuds[i].getTableau() == null){
+			if(!error && noeuds[i].getTableau() == null){
 				LOGGER.info("noeuds[" + i + "] tableaux null");
 				error = true;
 			}
-			if(noeuds[i].getTableau().isEmpty()){
+			if(!error && noeuds[i].getTableau().isEmpty()){
 				LOGGER.info("noeuds[" + i + "] " + noeuds[i].getId() + " tableaux => 0");
 				error = true;
 			}

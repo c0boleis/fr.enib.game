@@ -2,6 +2,7 @@ package fr.enib.game.monde.builder;
 
 import java.awt.AWTException;
 import java.awt.Cursor;
+import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -99,6 +100,13 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		this.setVisible(true);
 		this.setResizable(false);
 		
+		Point p = getLocation();
+		
+		centerX = (int)(p.getX() + getWidth()/2.0f);
+		centerY = (int)(p.getY() + getHeight()/2.0f);
+		
+		System.out.println("Centre : " + centerX + " - " + centerY);
+		
 		canvas.addGLEventListener(this);
 		canvas.addMouseListener(this); 
 		canvas.addMouseMotionListener(this); 
@@ -121,7 +129,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		oldX = 0;
 		oldY = 0;
 		
-		FPSAnimator animator = new FPSAnimator(canvas, 60);
+		FPSAnimator animator = new FPSAnimator(canvas, 60, true);
 		animator.start();
 		
 	}
@@ -263,8 +271,11 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		j.showOpenDialog(this);
 		File f = j.getSelectedFile();
 		if(f != null){
-			//TODO load le model depuis fichier
-			LOGGER.info("nom file : " + f.getName());
+			boolean res = Model.get().importerModel(f);
+			if(!res){
+				LOGGER.error("Erreur sur l'importation du fichier");
+				System.exit(-1);
+			}
 		}
 		else{
 			LOGGER.error("Erreur , pas de fichier en entré");
