@@ -22,11 +22,6 @@ import fr.enib.game.model.interfaces.ITableau;
 @XStreamAlias("Noeud")
 public class Noeud implements INoeud {
 	
-	/**
-	 * 
-	 */
-	@XStreamOmitField
-	private static boolean sort = true;
 	
 	@XStreamOmitField
 	private static final long serialVersionUID = 734404660422963476L;
@@ -363,10 +358,15 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public ArrayList<ITableau> getTableau() {
+		return getTableau(true);
+	}
+	
+	private ArrayList<ITableau> getTableau(boolean sort) {
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
 		ArrayList<INoeud> noeudsEnfants = this.getNoeudsDescendantDirect();
 		for(INoeud noeud : noeudsEnfants){
-			ArrayList<ITableau> tab = noeud.getTableau();
+			if(!(noeud instanceof Noeud))continue;
+			ArrayList<ITableau> tab = ((Noeud) noeud).getTableau(false);
 			mesTableaux.addAll(tab);
 		}
 		//on trie le tableau de tableaux pour éviter les doublons
@@ -377,7 +377,7 @@ public class Noeud implements INoeud {
 					tmp.add(tableau);
 				}
 			}
-			//mesTableaux = tmp;
+			mesTableaux = tmp;
 		}
 		return mesTableaux;
 	}
