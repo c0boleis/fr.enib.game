@@ -76,7 +76,7 @@ public class Builder {
 	 * Recalcul les noeuds et dessine les salles
 	 */
 	public void construire(){
-		long time = System.currentTimeMillis();
+		//long time = System.currentTimeMillis();
 		noeuds = parcoursP.calcul_Noeud_Suivant();
 		/*INoeud[] noeuds = new INoeud[1];
 		noeuds[0] = Model.get().getRoot();*/
@@ -118,8 +118,8 @@ public class Builder {
 			error = false;
 		}
 		musee.genererSalles();
-		long time2 = System.currentTimeMillis();
-		System.err.println("construire : " +(time2-time));
+		//long time2 = System.currentTimeMillis();
+		//System.err.println("construire : " +(time2-time));
 	}
 	
 }

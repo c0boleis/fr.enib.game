@@ -1,6 +1,9 @@
 package fr.enib.game.monde.builder;
 
 import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -8,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
 import java.util.Properties;
@@ -54,7 +58,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
     
 	private GLCanvas canvas;
 	private Builder builder;
-   // private Robot robot;
+    
+	private Robot robot;
+	
     private GLU glu = new GLU() ;
 	
     private boolean loadFromFile;
@@ -92,13 +98,19 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 		this.setName(TITLE);
 		this.getContentPane().add(canvas);
-
-		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+	    Point hotSpot = new Point(0,0);
+		BufferedImage cursorImage = new BufferedImage(1, 1, BufferedImage.TRANSLUCENT); 
+		Cursor invisibleCursor = toolkit.createCustomCursor(cursorImage, hotSpot, "InvisibleCursor");        
+		this.setCursor(invisibleCursor);
+		//this.setCursor(new Cursor(Cursor.CUSTOM_CURSOR));
 		this.setSize(width, height);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setResizable(false);
+		this.requestFocus();
 		
 		canvas.addGLEventListener(this);
 		canvas.addMouseListener(this); 
@@ -113,18 +125,19 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 			}	
 		});
 
-		/*try {
+		try {
             robot = new Robot();
-        } catch (final AWTException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
 
 		oldX = 0;
 		oldY = 0;
 		
 		FPSAnimator animator = new FPSAnimator(canvas, 60, true);
 		animator.start();
-		
+
+        robot.mouseMove(getLocation().x + centerX, getLocation().y + centerY);
 	}
 	
 	private void initLog(){
@@ -243,15 +256,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		}
 	}
 	
-	/*public void mouseLock(){
-		if(lockMouse){
-			if (robot != null){
-	            robot.mouseMove(getLocation().x + centerX, getLocation().y + centerY);
-	            moveFromRobot = true;
-			}
-		}
-	}*/
-	
 	/**
 	 * Chargement des données depuis un fichier
 	 */
@@ -268,7 +272,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 			}
 		}
 		/*else{
-			LOGGER.error("Erreur , pas de fichier en entré");
+			LOGGER.error("Erreur , pas de fichier en entrée");
 			System.exit(-1);
 		}*/
 	}
@@ -325,49 +329,45 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		dXY(e.getX(), e.getY());
-		moveLookAvatar();
+		//moveLookAvatar(e.getX(), e.getY());
 	}
 	
-	private void moveLookAvatar(){
+	/**
+	 * Change la direction du regard de l'avatar
+	 * @param x
+	 * @param y
+	 */
+	private void moveLookAvatar(int x, int y){
+		dx =  x - oldX;
+		dy = y - oldY; 
+		
+		oldX = x;
+		oldY = y;
+			
+		//System.out.println(dx + " -- " + dy);
+		
+		// orientation horizontale
 		if ((dx < 0) && (dx > -10)){
 			avatar.tournerGauche((float)(Math.PI/180.0)) ;
 		}
-
 		else if ((dx > 0) && (dx < 10)){
 			avatar.tournerGauche(-(float)(Math.PI/180.0)) ;
 		}
 
+		// orientation verticale
 		if ((dy < 0) && (dy > -10)){
 			avatar.tournerHaut((float)(Math.PI/180.0)) ;
 		}
-
 		else if ((dy > 0) && (dy < 10)){
 			avatar.tournerHaut(-(float)(Math.PI/180.0)) ;
 		}
-		
 	}
 	
-	public boolean isCentre(int x, int y){
-		return x == centerX && y == centerY;
-	}
-
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		/*if(!moveFromRobot){
-			if(lockMouse){
-				int x = e.getX();
-				int y = e.getY();
-				if(!isCentre(x, y)){
-					dXY(x, y);
-					moveLookAvatar();
-					//mouseLock();
-				}
-			}
+		if(lockMouse){
+			moveLookAvatar(e.getX(), e.getY());
 		}
-		else{
-			moveFromRobot = false;
-		}*/
 	}
 
 	@Override
@@ -381,6 +381,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		if(lockMouse){
+            robot.mouseMove(getLocation().x + centerX, getLocation().y + centerY);
+		}	
 	}
 
 	@Override
@@ -390,13 +393,5 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 	}
-	
-	public void dXY(int x, int y){
-		dx =  x - oldX ;
-		dy = y - oldY ; 
-		
-		oldX = x;
-		oldY = y;
-		//System.out.println(dx + " -- " + dy);
-	}
+
 }

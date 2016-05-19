@@ -63,10 +63,6 @@ public class Salle extends Situable implements Observer{
 		this.objets = new HashMap<String,Objet>() ;
 		this.capteurs = new HashMap<String,Capteur>();
 		this.capteursTableaux = new HashMap<String,Capteur>();
-		
-		//capteurPresenceAvatar = new CapteurCubique("capt"+getId(), Avatar.get(), this);
-		//capteurPresenceAvatar.add(this);
-		//ajouter( capteurPresenceAvatar);
 	}
 	
 	/**
@@ -91,7 +87,7 @@ public class Salle extends Situable implements Observer{
 	 */
 	public Salle(String id, float largeur, float profondeur, float hauteur, float epaisseurMur, float largeurPorte, float hauteurPorte){
 		super(id);
-		//Monde.get().ajouterSalle(this);
+
 		this.objets     = new HashMap<String,Objet>() ;
 		this.capteurs   = new HashMap<String,Capteur>() ;
 		this.voisines   = new HashMap<String,Salle>() ;
@@ -114,7 +110,6 @@ public class Salle extends Situable implements Observer{
 		capteurPresenceAvatar.add(this);
 		ajouter(capteurPresenceAvatar);
 		capteurPresenceAvatar.setSalle(this);
-		
 
 		ajouter( new Sol(TypeObjet.SOL.toString() + getId() , RessourceProvider.pathTextureSol, largeur, profondeur));
 		ajouter( new Plafond(TypeObjet.PLAFOND.toString() + getId(), RessourceProvider.pathTexturePlafond, largeur, profondeur));  
@@ -221,7 +216,7 @@ public class Salle extends Situable implements Observer{
 	 * Ajout d'une porte a la salle en fonction de la salle voisine 
 	 * @param salleVoisine la salle voisine ou l'on veut ajouter la porte
 	 */
-	public void ajouterPorte(Salle salleVoisine){ // TODO faire les salles en diagonales ?
+	public void ajouterPorte(Salle salleVoisine){
 		float dM = -1.0f;
 		float pTrouSalle;
 		
@@ -504,19 +499,19 @@ public class Salle extends Situable implements Observer{
 	 */
 	public void ajouterTableau(Tableau t) {
 		if(ajouterTableau(t, TypeObjet.MUR_AVANT)) {
-			LOGGER.info("Tableau " + t.getId() + " sur mur avant ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur avant ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_DROIT)){
-			//LOGGER.info("Tableau " + t.getId() + " sur mur droite ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur droite ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_GAUCHE)){
-			//LOGGER.info("Tableau " + t.getId() + " sur mur gauche ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur gauche ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_ARRIERE)){
-			//LOGGER.info("Tableau " + t.getId() + " sur mur arriere ajouté !");
+			//LOGGER.debug("Tableau " + t.getId() + " sur mur arriere ajouté !");
 		}
 		else{
-			LOGGER.info("Tableau " + t.getId() + " n'a pas été ajouté !");
+			LOGGER.debug("Tableau " + t.getId() + " n'a pas été ajouté !");
 		}
 	}
 
