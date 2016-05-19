@@ -1,14 +1,10 @@
 package fr.enib.game.app;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import fr.enib.game.model.Lien;
 import fr.enib.game.model.Noeud;
-import fr.enib.game.model.Tableau;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
-import fr.enib.game.model.interfaces.ITableau;
 import fr.enib.game.parcours.graphe.Parcours;
 
 /**
