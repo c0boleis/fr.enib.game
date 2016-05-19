@@ -25,17 +25,12 @@ public class Monde {
 	public volatile static boolean actualisationEnCours = false;
 
 	private IActualisation iActu = null;
-	
-	//private static HashMap<String,Objet> objets     = new HashMap<String,Objet>() ;
-	//private static HashMap<String,Capteur> capteurs = new HashMap<String,Capteur>() ;
-	//private static HashMap<String,Salle> salles     = new HashMap<String,Salle>() ; 
 
 	/**
 	 * Singleton de la class qui permet d'y accéder partout dans le code
 	 * avec la fonction {@link #get()}
 	 */
 	private static Monde INSTANCE = null;
-
 
 	/**
 	 * Constructeur Singleton
@@ -55,31 +50,9 @@ public class Monde {
 	}
 
 	/**
-	 * Ajout d'un objet au monde
-	 * @param objet l'objet a ajouter
+	 * Dessine l'environnement 3D
+	 * @param drawable
 	 */
-	/*public void ajouter(Objet objet){
-		objets.put(objet.getId(),objet) ; 
-	}
-
-	public static void ajouter(String nomSalle, Objet objet){
-		Salle laSalle = donnerSalle(nomSalle) ; 
-		laSalle.ajouter(objet) ; 
-	}
-
-	public void ajouterCapteur(Capteur capteur){
-		capteurs.put(capteur.getId(),capteur) ; 
-	}
-
-	public void ajouterSalle(Salle salle){
-		if(salleCourante == null) salleCourante = salle;
-		salles.put(salle.getId(),salle) ; 
-	}
-
-	public static Salle donnerSalle(String id){
-		return salles.get(id) ; 
-	}*/
-
 	public void display(GLAutoDrawable drawable){
 		GL2 gl = drawable.getGL().getGL2() ; 
 
@@ -102,6 +75,9 @@ public class Monde {
 		
 	}
 
+	/**
+	 * Actualiser les capteurs de cette environnement 3D
+	 */
 	public void actualiser(){
 		if(!actualisationEnCours){
 			if(salleCourante != null){
@@ -133,17 +109,6 @@ public class Monde {
 	}
 
 	/**
-	 * Renvoie une copie de la liste des salles presente dans le monde
-	 * @return une copie de {@link #salles}
-	 */
-	/*public static HashMap<String,Salle> getSalles() {
-		// on fait une copie du HashMap pour éviter l'ajout de salle via getSalles()
-		HashMap<String,Salle> map = new HashMap<String,Salle>();
-		map.putAll(salles);
-		return map;
-	}*/
-
-	/**
 	 * Renvoie la salle courante du monde
 	 * @return la salle courante
 	 */
@@ -163,10 +128,4 @@ public class Monde {
 	public void setiActu(IActualisation iActu) {
 		this.iActu = iActu;
 	}
-	
-	/*public void clear(){
-		salles.clear();
-		capteurs.clear();
-		objets.clear();
-	}*/
 }
