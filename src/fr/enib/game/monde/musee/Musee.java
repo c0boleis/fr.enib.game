@@ -34,10 +34,10 @@ public class Musee {
 	
 	private Vec3 positionCentre;
 	
-	private enum Orientation{
-		AVANT, ARRIERE, GAUCHE, DROITE
-	}
-	private Orientation orientationAvatar;
+	//private enum Orientation{
+	//	AVANT, ARRIERE, GAUCHE, DROITE
+	//}
+	//private Orientation orientationAvatar;
 	
 	private Monde monde;
 	
@@ -62,7 +62,7 @@ public class Musee {
 		this.listeTableaux = listeTableaux;
 		
 		this.positionCentre = new Vec3(0f, 0f, 0f);
-		this.orientationAvatar = Orientation.AVANT;
+		//this.orientationAvatar = Orientation.AVANT;
 		this.monde = Monde.get();
 	}
 
@@ -72,17 +72,34 @@ public class Musee {
 	 * @param tableaux
 	 */
 	public void ajouterListeTableaux(String nomNoeud, List<ITableau> tableaux){
-		ITableau[] tabs = limitTableaux(tableaux);
+		ITableau[] tabs;
 		
-		if(tableaux != null){
-			listeTableaux.put(nomNoeud, tabs);
+		tabs = listeTableaux.get(nomNoeud);
+		
+		if(tabs == null){
+			tabs = limitTableaux(tableaux);
+			
+			if(tabs != null){
+				listeTableaux.put(nomNoeud, tabs);
+			}
 		}
 	}
 	
+	/**
+	 * Limite le nombre de tableau
+	 * @param tableaux
+	 * @return
+	 */
 	private ITableau[] limitTableaux(List<ITableau> tableaux){
 		return limitTableaux(tableaux, 10);
 	}
 	
+	/**
+	 * Limite le nombre de tableau
+	 * @param tableaux
+	 * @param nbre
+	 * @return
+	 */
 	private ITableau[] limitTableaux(List<ITableau> tableaux, int nbre){
 		if(nbre > tableaux.size()){
 			nbre = tableaux.size();
@@ -103,6 +120,7 @@ public class Musee {
 		    String k = entry.getKey();
 		    construireSalle(k);
 		}
+		
 		placerSalles();
 		
 		for(Entry<String, ITableau[]> entry : listeTableaux.entrySet()) {
@@ -115,128 +133,90 @@ public class Musee {
 	/**
 	 * 
 	 * @param nom
+	 * @return
 	 */
-	private void construireSalle(String nom){
-		Salle s = new Salle(PREFIX_ID_SALLE + nom, this.largeurSalle, this.profondeurSalle, this.hauteurSalle);
-		if(salleCourante == null){
-			this.salleCourante = s;
-			this.salleCourante.capteurPresenceAvatar.setInterieur(true);
-			monde.setSalleCourante(this.salleCourante);
-		}		
-		salles.put(s.getId(), s);
-	}
-	
-	private void placerSalleAvant(){
-		int nbSalle = salles.size();
-		if(nbSalle >= 2){
-			((Salle) salles.values().toArray()[0]).placer(positionCentre.x, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[1]).placer(positionCentre.x - profondeurSalle - distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[1]));
+	private boolean construireSalle(String nom){
+		Salle s;
+		
+		s = getSalleById(nom);
+		
+		if(s == null){
+			s = new Salle(PREFIX_ID_SALLE + nom, this.largeurSalle, this.profondeurSalle, this.hauteurSalle);
+			if(salleCourante == null){
+				this.salleCourante = s;
+				this.salleCourante.capteurPresenceAvatar.setInterieur(true);
+				s.placer(positionCentre);
+				s.setPlaced(true);
+				monde.setSalleCourante(this.salleCourante);
+			}		
+			salles.put(s.getId(), s);
+			return true;
 		}
-		if(nbSalle >= 3){
-			((Salle) salles.values().toArray()[2]).placer(positionCentre.x + profondeurSalle + distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[2]));
-		}
-		if(nbSalle >= 4){
-			((Salle) salles.values().toArray()[3]).placer(positionCentre.x, positionCentre.y + largeurSalle + distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[3]));
-		}
-		if(nbSalle == 5){
-			((Salle) salles.values().toArray()[4]).placer(positionCentre.x, positionCentre.y - largeurSalle - distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[4]));
-		}
-		if(nbSalle < 2 || nbSalle > 5){
-			LOGGER.info("Erreur sur le nombre de salles : " + nbSalle);
-		}
-	}
-	
-	private void placerSalleArriere(){
-		int nbSalle = salles.size();
-		if(nbSalle >= 2){
-			((Salle) salles.values().toArray()[0]).placer(positionCentre.x, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[1]).placer(positionCentre.x + profondeurSalle + distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[1]));
-		}
-		if(nbSalle >= 3){
-			((Salle) salles.values().toArray()[2]).placer(positionCentre.x - profondeurSalle - distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[2]));
-		}
-		if(nbSalle >= 4){
-			((Salle) salles.values().toArray()[3]).placer(positionCentre.x, positionCentre.y - largeurSalle - distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[3]));
-		}
-		if(nbSalle == 5){
-			((Salle) salles.values().toArray()[4]).placer(positionCentre.x, positionCentre.y + largeurSalle + distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[4]));
-		}
-		if(nbSalle < 2 || nbSalle > 5){
-			LOGGER.info("Erreur sur le nombre de salles : " + nbSalle);
-		}
-	}
-	
-	private void placerSalleGauche(){
-		int nbSalle = salles.size();
-		if(nbSalle >= 2){
-			((Salle) salles.values().toArray()[0]).placer(positionCentre.x, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[1]).placer(positionCentre.x - largeurSalle - distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[1]));
-		}
-		if(nbSalle >= 3){
-			((Salle) salles.values().toArray()[1]).placer(positionCentre.x + largeurSalle + distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[2]));
-		}
-		if(nbSalle >= 4){
-			((Salle) salles.values().toArray()[3]).placer(positionCentre.x, positionCentre.y - profondeurSalle - distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[3]));
-		}
-		if(nbSalle == 5){
-			((Salle) salles.values().toArray()[4]).placer(positionCentre.x, positionCentre.y + profondeurSalle + distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[4]));
-		}
-		if(nbSalle < 2 || nbSalle > 5){
-			LOGGER.info("Erreur sur le nombre de salles : " + nbSalle);
-		}
-	}
-	
-	private void placerSalleDroite(){
-		int nbSalle = salles.size();
-		if(nbSalle >= 2){
-			((Salle) salles.values().toArray()[0]).placer(positionCentre.x, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[1]).placer(positionCentre.x + largeurSalle + distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[0]));
-		}
-		if(nbSalle >= 3){
-			((Salle) salles.values().toArray()[1]).placer(positionCentre.x - largeurSalle - distanceMur, positionCentre.y, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[1]));
-		}
-		if(nbSalle >= 4){
-			((Salle) salles.values().toArray()[3]).placer(positionCentre.x, positionCentre.y + profondeurSalle + distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[2]));
-		}
-		if(nbSalle == 5){
-			((Salle) salles.values().toArray()[4]).placer(positionCentre.x, positionCentre.y - profondeurSalle - distanceMur, positionCentre.z);
-			((Salle) salles.values().toArray()[0]).ajouterSalleVoisine(((Salle) salles.values().toArray()[3]));
-		}
-		if(nbSalle < 2 || nbSalle > 5){
-			LOGGER.info("Erreur sur le nombre de salles : " + nbSalle);
-		}
+		return false;
 	}
 	
 	private void placerSalles(){
-		switch(orientationAvatar){
-			case AVANT:
-				placerSalleAvant();
-				break;
-			case ARRIERE:
-				placerSalleArriere();
-				break;
-			case GAUCHE:
-				placerSalleGauche();
-				break;
-			case DROITE:
-				placerSalleDroite();
-				break;
+		for(Salle s : salles.values()){
+			if(!s.isPlaced()){
+				if(getSalleAtPlace(positionCentre.x + profondeurSalle + distanceMur, positionCentre.y, positionCentre.z) == null){ // avant
+					s.placer(positionCentre.x + profondeurSalle + distanceMur, positionCentre.y, positionCentre.z);
+					salleCourante.ajouterSalleVoisine(s);
+					s.setPlaced(true);
+				}
+				else if(getSalleAtPlace(positionCentre.x - profondeurSalle - distanceMur, positionCentre.y, positionCentre.z) == null){ // arriere
+					s.placer(positionCentre.x - profondeurSalle - distanceMur, positionCentre.y, positionCentre.z);	
+					salleCourante.ajouterSalleVoisine(s);
+					s.setPlaced(true);		
+				}
+				else if(getSalleAtPlace(positionCentre.x, positionCentre.y + largeurSalle + distanceMur, positionCentre.z) == null){ // gauche
+					s.placer(positionCentre.x, positionCentre.y + largeurSalle + distanceMur, positionCentre.z);
+					salleCourante.ajouterSalleVoisine(s);
+					s.setPlaced(true);
+				}
+				else if(getSalleAtPlace(positionCentre.x, positionCentre.y - largeurSalle - distanceMur, positionCentre.z) == null){ // droite
+					s.placer(positionCentre.x, positionCentre.y - largeurSalle - distanceMur, positionCentre.z);
+					salleCourante.ajouterSalleVoisine(s);
+					s.setPlaced(true);
+				}
+				else{
+					LOGGER.info("pas de place - " + s.getId());
+				}
+			}
 		}
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return
+	 */
+	private Salle getSalleAtPlace(float x, float y, float z){
+		for(Salle s : salles.values()){
+			if(s.getPositionRepere().x == x && s.getPositionRepere().y == y && s.getPositionRepere().z == z){
+				return s;
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	private Salle getSalleById(String id){
+		String idTmp;
+		if(!id.contains(PREFIX_ID_SALLE)){
+			idTmp = PREFIX_ID_SALLE + id;
+		}
+		else{
+			idTmp = id;
+		}
+		
+		return salles.get(idTmp);
 	}
 	
 	/**
@@ -245,48 +225,86 @@ public class Musee {
 	 * @param tableaux
 	 */
 	private void ajouterTableau(String nom, ITableau[] tableaux){
-		Salle s = salles.get(PREFIX_ID_SALLE + nom);
-		if(s != null){
-			for(ITableau t : tableaux){
-				s.ajouterTableau(new Tableau(t.getId(), t.getUrlImage(), t.getLargeurTableau(), t.getHauteurTableau(),t));
-			}
+		Salle s = getSalleById(nom);
+		if(s == null){
+			LOGGER.info("Problème ajout tableaux ");
+			return;
 		}
-		else{
-			LOGGER.info("Problème construction salle");
+		if(s.isTableauxPlaced()){
+			//LOGGER.info("tableau deja ajoute");
+			return;
 		}
+		for(ITableau t : tableaux){
+			s.ajouterTableau(new Tableau(t.getId(), t.getUrlImage(), t.getLargeurTableau(), t.getHauteurTableau(),t));
+		}
+		s.setTableauxPlaced(true);
 	}
 
+	/**
+	 * 
+	 * @param listeTableaux
+	 */
 	public void setListeTableaux(HashMap<String, ITableau[]> listeTableaux) {
 		this.listeTableaux = listeTableaux;
 	}
-	
-	public void clear(){
-		listeTableaux.clear();
-		salleCourante = null;
-		salles.clear();
-	}
 
+	/**
+	 * Change de la piece centrale
+	 * @param positionAvatar
+	 */
 	public void setPositionCentre(Vec3 positionAvatar) {
 		float x = positionAvatar.x - positionCentre.x;
 		float y = positionAvatar.y - positionCentre.y;
 		
 		if(x > profondeurSalle/2.0f + distanceMur){
-			orientationAvatar = Orientation.AVANT;
 			positionCentre.x = positionCentre.x + profondeurSalle + distanceMur;
+			Salle s = getSalleAtPlace(positionCentre.x, positionCentre.y, positionCentre.z);
+			if(s != null){
+				salleCourante = s;
+				s.clearTableaux();
+				s.setTableauxPlaced(false);
+			}
+			else{
+				LOGGER.info("Probleme chagement salle");
+			}
 		}
 		else if(x < -(profondeurSalle/2.0f + distanceMur)){
-			orientationAvatar = Orientation.ARRIERE;
 			positionCentre.x = positionCentre.x - profondeurSalle - distanceMur;
+			Salle s = getSalleAtPlace(positionCentre.x, positionCentre.y, positionCentre.z);
+			if(s != null){
+				salleCourante = s;
+				s.clearTableaux();
+				s.setTableauxPlaced(false);
+			}
+			else{
+				LOGGER.info("Probleme chagement salle");
+			}
 		}
 		else if(y > largeurSalle/2.0f + distanceMur){
-			orientationAvatar = Orientation.GAUCHE;
 			positionCentre.y = positionCentre.y + largeurSalle + distanceMur;
+			Salle s = getSalleAtPlace(positionCentre.x, positionCentre.y, positionCentre.z);
+			if(s != null){
+				salleCourante = s;
+				s.clearTableaux();
+				s.setTableauxPlaced(false);
+			}
+			else{
+				LOGGER.info("Probleme chagement salle");
+			}
 			
 		}
 		else if(y < -(largeurSalle/2.0f + distanceMur)){
-			orientationAvatar = Orientation.DROITE;
 			positionCentre.y = positionCentre.y - largeurSalle - distanceMur;
+			Salle s = getSalleAtPlace(positionCentre.x, positionCentre.y, positionCentre.z);
+			if(s != null){
+				salleCourante = s;
+				s.clearTableaux();
+				s.setTableauxPlaced(false);
+			}
+			else{
+				LOGGER.info("Probleme chagement salle");
+			}
 		}
-		LOGGER.info("new pos -> x : " + positionCentre.x + ", " + positionCentre.y);
+		//LOGGER.info("new pos -> x : " + positionCentre.x + ", " + positionCentre.y);
 	}
 }

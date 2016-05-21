@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -48,6 +49,9 @@ public class Salle extends Situable implements Observer{
 	public HashMap<String,Capteur> capteurs;
 	public HashMap<String,Capteur> capteursTableaux;
 	public HashMap<String,Salle>   voisines;
+	
+	private boolean placed;
+	private boolean tableauxPlaced;
 	
 	/**
 	 * Constructeur (pour la classe Couloir)
@@ -101,6 +105,8 @@ public class Salle extends Situable implements Observer{
 		this.largeurPorte = largeurPorte;
 		this.hauteurPorte = hauteurPorte;
 		this.epaisseurMur = epaisseurMur;
+		this.placed = false;
+		this.tableauxPlaced = false;
 
 		// pour l'instant une salle ne peut pas avoir de maitre.
 		this.setMaitre(null);
@@ -200,6 +206,19 @@ public class Salle extends Situable implements Observer{
 				this.ajouterPorte(salleVoisine);
 			}
 		}
+	}
+	
+	public void clearTableaux(){
+		Iterator<Objet> it = objets.values().iterator();
+
+		while (it.hasNext())
+		{
+		  Objet obj = it.next();
+		  if (obj.getId().contains("Tab") || obj.getId().contains("tab")){
+			    it.remove();
+		  }
+		}
+		capteursTableaux.clear();
 	}
 
 	/**
@@ -397,7 +416,7 @@ public class Salle extends Situable implements Observer{
 		// Cherche s'il y a des tableaux déjà ajoutés dans la salle
 		if(!c.getEsclave().isEmpty()){
 			for(Situable s : c.getEsclave().values()){
-				if(s.getId().contains("Tab")){
+				if(s.getId().contains("Tab") || s.getId().contains("tab")){
 					Tableau t = (Tableau) s;
 					posLar.add(new PositionLargeur(t.getTableau().getLargeur(), t.getPosition()));
 				}
@@ -658,6 +677,23 @@ public class Salle extends Situable implements Observer{
 				objets.remove(objet.getId());
 			}
 		}
+	}
+	
+	
+	public boolean isPlaced() {
+		return placed;
+	}
+
+	public void setPlaced(boolean placed) {
+		this.placed = placed;
+	}
+	
+	public boolean isTableauxPlaced() {
+		return tableauxPlaced;
+	}
+
+	public void setTableauxPlaced(boolean tableauxPlaced) {
+		this.tableauxPlaced = tableauxPlaced;
 	}
 
 	/**
