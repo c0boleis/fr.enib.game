@@ -53,6 +53,8 @@ public class Salle extends Situable implements Observer{
 	private boolean placed;
 	private boolean tableauxPlaced;
 	
+	private static final String PREFIX_ID_TABLEAU = "Tableau_";
+	
 	/**
 	 * Constructeur (pour la classe Couloir)
 	 * @param id
@@ -214,10 +216,37 @@ public class Salle extends Situable implements Observer{
 		while (it.hasNext())
 		{
 		  Objet obj = it.next();
-		  if (obj.getId().contains("Tab") || obj.getId().contains("tab")){
+		  if (obj.getId().contains(PREFIX_ID_TABLEAU)){
 			    it.remove();
 		  }
 		}
+
+		Mur c = getCloison(TypeObjet.MUR_AVANT.toString());
+		if(c != null){
+			if(c.getEsclave() != null){
+				c.clearAllEsclave();
+			}
+		}
+		c = getCloison(TypeObjet.MUR_ARRIERE.toString());
+		if(c != null){
+			if(c.getEsclave() != null){
+				c.clearAllEsclave();
+			}
+		}
+		c = getCloison(TypeObjet.MUR_GAUCHE.toString());
+		if(c != null){
+			if(c.getEsclave() != null){
+				c.clearAllEsclave();
+			}
+		}
+		c = getCloison(TypeObjet.MUR_DROIT.toString());
+		if(c != null){
+			if(c.getEsclave() != null){
+				c.clearAllEsclave();
+			}
+		}
+		
+		
 		capteursTableaux.clear();
 	}
 
@@ -257,6 +286,11 @@ public class Salle extends Situable implements Observer{
 				pTrouSalle = 0.0f; 
 			}
 			
+			if(getMurAvant() == null){
+				LOGGER.info("Probleme mur avant -> null");
+				return;
+			}
+			
 			getMurAvant().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
 			this.nbrPorte++;
 
@@ -280,6 +314,11 @@ public class Salle extends Situable implements Observer{
 			}
 			else{ // La salle voisine est a gauche de la salle
 				pTrouSalle = 0.0f; 
+			}
+			
+			if(getMurArriere() == null){
+				LOGGER.info("Probleme mur avant -> null");
+				return;
 			}
 			
 			getMurArriere().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
@@ -307,6 +346,11 @@ public class Salle extends Situable implements Observer{
 				pTrouSalle = 0.0f; 
 			}
 			
+			if(getMurGauche() == null){
+				LOGGER.info("Probleme mur avant -> null");
+				return;
+			}
+			
 			getMurGauche().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
 			this.nbrPorte++;
 
@@ -331,6 +375,11 @@ public class Salle extends Situable implements Observer{
 			}
 			else{ // La salle voisine esten arriere de la salle
 				pTrouSalle = 0.0f;
+			}
+			
+			if(getMurDroite() == null){
+				LOGGER.info("Probleme mur avant -> null");
+				return;
 			}
 			
 			getMurDroite().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
@@ -366,26 +415,21 @@ public class Salle extends Situable implements Observer{
 			tableau.setPosition(posTab);
 			tableau.placer(0.0f, posTab, this.getHauteur()/2);
 			tableau.orienter((float) Math.PI);
-			
 
 			float x_tab = 0.0f;
 			float y_tab = 0.0f;
 			if(mur.equals(TypeObjet.MUR_AVANT) || mur.equals(TypeObjet.MUR_ARRIERE)){
 				if(c.getPositionRepere().x >= 0) x_tab = c.getPositionRepere().x - tableau.getPosition();
 				else x_tab = c.getPositionRepere().x + tableau.getPosition();
-				//x_tab = c.getPositionRepere().x - tableau.getPosition();
 				y_tab = c.getPositionRepere().y;
 			}
 			else if(mur.equals(TypeObjet.MUR_GAUCHE) || mur.equals(TypeObjet.MUR_DROIT)){
 				x_tab = c.getPositionRepere().x;
 				if(c.getPositionRepere().y >= 0) y_tab = c.getPositionRepere().y - tableau.getPosition();
 				else y_tab = c.getPositionRepere().y + tableau.getPosition();
-				//y_tab = c.getPositionRepere().y + tableau.getPosition();
 			}
 			
 			tableau.setPositionInRepere(new Vec3(x_tab, y_tab, c.getPositionRepere().z));
-
-			//LOGGER.info("tab: " + tableau.getId() + " -- " + tableau.getPositionInRepere());
 			
 			Capteur capTab = new CapteurVision("captT" + tableau.getId(), Avatar.get(), tableau);
 			capTab.add(this);
@@ -416,7 +460,7 @@ public class Salle extends Situable implements Observer{
 		// Cherche s'il y a des tableaux déjà ajoutés dans la salle
 		if(!c.getEsclave().isEmpty()){
 			for(Situable s : c.getEsclave().values()){
-				if(s.getId().contains("Tab") || s.getId().contains("tab")){
+				if(s.getId().contains(PREFIX_ID_TABLEAU)){
 					Tableau t = (Tableau) s;
 					posLar.add(new PositionLargeur(t.getTableau().getLargeur(), t.getPosition()));
 				}
@@ -518,19 +562,19 @@ public class Salle extends Situable implements Observer{
 	 */
 	public void ajouterTableau(Tableau t) {
 		if(ajouterTableau(t, TypeObjet.MUR_AVANT)) {
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur avant ajouté !");
+			LOGGER.debug("salle : " + getId() + " - " + t.getId() + " sur mur avant ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_DROIT)){
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur droite ajouté !");
+			LOGGER.debug("salle : " + getId() + " - " + t.getId() + " sur mur droite ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_GAUCHE)){
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur gauche ajouté !");
+			LOGGER.debug("salle : " + getId() + " - " + t.getId() + " sur mur gauche ajouté !");
 		}
 		else if(ajouterTableau(t, TypeObjet.MUR_ARRIERE)){
-			//LOGGER.debug("Tableau " + t.getId() + " sur mur arriere ajouté !");
+			LOGGER.debug("salle : " + getId() + " - " + t.getId() + " sur mur arriere ajouté !");
 		}
 		else{
-			LOGGER.debug("Tableau " + t.getId() + " n'a pas été ajouté !");
+			LOGGER.debug("salle : " + getId() + " - " + t.getId() + " n'a pas été ajouté !");
 		}
 	}
 

@@ -129,6 +129,10 @@ public class Situable implements Observable{
 		map.putAll(esclaves);
 		return map;
 	}
+	
+	public void clearAllEsclave(){
+		esclaves.clear();
+	}
 
 	public boolean suprimerEsclave(Situable s){
 		return esclaves.remove(s)!=null;

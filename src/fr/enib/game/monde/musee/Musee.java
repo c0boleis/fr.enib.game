@@ -263,6 +263,7 @@ public class Musee {
 				salleCourante = s;
 				s.clearTableaux();
 				s.setTableauxPlaced(false);
+				monde.setSalleCourante(this.salleCourante);
 			}
 			else{
 				LOGGER.info("Probleme chagement salle");
@@ -275,6 +276,7 @@ public class Musee {
 				salleCourante = s;
 				s.clearTableaux();
 				s.setTableauxPlaced(false);
+				monde.setSalleCourante(this.salleCourante);
 			}
 			else{
 				LOGGER.info("Probleme chagement salle");
@@ -287,6 +289,7 @@ public class Musee {
 				salleCourante = s;
 				s.clearTableaux();
 				s.setTableauxPlaced(false);
+				monde.setSalleCourante(this.salleCourante);
 			}
 			else{
 				LOGGER.info("Probleme chagement salle");
@@ -300,6 +303,7 @@ public class Musee {
 				salleCourante = s;
 				s.clearTableaux();
 				s.setTableauxPlaced(false);
+				monde.setSalleCourante(this.salleCourante);
 			}
 			else{
 				LOGGER.info("Probleme chagement salle");
