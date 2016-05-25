@@ -8,9 +8,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+
 
 import fr.enib.game.editor.graphe.util.mxUtils;
 import fr.enib.game.model.interfaces.ITableau;
@@ -66,7 +69,10 @@ public class ViewerTableau extends JFrame {
 		tableau = tab;
 		image = mxUtils.loadImage(tableau.getUrlImage());
 		int height = image.getHeight(panel);
-		int width = image.getHeight(panel);
+		int width = image.getWidth(panel);
+		System.err.println("h: "+height+",w: "+width);
+		panel.setPreferredSize(new Dimension(width, height));
+		INSTANCE.pack();
 		panel.repaint();
 	}
 
@@ -87,8 +93,8 @@ public class ViewerTableau extends JFrame {
 					super.paint(g);
 					if(image != null){
 						g.drawImage(image, 0, 0,
-								200,
-								200,
+								panel.getWidth(),
+								panel.getHeight(),
 								Color.WHITE , null);
 					}
 				}
