@@ -18,8 +18,6 @@ import fr.enib.game.monde.objet.Avatar;
 public class Monde {
 	private static Logger LOGGER = Logger.getLogger(Monde.class);
 
-	public float t0 = (float)(System.currentTimeMillis())/1000.f ;
-
 	private Salle  salleCourante ; 
 	
 	public volatile static boolean actualisationEnCours = false;
