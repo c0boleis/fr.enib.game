@@ -39,9 +39,9 @@ public class StartSimulationAction extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		Viewer.main(new String[]{"false"});
-//		runDraw();
-		DessinMusee.main(null);
+		Viewer.main(new String[]{"false"});
+		runDraw();
+//		DessinMusee.main(null);
 	}
 	
 
