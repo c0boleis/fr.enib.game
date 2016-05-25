@@ -21,7 +21,10 @@ import fr.enib.game.model.interfaces.ITableau;
 public class Tableau extends Noeud implements ITableau{
 	
 	private float largeurTableau = 1.0f;
+	
 	private float longueurTableau = 1.0f;
+	
+	private float degreeInteret = 1.0f;
 	
 	/**
 	 * 
@@ -181,5 +184,24 @@ public class Tableau extends Noeud implements ITableau{
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
 		mesTableaux.add(this);
 		return mesTableaux;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see fr.enib.game.model.Noeud#setDegreInteret(float)
+	 */
+	@Override
+	public boolean setDegreInteret(float degre) {
+		this.degreeInteret = degre;
+		return true;
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see fr.enib.game.model.Noeud#getDegreInteret()
+	 */
+	@Override
+	public float getDegreInteret() {
+		return this.degreeInteret;
 	}
 }

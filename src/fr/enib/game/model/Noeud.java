@@ -32,8 +32,6 @@ public class Noeud implements INoeud {
 	
 	private boolean visiter = false;
 	
-	private float DegreInteret = 1.0f;
-	
 	private List<ILien> liensEntrants = new ArrayList<ILien>();
 	
 	private List<ILien> liensSortants = new ArrayList<ILien>();
@@ -325,10 +323,7 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public boolean setDegreInteret(float degre) {
-		DegreInteret = degre;
 		return true;
-		
-		
 	}
 
 	/* (non-Javadoc)
@@ -336,7 +331,12 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public float getDegreInteret() {
-		return DegreInteret;
+		float degreInteret = 0.0f;
+		ArrayList<INoeud> noeuds = getDescendantDirect();
+		for(INoeud noeud : noeuds){
+			degreInteret += noeud.getDegreInteret();
+		}
+		return degreInteret;
 	}
 
 	/* (non-Javadoc)
