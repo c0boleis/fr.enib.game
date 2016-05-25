@@ -8,7 +8,6 @@ import fr.enib.game.editor.graphe.examples.swing.action.ModifierTableauAction;
 import fr.enib.game.editor.graphe.examples.swing.action.SetIDModelObjectAction;
 import fr.enib.game.editor.graphe.examples.swing.action.SetInteretAction;
 import fr.enib.game.editor.graphe.examples.swing.action.SetPoidsAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
 import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.editor.graphe.swing.util.mxGraphActions;
 import fr.enib.game.editor.graphe.util.mxResources;
@@ -66,10 +65,10 @@ public class EditorPopupMenu extends JPopupMenu
 		}
 
 
-		add(editor.bind(mxResources.get("undo"), new HistoryAction(true),
-				"/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
-
-		addSeparator();
+////		add(editor.bind(mxResources.get("undo"), new HistoryAction(true),
+////				"/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
+//
+//		addSeparator();
 
 		add(
 				editor.bind(mxResources.get("cut"), TransferHandler

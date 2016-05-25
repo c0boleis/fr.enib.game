@@ -3,7 +3,7 @@ package fr.enib.game.monde.graphic_core;
 import com.jogamp.opengl.GL2;
 
 /**
- * 
+ * Permet de dessiner un tableau dans un environnement 3D
  * @author Ronan MOREL
  *
  */
@@ -69,14 +69,26 @@ public class GTableau extends Forme {
 		gl.glEnable(GL2.GL_TEXTURE_2D) ; 
 	}
 
+	/**
+	 * Récupère la hauteur du tableau
+	 * @return la hauteur du tableau
+	 */
 	public float getHauteur() {
 		return hauteur;
 	}
 
+	/**
+	 * Récupère la largeur du tableau
+	 * @return la largeur du tableau
+	 */
 	public float getLargeur() {
 		return largeur;
 	}
 
+	/**
+	 * Récupère l'épaisseur du tableau
+	 * @return l'épaisseur du tableau
+	 */
 	public float getEpaisseur() {
 		return epaisseur;
 	}

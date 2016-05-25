@@ -1,7 +1,7 @@
 package fr.enib.game.monde.geo;
 
 /**
- * 
+ * Représente un vecteur dans un repere 3D
  * @author Ronan MOREL
  *
  */

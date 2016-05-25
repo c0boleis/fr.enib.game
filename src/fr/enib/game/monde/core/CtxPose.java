@@ -3,7 +3,7 @@ package fr.enib.game.monde.core;
 import fr.enib.game.monde.geo.Vec3;
 
 /**
- * 
+ * Permet de placer les objets dans l'environnement 3D
  * @author Ronan MOREL
  *
  */

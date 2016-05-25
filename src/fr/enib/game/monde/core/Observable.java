@@ -1,7 +1,7 @@
 package fr.enib.game.monde.core;
 
 /**
- * 
+ * Pattern Observer/Observable
  * @author Ronan MOREL
  *
  */

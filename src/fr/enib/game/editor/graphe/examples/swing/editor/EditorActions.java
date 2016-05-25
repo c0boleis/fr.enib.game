@@ -1040,43 +1040,43 @@ public class EditorActions
 	/**
 	 *
 	 */
-	@SuppressWarnings("serial")
-	public static class HistoryAction extends AbstractAction
-	{
-		/**
-		 * 
-		 */
-		protected boolean undo;
-
-		/**
-		 * @param undo 
-		 * 
-		 */
-		public HistoryAction(boolean undo)
-		{
-			this.undo = undo;
-		}
-
-		/**
-		 * 
-		 */
-		public void actionPerformed(ActionEvent e)
-		{
-			BasicGraphEditor editor = getEditor(e);
-
-			if (editor != null)
-			{
-				if (undo)
-				{
-					editor.getUndoManager().undo();
-				}
-				else
-				{
-					editor.getUndoManager().redo();
-				}
-			}
-		}
-	}
+//	@SuppressWarnings("serial")
+//	public static class HistoryAction extends AbstractAction
+//	{
+//		/**
+//		 * 
+//		 */
+//		protected boolean undo;
+//
+//		/**
+//		 * @param undo 
+//		 * 
+//		 */
+//		public HistoryAction(boolean undo)
+//		{
+//			this.undo = undo;
+//		}
+//
+//		/**
+//		 * 
+//		 */
+//		public void actionPerformed(ActionEvent e)
+//		{
+//			BasicGraphEditor editor = getEditor(e);
+//
+//			if (editor != null)
+//			{
+//				if (undo)
+//				{
+//					editor.getUndoManager().undo();
+//				}
+//				else
+//				{
+//					editor.getUndoManager().redo();
+//				}
+//			}
+//		}
+//	}
 
 	/**
 	 *

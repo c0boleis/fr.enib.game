@@ -21,7 +21,6 @@ import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.Background
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.ColorAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridColorAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.GridStyleAction;
-import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.HistoryAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.KeyValueAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PageBackgroundAction;
 import fr.enib.game.editor.graphe.examples.swing.editor.EditorActions.PageSetupAction;
@@ -93,8 +92,8 @@ public class EditorMenuBar extends JMenuBar
 		// Creates the edit menu
 		menu = add(new JMenu(mxResources.get("edit")));
 
-		menu.add(editor.bind(mxResources.get("undo"), new HistoryAction(true), "/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
-		menu.add(editor.bind(mxResources.get("redo"), new HistoryAction(false), "/fr/enib/game/editor/graphe/examples/swing/images/redo.gif"));
+//		menu.add(editor.bind(mxResources.get("undo"), new HistoryAction(true), "/fr/enib/game/editor/graphe/examples/swing/images/undo.gif"));
+//		menu.add(editor.bind(mxResources.get("redo"), new HistoryAction(false), "/fr/enib/game/editor/graphe/examples/swing/images/redo.gif"));
 
 		menu.addSeparator();
 

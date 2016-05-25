@@ -9,7 +9,7 @@ import fr.enib.game.monde.graphic_core.Shape;
 import fr.enib.game.monde.graphic_core.TrouMur;
 
 /**
- * 
+ * Représente un objet Mur
  * @author Ronan MOREL
  *
  */

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Fourni les chemin pour les ressources necessaires au differents objets
  * @author Ronan MOREL
  *
  */

@@ -14,7 +14,7 @@ import fr.enib.game.monde.geo.Vec3;
 import fr.enib.game.monde.objet.Tableau;
 
 /**
- * 
+ * Contruction du musée dans l'environnement 3D
  * @author Ronan MOREL
  *
  */
@@ -39,15 +39,15 @@ public class Musee {
 	private Monde monde;
 	
 	/**
-	 * 
+	 * Constructeur
 	 */
 	public Musee(){
-		this(new LinkedHashMap<>());
+		this(new LinkedHashMap<String, ITableau[]>());
 	}
 	
 	/**
-	 * 
-	 * @param listeTableaux
+	 * Constructeur
+	 * @param listeTableaux la liste des noeuds avec le nom du noeud et la liste de tableaux associés
 	 */
 	public Musee(HashMap<String,ITableau[]> listeTableaux){
 		this.distanceMur = 0.5f;
@@ -57,17 +57,16 @@ public class Musee {
 				
 		this.salles = new LinkedHashMap<>();
 		this.listeTableaux = listeTableaux;
-		this.listeTableauxTmp = new HashMap<>();
+		this.listeTableauxTmp = new LinkedHashMap<>();
 		
 		this.positionCentre = new Vec3(0f, 0f, 0f);
-		//this.orientationAvatar = Orientation.AVANT;
 		this.monde = Monde.get();
 	}
 
 	/**
-	 * 
-	 * @param nomNoeud
-	 * @param tableaux
+	 * Ajout une liste de tableau en fonction d'un noeud
+	 * @param nomNoeud le nom du noeud
+	 * @param tableaux la liste de tableaux à ajouter
 	 */
 	public void ajouterListeTableaux(String nomNoeud, List<ITableau> tableaux){
 		ITableau[] tabs;
@@ -85,9 +84,9 @@ public class Musee {
 	}
 	
 	/**
-	 * Limite le nombre de tableau
-	 * @param tableaux
-	 * @return
+	 * Limite le nombre de tableau (limité à 10)
+	 * @param tableaux la liste des tableaux en entrée
+	 * @return une liste de tableaux avec une taille inférieur ou égale à 10
 	 */
 	private ITableau[] limitTableaux(List<ITableau> tableaux){
 		return limitTableaux(tableaux, 10);
@@ -95,9 +94,9 @@ public class Musee {
 	
 	/**
 	 * Limite le nombre de tableau
-	 * @param tableaux
-	 * @param nbre
-	 * @return
+	 * @param tableaux la liste de tableau en entrée
+	 * @param nbre le nombre auquel on veut limiter le nombre de tableaux
+	 * @return une liste de tableaux avec une taille inférieur ou égale à <i>nbre</i>
 	 */
 	private ITableau[] limitTableaux(List<ITableau> tableaux, int nbre){
 		if(nbre > tableaux.size()){
@@ -112,7 +111,7 @@ public class Musee {
 	}
 	
 	/**
-	 * 
+	 * Générer les salles du musée (a utilisé en association avec ajouterListeTableaux)
 	 */
 	public void genererSalles(){
 		if(salleCourante == null){
@@ -121,7 +120,7 @@ public class Musee {
 			construireSalle(k);
 		}
 		int nbPlace = getNombrePlaceSalle();
-		LOGGER.info("nbPlace : " + nbPlace);
+		
 		for(Entry<String, ITableau[]> entry : listeTableauxTmp.entrySet()) {
 		    if(nbPlace > 0){
 				String k = entry.getKey();
@@ -144,9 +143,9 @@ public class Musee {
 	}
 	
 	/**
-	 * 
-	 * @param nom
-	 * @return
+	 * Construire une salle en mémoire et l'ajout à la liste des salles existantes
+	 * @param nom le nom du noeud de la salle a construire
+	 * @return true si la salle a été construite
 	 */
 	private boolean construireSalle(String nom){
 		Salle s;
@@ -154,7 +153,7 @@ public class Musee {
 		s = getSalleById(nom);
 		
 		if(s == null){
-			s = new Salle(PREFIX_ID_SALLE + nom, this.largeurSalle, this.profondeurSalle, this.hauteurSalle);
+			s = new Salle(PREFIX_ID_SALLE + nom, this.largeurSalle, this.profondeurSalle, this.hauteurSalle, nom);
 			if(salleCourante == null){
 				this.salleCourante = s;
 				this.salleCourante.capteurPresenceAvatar.setInterieur(true);
@@ -168,7 +167,10 @@ public class Musee {
 		return false;
 	}
 	
-	
+	/**
+	 * Récupère le nombre de salle disponible autour de la position de la salle courante
+	 * @return le nombre de salle disponible
+	 */
 	private int getNombrePlaceSalle(){
 		int nb = 0;
 		
@@ -188,6 +190,9 @@ public class Musee {
 		return nb;
 	}
 	
+	/**
+	 * Place les salles dans l'environnement virtuel en fonction de la salle courante
+	 */
 	private void placerSalles(){
 		for(Salle s : salles.values()){
 			if(!s.isPlaced()){
@@ -212,18 +217,18 @@ public class Musee {
 					s.setPlaced(true);
 				}
 				else{
-					LOGGER.info("pas de place - " + s.getId());
+					LOGGER.debug("pas de place - " + s.getId());
 				}
 			}
 		}
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @return
+	 * Recupére une salle à une position données
+	 * @param x la coordonnées en x de la salle
+	 * @param y la coordonnées en Y de la salle
+	 * @param z la coordonnées en z de la salle
+	 * @return la salle à cette poisition, sinon null
 	 */
 	private Salle getSalleAtPlace(float x, float y, float z){
 		for(Salle s : salles.values()){
@@ -236,9 +241,9 @@ public class Musee {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Récupère la salle en fonction de son id
+	 * @param id l'id de la salle (ou le nom du noeud)
+	 * @return la salle correspondant au noeud, sinon null
 	 */
 	private Salle getSalleById(String id){
 		String idTmp;
@@ -253,18 +258,17 @@ public class Musee {
 	}
 	
 	/**
-	 * 
-	 * @param nom
-	 * @param tableaux
+	 * Ajoute une liste de tableaux à une salle
+	 * @param nom le nom du noeud ou l'id de la salle
+	 * @param tableaux la liste des tableaux 
 	 */
 	private void ajouterTableau(String nom, ITableau[] tableaux){
 		Salle s = getSalleById(nom);
 		if(s == null){
-			LOGGER.info("pas de salle");
+			LOGGER.debug("pas de salle");
 			return;
 		}
 		if(s.isTableauxPlaced()){
-			//LOGGER.info("tableau deja ajoute");
 			return;
 		}
 		for(ITableau t : tableaux){
@@ -274,16 +278,8 @@ public class Musee {
 	}
 
 	/**
-	 * 
-	 * @param listeTableaux
-	 */
-	public void setListeTableaux(HashMap<String, ITableau[]> listeTableaux) {
-		this.listeTableaux = listeTableaux;
-	}
-
-	/**
-	 * Change de la piece centrale
-	 * @param positionAvatar
+	 * Change de la salle courante
+	 * @param positionAvatar la position de l'avatar au moment du changement de pièce
 	 */
 	public void setPositionCentre(Vec3 positionAvatar) {
 		float x = positionAvatar.x - positionCentre.x;

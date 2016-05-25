@@ -8,7 +8,7 @@ import fr.enib.game.monde.objet.Objet;
 import fr.enib.game.monde.objet.Tableau;
 
 /**
- * 
+ * Capteur agissant lorsqu'on regarde une cible
  * @author Ronan Morel
  *
  */
@@ -39,6 +39,9 @@ public class CapteurVision extends Capteur{
 	@Override
 	public void tester(float t) {
 		Tableau tab = (Tableau) cible;
+		//Vec3 posUser = avatar.getPositionRepere();
+		//Vec3 posDistUser = avatar.getPositionRepere();
+//		Line line = new Line(posUser.x, posUser.y, posDistUser.x, posDistUser.y);
 		float distance =calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere());
 //		LOGGER.info("Capteur visition teste distance : " + distance+ "<"+this.dis);
 		if( distance <= this.dis){

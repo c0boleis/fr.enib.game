@@ -7,7 +7,7 @@ import fr.enib.game.monde.objet.Sol;
 import fr.enib.game.monde.objet.TypeObjet;
 
 /**
- * 
+ * Represente un couloir dans l'environnement 3D
  * @author Ronan MOREL
  *
  */
@@ -15,10 +15,10 @@ public class Couloir extends Salle{
 
 	/**
 	 * 
-	 * @param id
-	 * @param largeur
-	 * @param profondeur
-	 * @param hauteur
+	 * @param id l'id du couloir
+	 * @param largeur la largeur du couloir
+	 * @param profondeur la profondeur du couloir
+	 * @param hauteur la hauteur du couloir
 	 */
 	protected Couloir(String id, float largeur, float profondeur, float hauteur) {
 		super(id);

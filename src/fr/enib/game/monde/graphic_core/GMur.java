@@ -73,7 +73,7 @@ public class GMur extends Forme {
 					//A droite de la porte
 					dessinerPortion(gl, 0.0f, 0.0f, t.getPosition() - t.getLargeur()/2.0f, hauteur);
 					//Au dessus de la porte
-					dessinerPortion(gl,t.getPosition() - t.getLargeur()/2.0f, t.getHauteur(), t.getPosition() + t.getLargeur()/2.0f,hauteur);
+					dessinerPortion(gl,t.getPosition() - t.getLargeur()/2.0f, t.getHauteur(), t.getPosition() + t.getLargeur()/2.0f,hauteur, t.getNomSalleDestination());
 					//A gauche de la porte
 					dessinerPortion(gl, t.getPosition() + t.getLargeur()/2.0f, 0.0f, largeur, hauteur);
 					}
@@ -86,11 +86,11 @@ public class GMur extends Forme {
 					//A droite de la porte 1
 					dessinerPortion(gl, 0.0f, 0.0f, t1.getPosition() - t1.getLargeur()/2.0f, hauteur);
 					//Au dessus de la porte 1
-					dessinerPortion(gl,t1.getPosition() - t1.getLargeur()/2.0f, t1.getHauteur(), t1.getPosition() + t1.getLargeur()/2.0f,hauteur);
+					dessinerPortion(gl,t1.getPosition() - t1.getLargeur()/2.0f, t1.getHauteur(), t1.getPosition() + t1.getLargeur()/2.0f,hauteur, t1.getNomSalleDestination());
 					//Entre les 2 portes
 					dessinerPortion(gl, t1.getPosition() + t1.getLargeur()/2.0f, 0.0f, t2.getPosition() - t2.getLargeur()/2.0f, hauteur);
 					//Au dessus de la porte 1
-					dessinerPortion(gl, t2.getPosition() - t2.getLargeur()/2.0f, t2.getHauteur(), t2.getPosition() + t2.getLargeur()/2.0f, hauteur);
+					dessinerPortion(gl, t2.getPosition() - t2.getLargeur()/2.0f, t2.getHauteur(), t2.getPosition() + t2.getLargeur()/2.0f, hauteur, t2.getNomSalleDestination());
 					//A gauche de la porte 2
 					dessinerPortion(gl, t2.getPosition() + t2.getLargeur()/2.0f, 0.0f, largeur, hauteur);
 					}
@@ -139,84 +139,50 @@ public class GMur extends Forme {
 		gl.glEnd() ; 
 		gl.glPopMatrix() ;
 	}
-	
-	/*
-	public void dessinerPortionMur(GL2 gl, float x0, float y0, float x1, float y1){
-		// 				*-----------* (x1,y1)
+
+	/**
+	 * Dessine un portion d'une cloison
+	 * @param gl l'objet graphique permettant de dessiner
+	 * @param x0 l'abcisse du point en bas à gauche
+	 * @param y0 l'ordonnee du point en bas à gauche
+	 * @param x1 l'abcisse du point en haut à droite
+	 * @param y1 l'ordonnee du point en haut à droite
+	 * @param nom le nom de la salle destination à afficher
+	 */
+	public void dessinerPortion(GL2 gl, float x0, float y0, float x1, float y1, String nom){ // TODO nom des salles
+		//			*-----------* (x1,y1)
 		//				|			|
 		//				|			|
 		//				|			|
 		//				|			|
 		//(x0,y0)	    *-----------*
-
+		
+	
 		gl.glEnable(GL2.GL_TEXTURE_2D); 
 		gl.glTexEnvi( GL2.GL_TEXTURE_ENV, GL2.GL_TEXTURE_ENV_MODE, GL2.GL_DECAL);
-
+		
 		gl.glPushMatrix();	
 		gl.glBegin(GL2.GL_QUADS); 
 		
-		
-		//Face visible
-		
 		// Haut Gauche
 		gl.glTexCoord2f(0, 1); gl.glVertex3f(0, x0, y1); 
-
+		
 		// Haut Droite
 		gl.glTexCoord2f(1, 1); gl.glVertex3f(0, x1, y1); 
-
+		
 		// Bas Droite
 		gl.glTexCoord2f(1, 0); gl.glVertex3f(0, x1, y0); 
-
+		
 		// Bas Gauche
 		gl.glTexCoord2f(0, 0); gl.glVertex3f(0, x0, y0); 
-
-		
-
-		//Face oposée
-		// Haut Gauche
-		gl.glTexCoord2f(0, 1); gl.glVertex3f(epaisseur, x1, y1); 
-		
-		// Haut Droite
-		gl.glTexCoord2f(1, 1); gl.glVertex3f(epaisseur, x0, y1); 
-
-		// Bas Droite
-		gl.glTexCoord2f(1, 0); gl.glVertex3f(epaisseur, x0, y0); 
-
-		// Bas Gauche
-		gl.glTexCoord2f(0, 0); gl.glVertex3f(epaisseur, x1, y0); 
 		
 		
-		//Cote gauche
-		// Haut Gauche
-		gl.glTexCoord2f(0, 1); gl.glVertex3f(epaisseur, x0, y1); 
-		
-		// Haut Droite
-		gl.glTexCoord2f(1, 1); gl.glVertex3f(0, x0, y1); 
-
-		// Bas Droite
-		gl.glTexCoord2f(1, 0); gl.glVertex3f(0, x0, y0); 
-
-		// Bas Gauche
-		gl.glTexCoord2f(0, 0); gl.glVertex3f(epaisseur, x0, y0); 
-		
-		
-		//Cote droit
-		// Haut Gauche
-		gl.glTexCoord2f(0, 1); gl.glVertex3f(0, x1, y1); 
-		
-		// Haut Droite
-		gl.glTexCoord2f(1, 1); gl.glVertex3f(epaisseur, x1, y1); 
-
-		// Bas Droite
-		gl.glTexCoord2f(1, 0); gl.glVertex3f(epaisseur, x1, y0); 
-
-		// Bas Gauche
-		gl.glTexCoord2f(0, 0); gl.glVertex3f(0, x1, y0); 
-				
 		gl.glEnd() ; 
+		
 		gl.glPopMatrix() ;
-	}*/
-
+	}
+	
+	
 	/**
 	 * Renvoie la largeur de la cloison	
 	 * @return la largeur de la cloison

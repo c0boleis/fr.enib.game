@@ -30,7 +30,7 @@ import fr.enib.game.monde.objet.Tableau;
 import fr.enib.game.monde.objet.TypeObjet;
 
 /**
- * 
+ * Représente une salle dans l'environnement 3D
  * @author Ronan MOREL
  *
  */
@@ -49,6 +49,8 @@ public class Salle extends Situable implements Observer{
 	public HashMap<String,Capteur> capteurs;
 	public HashMap<String,Capteur> capteursTableaux;
 	public HashMap<String,Salle>   voisines;
+	
+	public String nomNoeud;
 	
 	private boolean placed;
 	private boolean tableauxPlaced;
@@ -78,8 +80,8 @@ public class Salle extends Situable implements Observer{
 	 * @param profondeur la pronfondeur de la salle
 	 * @param hauteur la hauteur de la salle
 	 */
-	public Salle(String id, float largeur, float profondeur, float hauteur){
-		this(id, largeur, profondeur, hauteur, 0.1f, 2.0f, 2.5f);
+	public Salle(String id, float largeur, float profondeur, float hauteur, String nomNoeud){
+		this(id, largeur, profondeur, hauteur, 0.1f, 2.0f, 2.5f, nomNoeud);
 	}
 
 	/**
@@ -91,7 +93,7 @@ public class Salle extends Situable implements Observer{
 	 * @param largeurPorte la largeur des portes de la salle
 	 * @param hauteurPorte la hauteur des portes de la salle
 	 */
-	public Salle(String id, float largeur, float profondeur, float hauteur, float epaisseurMur, float largeurPorte, float hauteurPorte){
+	public Salle(String id, float largeur, float profondeur, float hauteur, float epaisseurMur, float largeurPorte, float hauteurPorte, String nomNoeud){
 		super(id);
 
 		this.objets     = new HashMap<String,Objet>() ;
@@ -109,7 +111,9 @@ public class Salle extends Situable implements Observer{
 		this.epaisseurMur = epaisseurMur;
 		this.placed = false;
 		this.tableauxPlaced = false;
-
+		
+		this.nomNoeud = nomNoeud;
+		
 		// pour l'instant une salle ne peut pas avoir de maitre.
 		this.setMaitre(null);
 		
@@ -210,6 +214,9 @@ public class Salle extends Situable implements Observer{
 		}
 	}
 	
+	/**
+	 * Supprime tous les tableaux présents dans la salle
+	 */
 	public void clearTableaux(){
 		Iterator<Objet> it = objets.values().iterator();
 
@@ -291,7 +298,7 @@ public class Salle extends Situable implements Observer{
 				return;
 			}
 			
-			getMurAvant().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
+			getMurAvant().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle, salleVoisine.nomNoeud));
 			this.nbrPorte++;
 
 			if(!voisines.values().isEmpty()){	
@@ -321,7 +328,7 @@ public class Salle extends Situable implements Observer{
 				return;
 			}
 			
-			getMurArriere().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
+			getMurArriere().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle, salleVoisine.nomNoeud));
 			this.nbrPorte++;
 
 			if(!voisines.values().isEmpty()){	
@@ -351,7 +358,7 @@ public class Salle extends Situable implements Observer{
 				return;
 			}
 			
-			getMurGauche().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
+			getMurGauche().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle, salleVoisine.nomNoeud));
 			this.nbrPorte++;
 
 			if(!voisines.values().isEmpty()){
@@ -382,7 +389,7 @@ public class Salle extends Situable implements Observer{
 				return;
 			}
 			
-			getMurDroite().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle));
+			getMurDroite().addTrou(new TrouMur(largeurPorte, hauteurPorte, pTrouSalle, salleVoisine.nomNoeud));
 			this.nbrPorte++;
 
 			if(!voisines.values().isEmpty()){
@@ -759,7 +766,7 @@ public class Salle extends Situable implements Observer{
 	/**
 	 * Classe representant une position avec une largeur (utilise pour le placement des tableaux 
 	 * et pour savoir s'il reste de la place sur un mur de la salle)
-	 * @author ronan
+	 * @author Ronan
 	 */
 	private class PositionLargeur {
 		float largeur;
