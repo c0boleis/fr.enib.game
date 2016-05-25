@@ -392,6 +392,7 @@ public class Noeud implements INoeud {
 		ArrayList<INoeud> mesNoeudsDescendantsDirects = new ArrayList<INoeud>();
 		ILien[] mesLiens = this.getLiensSortant();
 		for(ILien lien : mesLiens){
+			if(lien.getNoeudArrivee() instanceof ITableau) continue;
 			mesNoeudsDescendantsDirects.add(lien.getNoeudArrivee());
 		}
 		return mesNoeudsDescendantsDirects;
