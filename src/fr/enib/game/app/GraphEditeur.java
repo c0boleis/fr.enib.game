@@ -62,6 +62,11 @@ public class GraphEditeur extends BasicGraphEditor
 	private static final GraphEditeur INSTANCE = new GraphEditeur();
 	
 	private static boolean drawTableau = false;
+	
+	/**
+	 * 
+	 */
+	public static boolean DESSIN_2D = false;
 
 	//GraphEditor.class.getResource("/fr/enib/game/editor/graphe/examples/swing/images/connector.gif");
 

@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
 import javax.swing.Timer;
 
+import fr.enib.game.app.GraphEditeur;
+import fr.enib.game.app.Viewer;
 import fr.enib.game.editor.graphe.monde.DessinMusee;
 import fr.enib.game.editor.graphe.view.mxGraph;
 
@@ -38,9 +40,13 @@ public class StartSimulationAction extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		Viewer.main(new String[]{"false"});
-//		runDraw();
-		DessinMusee.main(null);
+		if(GraphEditeur.DESSIN_2D){
+			DessinMusee.main(null);
+		}
+		else{
+			Viewer.main(new String[]{"false"});
+			runDraw();
+		}
 	}
 	
 
