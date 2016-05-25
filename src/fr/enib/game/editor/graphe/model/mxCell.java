@@ -317,10 +317,10 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	{
 		this.source = source;
 		if(isEdge() && terminal){
-			System.out.println("\tset SOURCE");
+			//System.out.println("\tset SOURCE");
 			if(this.value==null)return;
 			if(!(this.value instanceof ILien))return;
-			ILien lien = (ILien) this.value;
+			//ILien lien = (ILien) this.value;
 			//TODO set noeud de depart
 		}
 	}
@@ -350,10 +350,10 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	{
 		this.target = target;
 		if(isEdge() && terminal){
-			System.out.println("\tset TARGET");
+			//System.out.println("\tset TARGET");
 			if(this.value==null)return;
 			if(!(this.value instanceof ILien))return;
-			ILien lien = (ILien) this.value;
+			//ILien lien = (ILien) this.value;
 			//TODO set noeud de d'arrivée
 		}
 	}

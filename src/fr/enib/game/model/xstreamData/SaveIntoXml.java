@@ -22,7 +22,6 @@ import fr.enib.game.model.Lien;
 import fr.enib.game.model.Model;
 import fr.enib.game.model.Noeud;
 import fr.enib.game.model.Tableau;
-import fr.enib.game.model.interfaces.IModelObject;
 
 /**
  * 

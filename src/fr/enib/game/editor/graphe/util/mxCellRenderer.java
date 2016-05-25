@@ -8,8 +8,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import org.w3c.dom.Document;
-
 import fr.enib.game.editor.graphe.canvas.mxGraphics2DCanvas;
 import fr.enib.game.editor.graphe.canvas.mxICanvas;
 import fr.enib.game.editor.graphe.canvas.mxImageCanvas;

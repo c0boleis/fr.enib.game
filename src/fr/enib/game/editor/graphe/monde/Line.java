@@ -6,13 +6,8 @@ package fr.enib.game.editor.graphe.monde;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.geom.Point2D;
-import java.util.Collections;
-import java.util.Comparator;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
-
-import fr.enib.game.monde.graphic_core.TrouMur;
 
 
 /**

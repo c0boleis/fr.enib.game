@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
 
 import fr.enib.game.editor.graphe.monde.ihm.ViewerTableau;
 import fr.enib.game.model.interfaces.ITableau;

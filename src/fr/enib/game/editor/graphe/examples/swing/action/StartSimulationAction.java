@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
 import javax.swing.Timer;
 
-import fr.enib.game.app.Viewer;
 import fr.enib.game.editor.graphe.monde.DessinMusee;
 import fr.enib.game.editor.graphe.view.mxGraph;
 

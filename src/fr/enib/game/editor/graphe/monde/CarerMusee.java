@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
 
 /**
  * @author Corentin Boleis
@@ -835,6 +834,7 @@ public class CarerMusee {
 		return false;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean canMoveDroite(Point pOld,Point pNew){
 		if(pNew.x<=pointMaximun.x){
 			return true;
@@ -846,6 +846,7 @@ public class CarerMusee {
 		return false;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean canMoveGauche(Point pOld,Point pNew){
 		if(pNew.x>=pointMinimun.x){
 			return true;

@@ -52,7 +52,6 @@ import fr.enib.game.editor.graphe.canvas.mxGraphics2DCanvas;
 import fr.enib.game.editor.graphe.canvas.mxICanvas;
 import fr.enib.game.editor.graphe.model.mxGraphModel;
 import fr.enib.game.editor.graphe.model.mxGraphModel.Filter;
-import fr.enib.game.editor.graphe.model.mxICell;
 import fr.enib.game.editor.graphe.model.mxIGraphModel;
 import fr.enib.game.editor.graphe.swing.handler.mxCellHandler;
 import fr.enib.game.editor.graphe.swing.handler.mxConnectionHandler;

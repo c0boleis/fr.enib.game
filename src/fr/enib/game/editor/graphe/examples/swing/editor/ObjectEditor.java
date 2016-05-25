@@ -63,6 +63,11 @@ public class ObjectEditor extends JPanel{
 		if(panelDessin == null){
 			
 			panelDessin = new JPanel(){
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				/*
 				 * (non-Javadoc)
 				 * @see javax.swing.JComponent#paint(java.awt.Graphics)

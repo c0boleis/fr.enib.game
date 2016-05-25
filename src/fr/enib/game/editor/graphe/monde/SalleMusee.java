@@ -11,7 +11,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
 
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;

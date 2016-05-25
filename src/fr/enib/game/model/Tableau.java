@@ -10,7 +10,6 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import fr.enib.game.editor.graphe.examples.swing.action.ModifierTableauAction;
 import fr.enib.game.editor.graphe.model.mxCell;
-import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
 
 /**

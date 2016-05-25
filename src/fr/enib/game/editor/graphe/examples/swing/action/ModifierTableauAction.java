@@ -12,7 +12,6 @@ import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import jdk.nashorn.internal.scripts.JO;
 import fr.enib.game.app.GraphEditeur;
 import fr.enib.game.editor.graphe.model.mxCell;
 import fr.enib.game.editor.graphe.model.mxICell;
@@ -184,6 +183,7 @@ public class ModifierTableauAction extends AbstractAction{
 		return out.toArray(new ITableau[0]);
 	}
 
+	@SuppressWarnings("unused")
 	private static void updateParentAndIndex(File file){
 		if(!file.exists()){
 			return;

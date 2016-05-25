@@ -2,7 +2,6 @@ package fr.enib.game.model.interfaces;
 
 import java.util.ArrayList;
 
-import fr.enib.game.model.Tableau;
 import fr.enib.game.model.enums.AjoutLienInfos;
 
 /**

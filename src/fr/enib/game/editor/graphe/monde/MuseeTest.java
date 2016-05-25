@@ -12,14 +12,11 @@ import java.util.List;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
-import com.sun.javafx.collections.MappingChange.Map;
 
-import fr.enib.game.app.ParcoursGraphe;
 import fr.enib.game.model.Model;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.monde.geo.Repere;
 import fr.enib.game.monde.geo.Vec3;
-import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.parcours.graphe.Parcours;
 
 /**

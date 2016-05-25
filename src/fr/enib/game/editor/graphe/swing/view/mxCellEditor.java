@@ -51,6 +51,7 @@ public class mxCellEditor implements mxICellEditor
 	/**
 	 * 
 	 */
+	@SuppressWarnings("unused")
 	private static final String INSERT_BREAK = "insert-break";
 
 	/**
@@ -169,6 +170,11 @@ public class mxCellEditor implements mxICellEditor
 	 */
 	protected AbstractAction cancelEditingAction = new AbstractAction()
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -1744295632254091170L;
+
 		public void actionPerformed(ActionEvent e)
 		{
 			stopEditing(true);
@@ -180,6 +186,11 @@ public class mxCellEditor implements mxICellEditor
 	 */
 	protected AbstractAction textSubmitAction = new AbstractAction()
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 4527501817127336005L;
+
 		public void actionPerformed(ActionEvent e)
 		{
 			stopEditing(false);
@@ -615,6 +626,11 @@ public class mxCellEditor implements mxICellEditor
 	 */
 	class NoLinefeedHtmlEditorKit extends HTMLEditorKit
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 85729762232058913L;
+
 		public void write(Writer out, Document doc, int pos, int len)
 				throws IOException, BadLocationException
 		{
