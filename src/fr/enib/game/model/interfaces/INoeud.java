@@ -78,6 +78,12 @@ public interface INoeud extends IModelObject,IVisitableObject,IObjectInteret{
 	 * 
 	 * @return liste des noeuds descendants associés au noeud parent.
 	 */
+	public ArrayList<INoeud> getDescendantDirect();
+	
+	/**
+	 * 
+	 * @return liste des noeuds descendants associés au noeud parent.
+	 */
 	public ArrayList<INoeud> getNoeudsDescendantDirect();
 	
 	/**

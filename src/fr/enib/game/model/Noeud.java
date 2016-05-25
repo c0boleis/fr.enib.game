@@ -365,7 +365,7 @@ public class Noeud implements INoeud {
 	
 	protected ArrayList<ITableau> getTableau(boolean sort) {
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
-		ArrayList<INoeud> noeudsEnfants = this.getNoeudsDescendantDirect();
+		ArrayList<INoeud> noeudsEnfants = this.getDescendantDirect();
 		for(INoeud noeud : noeudsEnfants){
 			if(!(noeud instanceof Noeud))continue;
 			ArrayList<ITableau> tab = ((Noeud) noeud).getTableau(false);
@@ -392,7 +392,7 @@ public class Noeud implements INoeud {
 		ArrayList<INoeud> mesNoeudsDescendantsDirects = new ArrayList<INoeud>();
 		ILien[] mesLiens = this.getLiensSortant();
 		for(ILien lien : mesLiens){
-			if(lien.getNoeudArrivee() instanceof ITableau) continue;
+			if(lien.getNoeudArrivee() instanceof ITableau)continue;
 			mesNoeudsDescendantsDirects.add(lien.getNoeudArrivee());
 		}
 		return mesNoeudsDescendantsDirects;
@@ -443,6 +443,19 @@ public class Noeud implements INoeud {
 	@Override
 	public double getValeurDeParcours() {
 		return valeur;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.enib.game.model.interfaces.INoeud#getDescendantDirect()
+	 */
+	@Override
+	public ArrayList<INoeud> getDescendantDirect() {
+		ArrayList<INoeud> mesNoeudsDescendantsDirects = new ArrayList<INoeud>();
+		ILien[] mesLiens = this.getLiensSortant();
+		for(ILien lien : mesLiens){
+			mesNoeudsDescendantsDirects.add(lien.getNoeudArrivee());
+		}
+		return mesNoeudsDescendantsDirects;
 	}
 
 }
