@@ -9,6 +9,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GLAutoDrawable;
+
 /**
  * @author Corentin Boleis
  *
@@ -214,6 +217,21 @@ public class CarerMusee {
 	 * @param g
 	 */
 	public void draw(Graphics g){
+		initDraw();
+		g.setColor(Color.BLACK);
+		if(VisiteurEstPresent()){
+			g.setColor(Color.BLUE);
+		}
+		for(Line line :lines){
+			int[] tab  = line.getCoordonees();
+			g.drawLine(tab[0], tab[1], tab[2], tab[3]);
+		}
+		for(Tableau line :tableaux){
+			line.dessiner(g);
+		}
+	}
+	
+	private void initDraw(){
 		/*
 		 * on defenit toute les coordonées de chaque
 		 * lignes un seul foit
@@ -233,16 +251,18 @@ public class CarerMusee {
 			dessinerMurDroite();
 			dessinerMurBas();
 		}
-		g.setColor(Color.BLACK);
-		if(VisiteurEstPresent()){
-			g.setColor(Color.BLUE);
-		}
+	}
+
+	/**
+	 * @param gl
+	 */
+	public void display(GL2 gl) {
+		initDraw();
 		for(Line line :lines){
-			int[] tab  = line.getCoordonees();
-			g.drawLine(tab[0], tab[1], tab[2], tab[3]);
+			line.display(gl);
 		}
 		for(Tableau line :tableaux){
-			line.dessiner(g);
+			line.display(gl);
 		}
 	}
 

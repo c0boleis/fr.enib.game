@@ -7,6 +7,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.glu.GLU;
+
+import fr.enib.game.monde.geo.Vec3;
+
 /**
  * @author Corentin Boleis
  *
@@ -16,6 +21,8 @@ public class Visiteur {
 	private static double x = 100;
 	
 	private static double y = 50;
+	
+	private static GLU regard;
 	
 	/**
 	 * angle en radian
@@ -32,6 +39,7 @@ public class Visiteur {
 	private Visiteur(){
 		x = Math.ceil(((double)MuseeTest.NOMBRE_COLLONE)/2.0);
 		y = Math.ceil(((double)MuseeTest.NOMBRE_LIGNE)/2.0);
+		regard = new GLU();
 	}
 	
 	/**
@@ -176,4 +184,27 @@ public class Visiteur {
 		return line.collision(pOld.x, pOld.y, pNew.x, pNew.y);
 	}
 
+	public static void placer(GL2 gl){
+		gl.glLoadIdentity() ;
+		Vec3 o = getPostiton() ;
+		//System.out.println(o);
+		Vec3 u = getDirection() ; 
+		regard.gluLookAt(o.x,o.y,o.z,o.x+u.x,o.y+u.y,o.z+u.z,0.0f,0.0f,1.0f) ; 
+	}
+
+	/**
+	 * @return
+	 */
+	private static Vec3 getDirection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @return
+	 */
+	private static Vec3 getPostiton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

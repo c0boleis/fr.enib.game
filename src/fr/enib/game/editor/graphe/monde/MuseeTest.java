@@ -9,11 +9,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.jogamp.opengl.GL;
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GLAutoDrawable;
 import com.sun.javafx.collections.MappingChange.Map;
 
 import fr.enib.game.app.ParcoursGraphe;
 import fr.enib.game.model.Model;
 import fr.enib.game.model.interfaces.INoeud;
+import fr.enib.game.monde.geo.Repere;
+import fr.enib.game.monde.geo.Vec3;
 import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.parcours.graphe.Parcours;
 
@@ -24,6 +29,8 @@ import fr.enib.game.parcours.graphe.Parcours;
 public class MuseeTest {
 	
 	private static int idSalle=0;
+	
+	private static Repere repere;
 	
 	private static SalleMusee salleCourente = null;
 	
@@ -276,6 +283,27 @@ public class MuseeTest {
 		double scaleY = (double)height/(double)(NOMBRE_LIGNE+1);
 		scale = Math.min(scaleX, scaleY);
 	}
+	
+	/**
+	 * affiche le musée en 3D
+	 * @param gl
+	 */
+	public static void display(GLAutoDrawable gl){
+		GL2 gl2 = gl.getGL().getGL2() ; 
+		gl2.glClear(GL.GL_COLOR_BUFFER_BIT) ; 
+		gl2.glClear(GL.GL_DEPTH_BUFFER_BIT) ;
+		salleCourente.display(gl2);
+		SalleMusee[] sallesTmp = salleCourente.getSallesAdjacentes();
+		for(SalleMusee salle : salles){
+			salle.setVisible(false);
+		}
+		salleCourente.setVisible(true);
+		for(SalleMusee salle : sallesTmp){
+			salle.display(gl2);
+			salle.setVisible(true);
+		}
+//		dessinerPortes(g);
+	}
 
 	/**
 	 * dessine le muser
@@ -382,5 +410,17 @@ public class MuseeTest {
 		}
 		initPortes();
 	}
+
+	/**
+	 * @return the repere
+	 */
+	public static Repere getRepere() {
+		if(repere==null){
+			repere = new Repere(new Vec3(0, 0, 0));
+		}
+		return repere;
+	}
+	
+	
 
 }

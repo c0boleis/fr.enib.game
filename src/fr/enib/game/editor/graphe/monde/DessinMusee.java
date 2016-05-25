@@ -112,6 +112,7 @@ public class DessinMusee extends JFrame {
 				getPanel().repaint();
 			}
 		});
+//		new Launcher3D(false);
 	}
 
 	/**

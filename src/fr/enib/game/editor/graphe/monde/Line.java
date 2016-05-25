@@ -6,6 +6,13 @@ package fr.enib.game.editor.graphe.monde;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.geom.Point2D;
+import java.util.Collections;
+import java.util.Comparator;
+
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GLAutoDrawable;
+
+import fr.enib.game.monde.graphic_core.TrouMur;
 
 
 /**
@@ -19,8 +26,10 @@ public class Line {
 	private int x2 = 0;
 	private int y2 = 0;
 	
+	private int hauteur = 250;
+
 	private Position position;
-	
+
 	/**
 	 * @author Corentin Boleis
 	 *
@@ -30,6 +39,26 @@ public class Line {
 		bas,
 		droite,
 		gauche,
+	}
+
+	public float getAngle(){
+		switch (position) {
+		case haut:
+
+			break;
+		case bas:
+
+			break;
+		case droite:
+
+			break;
+		case gauche:
+
+			break;
+		default:
+			break;
+		}
+		return 0.0f;
 	}
 
 	/**
@@ -45,7 +74,7 @@ public class Line {
 		this.x2 = x2;
 		this.y2 = y2;
 	}
-	
+
 	/**
 	 * 
 	 * @param x1
@@ -58,7 +87,7 @@ public class Line {
 		this(x1,y1,x2,y2);
 		this.position = pos;
 	}
-	
+
 	/**
 	 * 
 	 * @param g
@@ -66,7 +95,7 @@ public class Line {
 	public void draw(Graphics g){
 		g.drawLine(x1, y1, x2, y2);
 	}
-	
+
 	/**
 	 * 
 	 * @param p1
@@ -75,7 +104,7 @@ public class Line {
 	public Line(Point p1,Point p2){
 		this(p1.x,p1.y,p2.x,p2.y);
 	}
-	
+
 	/**
 	 * 
 	 * @param p1
@@ -149,13 +178,66 @@ public class Line {
 				| (Sy<Ay && Sy<By)|(Sy>Ay && Sy>By) | (Sy<Cy && Sy<Dy)|(Sy>Cy && Sy>Dy)) return false;
 		return true; //or :     return new Point2D.Float((float)Sx,(float)Sy)
 	}
-	
+
 	/**
 	 * 
 	 * @return {x1,y1,x2,y2}
 	 */
 	public int[] getCoordonees(){
 		return new int[]{x1,y1,x2,y2};
+	}
+
+	/**
+	 * @param gl
+	 */
+	public void display(GL2 gl) {
+		gl.glPushMatrix() ; 
+		gl.glTranslatef(x1, y1, 0) ; 
+		gl.glRotatef(getAngle(),0.0f,0.0f,1.0f) ;
+		// Si pas de trou dans la cloison, alors on dessine un rectangle (largeur * hauteur)
+		dessinerPortionMur((GL2) gl);
+		gl.glPopMatrix();
+	}
+
+	public void dessinerPortionMur(GL2 gl){
+		// 				*-----------* (x1,y1)
+		//				|			|
+		//				|			|
+		//				|			|
+		//				|			|
+		//(x0,y0)	    *-----------*
+
+		gl.glEnable(GL2.GL_TEXTURE_2D); 
+		gl.glTexEnvi( GL2.GL_TEXTURE_ENV, GL2.GL_TEXTURE_ENV_MODE, GL2.GL_DECAL);
+
+		gl.glPushMatrix();	
+		gl.glBegin(GL2.GL_QUADS); 
+
+		float longeur = getLongeur();
+		//Face visible
+
+		// Haut Gauche
+		gl.glTexCoord2f(0, 1); gl.glVertex3f(0, 0, hauteur); 
+
+		// Haut Droite
+		gl.glTexCoord2f(1, 1); gl.glVertex3f(0, longeur, hauteur); 
+
+		// Bas Droite
+		gl.glTexCoord2f(1, 0); gl.glVertex3f(0, longeur, 0); 
+
+		// Bas Gauche
+		gl.glTexCoord2f(0, 0); gl.glVertex3f(0, 0, 0); 
+
+		gl.glEnd() ; 
+		gl.glPopMatrix() ;
+	}
+	
+	public float getLongeur(){
+		double deltaX = x2-x1;
+		deltaX = deltaX*deltaX;
+		double deltaY = y2-y1;
+		deltaY = deltaY*deltaY;
+		return (float) Math.sqrt(deltaX*deltaY);
 	}
 
 }

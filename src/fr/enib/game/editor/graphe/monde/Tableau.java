@@ -6,6 +6,9 @@ package fr.enib.game.editor.graphe.monde;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GLAutoDrawable;
+
 import fr.enib.game.editor.graphe.monde.ihm.ViewerTableau;
 import fr.enib.game.model.interfaces.ITableau;
 
@@ -39,6 +42,9 @@ public class Tableau {
 	 */
 	public void dessiner(Graphics g){
 		int[] tab = line.getCoordonees();
+		if(iTableau==null){
+			return;
+		}
 		g.setColor(Color.CYAN);
 		if(estRegarder()){
 			ViewerTableau.setTableau(iTableau);
@@ -52,6 +58,9 @@ public class Tableau {
 	 * @return true si le visiteur 
 	 */
 	public boolean estRegarder(){
+		if(iTableau==null){
+			return false;
+		}
 		if(!Visiteur.isWatch(line)){
 			return false;
 		}
@@ -59,6 +68,14 @@ public class Tableau {
 			return salleMusee.visiteurEstPresent();
 		}
 		return true;
+	}
+
+	/**
+	 * @param gl
+	 */
+	public void display(GL2 gl) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
