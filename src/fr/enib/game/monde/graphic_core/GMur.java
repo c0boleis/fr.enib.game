@@ -50,7 +50,7 @@ public class GMur extends Forme {
 		
 		// Si pas de trou dans la cloison, alors on dessine un rectangle (largeur * hauteur)
 		if(trousMur == null || trousMur.isEmpty()){
-			dessinerPortionMur(gl, 0.0f, 0.0f, largeur, hauteur);
+			dessinerPortion(gl, 0.0f, 0.0f, largeur, hauteur);
 		}
 		else{ // Si la cloison comporte des trous
 			
@@ -71,11 +71,11 @@ public class GMur extends Forme {
 					TrouMur t = trousMur.get(0);
 					
 					//A droite de la porte
-					dessinerPortionMur(gl, 0.0f, 0.0f, t.getPosition() - t.getLargeur()/2.0f, hauteur);
+					dessinerPortion(gl, 0.0f, 0.0f, t.getPosition() - t.getLargeur()/2.0f, hauteur);
 					//Au dessus de la porte
-					dessinerPortionMur(gl,t.getPosition() - t.getLargeur()/2.0f, t.getHauteur(), t.getPosition() + t.getLargeur()/2.0f,hauteur);
+					dessinerPortion(gl,t.getPosition() - t.getLargeur()/2.0f, t.getHauteur(), t.getPosition() + t.getLargeur()/2.0f,hauteur);
 					//A gauche de la porte
-					dessinerPortionMur(gl, t.getPosition() + t.getLargeur()/2.0f, 0.0f, largeur, hauteur);
+					dessinerPortion(gl, t.getPosition() + t.getLargeur()/2.0f, 0.0f, largeur, hauteur);
 					}
 					break;
 				case 2:
@@ -84,15 +84,15 @@ public class GMur extends Forme {
 					TrouMur t2 = trousMur.get(1);
 					
 					//A droite de la porte 1
-					dessinerPortionMur(gl, 0.0f, 0.0f, t1.getPosition() - t1.getLargeur()/2.0f, hauteur);
+					dessinerPortion(gl, 0.0f, 0.0f, t1.getPosition() - t1.getLargeur()/2.0f, hauteur);
 					//Au dessus de la porte 1
-					dessinerPortionMur(gl,t1.getPosition() - t1.getLargeur()/2.0f, t1.getHauteur(), t1.getPosition() + t1.getLargeur()/2.0f,hauteur);
+					dessinerPortion(gl,t1.getPosition() - t1.getLargeur()/2.0f, t1.getHauteur(), t1.getPosition() + t1.getLargeur()/2.0f,hauteur);
 					//Entre les 2 portes
-					dessinerPortionMur(gl, t1.getPosition() + t1.getLargeur()/2.0f, 0.0f, t2.getPosition() - t2.getLargeur()/2.0f, hauteur);
+					dessinerPortion(gl, t1.getPosition() + t1.getLargeur()/2.0f, 0.0f, t2.getPosition() - t2.getLargeur()/2.0f, hauteur);
 					//Au dessus de la porte 1
-					dessinerPortionMur(gl, t2.getPosition() - t2.getLargeur()/2.0f, t2.getHauteur(), t2.getPosition() + t2.getLargeur()/2.0f, hauteur);
+					dessinerPortion(gl, t2.getPosition() - t2.getLargeur()/2.0f, t2.getHauteur(), t2.getPosition() + t2.getLargeur()/2.0f, hauteur);
 					//A gauche de la porte 2
-					dessinerPortionMur(gl, t2.getPosition() + t2.getLargeur()/2.0f, 0.0f, largeur, hauteur);
+					dessinerPortion(gl, t2.getPosition() + t2.getLargeur()/2.0f, 0.0f, largeur, hauteur);
 					}
 					
 					break;
@@ -140,6 +140,7 @@ public class GMur extends Forme {
 		gl.glPopMatrix() ;
 	}
 	
+	/*
 	public void dessinerPortionMur(GL2 gl, float x0, float y0, float x1, float y1){
 		// 				*-----------* (x1,y1)
 		//				|			|
@@ -214,7 +215,7 @@ public class GMur extends Forme {
 				
 		gl.glEnd() ; 
 		gl.glPopMatrix() ;
-	}
+	}*/
 
 	/**
 	 * Renvoie la largeur de la cloison	

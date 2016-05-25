@@ -3,6 +3,7 @@ package fr.enib.game.monde.musee;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -22,7 +23,8 @@ public class Musee {
 	
 	private HashMap<String,Salle> salles;
 	private HashMap<String,ITableau[]> listeTableaux;
-
+	private HashMap<String,ITableau[]> listeTableauxTmp;
+	
 	private Salle salleCourante;
 
 	public static final String PREFIX_ID_SALLE = "salle_";
@@ -33,11 +35,6 @@ public class Musee {
 	private float distanceMur;
 	
 	private Vec3 positionCentre;
-	
-	//private enum Orientation{
-	//	AVANT, ARRIERE, GAUCHE, DROITE
-	//}
-	//private Orientation orientationAvatar;
 	
 	private Monde monde;
 	
@@ -60,6 +57,7 @@ public class Musee {
 				
 		this.salles = new LinkedHashMap<>();
 		this.listeTableaux = listeTableaux;
+		this.listeTableauxTmp = new HashMap<>();
 		
 		this.positionCentre = new Vec3(0f, 0f, 0f);
 		//this.orientationAvatar = Orientation.AVANT;
@@ -80,6 +78,7 @@ public class Musee {
 			tabs = limitTableaux(tableaux);
 			
 			if(tabs != null){
+				listeTableauxTmp.put(nomNoeud, tabs);
 				listeTableaux.put(nomNoeud, tabs);
 			}
 		}
@@ -116,9 +115,22 @@ public class Musee {
 	 * 
 	 */
 	public void genererSalles(){
-		for(Entry<String, ITableau[]> entry : listeTableaux.entrySet()) {
-		    String k = entry.getKey();
-		    construireSalle(k);
+		if(salleCourante == null){
+			Map.Entry<String, ITableau[]> entry= listeTableauxTmp.entrySet().iterator().next();
+			String k = entry.getKey();
+			construireSalle(k);
+		}
+		int nbPlace = getNombrePlaceSalle();
+		LOGGER.info("nbPlace : " + nbPlace);
+		for(Entry<String, ITableau[]> entry : listeTableauxTmp.entrySet()) {
+		    if(nbPlace > 0){
+				String k = entry.getKey();
+			    if(construireSalle(k)){
+					ITableau[] v = entry.getValue();
+					listeTableaux.put(k, v);
+			    	nbPlace--;
+			    }
+		    }
 		}
 		
 		placerSalles();
@@ -128,6 +140,7 @@ public class Musee {
 		    ITableau[] v = entry.getValue();
 		    ajouterTableau(k, v);
 		}
+		listeTableauxTmp.clear();
 	}
 	
 	/**
@@ -153,6 +166,26 @@ public class Musee {
 			return true;
 		}
 		return false;
+	}
+	
+	
+	private int getNombrePlaceSalle(){
+		int nb = 0;
+		
+		if(getSalleAtPlace(positionCentre.x + profondeurSalle + distanceMur, positionCentre.y, positionCentre.z) == null){ // avant
+			nb++;
+		}
+		if(getSalleAtPlace(positionCentre.x - profondeurSalle - distanceMur, positionCentre.y, positionCentre.z) == null){ // arriere
+			nb++;		
+		}
+		if(getSalleAtPlace(positionCentre.x, positionCentre.y + largeurSalle + distanceMur, positionCentre.z) == null){ // gauche
+			nb++;
+		}
+		 if(getSalleAtPlace(positionCentre.x, positionCentre.y - largeurSalle - distanceMur, positionCentre.z) == null){ // droite
+			nb++;
+		}
+		
+		return nb;
 	}
 	
 	private void placerSalles(){
@@ -227,7 +260,7 @@ public class Musee {
 	private void ajouterTableau(String nom, ITableau[] tableaux){
 		Salle s = getSalleById(nom);
 		if(s == null){
-			LOGGER.info("Problème ajout tableaux ");
+			LOGGER.info("pas de salle");
 			return;
 		}
 		if(s.isTableauxPlaced()){
