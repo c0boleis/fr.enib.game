@@ -4,7 +4,7 @@ import fr.enib.game.monde.core.Situable;
 import fr.enib.game.monde.objet.Objet;
 
 /**
- * 
+ * Représente un capteur l'environnement 3D
  * @author Ronan Morel
  *
  */

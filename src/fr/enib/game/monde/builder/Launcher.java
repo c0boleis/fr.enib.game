@@ -39,7 +39,7 @@ import fr.enib.game.model.Model;
 import fr.enib.game.monde.objet.Avatar;
 
 /**
- * 
+ * Fenetre graphique contenant l'environnement 3D
  * @author Ronan MOREL
  *
  */
@@ -74,7 +74,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	private float [] ambient  = { 1.0f,1.0f,1.0f,1.0f} ; 
 
 	/**
-	 * 
+	 * Constructeur
 	 * @param loadFromFile si false, on charge les donnees depuis l'éditeur, sinon on charge depuis un fichier
 	 */
 	public Launcher(boolean loadfromFile) {
@@ -140,6 +140,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
         robot.mouseMove(getLocation().x + centerX, getLocation().y + centerY);
 	}
 	
+	/**
+	 * Initialise le logger
+	 */
 	private void initLog(){
 		try {
 			Properties logProperties = new Properties();
@@ -153,6 +156,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		LOGGER.info("Application start");
 	}
 
+	/**
+	 * Dessiner l'environnement 3D
+	 */
 	@Override
 	public void display(GLAutoDrawable drawable) {
 		//float t = (float)(System.currentTimeMillis()) ;
@@ -166,6 +172,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	public void dispose(GLAutoDrawable drawable) {
 	}
 
+	/**
+	 * L'inialise l'environnement 3D
+	 */
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2() ; 
@@ -184,6 +193,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		builder.construire(); 
 	}
 
+	
 	@Override
 	public void reshape(GLAutoDrawable drawable, int x, int y, int w, int h) {
 		GL2 gl = drawable.getGL().getGL2() ; 
@@ -195,6 +205,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		gl.glMatrixMode(GLMatrixFunc.GL_MODELVIEW) ; 
 	}
 	
+	/**
+	 * Agit au commandes exterieur au programme (clavier)
+	 */
 	public void processKeyEvent(KeyEvent e, boolean pressed) {
 		//int indice ;
 
@@ -260,10 +273,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	 * Chargement des données depuis un fichier
 	 */
 	public void loadData(){
-		//JFileChooser j = new JFileChooser();
-		//j.showOpenDialog(this);
-		//File f = j.getSelectedFile();
-		File f = new File("C:/Users/ronan/git/fr.enib.game/test.xml");
+		JFileChooser j = new JFileChooser();
+		j.showOpenDialog(this);
+		File f = j.getSelectedFile();
 		if(f != null){
 			boolean res = Model.get().importerModel(f);
 			if(!res){
@@ -271,10 +283,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				System.exit(-1);
 			}
 		}
-		/*else{
+		else{
 			LOGGER.error("Erreur , pas de fichier en entrée");
 			System.exit(-1);
-		}*/
+		}
 	}
 	
 	/**
@@ -355,10 +367,10 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		}
 
 		// orientation verticale
-		if ((dy < 0) && (dy > -10)){
+		if ((dy < 0) && (dy > -2)){
 			avatar.tournerHaut((float)(Math.PI/180.0)) ;
 		}
-		else if ((dy > 0) && (dy < 10)){
+		else if ((dy > 0) && (dy < 2)){
 			avatar.tournerHaut(-(float)(Math.PI/180.0)) ;
 		}
 	}

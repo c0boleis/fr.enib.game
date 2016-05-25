@@ -4,7 +4,7 @@ import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.monde.objet.Objet;
 
 /**
- * 
+ * Capteur cubique (carre)
  * @author Ronan Morel
  *
  */

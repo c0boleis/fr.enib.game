@@ -3,7 +3,7 @@ package fr.enib.game.monde.geo;
 import com.jogamp.opengl.GL2;
 
 /**
- * 
+ * Représente une repère dans un environnement 3D
  * @author Ronan MOREL
  *
  */

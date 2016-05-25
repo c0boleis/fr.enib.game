@@ -3,7 +3,7 @@ package fr.enib.game.monde.graphic_core;
 import com.jogamp.opengl.GL2;
 
 /**
- * 
+ * Permet de dessiner un plafond dans un environnement 3D
  * @author Ronan MOREL
  *
  */

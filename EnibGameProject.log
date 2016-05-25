@@ -1,4 +1,3 @@
-2016-05-02T21:35:02.297 INFO  [fr.enib.game.monde.builder.Launcher] - Application start
-2016-05-02T21:35:03.678 INFO  [fr.enib.game.monde.builder.Builder] - construire called
-2016-05-02T21:35:04.551 INFO  [fr.enib.game.monde.builder.Monde] - salle courante :hall
-2016-05-02T21:36:03.779 INFO  [fr.enib.game.monde.builder.Launcher] - Arret du programme
+2016-05-25T14:21:49.613 INFO  [fr.enib.game.monde.builder.Launcher] - Application start
+2016-05-25T14:21:50.967 INFO  [fr.enib.game.monde.builder.Monde] - salle courante : salle_Patrimoine
+2016-05-25T14:22:00.085 INFO  [fr.enib.game.monde.builder.Launcher] - Arret du programme

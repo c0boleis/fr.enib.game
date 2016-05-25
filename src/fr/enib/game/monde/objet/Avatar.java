@@ -6,7 +6,7 @@ import com.jogamp.opengl.glu.GLU;
 import fr.enib.game.monde.geo.Vec3;
 
 /**
- * 
+ * Représente l'avatar dans l'environnement 3D
  * @author Ronan MOREL
  *
  */
@@ -52,30 +52,15 @@ public class Avatar extends Objet {
 	public void placer(GL2 gl){
 		gl.glLoadIdentity() ;
 		Vec3 o = repere.getPostiton() ;
-		//System.out.println(o);
 		Vec3 u = repere.getDirection() ; 
 		regard.gluLookAt(o.x,o.y,o.z,o.x+u.x,o.y+u.y,o.z+u.z,0.0f,0.0f,1.0f) ; 
 	}
 	
+	/**
+	 * Récupère la direction du regard
+	 * @return le vecteur direction du regard
+	 */
 	public Vec3 getDirectionRegard(){
 		return repere.getDirection();
 	}
-	
-	/*public void resetPosition(){
-		Vec3 pos = getPositionRepere().cloner();
-		tournerGauche((float)(Math.PI));
-		
-		if(pos.x < -2.5){ // Arriere
-			deplacer(0.6f, 0.0f, 0.0f);
-		}
-		else if(pos.x > 2.5){ // Avant
-			deplacer(-0.6f, 0.0f, 0.0f);
-		}
-		else if(pos.y < 2.5){ // Droite
-			deplacer(0.0f, 0.6f, 0.0f);
-		}
-		else if(pos.y > 2.5){ // Gauche
-			deplacer(0.0f, -0.6f, 0.0f);
-		}
-	}*/
 }

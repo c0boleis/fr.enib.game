@@ -2,14 +2,13 @@ package fr.enib.game.monde.capteur;
 
 import org.apache.log4j.Logger;
 
-import fr.enib.game.editor.graphe.monde.Line;
 import fr.enib.game.monde.geo.Vec3;
 import fr.enib.game.monde.objet.Avatar;
 import fr.enib.game.monde.objet.Objet;
 import fr.enib.game.monde.objet.Tableau;
 
 /**
- * 
+ * Capteur agissant lorsqu'on regarde une cible
  * @author Ronan Morel
  *
  */
@@ -40,8 +39,8 @@ public class CapteurVision extends Capteur{
 	@Override
 	public void tester(float t) {
 		Tableau tab = (Tableau) cible;
-		Vec3 posUser = avatar.getPositionRepere();
-		Vec3 posDistUser = avatar.getPositionRepere();
+		//Vec3 posUser = avatar.getPositionRepere();
+		//Vec3 posDistUser = avatar.getPositionRepere();
 //		Line line = new Line(posUser.x, posUser.y, posDistUser.x, posDistUser.y);
 		float distance =calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere());
 //		LOGGER.info("Capteur visition teste distance : " + distance+ "<"+this.dis);

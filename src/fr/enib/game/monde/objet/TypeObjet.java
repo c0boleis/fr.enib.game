@@ -1,7 +1,7 @@
 package fr.enib.game.monde.objet;
 
 /**
- * 
+ * l'Enumération des objets existants
  * @author Ronan MOREL
  *
  */

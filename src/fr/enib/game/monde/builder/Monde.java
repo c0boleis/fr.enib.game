@@ -11,7 +11,7 @@ import fr.enib.game.monde.musee.Salle;
 import fr.enib.game.monde.objet.Avatar;
 
 /**
- * 
+ * Représente le monde (l'ensemble des objets) dans l'environnement 3D
  * @author Ronan MOREL
  *
  */
@@ -125,6 +125,10 @@ public class Monde {
 		LOGGER.info("salle courante : " + salleCourante.getId());
 	}
 
+	/**
+	 * Modifie l'interface de callback d'actualisation de salle
+	 * @param iActu l'interface de callback d'actualisation de salle
+	 */
 	public void setiActu(IActualisation iActu) {
 		this.iActu = iActu;
 	}

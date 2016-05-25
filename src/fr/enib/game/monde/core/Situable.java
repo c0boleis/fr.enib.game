@@ -6,7 +6,7 @@ import fr.enib.game.monde.geo.Repere;
 import fr.enib.game.monde.geo.Vec3;
 
 /**
- * 
+ * Représente un situable dans un repère
  * @author Ronan MOREL
  *
  */

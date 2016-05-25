@@ -17,7 +17,7 @@ import com.jogamp.opengl.util.texture.TextureIO;
 import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
 
 /**
- * 
+ * Gestion des textures
  * @author Ronan MOREL
  *
  */
@@ -126,10 +126,10 @@ public class Materiau {
 	}
 
 	/**
-	 * 
+	 * Applique la texture à l'objet graphique associé
 	 * @param gl L'objet graphique dessinant dans un espace 3D
 	 */
-	public void appliques_toi(GL2 gl){
+	public void apply(GL2 gl){
 
 		if(texture != null){
 			gl.glEnable(GL2.GL_TEXTURE_2D) ; 

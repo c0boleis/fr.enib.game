@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import fr.enib.game.monde.objet.Objet;
 
 /**
- * 
+ * Capteur shérique (rond)
  * @author Ronan Morel
  *
  */

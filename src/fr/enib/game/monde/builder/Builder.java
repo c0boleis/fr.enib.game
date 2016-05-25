@@ -3,13 +3,14 @@ package fr.enib.game.monde.builder;
 import org.apache.log4j.Logger;
 
 import fr.enib.game.model.Model;
+import fr.enib.game.model.interfaces.IModelObject;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.monde.musee.Musee;
 import fr.enib.game.monde.objet.Avatar;
 import fr.enib.game.parcours.graphe.Parcours;
 
 /**
- * 
+ * Le constructeur de l'environnement 3D associé avec le graphe
  * @author Ronan MOREL
  *
  */
@@ -31,12 +32,17 @@ public class Builder {
 		IActualisation iActu = new IActualisation() {
 			@Override
 			public void changementSalle(String id) {
-				INoeud n = getNoeudById(id);
-				if(n != null){
-					parcoursP.setNoeudCourant(n);
-					musee.setPositionCentre(Avatar.get().getPositionRepere());
-					construire();
+				IModelObject o = Model.get().getModelObject(id);
+				if(o instanceof INoeud){
+					INoeud n = (INoeud) o;
+					//INoeud n = getNoeudById(id);
+					if(n != null){
+						parcoursP.setNoeudCourant(n);
+						musee.setPositionCentre(Avatar.get().getPositionRepere());
+						construire();
+					}
 				}
+				
 			}
 		};
 		Monde.get().setiActu(iActu);
@@ -74,10 +80,10 @@ public class Builder {
 	 * Recalcul les noeuds et dessine les salles
 	 */
 	public void construire(){
-		long time = System.currentTimeMillis();
+		//long time = System.currentTimeMillis();
 		noeuds = parcoursP.calcul_Noeud_Suivant();
 		
-		if(musee == null){
+ 		if(musee == null){
 			LOGGER.info("Error musée null");
 			return;
 		}
@@ -114,8 +120,8 @@ public class Builder {
 			error = false;
 		}
 		musee.genererSalles();
-		long time2 = System.currentTimeMillis();
-		System.err.println("construire : " +(time2-time));
+		//long time2 = System.currentTimeMillis();
+		//System.err.println("construire : " +(time2-time));
 	}
 	
 }
