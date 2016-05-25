@@ -59,11 +59,6 @@ public class mxGraphHandler extends mxMouseAdapter implements
 {
 
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3241109976696510225L;
-
-	/**
 	 * Default is Cursor.DEFAULT_CURSOR.
 	 */
 	public static Cursor DEFAULT_CURSOR = new Cursor(Cursor.DEFAULT_CURSOR);

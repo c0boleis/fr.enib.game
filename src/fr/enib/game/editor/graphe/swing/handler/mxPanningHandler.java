@@ -15,12 +15,6 @@ import fr.enib.game.editor.graphe.swing.util.mxMouseAdapter;
  */
 public class mxPanningHandler extends mxMouseAdapter
 {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7969814728058376339L;
-
 	/**
 	 * 
 	 */

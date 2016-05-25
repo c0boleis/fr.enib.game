@@ -80,7 +80,7 @@ public class mxPngTextDecoder
 					// LATER Add option to decode uncompressed text
 					// NOTE Do not comment this line out as the
 					// increment of the currentIndex is required
-					byte compressType = data[currentIndex++];
+					//byte compressType = data[currentIndex++];
 
 					StringBuffer value = new StringBuffer();
 					try

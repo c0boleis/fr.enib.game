@@ -275,7 +275,7 @@ public class mxCurveLabelShape implements mxITextShape
 									Font.LAYOUT_RIGHT_TO_LEFT);
 				}
 
-				int charCount = 0;
+				//int charCount = 0;
 
 				for (GlyphVector gv : rtlGlyphVectors)
 				{
@@ -293,7 +293,7 @@ public class mxCurveLabelShape implements mxITextShape
 						labelSize += size.getWidth();
 						vectorOffset += size.getWidth();
 
-						charCount++;
+						//charCount++;
 					}
 				}
 			}

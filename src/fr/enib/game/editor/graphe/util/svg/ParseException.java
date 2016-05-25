@@ -33,6 +33,11 @@ public class ParseException extends RuntimeException
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6052511171664148108L;
+
+	/**
 	 * @serial The embedded exception if tunnelling, or null.
 	 */
 	protected Exception exception;

@@ -46,11 +46,6 @@ public class mxConnectionHandler extends mxMouseAdapter
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2543899557644889853L;
-
-	/**
-	 * 
-	 */
 	public static Cursor CONNECT_CURSOR = new Cursor(Cursor.HAND_CURSOR);
 
 	/**

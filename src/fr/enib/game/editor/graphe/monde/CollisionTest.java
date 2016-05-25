@@ -24,9 +24,9 @@ public class CollisionTest extends Graphics {
 	
 	private List<Line> lines = new ArrayList<Line>();
 	
-	private static final int MUR = 0;
+	//private static final int MUR = 0;
 	
-	private static final int TABLEAU = 1;
+	//private static final int TABLEAU = 1;
 
 	/* (non-Javadoc)
 	 * @see java.awt.Graphics#create()

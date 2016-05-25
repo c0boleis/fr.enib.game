@@ -1399,7 +1399,7 @@ public class mxCoordinateAssignment implements mxHierarchicalLayoutStage
 							// Connected edge count starts at 1 to allow for buffer
 							// with edge of vertex
 							int connectedEdgeCount = 0;
-							int connectedEdgeGroupCount = 0;
+							//int connectedEdgeGroupCount = 0;
 							mxGraphHierarchyEdge[] connectedEdges = new mxGraphHierarchyEdge[sortedCells.length];
 							// Calculate width requirements for all connected edges
 							for (int j = 0; j < sortedCells.length; j++)
@@ -1427,7 +1427,7 @@ public class mxCoordinateAssignment implements mxHierarchicalLayoutStage
 										{
 											connectedEdgeCount += connectedEdge.edges
 													.size();
-											connectedEdgeGroupCount++;
+											//connectedEdgeGroupCount++;
 
 											connectedEdges[j] = connectedEdge;
 										}
@@ -1437,7 +1437,7 @@ public class mxCoordinateAssignment implements mxHierarchicalLayoutStage
 								{
 									connectedEdgeCount += ((mxGraphHierarchyEdge) innerCell).edges
 											.size();
-									connectedEdgeGroupCount++;
+									//connectedEdgeGroupCount++;
 									connectedEdges[j] = (mxGraphHierarchyEdge) innerCell;
 								}
 							}
@@ -1825,6 +1825,10 @@ public class mxCoordinateAssignment implements mxHierarchicalLayoutStage
 	 */
 	protected class AreaSpatialCache extends Rectangle2D.Double
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 4998563760497716488L;
 		public Set<Object> cells = new HashSet<Object>();
 	}
 

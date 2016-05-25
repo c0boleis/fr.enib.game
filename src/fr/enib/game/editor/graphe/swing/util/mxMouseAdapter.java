@@ -16,11 +16,6 @@ public class mxMouseAdapter implements MouseMotionListener, MouseListener
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6413162217897819199L;
-
-	/**
-	 * 
-	 */
 	public void mouseDragged(MouseEvent e)
 	{
 		// empty

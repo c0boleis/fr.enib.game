@@ -31,12 +31,6 @@ import fr.enib.game.editor.graphe.view.mxGraph;
 public class mxSelectionCellsHandler implements MouseListener,
 		MouseMotionListener
 {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -882368002120921842L;
-
 	/**
 	 * Defines the default value for maxHandlers. Default is 100.
 	 */

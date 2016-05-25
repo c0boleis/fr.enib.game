@@ -73,6 +73,11 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3140540576606004367L;
+
+	/**
 	 * Holds the root cell, which in turn contains the cells that represent the
 	 * layers of the diagram as child cells. That is, the actual element of the
 	 * diagram are supposed to live in the third generation of cells and below.
