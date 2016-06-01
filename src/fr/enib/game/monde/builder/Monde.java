@@ -96,10 +96,10 @@ public class Monde {
 					}
 				}
 				
-				salleCourante.actualiser(0.0f,0.0f) ;
+				salleCourante.actualiser(0.0f,0.0f, true) ;
 				if(salleCourante.voisines != null){
 					for(Salle salleVoisine : salleCourante.voisines.values()){
-						salleVoisine.actualiser(0.0f, 0.0f);
+						salleVoisine.actualiser(0.0f, 0.0f, false);
 					}
 				}
 			}

@@ -423,22 +423,32 @@ public class Salle extends Situable implements Observer{
 			tableau.placer(0.0f, posTab, this.getHauteur()/2);
 			tableau.orienter((float) Math.PI);
 
+			
 			float x_tab = 0.0f;
 			float y_tab = 0.0f;
-			if(mur.equals(TypeObjet.MUR_AVANT) || mur.equals(TypeObjet.MUR_ARRIERE)){
-				if(c.getPositionRepere().x >= 0) x_tab = c.getPositionRepere().x - tableau.getPosition();
-				else x_tab = c.getPositionRepere().x + tableau.getPosition();
-				y_tab = c.getPositionRepere().y;
+			float z_tab = 0.0f;
+			if(mur.equals(TypeObjet.MUR_AVANT)){
+				x_tab = c.getPositionRepere().x + getPositionRepere().x;
+				y_tab = c.getPositionRepere().y + tableau.getPosition() + getPositionRepere().y;
 			}
-			else if(mur.equals(TypeObjet.MUR_GAUCHE) || mur.equals(TypeObjet.MUR_DROIT)){
-				x_tab = c.getPositionRepere().x;
-				if(c.getPositionRepere().y >= 0) y_tab = c.getPositionRepere().y - tableau.getPosition();
-				else y_tab = c.getPositionRepere().y + tableau.getPosition();
+			else if(mur.equals(TypeObjet.MUR_ARRIERE)){
+				x_tab = c.getPositionRepere().x + getPositionRepere().x;
+				y_tab = c.getPositionRepere().y - tableau.getPosition() + getPositionRepere().y;
 			}
+			else if(mur.equals(TypeObjet.MUR_GAUCHE)){
+				x_tab = c.getPositionRepere().x - tableau.getPosition() + getPositionRepere().x;
+				y_tab = c.getPositionRepere().y + getPositionRepere().y;
+			}
+			else if(mur.equals(TypeObjet.MUR_DROIT)){
+				x_tab = c.getPositionRepere().x + tableau.getPosition() + getPositionRepere().x;
+				y_tab = c.getPositionRepere().y + getPositionRepere().y;
+			}
+
+			z_tab = c.getPositionRepere().z + getPosition().z;
+
+			tableau.setPositionInRepere(new Vec3(x_tab, y_tab , z_tab));
 			
-			tableau.setPositionInRepere(new Vec3(x_tab, y_tab, c.getPositionRepere().z));
-			
-			Capteur capTab = new CapteurVision("captT" + tableau.getId(), Avatar.get(), tableau);
+			Capteur capTab = new CapteurVision("cpt_" + getId()+ "_" + tableau.getId(), Avatar.get(), tableau);
 			capTab.add(this);
 			ajouterCapteurTableau(capTab);
 			
@@ -600,12 +610,12 @@ public class Salle extends Situable implements Observer{
 	 * @param t 
 	 * @param dt ???
 	 */
-	public void actualiser(float t, float dt){
+	public void actualiser(float t, float dt, boolean salleCourant){
 		for(Capteur capteur : capteurs.values()){
 			//LOGGER.debug("teste capteur("+capteur.getId()+") salle:\t" + this.getId());
 			capteur.tester(t); 
 		}
-		if(avatarPresent()){
+		if(salleCourant){
 			for(Capteur c : capteursTableaux.values()){
 				c.tester(t);
 			}

@@ -16,10 +16,11 @@ public class CapteurVision extends Capteur{
 
 	private static Logger LOGGER = Logger.getLogger(CapteurVision.class);
 	
-	private float dis;
-	
 	private Avatar avatar;
 	
+	private static final float INCREMENT_DEGRE_INTERET = 0.05f;
+
+	private static final float DISTANCE_INTERET_TABLEAU = 1.0f;
 	
 	/**
 	 * Constructeur
@@ -29,7 +30,6 @@ public class CapteurVision extends Capteur{
 	 */
 	public CapteurVision(String id, Avatar avatar, Objet cible){
 		super(id, cible) ; 
-		this.dis = 1.0f;
 		this.avatar = avatar;
 	}
 
@@ -37,20 +37,20 @@ public class CapteurVision extends Capteur{
 	 * test si l'avatar est present dans la zone de la cible
 	 */
 	@Override
-	public void tester(float t) {
+	public void tester(float t) { //TODO avoir la direction de l'avatar vers le tableau
 		Tableau tab = (Tableau) cible;
 		//Vec3 posUser = avatar.getPositionRepere();
 		//Vec3 posDistUser = avatar.getPositionRepere();
-//		Line line = new Line(posUser.x, posUser.y, posDistUser.x, posDistUser.y);
-		float distance =calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere());
+		float distance = calculDistancePoints(tab.getPositionInRepere(), avatar.getPositionRepere());
+		//System.out.println("D : " + distance);
 //		LOGGER.info("Capteur visition teste distance : " + distance+ "<"+this.dis);
-		if( distance <= this.dis){
-			float dir = avatar.getDirectionRegard().x;
+		if( distance <= DISTANCE_INTERET_TABLEAU){
+			//float dir = avatar.getDirectionRegard().x;
 //			LOGGER.info("Capteur visition teste : " + dir);
-			if(dir >= 0.75 && dir < 1){
-				tab.getiTableau().setDegreInteret(tab.getiTableau().getDegreInteret()+0.1f);
-				LOGGER.info("Capteur visition : " + getId()+ "(" + tab.getiTableau().getDegreInteret()+ ")"); 
-			}
+			//if(dir >= 0.75 && dir < 1){
+				tab.getiTableau().setDegreInteret(tab.getiTableau().getDegreInteret()+ INCREMENT_DEGRE_INTERET);
+				LOGGER.info("Capteur visition : " + getId()+ " (" + tab.getiTableau().getDegreInteret()+ ")"); 
+			//}
 		}
 	}
 	
