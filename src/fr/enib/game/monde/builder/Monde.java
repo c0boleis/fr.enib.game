@@ -1,7 +1,5 @@
 package fr.enib.game.monde.builder;
 
-import org.apache.log4j.Logger;
-
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
@@ -16,9 +14,11 @@ import fr.enib.game.monde.objet.Avatar;
  *
  */
 public class Monde {
-	private static Logger LOGGER = Logger.getLogger(Monde.class);
+	//private static Logger LOGGER = Logger.getLogger(Monde.class);
 
 	private Salle  salleCourante ; 
+	
+	private static String PREFIX_TITLE = "GAME : ";
 	
 	public volatile static boolean actualisationEnCours = false;
 
@@ -82,7 +82,7 @@ public class Monde {
 				if(!salleCourante.avatarPresent()){
 					if(salleCourante.voisines != null){
 						for(Salle salleVoisine : salleCourante.voisines.values()){
-							if(salleVoisine.avatarPresent()){
+							if(salleVoisine.avatarPresent()){  // Changement de salle
 								this.salleCourante = salleVoisine;
 								if(iActu != null){
 									String id = salleCourante.getId().substring(Musee.PREFIX_ID_SALLE.length());
@@ -120,7 +120,11 @@ public class Monde {
 	 */
 	public void setSalleCourante(Salle salle){
 		salleCourante = salle;
-		LOGGER.info("salle courante : " + salleCourante.getId());
+
+		String id = salleCourante.getId().substring(Musee.PREFIX_ID_SALLE.length());
+		Launcher l = Launcher.getInstance();
+		if(l != null) l.setTitle(PREFIX_TITLE + id);
+		//LOGGER.info("salle courante : " + salleCourante.getId());
 	}
 
 	/**

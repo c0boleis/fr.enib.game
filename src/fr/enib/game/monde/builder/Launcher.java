@@ -47,6 +47,22 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	private static final long serialVersionUID = 1L;
 	private static Logger LOGGER = Logger.getLogger(Launcher.class);
 	
+	private static Launcher instance = null;
+	
+	public static Launcher getInstance(){
+		if(instance == null){
+			instance = new Launcher(true);
+		}
+		return instance;
+	}
+	
+	public static Launcher getInstance(boolean loadfromFile){
+		if(instance == null){
+			instance = new Launcher(loadfromFile);
+		}
+		return instance;
+	}
+	
 	private static final String TITLE = "Enib project : GAME";
 
 	final private int width = 1000;
@@ -77,7 +93,7 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	 * Constructeur
 	 * @param loadFromFile si false, on charge les donnees depuis l'éditeur, sinon on charge depuis un fichier
 	 */
-	public Launcher(boolean loadfromFile) {
+	private Launcher(boolean loadfromFile) {
 		super(TITLE);
 
 		initLog();

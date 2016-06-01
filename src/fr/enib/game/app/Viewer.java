@@ -17,7 +17,7 @@ public class Viewer {
 				e.printStackTrace();
 			}
 		}
-		new Launcher(b);
+		Launcher.getInstance(b);
 	}
 
 }
