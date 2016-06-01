@@ -3,7 +3,6 @@ package fr.enib.game.app;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,51 +28,21 @@ public class Main extends JFrame{
 		this.add(getButtonEditeurGraphe());
 		this.add(getButtonQuiter());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		this.pack();
 		
 	}
 
 	public static void main(String[] args) {
-//		int res = choix();
-//		switch (res) {
-//			case 1:
-//				Viewer.main(null);
-//				break;
-//			case 2:
-//				GraphEditeur.main(null);
-//				break;
-//			case 3:
-//				System.exit(1);
-//				break;
-//			default:
-//				System.out.println("Aucun choix correcte, recommencez");
-//				System.out.println("--------------------------------");
-//				System.out.println("--------------------------------");
-//				System.out.println("");
-//				choix();
-//				break;
-//		}
 		Main main = new Main();
 		main.setVisible(true);
 	}
 	
-	
-	private static int choix(){
-		System.out.println("Choix : ");
-		System.out.println("1 - Démarrer l'environnement virtuel");
-		System.out.println("2 - Lancer l'editeur de graphe");
-		System.out.println("3 - Quittez");
-
-		Scanner in= new Scanner(System.in);
-		int res = in.nextInt();
-		in.close();
-		return res;
-	}
 
 	public JButton getButtonQuiter() {
 		if(buttonQuiter == null){
 			buttonQuiter = new JButton();
-			buttonQuiter.setText("Quiter");
+			buttonQuiter.setText("     Quitter     ");
 			buttonQuiter.addActionListener(new ActionListener() {
 				
 				@Override
@@ -88,7 +57,7 @@ public class Main extends JFrame{
 	public JButton getButtonEditeurGraphe() {
 		if(buttonEditeurGraphe == null){
 			buttonEditeurGraphe = new JButton();
-			buttonEditeurGraphe.setText("Editeur de Graph");
+			buttonEditeurGraphe.setText("Editeur du graphe");
 			buttonEditeurGraphe.addActionListener(new ActionListener() {
 				
 				@Override
@@ -104,7 +73,7 @@ public class Main extends JFrame{
 	public JButton getButton3D() {
 		if(button3D == null){
 			button3D = new JButton();
-			button3D.setText("Musée 3D");
+			button3D.setText("    Musée 3D     ");
 			button3D.addActionListener(new ActionListener() {
 				
 				@Override
