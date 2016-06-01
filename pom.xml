@@ -4,14 +4,6 @@
 	<groupId>fr.enib.game</groupId>
 	<artifactId>fr.enib.game</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<properties>
-		<!-- Installer variables -->
-		<staging.dir>${project.build.directory}/staging</staging.dir>
-		<info.appName>My Killer Application</info.appName>
-		<info.appsubpath>my-killer-app/standard</info.appsubpath>
-		<izpack.dir.app>${basedir}/src/main/izpack</izpack.dir.app>
-		<staging.dir.app>${staging.dir}/appfiles</staging.dir.app>
-	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -21,21 +13,6 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.izpack</groupId>
-				<artifactId>izpack-maven-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<baseDir>${staging.dir.app}</baseDir>
-					<installFile>${izpack.dir.app}/install.xml</installFile>
-					<outputDirectory>${project.build.directory}</outputDirectory>
-					<finalName>${project.build.finalName}</finalName>
-					<enableOverrideArtifact>true</enableOverrideArtifact>
-					<mkdirs>true</mkdirs>
-					<autoIncludeUrl>false</autoIncludeUrl>
-					<autoIncludeDevelopers>false</autoIncludeDevelopers>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -60,11 +37,6 @@
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
 			<version>1.4.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.izpack</groupId>
-			<artifactId>izpack-maven-plugin</artifactId>
-			<version>5.0.8</version>
 		</dependency>
 	</dependencies>
 </project>
