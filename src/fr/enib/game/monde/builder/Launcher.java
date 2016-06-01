@@ -9,8 +9,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
@@ -120,7 +118,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		BufferedImage cursorImage = new BufferedImage(1, 1, BufferedImage.TRANSLUCENT); 
 		Cursor invisibleCursor = toolkit.createCustomCursor(cursorImage, hotSpot, "InvisibleCursor");        
 		this.setCursor(invisibleCursor);
-		//this.setCursor(new Cursor(Cursor.CUSTOM_CURSOR));
 		this.setSize(width, height);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -133,13 +130,8 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 		canvas.addMouseMotionListener(this); 
 		canvas.addKeyListener(this);
 		canvas.requestFocusInWindow();
-		
-		this.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				quitter();
-			}	
-		});
+
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		try {
             robot = new Robot();
@@ -177,7 +169,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	 */
 	@Override
 	public void display(GLAutoDrawable drawable) {
-		//float t = (float)(System.currentTimeMillis()) ;
 		if(!Monde.actualisationEnCours){
 			Monde.get().display(drawable);
 			Monde.get().actualiser(); 
@@ -225,8 +216,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 	 * Agit au commandes exterieur au programme (clavier)
 	 */
 	public void processKeyEvent(KeyEvent e, boolean pressed) {
-		//int indice ;
-
 		switch (e.getKeyCode()) {
 			case KeyEvent.VK_ESCAPE:
 				if(pressed){
@@ -236,7 +225,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				break ; 
 			case KeyEvent.VK_SPACE:
 				quitter();
-				//System.out.println(lockMouse);
 				break;
 			case KeyEvent.VK_Q:
 				avatar.deplacerAxe(0.0f,0.25f,0.0f,1.0f,1.0f,0.0f) ; 
@@ -270,11 +258,9 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 				break;
 			case KeyEvent.VK_A:
 				avatar.tournerGauche((float)(Math.PI/180.0)) ;
-				//LOGGER.info("dir : " + avatar.getDirectionRegard().x);
 				break;
 			case KeyEvent.VK_E:
 				avatar.tournerGauche(-(float)(Math.PI/180.0)) ;
-				//LOGGER.info("dir : " + avatar.getDirectionRegard().x);
 				break;
 			case KeyEvent.VK_U:
 				break;
@@ -357,7 +343,6 @@ public class Launcher extends JFrame implements GLEventListener, MouseListener, 
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		//moveLookAvatar(e.getX(), e.getY());
 	}
 	
 	/**
