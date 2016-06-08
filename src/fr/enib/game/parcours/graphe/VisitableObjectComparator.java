@@ -18,7 +18,7 @@ public class VisitableObjectComparator implements Comparator<IVisitableObject> {
 	 */
 	@Override
 	public int compare(IVisitableObject o1, IVisitableObject o2) {
-		return Double.compare(o1.getValeurDeParcours(), o2.getValeurDeParcours());
+		return Double.compare(o2.getValeurDeParcours(), o1.getValeurDeParcours());
 	}
 
 }

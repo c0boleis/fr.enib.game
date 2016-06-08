@@ -4,6 +4,7 @@
 package fr.enib.game.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -13,6 +14,7 @@ import fr.enib.game.model.enums.AjoutLienInfos;
 import fr.enib.game.model.interfaces.ILien;
 import fr.enib.game.model.interfaces.INoeud;
 import fr.enib.game.model.interfaces.ITableau;
+import fr.enib.game.parcours.graphe.VisitableObjectComparator;
 
 /**
  * @author Corentin Boleis
@@ -20,22 +22,22 @@ import fr.enib.game.model.interfaces.ITableau;
  */
 @XStreamAlias("Noeud")
 public class Noeud implements INoeud {
-	
+
 	@XStreamOmitField
 	private static final long serialVersionUID = 734404660422963476L;
-	
+
 	private String id;
-	
+
 	private boolean visiter = false;
-	
+
 	private List<ILien> liensEntrants = new ArrayList<ILien>();
-	
+
 	private List<ILien> liensSortants = new ArrayList<ILien>();
-	
+
 	protected int limitLienEntrant = 1;
-	
+
 	protected int limitLienSortant = -1;
-	
+
 	private double valeur = Double.NaN;
 	/**
 	 * 
@@ -45,7 +47,7 @@ public class Noeud implements INoeud {
 		this.limitLienEntrant = 1;
 		this.limitLienSortant = -1;
 	}
-	
+
 	/**
 	 * @param id
 	 */
@@ -120,16 +122,16 @@ public class Noeud implements INoeud {
 		//si le noeud n'a pas de lien sortant alors c'est une feuille
 		return getLiensSortant().length<=0;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString(){
-		return getId()+"("+this.getDegreInteret()+")";
+		return getId()+"(i: "+this.getDegreInteret()+",v: "+this.valeur+")";
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see fr.enib.game.model.interfaces.IClonableObject#cloneObject()
@@ -166,7 +168,7 @@ public class Noeud implements INoeud {
 		 * car un lien a besoin de sont noeud 
 		 * de départ et d'arrivé pour exister
 		 */
-	
+
 		if(!suprimerLienEntrants()){
 			return false;
 		}
@@ -175,7 +177,7 @@ public class Noeud implements INoeud {
 		}
 		return true;
 	}
-	
+
 	private boolean suprimerLienEntrants(){
 		ILien[] tmp = getLiensEntrant();
 		for(ILien lien : tmp){
@@ -186,7 +188,7 @@ public class Noeud implements INoeud {
 		this.liensEntrants.clear();
 		return true;
 	}
-	
+
 	private boolean suprimerLienSortants(){
 		ILien[] tmp = getLiensSortant();
 		for(ILien lien : tmp){
@@ -226,7 +228,7 @@ public class Noeud implements INoeud {
 		this.liensEntrants.add(lien);
 		return AjoutLienInfos.ok;
 	}
-	
+
 	private boolean containsLienEntrant(String idLien){
 		ILien[] tmp = getLiensEntrant();
 		for(ILien lienTmp : tmp){
@@ -284,7 +286,7 @@ public class Noeud implements INoeud {
 		this.liensSortants.add(lien);
 		return AjoutLienInfos.ok;
 	}
-	
+
 	private boolean containsLienSortant(String idLien){
 		ILien[] tmp = getLiensSortant();
 		for(ILien lienTmp : tmp){
@@ -328,11 +330,11 @@ public class Noeud implements INoeud {
 	@Override
 	public float getDegreInteret() {
 		float degreInteret = 0.0f;
-		ArrayList<INoeud> noeuds = getDescendantDirect();
-		for(INoeud noeud : noeuds){
+		ArrayList<ITableau> noeuds = getTableau(true);
+		for(ITableau noeud : noeuds){
 			degreInteret += noeud.getDegreInteret();
 		}
-		return degreInteret;
+		return degreInteret/(float)noeuds.size();
 	}
 
 	/* (non-Javadoc)
@@ -356,9 +358,13 @@ public class Noeud implements INoeud {
 	 */
 	@Override
 	public ArrayList<ITableau> getTableau() {
-		return getTableau(true);
+		ArrayList<ITableau> listTableau = getTableau(true);
+		this.calculValeurParcoursGraphe();
+
+		Collections.sort(listTableau, new VisitableObjectComparator());
+		return listTableau;
 	}
-	
+
 	protected ArrayList<ITableau> getTableau(boolean sort) {
 		ArrayList<ITableau> mesTableaux = new ArrayList<ITableau>();
 		ArrayList<INoeud> noeudsEnfants = this.getDescendantDirect();
@@ -416,20 +422,22 @@ public class Noeud implements INoeud {
 	@Override
 	public void calculValeurParcoursGraphe() {
 		Model.get().resetValeursParcours();
+		setValeurDeParcours(0.0);
 		calculValeurParcoursGraphe(0.0);
 	}
-	
+
 	protected void calculValeurParcoursGraphe(double valeur) {
 		ILien[] liens = getLiensSortant();
 		for(ILien lien : liens){
 			Noeud n = (Noeud) lien.getNoeudArrivee();
 			double transition = valeur+lien.getPoids()*n.getDegreInteret();
-			if(n.getValeurDeParcours()==Double.NaN){
+			Double valeurN = new Double(n.getValeurDeParcours());
+			if(valeurN.equals(Double.NaN)){
 				n.setValeurDeParcours(transition);
 			}else if(transition>n.getValeurDeParcours()){
 				n.setValeurDeParcours(transition);
 			}
-			n.calculValeurParcoursGraphe(getValeurDeParcours());
+			n.calculValeurParcoursGraphe(n.getValeurDeParcours());
 		}
 	}
 
