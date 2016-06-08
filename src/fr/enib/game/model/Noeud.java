@@ -416,7 +416,7 @@ public class Noeud implements INoeud {
 	@Override
 	public void calculValeurParcoursGraphe() {
 		Model.get().resetValeursParcours();
-		calculValeurParcoursGraphe(getValeurDeParcours());
+		calculValeurParcoursGraphe(0.0);
 	}
 	
 	protected void calculValeurParcoursGraphe(double valeur) {
